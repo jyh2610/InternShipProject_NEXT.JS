@@ -24,9 +24,7 @@
                 "alwaysTryTypes": true
             }
         },
-        "react": {
-            "version": "detect"
-        }
+        "react": {}
     },
     "rules": {
         "no-console": "error",
