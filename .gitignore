@@ -1,0 +1,11 @@
+# Front-end 폴더
+/front/node_modules/
+/front/.next/
+/front/out/
+/front/.env/
+
+
+# Back-end 폴더
+/back/node_modules/
+/back/dist/
+/back/.env/
