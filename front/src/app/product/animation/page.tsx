@@ -1,5 +1,5 @@
 function Animation() {
-    return <div></div>;
+    return <div>animation</div>;
 }
 
 export default Animation;
