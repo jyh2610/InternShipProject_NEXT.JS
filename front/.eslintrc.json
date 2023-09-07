@@ -17,7 +17,7 @@
         "plugin:testing-library/react",
         "prettier"
     ],
-    "plugins": ["react", "react-hooks", "jsx-a11y", "import", "@typescript-eslint"],
+    "plugins": ["react", "react-hooks", "jsx-a11y", "import", "@typescript-eslint", "testing-library", "prettier"],
     "settings": {
         "import/resolver": {
             "typescript": {
@@ -30,7 +30,8 @@
     },
     "rules": {
         "no-console": "error",
-        "import/prefer-default-export": "off"
+        "import/prefer-default-export": "off",
+        "prettier/prettier": "error"
     },
     "overrides": [
         {
