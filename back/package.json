@@ -1,26 +1,26 @@
 {
-    "name": "back",
-    "version": "1.0.0",
-    "description": "back_dev",
-    "main": "index.js",
-    "scripts": {
-        "start": "node index.js",
-        "test": "test command check"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/sbbc212/archiple_WEB.git"
-    },
-    "keywords": [
-        "back_dev"
-    ],
-    "author": "hrd",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/sbbc212/archiple_WEB/issues"
-    },
-    "homepage": "https://github.com/sbbc212/archiple_WEB#readme",
-    "dependencies": {
-        "express": "^4.18.2"
-    }
+  "name": "back",
+  "version": "1.0.0",
+  "description": "back_dev",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "test command check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sbbc212/archiple_WEB.git"
+  },
+  "keywords": [
+    "back_dev"
+  ],
+  "author": "hrd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sbbc212/archiple_WEB/issues"
+  },
+  "homepage": "https://github.com/sbbc212/archiple_WEB#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }

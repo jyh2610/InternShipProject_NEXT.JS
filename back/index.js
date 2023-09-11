@@ -5,9 +5,9 @@ const port = 8080;
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-    res.send("Hello Node.js!");
+  res.send("Hello Node.js!");
 });
 
 app.listen(port, () => {
-    console.log("Listening...");
+  console.log("Listening...");
 });
