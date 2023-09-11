@@ -3,9 +3,10 @@
 /front/.next/
 /front/out/
 /front/.env/
-
+/front/.DS_Store
 
 # Back-end 폴더
 /back/node_modules/
 /back/dist/
 /back/.env/
+/back/.DS_Store
