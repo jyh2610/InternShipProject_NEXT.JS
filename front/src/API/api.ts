@@ -30,6 +30,7 @@ export class baseApi {
         ...options,
         headers: this.addHeaders(options.headers!),
       });
+
       return data.data;
     } catch (err) {
       console.log(err);
