@@ -1,1 +1,1 @@
-const constant = {};
+export const constant = {};
