@@ -1,8 +1,5 @@
 function Kakao() {
-    return 
-    <div>
-
-    </div>;
+  return <div>1</div>;
 }
 
 export default Kakao;
