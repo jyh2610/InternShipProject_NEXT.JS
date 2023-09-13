@@ -1,1 +1,1 @@
-export const constant = {};
+export const naverUrl = "ww";
