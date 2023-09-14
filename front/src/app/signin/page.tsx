@@ -1,5 +1,11 @@
+import NaverLogin from "@/components/auth/NaverLogin";
+
 function SignIn() {
-  return <div>SignIn</div>;
+  return (
+    <div>
+      <NaverLogin />
+    </div>
+  );
 }
 
 export default SignIn;

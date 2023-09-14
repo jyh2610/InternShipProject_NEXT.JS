@@ -30,12 +30,16 @@ export class baseApi {
         ...options,
         headers: this.addHeaders(options.headers!),
       });
+<<<<<<< HEAD
+      return data.data; 
+=======
+
       return data.data;
+>>>>>>> d057d001f1607549527c9908ac1122a36c140e4a
     } catch (err) {
       console.log(err);
     }
   }
-
   async post({ url = "/", options = {}, body = {} }: IAxiosParams) {
     try {
       const data = await axiosInstance.post(url, body, {
