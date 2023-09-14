@@ -1,4 +1,4 @@
-import NaverLogin from "@/components/auth/NaverLogin";
+import NaverLogin from "@/components/auth/LoginBtn";
 
 function SignIn() {
   return (
