@@ -1,10 +1,18 @@
 "use client";
 
-import { signIn } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 import { loginObj } from "@/constants/constants";
 
 function LoginBtn() {
+  const { data: session } = useSession();
+  if (session) {
+    return (
+      <>
+        <button onClick={() => signOut()}>{session?.user?.name}님 로그아웃</button>
+      </>
+    );
+  }
   return (
     <>
       {loginObj.map((data) => {
