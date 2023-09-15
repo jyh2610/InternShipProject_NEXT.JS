@@ -1,10 +1,10 @@
-import NaverLogin from "@/components/auth/LoginBtn";
+import LoginBtn from "@/components/auth/LoginBtn";
 
 function SignIn() {
   return (
-    <div>
-      <NaverLogin />
-    </div>
+    <>
+      <LoginBtn />
+    </>
   );
 }
 
