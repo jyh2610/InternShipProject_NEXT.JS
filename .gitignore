@@ -2,7 +2,7 @@
 /front/node_modules/
 /front/.next/
 /front/out/
-front/.env
+/front/.env
 /front/.DS_Store
 
 # Back-end 폴더
