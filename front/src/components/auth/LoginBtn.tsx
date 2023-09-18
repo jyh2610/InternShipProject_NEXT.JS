@@ -7,10 +7,9 @@ import { loginObj } from "@/constants/constants";
 function LoginBtn() {
   const { data: session } = useSession();
 
-  return session ? (
-    <button onClick={() => signOut()}>{session.user?.name}님 로그아웃</button>
-  ) : (
+  return (
     <>
+      session ? (<button onClick={() => signOut()}>{session?.user?.name}님 로그아웃</button>) : (
       {loginObj.map((data) => (
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -21,6 +20,7 @@ function LoginBtn() {
           {data.name}
         </button>
       ))}
+      );
     </>
   );
 }
