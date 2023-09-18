@@ -6,7 +6,7 @@
 /back/dist/
 
 
-# 공통
+# 공통 부분
 **.env
 **.DS_Store
 **node_modules/
