@@ -1,12 +1,10 @@
 # Front-end 폴더
-/front/node_modules/
+**node_modules/
 /front/.next/
 /front/out/
 **.env
 /front/.DS_Store
 
 # Back-end 폴더
-/back/node_modules/
 /back/dist/
-**.env/
 /back/.DS_Store
