@@ -49,6 +49,18 @@ export class baseApi {
     }
   }
 
+  async put({ url = "/", options = {}, body = {} }: IAxiosParams) {
+    try {
+      const data = await axiosInstance.put(url, body, {
+        ...options,
+        headers: this.addHeaders(options.headers!),
+      });
+      return data.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   async delete({ url = "/", options = {} }: IAxiosParams) {
     try {
       const data = await axiosInstance.delete(url, {
