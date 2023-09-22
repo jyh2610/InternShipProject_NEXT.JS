@@ -1,5 +1,4 @@
-import React from "react";
-
+import { Breadcrumb, Layout, Menu, theme } from "antd";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -8,6 +7,8 @@ import AuthSession from "@/components/auth/AuthSession";
 import type { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const { Header, Content, Footer } = Layout;
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +19,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html>
       <body className={inter.className}>
-        <AuthSession>{children}</AuthSession>
+        <Layout>
+          <Header></Header>
+          <Content>
+            <AuthSession>{children}</AuthSession>
+          </Content>
+          <Footer></Footer>
+        </Layout>
       </body>
     </html>
   );
