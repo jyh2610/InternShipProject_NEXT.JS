@@ -8,5 +8,6 @@
 
 # 공통 부분
 **.env
+**.env.local
 **.DS_Store
 **node_modules/

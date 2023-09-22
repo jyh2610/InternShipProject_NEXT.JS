@@ -27,6 +27,9 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.22.20",
+    "@babel/preset-env": "^7.22.20",
+    "@babel/preset-react": "^7.22.15",
     "@next/eslint-plugin-next": "^13.4.19",
     "@typescript-eslint/eslint-plugin": "^6.6.0",
     "eslint-config-prettier": "^9.0.0",
