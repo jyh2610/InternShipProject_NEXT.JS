@@ -1,3 +1,4 @@
+@charset "utf-8"
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,11 +6,12 @@
 body {
   margin: 0;
   padding: 0;
+  max-width:1600px;
   width: 100vw;
   height: 100vh;
+  font-family:'Pretendard-Regular';
 }
 
-@charset "utf-8"
  
 @font-face {
   font-family: "Pretendard-Regular";
