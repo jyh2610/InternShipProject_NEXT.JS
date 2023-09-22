@@ -10,11 +10,9 @@ function Nav() {
   });
 
   return (
-    <>
-      <Menu style={{ backgroundColor: "#F8F8FA", padding: "1px" }} mode="horizontal">
-        <div className="border-2 border-indigo-600 h-16">1111212312</div>
-      </Menu>
-    </>
+    <Menu style={{ width: "100%", backgroundColor: "#F8F8FA", padding: "1px", position: "fixed" }} mode="horizontal">
+      <div className="border-2 border-indigo-600 h-16">1111212312</div>
+    </Menu>
   );
 }
 
