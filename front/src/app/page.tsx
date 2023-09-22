@@ -5,6 +5,7 @@ import SectionSix from "@/components/main/SectionSix";
 
 export default function Home() {
   return <div>
+    
     <SectionFour />
     <SectionFive />    
     <SectionSix />    
