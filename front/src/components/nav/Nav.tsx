@@ -18,7 +18,6 @@ function Nav() {
   console.log(ref.current);
   return (
     <Header
-      ref={ref}
       style={{
         width: "100%",
         height: "100px",
