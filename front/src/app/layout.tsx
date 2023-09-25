@@ -17,8 +17,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html>
       <body className={inter.className}>
-        <Nav />
-        <AuthSession>{children}</AuthSession>
+        <AuthSession>
+          <Nav />
+          {children}
+        </AuthSession>
       </body>
     </html>
   );
