@@ -14,31 +14,32 @@ function TwoCarousel() {
   const ref = useRef(null);
   const [imgIdx, setImgIdx] = useState(0);
   const dummyData = [1, 2, 3, 4];
-  const handleSlideChange = (swiper: { realIndex: any }) => {
+  const handleSlideChange = (swiper: { realIndex: number }) => {
     // setImgIdx(idx);
     setImgIdx(swiper.realIndex);
   };
-  console.log(imgIdx);
 
   return (
     <>
-      <Swiper
-        className="mySwiper w-3/5"
-        cssMode={true}
-        navigation={true}
-        pagination={true}
-        mousewheel={true}
-        keyboard={true}
-        loop={true}
-        modules={[Navigation, Pagination]}
-        onSlideChange={handleSlideChange}
-      >
-        {dummyData.map((_, idx) => (
-          <SwiperSlide key={idx}>
-            <Image src={dummyImg} alt={"dummy"} width={300} height={300} layout="responsive" />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <div className="w-4/5 flex justify-start">
+        <Swiper
+          className="mySwiper "
+          cssMode={true}
+          navigation={true}
+          pagination={true}
+          mousewheel={true}
+          keyboard={true}
+          loop={true}
+          modules={[Navigation, Pagination]}
+          onSlideChange={handleSlideChange}
+        >
+          {dummyData.map((_, idx) => (
+            <SwiperSlide key={idx}>
+              <Image src={dummyImg} alt={"dummy"} width={1800} height={600} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
       <span>
         {imgIdx + 1} / {dummyData.length}
       </span>
