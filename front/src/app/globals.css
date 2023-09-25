@@ -8,8 +8,9 @@ body {
   padding: 0;
   width: 100vw;
   height: 100vh;
-  font-family: "Pretendard-Regular"; 
+  font-family: "Pretendard-Regular";
 }
+
 ol,
 ul {
   list-style: none;

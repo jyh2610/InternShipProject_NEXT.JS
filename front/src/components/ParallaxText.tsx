@@ -1,5 +1,5 @@
 "use client";
-// import "./styles.css";
+import "/../components/style.css";
 import { useEffect, useRef } from "react";
 import { motion, useScroll, useSpring, useTransform, useMotionValue, useVelocity, useAnimationFrame, useAnimation } from "framer-motion";
 import { wrap } from "@motionone/utils";
@@ -32,8 +32,10 @@ function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
    * have to replace for wrapping that works for you or dynamically
    * calculate
    */
+
   //   움직이는 범위 조절
-  const x = useTransform(baseX, (v) => `${wrap(-20, -145, v)}%`);
+
+  const x = useTransform(baseX, (v) => `${wrap(0, -100, v)}%`);
 
   const directionFactor = useRef<number>(1);
   useAnimationFrame((t, delta) => {
@@ -55,14 +57,14 @@ function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
   });
 
   return (
-    <div className="parallax whitespace-nowrap font-extrabold leading-normal">
-      <motion.div className="scroller" style={{ x }}>
-        <span className="stroke-black" style={{ textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black", color: "white" }}>
+    <div className="parallax tracking-tighter whitespace-nowrap font-extrabold leading-normal">
+      <motion.div className="scroller " style={{ x }}>
+        <span className="" style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)", color: "white" }}>
           {children}
         </span>
-        <span style={{ textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black", color: "white" }}>{children} </span>
-        <span style={{ textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black", color: "white" }}>{children} </span>
-        <span style={{ textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black", color: "white" }}>{children} </span>
+        <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)", color: "white" }}>{children} </span>
+        <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)", color: "white" }}>{children} </span>
+        <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)", color: "white" }}>{children} </span>
       </motion.div>
     </div>
   );
