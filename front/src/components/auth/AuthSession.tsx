@@ -4,6 +4,7 @@ import React from "react";
 import { SessionProvider } from "next-auth/react";
 import { Provider } from "react-redux";
 import { store } from "@/redux/store";
+import { Layout } from "antd";
 
 type Props = {
   children: React.ReactNode;
@@ -12,7 +13,9 @@ type Props = {
 export default function AuthSession({ children }: Props) {
   return (
     <SessionProvider>
-      <Provider store={store}>{children}</Provider>
+      <Layout>
+        <Provider store={store}>{children}</Provider>
+      </Layout>
     </SessionProvider>
   );
 }
