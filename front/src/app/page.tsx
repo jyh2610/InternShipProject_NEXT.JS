@@ -12,11 +12,13 @@ import SectionFour from "@/components/main/SectionFour";
 import SectionFive from "@/components/main/SectionFive";
 import SectionSix from "@/components/main/SectionSix";
 import Footer from "@/components/Footer";
+import Sectiontwo from "@/components/main/Sectiontwo";
 
 export default function Home() {
   return (
     <ScrollContainer>
       <SectionOne />
+      <Sectiontwo />
       <SectionFour />
       <SectionFive />
       <SectionSix />
