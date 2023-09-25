@@ -6,12 +6,12 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <SectionOne />
       <SectionFour />
       <SectionFive />
       <SectionSix />
       <Footer />
-    </div>
+    </>
   );
 }
