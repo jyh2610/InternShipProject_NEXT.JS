@@ -2,7 +2,7 @@
 function Logo() {
   return (
     <>
-      <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="262" height="50" viewBox="0 0 262 50">
+      <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="220" height="50" viewBox="0 0 262 50">
         <defs>
           <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 1880 360">
             <image
