@@ -1,11 +1,14 @@
-import { ScrollPage } from "react-scroll-motion";
+import SectionProvider from "./SectionProvider";
 import Text from "./section-2/Text";
+import TwoCaruosel from "./section-2/TwoCaruosel";
 
 function Sectiontwo() {
+  const sliderHander = () => {};
   return (
-    <ScrollPage className="">
+    <section className="w-3/5 h-screen">
       <Text />
-    </ScrollPage>
+      <TwoCaruosel />
+    </section>
   );
 }
 

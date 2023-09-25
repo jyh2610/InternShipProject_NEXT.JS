@@ -22,6 +22,8 @@ export default function Home() {
       <SectionFour />
       <SectionFive />
       <SectionSix />
+      <Sectiontwo />
+      <Sectiontwo />
       <Footer />
     </ScrollContainer>
   );

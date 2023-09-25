@@ -13,7 +13,6 @@ const scrollBehaviorSlice = createSlice({
   initialState,
   reducers: {
     toggleIsNav: (state, action) => {
-      // immer를 사용하여 상태를 변경하므로 타입을 명시적으로 지정해줍니다.
       return (state.isNav = action.payload);
     },
   },
