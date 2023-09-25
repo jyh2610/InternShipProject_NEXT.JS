@@ -1,7 +1,6 @@
-'use client'
+"use client";
 function SectionFive() {
-    return <></>;
-  }
-  
-  export default SectionFive;
-  
+  return <></>;
+}
+
+export default SectionFive;
