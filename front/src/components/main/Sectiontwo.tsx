@@ -1,4 +1,3 @@
-import SectionProvider from "./SectionProvider";
 import BotText from "./section-2/BotText";
 import Text from "./section-2/Text";
 import TwoCaruosel from "./section-2/TwoCaruosel";
