@@ -4,7 +4,7 @@
   "description": "back_dev",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node ./src/bin/www",
     "test": "test command check"
   },
   "repository": {
@@ -21,8 +21,10 @@
   },
   "homepage": "https://github.com/sbbc212/archiple_WEB#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "mysql2": "^3.6.1"
   }

@@ -1,22 +1,19 @@
+"use strict";
+
 const express = require('express');
-const dotenv = require('dotenv'); // dotenv
-const member = require('./src/db/member');
+const routes = require('./src/routes'); // index.js는 생략 가능
+const cors = require('cors');
+const morgan = require('morgan');
 
 const app = express();
-dotenv.config();
 
-member.query('SELECT * FROM user', (err, results) => {
-  if (err) {
-    console.error('Error executing query:', err);
-    return;
-  }
-  console.log('Query results:', results);
-});
+app.use(cors());
+app.use(express.json());
+app.use(routes);
+app.use(morgan('dev'));
 
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.get("/ping", (req, res) => {
+  res.json({message: "pong"});
 });
 
 module.exports = app;
