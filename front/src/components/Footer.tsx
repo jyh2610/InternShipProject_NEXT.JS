@@ -4,8 +4,8 @@ import Logo from "./Logo";
 function Footer() {
   const { Footer } = Layout;
   return (
-    <div>
-      <Footer style={{ background: "#2C2C2C", textAlign: "center", color: "#fff" }}>
+    <div className="mt-[10rem]">
+      <Footer style={{ background: "#2C2C2C", textAlign: "center", paddingTop: "4rem", color: "#fff" }}>
         <div className="ml-56 text-left leading-3">
           <div className="flex">
             <Logo />
