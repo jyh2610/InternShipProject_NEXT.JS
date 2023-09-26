@@ -36,7 +36,7 @@ function TwoCarousel() {
       >
         {dummyData.map((_, idx) => (
           <SwiperSlide key={idx}>
-            <Image src={dummyImg} alt={"dummy"} width={1200} height={600} layout="responsive" />
+            <Image src={dummyImg} alt={"dummy"} width={1200} height={500} layout="responsive" />
           </SwiperSlide>
         ))}
       </Swiper>
