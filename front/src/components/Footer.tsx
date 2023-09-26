@@ -6,16 +6,17 @@ function Footer() {
   return (
     <div>
       <Footer style={{ background: "#2C2C2C", textAlign: "center", color: "#fff" }}>
-        {" "}
         <div className="ml-56 text-left leading-3">
           <div className="flex">
             <Logo />
           </div>
           <div className="flex space-x-4 ">
-            {" "}
             <div>
               <p className="font-bold">주소</p>
-              <p className="text-[#9F9F9F] text-[0.875rem]">경기도 고양시 일산동구 중앙로 1275번길 60-30, 401-2호 유에이블코퍼레이션</p>
+              <p className="text-[#9F9F9F] text-[0.875rem]">
+                경기도 고양시 일산동구 중앙로 1275번길 60-30, 401-2호
+                <p className="leading-3">유에이블코퍼레이션</p>
+              </p>
               <p className="font-bold">고객문의</p>
               <p className="text-[#9F9F9F] text-[0.875rem]">010-8983-6637</p>
               <p className="font-bold">비즈니스 문의</p>

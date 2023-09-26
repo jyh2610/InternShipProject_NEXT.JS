@@ -16,13 +16,13 @@ import Sectiontwo from "@/components/main/Sectiontwo";
 
 export default function Home() {
   return (
-    <ScrollContainer>
+    <>
       <SectionOne />
       <Sectiontwo />
       <SectionFour />
       <SectionFive />
       <SectionSix />
       <Footer />
-    </ScrollContainer>
+    </>
   );
 }
