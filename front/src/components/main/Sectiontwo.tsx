@@ -6,11 +6,11 @@ import TwoCaruosel from "./section-2/TwoCaruosel";
 function Sectiontwo() {
   const sliderHander = () => {};
   return (
-    <SectionProvider>
+    <>
       <Text />
       <TwoCaruosel />
       <BotText />
-    </SectionProvider>
+    </>
   );
 }
 
