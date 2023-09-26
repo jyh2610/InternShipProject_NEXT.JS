@@ -4,7 +4,7 @@
   "description": "back_dev",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node ./src/bin/www",
     "test": "test command check"
   },
   "repository": {
