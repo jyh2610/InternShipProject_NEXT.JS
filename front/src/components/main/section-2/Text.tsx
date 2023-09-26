@@ -4,7 +4,7 @@ import Link from "next/link";
 
 function Text() {
   return (
-    <div className="flex justify-around w-screen">
+    <div className="flex justify-around">
       <div>
         <p>올인원 3D 인테리어</p>
         <p>디자인 도구</p>
