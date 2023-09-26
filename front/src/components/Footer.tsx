@@ -49,8 +49,8 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className="border-t-4 border-[#fff]">
-          <p className="border-t-4 border-indigo-500">Copyright © {new Date().getFullYear()} UABLE. All Right Reserve</p>
+        <div>
+          <p className="border-t-2 border-white">Copyright © {new Date().getFullYear()} UABLE. All Right Reserve</p>
         </div>
       </Footer>
     </div>

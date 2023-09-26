@@ -23,24 +23,25 @@ function SectionSix() {
         </div>
       </div>
       <div className="relative">
-        <div className="flex justify-center">
-          {" "}
-          <img
-            className="w-full h-[35rem]"
-            src="https://img.freepik.com/free-photo/cafe-and-living-room-loft-style_1150-10726.jpg?w=1380&t=st=1695702593~exp=1695703193~hmac=4a3993d7475357eb141d203d44aaffc5695b8d6ea854a6e80d45b2d95bc2f598"
-            alt="이미지"
-          />
-        </div>
+        <div
+          style={{
+            backgroundImage:
+              "url(https://img.freepik.com/free-photo/cafe-and-living-room-loft-style_1150-10726.jpg?w=1380&t=st=1695702593~exp=1695703193~hmac=4a3993d7475357eb141d203d44aaffc5695b8d6ea854a6e80d45b2d95bc2f598)",
+            width: "full",
+            height: "600px",
+            filter: "grayscale(40%)",
+          }}
+        >
+          <div className="flex flex-col justify-center items-center pt-[20%]">
+            <p className="text-[#FFFFFF] text-3xl">
+              디자인의 세계로 오신 것을 환영합니다. <br />
+              <span className="font-bold">우리와 함께 이야기를 시작하세요.</span>
+            </p>
 
-        <div style={{ transform: "translate(-50%, -50%)" }} className="absolute top-[50%] left-[50%] flex flex-col">
-          <p className="text-[#FFFFFF] inline-block text-3xl">
-            디자인의 세계로 오신 것을 환영합니다. <br />
-            우리와 함께 이야기를 시작하세요.
-          </p>
-
-          <Button style={{ background: "#2AA86B", margin: "0 auto", opacity: "0.8" }} shape="round" type="primary">
-            <Link href="/">아키플 비즈니스 문의</Link>
-          </Button>
+            <Button size="large" style={{ background: "#2AA86B", margin: "0 auto", opacity: "0.8" }} shape="round" type="primary">
+              <Link href="/">아키플 비즈니스 문의</Link>
+            </Button>
+          </div>
         </div>
       </div>
     </div>
