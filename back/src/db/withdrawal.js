@@ -1,14 +1,21 @@
+"use strict";
+
 const mysql = require('mysql2');
 require('dotenv').config();
 
-const connection = mysql.createConnection(process.env.DATABASE_URL_WITHDRAWAL);
-
-connection.connect(err => {
-  if (err) {
-    console.error('MySQL connection error:', err);
-    return;
-  }
-  console.log('Connected to MySQL (withdrawal)');
+const db = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME_WITHDRAWAL,
 });
 
-module.exports = connection;
+db.connect((err) => {
+  if (err) {
+    console.error('Error connecting to MySQL:', err);
+    return;
+  }
+  console.log('Connected to MySQL for withdrawal');
+});
+
+module.exports = db;
