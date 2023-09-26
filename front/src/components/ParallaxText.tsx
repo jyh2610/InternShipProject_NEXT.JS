@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useRef } from "react";
 import { motion, useScroll, useSpring, useTransform, useMotionValue, useVelocity, useAnimationFrame, useAnimation } from "framer-motion";
 import { wrap } from "@motionone/utils";
