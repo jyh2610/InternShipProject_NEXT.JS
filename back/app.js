@@ -12,4 +12,8 @@ app.use(express.json());
 app.use(routes);
 app.use(morgan('dev'));
 
+app.get("/ping", (req, res) => {
+  res.json({message: "pong"});
+});
+
 module.exports = app;
