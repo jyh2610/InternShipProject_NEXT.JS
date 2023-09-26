@@ -18,12 +18,25 @@ function TwoCarousel() {
     setImgIdx(swiper.realIndex);
   };
 
+  // Custom CSS styles to align slides to the left
+  const swiperStyles = {
+    display: "flex",
+    justifyContent: "flex-start",
+  };
+
   return (
     <div className="flex justify-start">
-      <Swiper className="mySwiper w-4/5" navigation={true} loop={true} modules={[Navigation, Pagination]} onSlideChange={handleSlideChange}>
+      <Swiper
+        className="mySwiper w-4/5"
+        navigation={true}
+        loop={true}
+        modules={[Navigation, Pagination]}
+        onSlideChange={handleSlideChange}
+        style={swiperStyles} // Apply the custom styles here
+      >
         {dummyData.map((_, idx) => (
           <SwiperSlide key={idx}>
-            <Image src={dummyImg} alt={"dummy"} width={1200} height={600} layout="responsive" />
+            <Image src={dummyImg} alt={"dummy"} width={1200} height={500} layout="responsive" />
           </SwiperSlide>
         ))}
       </Swiper>

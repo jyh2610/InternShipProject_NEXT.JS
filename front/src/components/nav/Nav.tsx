@@ -19,6 +19,7 @@ function Nav() {
         backgroundColor: "#F8F8FA",
         padding: "1px",
         position: "fixed",
+        zIndex: "999",
       }}
     >
       <div className="border-2 border-indigo-600 h-16">1111212312</div>

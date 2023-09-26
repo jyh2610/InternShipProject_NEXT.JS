@@ -13,16 +13,19 @@ import SectionFive from "@/components/main/SectionFive";
 import SectionSix from "@/components/main/SectionSix";
 import Footer from "@/components/Footer";
 import Sectiontwo from "@/components/main/Sectiontwo";
+import FadeProvider from "@/components/FadeProvider";
 
 export default function Home() {
   return (
-    <>
-      <SectionOne />
-      <Sectiontwo />
-      <SectionFour />
-      <SectionFive />
-      <SectionSix />
-      <Footer />
-    </>
+    <FadeProvider>
+      <>
+        <SectionOne />
+        <Sectiontwo />
+        <SectionFour />
+        <SectionFive />
+        <SectionSix />
+        <Footer />
+      </>
+    </FadeProvider>
   );
 }
