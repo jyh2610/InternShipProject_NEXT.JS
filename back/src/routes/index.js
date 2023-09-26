@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
-/* const 라우터이름 = require("라우팅 파일 경로");
-const 라우터이름 = require("라우팅 파일 경로");
-const 라우터이름 = require("라우팅 파일 경로");
-...
- */
+const authRouter = require("./authRouter");
+const dormantRouter = require("./dormantRouter");
+const logRouter = require("./logRouter");
+const memberRouter = require("./memberRouter");
+const withdrawalRouter = require("./withdrawalRouter");
 
-/* router.use("경로", 라우터이름.router);
-router.use("경로", 라우터이름.router);
-router.use("경로", 라우터이름.router);
-router.use("경로", 라우터이름.router);
-... */
 
+router.use("./auth", authRouter.router);
+router.use("./dormant", dormantRouter.router);
+router.use("./log", logRouter.router);
+router.use("./member", memberRouter.router);
+router.use("./witjhdrawal", withdrawalRouter.router);
 
 module.exports = router;

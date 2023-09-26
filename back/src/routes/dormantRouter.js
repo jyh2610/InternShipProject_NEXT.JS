@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-/* const dormantController = require('../controllers/dormantController');
-컨트롤러 import 부분 */
+const dormantController = require('../controllers/dormantController');
 
 // router.post('/authenticate', dormantController.authenticate);
 /* 라우팅 설정부분
