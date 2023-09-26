@@ -1,12 +1,5 @@
 "use client";
-
 import dynamic from "next/dynamic";
-const Animator = dynamic(
-  import("react-scroll-motion").then((it) => it.Animator),
-  { ssr: false },
-);
-
-import { ScrollContainer } from "react-scroll-motion";
 import SectionOne from "@/components/main/SectionOne";
 import SectionFour from "@/components/main/SectionFour";
 import SectionFive from "@/components/main/SectionFive";
@@ -14,8 +7,14 @@ import SectionSix from "@/components/main/SectionSix";
 import Footer from "@/components/Footer";
 import Sectiontwo from "@/components/main/Sectiontwo";
 import FadeProvider from "@/components/FadeProvider";
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    window.onbeforeunload = function pushRefresh() {
+      window.scrollTo(0, 0);
+    };
+  }, []);
   return (
     <FadeProvider>
       <>
