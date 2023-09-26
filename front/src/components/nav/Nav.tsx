@@ -2,20 +2,15 @@
 
 import { Layout } from "antd";
 import { navItems } from "@/constants/navConst";
-import { useAppDispatch } from "@/redux/hooks";
-import { toggleIsNav } from "@/redux/slicer/scrollStopper";
-import { useRef } from "react";
 
 const { Header } = Layout;
 
 function Nav() {
-  const ref = useRef(null);
   const items = navItems.map((item, idx) => {
     const key = idx + 1;
     return { key, label: item };
   });
-  const dispatch = useAppDispatch();
-  console.log(ref.current);
+
   return (
     <Header
       style={{
