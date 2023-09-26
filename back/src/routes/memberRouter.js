@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const memberController = require('../controllers/memberController');
+/* const dormantController = require('../controllers/dormantController');
+컨트롤러 import 부분 */
 
-// 예시: 멤버 관련 라우트 설정
-// router.get('/member', memberController.getMember);
-// router.post('/member', memberController.createMember);
+// router.post('/authenticate', dormantController.authenticate);
+/* 라우팅 설정부분
+router.[get post put delete](~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~);
+router.[get post put delete](~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~);
+router.[get post put delete](~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~); */
 
 module.exports = router;
