@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require('express');
 const router = express.Router();
 const dormantController = require('../controllers/dormantController');
