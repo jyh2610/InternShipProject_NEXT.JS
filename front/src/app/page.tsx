@@ -8,7 +8,7 @@ import Footer from "@/components/MainFooter";
 import Sectiontwo from "@/components/main/Sectiontwo";
 import FadeProvider from "@/components/FadeProvider";
 import SectionThree from "@/components/main/SectionThree";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
