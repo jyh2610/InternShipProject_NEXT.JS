@@ -27,7 +27,7 @@ function TwoCarousel() {
   return (
     <div className="flex justify-start">
       <Swiper
-        className="mySwiper w-2/4"
+        className="mySwiper w-2/3"
         navigation={true}
         loop={true}
         modules={[Navigation, Pagination]}
