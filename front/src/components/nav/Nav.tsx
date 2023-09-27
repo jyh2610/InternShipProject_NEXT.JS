@@ -2,6 +2,7 @@
 
 import { Layout } from "antd";
 import { navItems } from "@/constants/navConst";
+import { useRef } from "react";
 
 const { Header } = Layout;
 
@@ -10,7 +11,7 @@ function Nav() {
     const key = idx + 1;
     return { key, label: item };
   });
-
+  const headerRef = useRef(null);
   return (
     <Header
       style={{
