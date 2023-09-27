@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 function FadeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    Aos.init({ duration: 400 });
+    Aos.init({ duration: 1000 });
   }, []);
   return <>{children}</>;
 }

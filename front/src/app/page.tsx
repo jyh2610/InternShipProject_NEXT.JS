@@ -14,6 +14,7 @@ import SectionSix from "@/components/main/SectionSix";
 import Footer from "@/components/Footer";
 import Sectiontwo from "@/components/main/Sectiontwo";
 import FadeProvider from "@/components/FadeProvider";
+import SectionThree from "@/components/main/SectionThree";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <ScrollContainer>
         <SectionOne />
         <Sectiontwo />
+        <SectionThree />
         <SectionFour />
         <SectionFive />
         <SectionSix />
