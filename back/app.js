@@ -6,7 +6,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 
 const app = express();
-
+//testsettes
 app.use(cors());
 app.use(express.json());
 app.use(routes);
