@@ -6,8 +6,8 @@ function SectionProvider({ children }: { children: React.ReactNode }) {
   const ref = useRef(null);
 
   return (
-    <section data-aos="fade-up">
-      <div ref={ref}>{children}</div>
+    <section data-aos="fade-up" ref={ref}>
+      {children}
     </section>
   );
 }
