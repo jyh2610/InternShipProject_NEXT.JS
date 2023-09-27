@@ -16,7 +16,7 @@ const SectionOne = () => {
       controls.start({ width: "100vw", height: `${90}vh` });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -31,8 +31,7 @@ const SectionOne = () => {
           src={dummyImg}
           animate={controls}
           style={{
-            bottom: "0",
-            width: "70%",
+            width: "50%",
             height: "300px",
           }}
         />
