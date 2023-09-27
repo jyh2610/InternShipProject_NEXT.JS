@@ -25,7 +25,7 @@ export default function Home() {
         <SectionFour />
         <SectionFive />
         <SectionSix />
-        <Footer />
+        {/* <Footer /> */}
       </>
     </FadeProvider>
   );
