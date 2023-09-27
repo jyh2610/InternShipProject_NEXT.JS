@@ -15,12 +15,15 @@
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 0; 
 }
 
 ol,
 ul {
   list-style: none;
+}
+.mainwidth{
+  max-width: 1600px;
 }
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
 @font-face {

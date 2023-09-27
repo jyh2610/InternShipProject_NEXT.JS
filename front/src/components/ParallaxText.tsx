@@ -48,21 +48,12 @@ function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
   return (
     <div className="parallax tracking-tighter whitespace-nowrap font-extrabold leading-normal">
       <motion.div className="scroller " style={{ x }}>
-        <span
-          className=""
-          style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)", color: "rgba(255, 0, 0, 0)" }}
-        >
+        <span className="" style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)", color: "white" }}>
           {children}
         </span>
-        <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)", color: "rgba(255, 0, 0, 0)" }}>
-          {children}{" "}
-        </span>
-        <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)", color: "rgba(255, 0, 0, 0)" }}>
-          {children}{" "}
-        </span>
-        <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)", color: "rgba(255, 0, 0, 0)" }}>
-          {children}{" "}
-        </span>
+        <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)", color: "white" }}>{children} </span>
+        <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)", color: "white" }}>{children} </span>
+        <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)", color: "white" }}>{children} </span>
       </motion.div>
     </div>
   );

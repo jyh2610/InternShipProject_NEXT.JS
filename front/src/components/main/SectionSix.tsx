@@ -5,7 +5,7 @@ import Link from "next/link";
 
 function SectionSix() {
   return (
-    <div className="mx-auto">
+    <div className="mx-auto mainwidth">
       <div className="flex justify-between space-x-52 mb-14 text-center">
         <div className="text-left">
           <span className="text-5xl font-bold">
@@ -32,24 +32,26 @@ function SectionSix() {
             filter: "grayscale(50%)",
           }}
         >
-          <div className="absolute left-[50%] top-[50%]">
-            <p
-              className="text-[#FFFFFF] text-center text-3xl
-            "
-              style={{ transform: "translate(-50%, -50%)" }}
-            >
+          <div className="absolute text-center left-[50%] top-[50%]" style={{ transform: "translate(-50%, -50%)" }}>
+            <p className="text-[#FFFFFF] text-3xl">
               디자인의 세계로 오신 것을 환영합니다. <br />
               <span className="font-bold">우리와 함께 이야기를 시작하세요.</span>
             </p>
-
-            <Button
-              size="large"
-              style={{ background: "#2AA86B", margin: "0 auto", opacity: "0.8", transform: "translate(-50%, -50%)" }}
-              shape="round"
-              type="primary"
+            <button
+              style={{
+                background: "#2AA86B",
+                margin: "0 auto",
+                opacity: "0.8",
+                padding: "16px 30px",
+                borderRadius: "2rem",
+                border: "none",
+                color: "white",
+                fontSize: "1.2rem",
+                zIndex: "-99",
+              }}
             >
-              <Link href="/">아키플 비즈니스 문의</Link>
-            </Button>
+              아키플 비즈니스 문의
+            </button>
           </div>
         </div>
       </div>
