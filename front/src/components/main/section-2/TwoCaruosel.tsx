@@ -27,7 +27,7 @@ function TwoCarousel() {
   return (
     <div className="flex justify-start">
       <Swiper
-        className="mySwiper w-4/5"
+        className="mySwiper"
         navigation={true}
         loop={true}
         modules={[Navigation, Pagination]}
@@ -36,7 +36,7 @@ function TwoCarousel() {
       >
         {dummyData.map((_, idx) => (
           <SwiperSlide key={idx}>
-            <Image src={dummyImg} alt={"dummy"} width={1200} height={500} layout="responsive" />
+            <Image className="aspect-video" src={dummyImg} alt={"dummy"} width={1200} height={500} layout="responsive" />
           </SwiperSlide>
         ))}
       </Swiper>

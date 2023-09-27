@@ -2,6 +2,7 @@
 import { motion, useAnimation, useScroll } from "framer-motion";
 import { useEffect } from "react";
 import SectionProvider from "./SectionProvider";
+import { dummyImg } from "@/constants/constants";
 
 const SectionOne = () => {
   const controls = useAnimation();
@@ -24,18 +25,15 @@ const SectionOne = () => {
 
   return (
     <SectionProvider>
-      <div style={{ minHeight: "100vh" }} className="flex justify-center items-end relative">
+      <div style={{ minHeight: "100vh" }} className="flex justify-center items-end relative h-screen">
         {/* Set minHeight to ensure the container takes at least the full viewport height */}
-        <motion.div
+        <motion.img
+          src={dummyImg}
           animate={controls}
           style={{
             bottom: "0",
-            paddingTop: "70px",
             width: "70%",
             height: "300px",
-            backgroundColor: "black",
-            border: "1px solid black",
-            // Hide content overflow
           }}
         />
       </div>

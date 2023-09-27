@@ -5,10 +5,13 @@ const config: Config = {
   theme: {
     extend: {
       grayscale: {
-        50: '50%',
-      }
+        50: "50%",
+      },
     },
   },
-  plugins: [],
+  corePlugins: {
+    aspectRatio: false,
+  },
+  plugins: [require("@tailwindcss/aspect-ratio")],
 };
 export default config;

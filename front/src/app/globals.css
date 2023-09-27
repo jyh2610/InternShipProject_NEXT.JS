@@ -3,6 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .container-16-9 {
+    @apply aspect-w-16 aspect-h-9;
+  }
+}
+
 * {
   font-family: "Pretendard-Regular" !important;
 }
@@ -16,16 +22,16 @@ ol,
 ul {
   list-style: none;
 }
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
 @font-face {
   font-family: "Pretendard-Regular";
-  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") ;
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Roboto';
-  src: url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap'); ;
+  font-family: "Roboto";
+  src: url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
   /* 폰트 파일 경로를 적절하게 수정하세요. */
   font-weight: normal;
   font-style: normal;
