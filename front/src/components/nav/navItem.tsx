@@ -1,6 +1,5 @@
-import { Button, Dropdown } from "antd";
+import { Dropdown, Space } from "antd";
 import type { MenuProps } from "antd";
-import Link from "next/link";
 
 function NavItem() {
   const items: MenuProps["items"] = [
@@ -8,11 +7,9 @@ function NavItem() {
     { key: "2", label: <span>test 영역</span> },
   ];
   return (
-    <div>
-      <Dropdown menu={{ items }} placement="bottomLeft" arrow>
-        <Button>bottomLeft</Button>
-      </Dropdown>
-    </div>
+    <Dropdown menu={{ items }} trigger={["click"]}>
+      <Space>bottomLeft</Space>
+    </Dropdown>
   );
 }
 
