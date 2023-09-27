@@ -1,8 +1,7 @@
 "use strict";
-//push test
-//push test
+
 const express = require('express');
-const routes = require('./src/routes/index.js'); // index.js는 생략 가능
+const routes = require('./src/routes'); // index.js는 생략 가능
 const cors = require('cors');
 const morgan = require('morgan');
 
