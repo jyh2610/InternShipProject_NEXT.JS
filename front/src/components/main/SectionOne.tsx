@@ -12,7 +12,6 @@ const SectionOne = () => {
       const scrollY = window.scrollY;
       const maxScrollY = document.documentElement.scrollHeight - window.innerHeight;
 
-      // Animate the width and height of the div immediately based on scroll position
       controls.start({ width: "100vw", height: `${90}vh` });
     };
 

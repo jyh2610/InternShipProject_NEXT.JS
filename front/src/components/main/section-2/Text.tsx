@@ -3,7 +3,7 @@ import Link from "next/link";
 
 function Text() {
   return (
-    <div className="flex justify-around items-center">
+    <div className="flex justify-evenly">
       <div className="text-5xl">
         <p>올인원 3D 인테리어</p>
         <p>디자인 도구</p>

@@ -9,11 +9,11 @@ function Sectiontwo() {
   const sliderHander = () => {};
   return (
     <SectionProvider>
-      <React.Fragment>
+      <div className="flex flex-col h-screen">
         <Text />
         <TwoCaruosel />
-        <BotText />
-      </React.Fragment>
+        {/* <BotText /> */}
+      </div>
     </SectionProvider>
   );
 }
