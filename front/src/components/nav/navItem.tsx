@@ -1,4 +1,4 @@
-import { Dropdown, Space } from "antd";
+import { Button, Dropdown } from "antd";
 import type { MenuProps } from "antd";
 
 function NavItem() {
@@ -8,7 +8,7 @@ function NavItem() {
   ];
   return (
     <Dropdown menu={{ items }} trigger={["click"]}>
-      <Space>bottomLeft</Space>
+      <Button>bottomLeft</Button>
     </Dropdown>
   );
 }
