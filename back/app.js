@@ -1,7 +1,7 @@
 "use strict";
 
 const express = require('express');
-const routes = require('./src/routes'); // index.js는 생략 가능
+const routes = require('./src/routes'); // index.js 생략 가능
 const cors = require('cors');
 const morgan = require('morgan');
 
