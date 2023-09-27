@@ -16,12 +16,12 @@
 body {
   margin: 0;
   padding: 0;
+  ol,
+  ul {
+    list-style: none;
+  }
 }
 
-ol,
-ul {
-  list-style: none;
-}
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
 @font-face {
   font-family: "Pretendard-Regular";
