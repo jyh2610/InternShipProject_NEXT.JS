@@ -1,19 +1,37 @@
 "use client";
 
 import { Button, Layout } from "antd";
-import NavItem from "./NavItem";
+
 import { navItems } from "@/constants/navConst";
+import NavItem from "./NavItem";
+import { useEffect, useRef } from "react";
+import { useAppDispatch } from "@/redux/hooks";
+import { sectionContact } from "@/redux/slicer/scrollStopper";
 
 const { Header } = Layout;
 
 function Nav() {
+  const navBotRef = useRef<HTMLDivElement | null>(null);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때 실행
+    const navBotRect = navBotRef.current?.getBoundingClientRect().bottom;
+    dispatch(sectionContact({ nav: navBotRect }));
+  }, []); // 빈 배열을 전달하여 컴포넌트가 마운트될 때 한 번만 실행
+
   const items = navItems.map((item, idx) => {
     const key = idx + 1;
     return { key, label: item };
   });
 
+  const NavBotRect = navBotRef.current?.getBoundingClientRect().bottom;
+
+  dispatch(sectionContact({ nav: NavBotRect }));
+
   return (
     <Header
+      ref={navBotRef}
       style={{
         width: "100%",
         height: "100px",

@@ -1,11 +1,30 @@
 "use client";
 import { motion, useAnimation, useScroll } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import SectionProvider from "./SectionProvider";
 import { dummyImg } from "@/constants/constants";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { sectionContact } from "@/redux/slicer/scrollStopper";
 
 const SectionOne = () => {
   const controls = useAnimation();
+  const sectionOneRef = useRef<HTMLImageElement | null>(null);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sectionOneTop = sectionOneRef.current?.getBoundingClientRect().top;
+      console.log("section", sectionOneTop);
+
+      dispatch(sectionContact({ section: sectionOneTop }));
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [dispatch]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +46,7 @@ const SectionOne = () => {
       <div style={{ minHeight: "100vh" }} className="flex justify-center items-end relative h-screen">
         {/* Set minHeight to ensure the container takes at least the full viewport height */}
         <motion.img
+          ref={sectionOneRef}
           src={dummyImg}
           animate={controls}
           style={{
