@@ -14,8 +14,6 @@ const SectionOne = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sectionOneTop = sectionOneRef.current?.getBoundingClientRect().top;
-      console.log("section", sectionOneTop);
-
       dispatch(sectionContact({ section: sectionOneTop }));
     };
 
