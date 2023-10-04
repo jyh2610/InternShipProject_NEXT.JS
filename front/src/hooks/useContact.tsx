@@ -3,7 +3,7 @@ import { useAppDispatch } from "@/redux/hooks";
 import { sectionContact } from "@/redux/slicer/scrollStopper";
 
 function useContact() {
-  const componentRef = useRef<HTMLDivElement | null>(null) || useRef<HTMLImageElement | null>(null);
+  const componentRef = useRef<HTMLDivElement | null>(null);
   const dispatch = useAppDispatch();
   useEffect(() => {
     const componentRect = componentRef.current?.getBoundingClientRect().bottom;
