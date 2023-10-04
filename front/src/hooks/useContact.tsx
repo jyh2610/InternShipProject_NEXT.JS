@@ -2,12 +2,12 @@ import { useRef, useEffect } from "react";
 import { useAppDispatch } from "@/redux/hooks";
 import { sectionContact } from "@/redux/slicer/scrollStopper";
 
-function useContact(type: string) {
+function useContact(type: string, component: string) {
   const componentRef = useRef<HTMLElement | null>(null) || useRef<HTMLImageElement | null>(null);
   const dispatch = useAppDispatch();
   useEffect(() => {
     const componentRect = type === "bottom" ? componentRef.current?.getBoundingClientRect().bottom : componentRef.current?.getBoundingClientRect().top;
-    dispatch(sectionContact({ nav: componentRect }));
+    component === "nav" ? dispatch(sectionContact({ nav: componentRect })) : dispatch(sectionContact({ section: componentRect }));
   }, [dispatch]);
   return componentRef;
 }

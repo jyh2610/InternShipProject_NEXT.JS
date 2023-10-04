@@ -16,7 +16,7 @@ function ThirdCarousel() {
       navigation={true}
       modules={[Navigation, Pagination]}
       effect="coverflow" // coverflow 효과 설정
-      className="mySwiper h-screen"
+      className="mySwiper "
     >
       {dummyData.map((_, idx) => {
         return (
