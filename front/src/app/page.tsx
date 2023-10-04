@@ -10,6 +10,7 @@ import FadeProvider from "@/components/FadeProvider";
 import SectionThree from "@/components/main/SectionThree";
 import { useEffect, useState } from "react";
 import MainFooter from "@/components/MainFooter";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
@@ -31,7 +32,6 @@ export default function Home() {
 
   return (
     <FadeProvider>
-      <SectionOne />
       <Sectiontwo />
       <SectionThree />
       <SectionFour />

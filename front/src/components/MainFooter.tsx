@@ -1,59 +1,75 @@
-"use client";
 import { Layout } from "antd";
 import Logo from "./Logo";
+
 function MainFooter() {
   const { Footer } = Layout;
+
   return (
-    <div className="mt-[10rem]">
-      <Footer style={{ background: "#2C2C2C", textAlign: "center", paddingTop: "4rem", color: "#fff" }}>
-        <div className="ml-56 text-left leading-3 pb-10">
-          <div className="flex">
-            <Logo />
-          </div>
-          <div className="flex space-x-4">
-            <div>
-              <p className="font-bold">주소</p>
-              <div className="text-[#9F9F9F] text-[0.875rem]">
+    <Footer
+      style={{
+        background: "#2C2C2C",
+        color: "#fff",
+        padding: "24px",
+        marginTop: "3rem",
+      }}
+    >
+      <div className="max-w-screen-xl mx-auto px-6">
+        <div className="flex py-2">
+          <Logo />
+        </div>
+        <div className="flex gap-28">
+          <div>
+            <div className="address mb-4">
+              <p className="font-bold text-base">주소</p>
+              <div className="text-gray-400 text-sm leading-5">
                 경기도 고양시 일산동구 중앙로 1275번길 60-30, 401-2호
-                <p className="leading-3">유에이블코퍼레이션</p>
-              </div>
-              <p className="font-bold">고객문의</p>
-              <p className="text-[#9F9F9F] text-[0.875rem]">010-8983-6637</p>
-              <p className="font-bold">비즈니스 문의</p>
-              <p className="text-[#9F9F9F] text-[0.875rem]">admin@uable.co.kr</p>
-            </div>
-            <div>
-              <p className="font-bold">회사소개</p>
-              <div className="text-[#9F9F9F] text-[0.875rem]">
-                <p>서비스약관</p>
-                <p>개인정보정책</p>
+                <p>유에이블코퍼레이션</p>
               </div>
             </div>
+            <div className="customer mb-4">
+              <p className="font-bold text-base">고객문의</p>
+              <p className="text-gray-400 text-sm">010-8983-6637</p>
+            </div>
+            <div className="business mb-4">
+              <p className="font-bold text-base">비즈니스 문의</p>
+              <p className="text-gray-400 text-sm">admin@uable.co.kr</p>
+            </div>
+          </div>
+          <div className="footer-nav flex gap-12">
             <div>
-              <p className="font-bold">제품</p>
-              <div className="text-[#9F9F9F] text-[0.875rem]">
-                <p>디자인 & 랜더</p>
-                <p>애니메이션</p>
-                <p>브랜드갤러리</p>
-                <p>디자인 설계 시스템</p>
+              <p className="font-bold text-base">회사소개</p>
+              <div className="footer-nav-list text-gray-400 text-sm leading-8">
+                <a href="#">서비스약관</a>
+                <a href="#">개인정보정책</a>
               </div>
             </div>
             <div>
-              <p className="font-bold">솔루션</p>
-              <div className="text-[#9F9F9F] text-[0.875rem]">
-                <p>인테리어 디자인</p>
-                <p>가구 브랜드</p>
-                <p>제조</p>{" "}
+              <p className="font-bold text-base">제품</p>
+              <div className="footer-nav-list text-gray-400 text-sm leading-8">
+                <a href="#">디자인 & 랜더</a>
+                <a href="#">애니메이션</a>
+                <a href="#">브랜드갤러리</a>
+                <a href="#">디자인 설계 시스템</a>
+              </div>
+            </div>
+            <div>
+              <p className="font-bold text-base">솔루션</p>
+              <div className="footer-nav-list text-gray-400 text-sm leading-8">
+                <a href="#">인테리어 디자인</a>
+                <a href="#">가구 브랜드</a>
+                <a href="#">제조</a>
               </div>
             </div>
           </div>
         </div>
-        <hr style={{ borderColor: "gray", opacity: "0.5" }} />
-        <div className="pt-3 text-[1.1rem]">
+      </div>
+      <div className="max-w-screen-xl mx-auto px-6">
+        <hr className="border-gray-500 opacity-50" />
+        <div className="py-5 text-sm">
           <p>Copyright © {new Date().getFullYear()} UABLE. All Right Reserve</p>
         </div>
-      </Footer>
-    </div>
+      </div>
+    </Footer>
   );
 }
 

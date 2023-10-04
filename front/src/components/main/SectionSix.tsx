@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "antd";
 import Link from "next/link";
 
 function SectionSix() {
@@ -50,7 +49,10 @@ function SectionSix() {
                 zIndex: "-99",
               }}
             >
-              아키플 비즈니스 문의
+              <a href="/" className="text-white">
+                {" "}
+                아키플 비즈니스 문의
+              </a>
             </button>
           </div>
         </div>

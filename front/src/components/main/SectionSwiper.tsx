@@ -1,13 +1,15 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "../../components/style.css";
 
-// import required modules
+import { PlayCircleFilled } from "@ant-design/icons";
 import { Autoplay, Mousewheel, Navigation, Pagination } from "swiper/modules";
+import { useAppSelector } from "@/redux/hooks";
+import useSectionTop from "@/hooks/useSectionTop";
 function SectionSwiper() {
   const data = [
     {
@@ -35,24 +37,49 @@ function SectionSwiper() {
         "3333진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
     },
   ];
+  const scrollHeight = useAppSelector((state) => state.scrollStopper.navBottom);
+  const scrollTopHeight = useAppSelector((state) => state.scrollStopper.sectionTop);
+  console.log(scrollTopHeight, "dd");
+  const isContact = scrollHeight - scrollTopHeight > 0;
+  console.log(isContact, " 접하니");
+  const sectionTopRef = useSectionTop();
+  const [activeIndex, setActiveIndex] = useState(0); // 상태 변수로 현재 인덱스를 관리합니다.
+  // 스와이퍼 슬라이드가 변경될 때 호출되는 콜백 함수
+  const handleSlideChange = (swiper: any) => {
+    setActiveIndex(swiper.activeIndex); // activeIndex를 상태에 업데이트합니다.
+  };
+  console.log(activeIndex !== data.length - 1);
+  const isFinal = activeIndex !== data.length - 1;
+
   return (
-    <>
-      <Swiper direction={"vertical"} slidesPerView={1} autoHeight={true} modules={[Mousewheel, Pagination, Navigation]} className="mySwiper py-[300px]">
+    <div ref={sectionTopRef}>
+      <Swiper
+        mousewheel={isFinal ? true : false}
+        direction={"vertical"}
+        slidesPerView={1}
+        autoHeight={true}
+        modules={[Mousewheel, Pagination, Navigation]}
+        onSlideChange={handleSlideChange}
+        className=" mySwiper py-[300px]"
+      >
         {data.map((slidecontent, idx) => (
-          <SwiperSlide key={idx}>
+          <SwiperSlide className="" key={idx}>
             <div style={{ backgroundImage: `url(${slidecontent.img})`, width: "100%", height: "960px" }}>
-              <div className="flex justify-around text-[#fff] pt-24">
+              <div className="flex justify-around text-[#fff] pt-48">
                 <div className="text-5xl font-bold">0{slidecontent.id}</div>
                 <div>
-                  <div className="text-5xl font-bold" dangerouslySetInnerHTML={{ __html: slidecontent.title }} />
-                  <div className="mt-[90%]" dangerouslySetInnerHTML={{ __html: slidecontent.contentstext }} />
+                  <div className="text-5xl font-bold leading-tight" dangerouslySetInnerHTML={{ __html: slidecontent.title }} />
+                  <div className="mt-[97%]" dangerouslySetInnerHTML={{ __html: slidecontent.contentstext }} />
                 </div>
+              </div>
+              <div className="absolute left-[50%] top-[50%] text-6xl text-[#fff] cursor-pointer opacity-80">
+                <PlayCircleFilled />
               </div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
   );
 }
 
