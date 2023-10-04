@@ -3,6 +3,7 @@
 import { Button, Layout, MenuProps } from "antd";
 
 import { navItems } from "@/constants/navConst";
+
 import NavItem from "./NavItem";
 import { useEffect, useRef } from "react";
 import { useAppDispatch } from "@/redux/hooks";
@@ -20,7 +21,7 @@ function Nav() {
       { key: "2", label: <a>영어</a> },
     ],
   };
-
+  const headerRef = useRef(null);
   return (
     <Header
       ref={navBotRef}

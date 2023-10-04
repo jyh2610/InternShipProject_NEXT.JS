@@ -37,14 +37,7 @@ function SectionSwiper() {
   ];
   return (
     <>
-      <Swiper
-        direction={"vertical"}
-        slidesPerView={1}
-        autoHeight={true}
-        mousewheel={true}
-        modules={[Mousewheel, Pagination, Navigation, Mousewheel]}
-        className="mySwiper py-[300px]"
-      >
+      <Swiper direction={"vertical"} slidesPerView={1} autoHeight={true} modules={[Mousewheel, Pagination, Navigation]} className="mySwiper py-[300px]">
         {data.map((slidecontent, idx) => (
           <SwiperSlide key={idx}>
             <div style={{ backgroundImage: `url(${slidecontent.img})`, width: "100%", height: "960px" }}>

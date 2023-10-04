@@ -1,27 +1,27 @@
 "use client";
 import { Layout } from "antd";
 import Logo from "./Logo";
-function Footer() {
+function MainFooter() {
   const { Footer } = Layout;
   return (
     <div className="mt-[10rem]">
       <Footer style={{ background: "#2C2C2C", textAlign: "center", paddingTop: "4rem", color: "#fff" }}>
-        <div className="ml-56 text-left leading-3">
+        <div className="ml-56 text-left leading-3 pb-10">
           <div className="flex">
             <Logo />
           </div>
-          <div className="flex space-x-4 ">
+          <div className="flex space-x-4">
             <div>
               <p className="font-bold">주소</p>
-              <p className="text-[#9F9F9F] text-[0.875rem]">
+              <div className="text-[#9F9F9F] text-[0.875rem]">
                 경기도 고양시 일산동구 중앙로 1275번길 60-30, 401-2호
                 <p className="leading-3">유에이블코퍼레이션</p>
-              </p>
+              </div>
               <p className="font-bold">고객문의</p>
               <p className="text-[#9F9F9F] text-[0.875rem]">010-8983-6637</p>
               <p className="font-bold">비즈니스 문의</p>
               <p className="text-[#9F9F9F] text-[0.875rem]">admin@uable.co.kr</p>
-            </div>{" "}
+            </div>
             <div>
               <p className="font-bold">회사소개</p>
               <div className="text-[#9F9F9F] text-[0.875rem]">
@@ -32,7 +32,6 @@ function Footer() {
             <div>
               <p className="font-bold">제품</p>
               <div className="text-[#9F9F9F] text-[0.875rem]">
-                {" "}
                 <p>디자인 & 랜더</p>
                 <p>애니메이션</p>
                 <p>브랜드갤러리</p>
@@ -49,12 +48,13 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div>
-          <p className="border-t-2 border-white">Copyright © {new Date().getFullYear()} UABLE. All Right Reserve</p>
+        <hr style={{ borderColor: "gray", opacity: "0.5" }} />
+        <div className="pt-3 text-[1.1rem]">
+          <p>Copyright © {new Date().getFullYear()} UABLE. All Right Reserve</p>
         </div>
       </Footer>
     </div>
   );
 }
 
-export default Footer;
+export default MainFooter;
