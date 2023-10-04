@@ -1,4 +1,3 @@
-// useSectionTop.ts
 import { useRef, useEffect } from "react";
 import { useAppDispatch } from "@/redux/hooks";
 import { sectionContact } from "@/redux/slicer/scrollStopper";
@@ -8,6 +7,8 @@ function useSectionTop() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    const sectionOneTop = sectionOneRef.current?.getBoundingClientRect().top;
+    dispatch(sectionContact({ section: sectionOneTop }));
     const handleScroll = () => {
       const sectionOneTop = sectionOneRef.current?.getBoundingClientRect().top;
       dispatch(sectionContact({ section: sectionOneTop }));
