@@ -3,9 +3,10 @@
 const {member} = require("../db/all");
 
 const getUserId = async(user_name) => {
-    return await member.promise().query(`
+    const result = await member.promise().query(`
     SELECT 
-        user_no 
+        user_no,
+        user_name 
     FROM 
         user
     WHERE 
@@ -13,9 +14,11 @@ const getUserId = async(user_name) => {
     `,
     [user_name]
     );
+    return result[0][0];
 };
 
 
 module.exports = {
     getUserId
 };
+
