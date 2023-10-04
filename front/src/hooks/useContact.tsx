@@ -4,6 +4,8 @@ import { sectionContact } from "@/redux/slicer/scrollStopper";
 
 function useContact() {
   const componentRef = useRef<HTMLDivElement | null>(null);
+function useContact(type: string, component: string) {
+  const componentRef = useRef<HTMLDivElement | null>(null) || useRef<HTMLImageElement | null>(null);
   const dispatch = useAppDispatch();
   useEffect(() => {
     const componentRect = componentRef.current?.getBoundingClientRect().bottom;
