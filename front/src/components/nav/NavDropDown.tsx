@@ -1,6 +1,8 @@
 "use client";
-import { Dropdown, Button } from "antd";
+import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
+import { Button, Dropdown, Space } from "antd";
+import { useState } from "react";
 
 interface Props {
   title: string;
@@ -8,9 +10,16 @@ interface Props {
 }
 
 function NavDropDown({ title, items }: Props) {
+  const [isopen, setIsOpen] = useState(false);
+  const dropdownOpenHandler = () => {
+    setIsOpen((prev) => !prev);
+  };
   return (
     <Dropdown menu={items} trigger={["click"]}>
-      <Button>{title}</Button>
+      <Button onClick={dropdownOpenHandler} type="text">
+        {title}
+        {isopen ? <UpOutlined /> : <DownOutlined />}
+      </Button>
     </Dropdown>
   );
 }
