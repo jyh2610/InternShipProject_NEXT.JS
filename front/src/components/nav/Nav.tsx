@@ -8,25 +8,18 @@ import { useEffect, useRef } from "react";
 import { useAppDispatch } from "@/redux/hooks";
 import { sectionContact } from "@/redux/slicer/scrollStopper";
 import NavDropDown from "./NavDropDown";
+import useContact from "@/hooks/useContact";
 
 const { Header } = Layout;
 
 function Nav() {
-  const navBotRef = useRef<HTMLDivElement | null>(null);
-  const dispatch = useAppDispatch();
-
+  const navBotRef = useContact("bottom");
   const data: MenuProps = {
     items: [
       { key: "1", label: <a>한국어</a> },
       { key: "2", label: <a>영어</a> },
     ],
   };
-
-  useEffect(() => {
-    // 컴포넌트가 마운트될 때 실행
-    const navBotRect = navBotRef.current?.getBoundingClientRect().bottom;
-    dispatch(sectionContact({ nav: navBotRect }));
-  }, []); // 빈 배열을 전달하여 컴포넌트가 마운트될 때 한 번만 실행
 
   return (
     <Header
