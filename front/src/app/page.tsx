@@ -1,5 +1,5 @@
 "use client";
-import dynamic from "next/dynamic";
+
 import SectionOne from "@/components/main/SectionOne";
 import SectionFour from "@/components/main/SectionFour";
 import SectionFive from "@/components/main/SectionFive";
@@ -28,17 +28,16 @@ export default function Home() {
       window.scrollTo(0, 0);
     };
   }, []);
+
   return (
     <FadeProvider>
-      <>
-        <SectionOne />
-        <Sectiontwo />
-        <SectionThree />
-        <SectionFour />
-        <SectionFive />
-        <SectionSix />
-        <MainFooter />
-      </>
+      <SectionOne />
+      <Sectiontwo />
+      <SectionThree />
+      <SectionFour />
+      <SectionFive />
+      <SectionSix />
+      {/* <Footer /> */}
     </FadeProvider>
   );
 }

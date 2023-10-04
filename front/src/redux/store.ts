@@ -1,4 +1,4 @@
-import { configureStore, applyMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import scrollStopper from "./slicer/scrollStopper";
 import logger from "redux-logger";
 
