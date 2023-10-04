@@ -7,9 +7,9 @@ const getUserIDController = async (req, res) => {
     const result = await getUserId(user_name);
     console.log(result);
     
-    if (result && result.length > 0) {
-      const user_id = result[0].user_no;
-      res.status(200).json({ user_id });
+    if (result) {
+      const {user_no} = result;
+      res.status(200).json({ user_no });
     } else {
       res.status(404).json({ message: '사용자를 찾을 수 없습니다.' });
     }
