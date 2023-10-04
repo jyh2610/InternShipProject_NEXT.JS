@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import { useAppDispatch } from "@/redux/hooks";
 import { sectionContact } from "@/redux/slicer/scrollStopper";
 
-function useContact(type: string) {
+function useContact(type: string, component: string) {
   const componentRef = useRef<HTMLDivElement | null>(null) || useRef<HTMLImageElement | null>(null);
   const dispatch = useAppDispatch();
   useEffect(() => {
