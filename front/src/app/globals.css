@@ -23,6 +23,7 @@ ul {
   list-style: none;
 }
 .mainwidth {
+  width: 100%;
   max-width: 1600px;
 }
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
