@@ -1,41 +1,23 @@
-"use client";
-import React, { useEffect, useRef } from "react";
+// SectionOne.tsx
+import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { dummyImg } from "@/constants/constants";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { sectionContact } from "@/redux/slicer/scrollStopper";
+import { useAppDispatch } from "@/redux/hooks";
+
 import SectionProvider from "./SectionProvider";
+import useSectionTop from "@/hooks/useSectionTop";
 
 const SectionOne = () => {
   const controls = useAnimation();
-  const sectionOneRef = useRef<HTMLImageElement | null>(null);
+  const sectionOneRef = useSectionTop();
   const dispatch = useAppDispatch();
 
-  const rect = useAppSelector((state) => state.scrollStopper);
-
-  const navBot = rect.navBottom;
-  const sectionTop = rect.sectionTop;
-  const isContact = navBot - sectionTop;
-  console.log(isContact, sectionTop);
-
   useEffect(() => {
-    const handleScroll = () => {
-      const sectionOneTop = sectionOneRef.current?.getBoundingClientRect().top;
-      dispatch(sectionContact({ section: sectionOneTop }));
+    // Handle the isContact logic here if needed
 
-      // Check if isContact is greater than or equal to 0
-      if (isContact >= 0) {
-        // If isContact is greater than or equal to 0, expand the image to full screen
-        controls.start({ width: "100vw", height: "70vh" });
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [dispatch, isContact, controls]);
+    // If isContact is greater than or equal to 0, expand the image to full screen
+    controls.start({ width: "100vw", height: "70vh" });
+  }, [controls]);
 
   return (
     <SectionProvider>

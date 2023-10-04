@@ -9,7 +9,7 @@ import useContact from "@/hooks/useContact";
 const { Header } = Layout;
 
 function Nav() {
-  const navBotRef = useContact("bottom");
+  const navBotRef = useContact();
   const data: MenuProps = {
     items: [
       { key: "1", label: <a>한국어</a> },
