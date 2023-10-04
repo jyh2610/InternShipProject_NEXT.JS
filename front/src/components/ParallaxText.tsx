@@ -29,7 +29,7 @@ function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
 
   //   움직이는 범위 조절
 
-  const x = useTransform(baseX, (v) => `${wrap(0, -100, v)}%`);
+  const x = useTransform(baseX, (v) => `${wrap(-25, -70, v)}%`);
 
   const directionFactor = useRef<number>(1);
   useAnimationFrame((t, delta) => {
