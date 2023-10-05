@@ -15,7 +15,7 @@ const SectionOne = () => {
     if (sectionOneElement) {
       gsap.to(sectionOneElement, {
         scale: 2, // Set the initial scale to 1 (normal size)
-        duration: 0.2,
+        duration: 1,
         ease: "power1.inOut",
         scrollTrigger: {
           trigger: sectionOneElement,
@@ -23,7 +23,6 @@ const SectionOne = () => {
           end: "bottom 90%",
           scrub: true,
           anticipatePin: 1,
-          markers: true, // For debugging, shows markers on scroll trigger
         },
       });
     }
