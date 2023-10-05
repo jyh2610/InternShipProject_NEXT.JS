@@ -187,73 +187,73 @@ const deleteAuthentication = async(user_no) => {
     );
 };
 
-// device 조회
-const getDevice = async(user_no) => {
-    const result = await member.promise.query(
-    `
-    SELECT
-        *
-    FROM
-        device
-    WHERE
-        user_no = ?
-    `,
-    user_no);
-    return result[0][0];
-};
-// device 생성
-const registerDevice = async(user_no, in_use, register_no, uuid, model, os_type, os_version) => {
-    return await member.promise.query(
-    `
-    INSERT INTO device (
-        user_no,
-        in_use,
-        register_no,
-        uuid,
-        model,
-        os_type,
-        os_version
-    ) VALUES (
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?
-    `,
-    [user_no, in_use, register_no, uuid, model, os_type, os_version]
-    );
-};
-// device 업데이트
-const updateDevice = async(user_no, in_use, register_no, uuid, model, os_type, os_version) => {
-    return await member.promise().query(
-    `
-    UPDATE device
-    SET
-        in_use = ?,
-        register_no = ?,
-        uuid = ?,
-        model = ?,
-        os_type = ?,
-        os_version = ?
-    WHERE
-        user_no = ?
-    `,
-    [in_use, register_no, uuid, model, os_type, os_version, user_no]
-    );
-};
-// device 삭제
-const deleteDevice = async(user_no) => {
-    return await member.promise().query(
-    `
-    DELETE FROM device
-    WHERE
-        user_no = ?
-    `,
-    [user_no]
-    );
-};
+// // device 조회
+// const getDevice = async(user_no) => {
+//     const result = await member.promise.query(
+//     `
+//     SELECT
+//         *
+//     FROM
+//         device
+//     WHERE
+//         user_no = ?
+//     `,
+//     user_no);
+//     return result[0][0];
+// };
+// // device 생성
+// const registerDevice = async(user_no, in_use, register_no, uuid, model, os_type, os_version) => {
+//     return await member.promise.query(
+//     `
+//     INSERT INTO device (
+//         user_no,
+//         in_use,
+//         register_no,
+//         uuid,
+//         model,
+//         os_type,
+//         os_version
+//     ) VALUES (
+//         ?,
+//         ?,
+//         ?,
+//         ?,
+//         ?,
+//         ?,
+//         ?
+//     `,
+//     [user_no, in_use, register_no, uuid, model, os_type, os_version]
+//     );
+// };
+// // device 업데이트
+// const updateDevice = async(user_no, in_use, register_no, uuid, model, os_type, os_version) => {
+//     return await member.promise().query(
+//     `
+//     UPDATE device
+//     SET
+//         in_use = ?,
+//         register_no = ?,
+//         uuid = ?,
+//         model = ?,
+//         os_type = ?,
+//         os_version = ?
+//     WHERE
+//         user_no = ?
+//     `,
+//     [in_use, register_no, uuid, model, os_type, os_version, user_no]
+//     );
+// };
+// // device 삭제
+// const deleteDevice = async(user_no) => {
+//     return await member.promise().query(
+//     `
+//     DELETE FROM device
+//     WHERE
+//         user_no = ?
+//     `,
+//     [user_no]
+//     );
+// };
 
 
 module.exports = {
@@ -272,9 +272,9 @@ module.exports = {
     updateAuthentication,
     deleteAuthentication,
 
-    getDevice,
-    registerDevice,
-    updateDevice,
-    deleteDevice
+    // getDevice,
+    // registerDevice,
+    // updateDevice,
+    // deleteDevice
 };
 
