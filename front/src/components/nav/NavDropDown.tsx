@@ -18,7 +18,7 @@ function NavDropDown({ title, items }: Props) {
     <Dropdown menu={items} trigger={["click"]}>
       <Button onClick={dropdownOpenHandler} type="text">
         {title}
-        {isopen ? <UpOutlined /> : <DownOutlined />}
+        {isopen ? <DownOutlined /> : <UpOutlined />}
       </Button>
     </Dropdown>
   );

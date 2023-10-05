@@ -22,9 +22,16 @@ function TwoCarousel() {
     <div className="flex justify-start w-2/3 h-80">
       <Swiper className="mySwiper" navigation={true} loop={true} modules={[Navigation, Pagination]} onSlideChange={handleSlideChange}>
         {dummyData.map((_, idx) => (
-          <SwiperSlide key={idx}>
-            {/* <Image className="aspect-video" src={dummyImg} alt={"dummy"} width={1200} height={500} layout="responsive" /> */}
-            <div className="border-2 border-indigo-500 bg-blue-700 h-1/3">1</div>
+          <SwiperSlide style={{ height: "320px", width: "300px" }} key={idx}>
+            <Image
+              src={dummyImg}
+              alt={"dummy"}
+              quality={100}
+              fill={true}
+              style={{
+                objectFit: "contain",
+              }}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

@@ -15,7 +15,6 @@ function NavItem() {
     <>
       <Button type="text">홈</Button>
       <NavDropDown title={"제품"} items={data} />
-      <NavDropDown title={"솔루션"} items={data} />
       <Button type="text">홈</Button>
     </>
   );
