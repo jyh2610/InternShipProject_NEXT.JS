@@ -31,8 +31,9 @@ const SectionOne = () => {
     <div id="test" className="flex justify-center items-end relative h-screen mb-96">
       <div className="w-1/2 h-1/2 relative">
         <img ref={sectionOneRef} src={dummyImg} alt="Dummy Image" className="w-full h-full object-cover" />
-        <div className="absolute top-0 left-0 h-full flex items-center">
-          <p className="text-white text-4xl font-bold">Your Text Here</p>
+        <div className="absolute top-10 h-full left-11 p-10 flex flex-col items-center">
+          <p className="text-white text-2xl">공간은 이야기를 품고 있습니다.</p>
+          <p className="text-white text-2xl">우리는 그 이야기를 아름답게 만듭니다.</p>
         </div>
       </div>
     </div>
