@@ -15,7 +15,7 @@ function MainFooter() {
         marginTop: "3rem",
       }}
     >
-      <div className="max-w-screen-xl mx-auto px-6">
+      <div className="max-w-[1600px] w-full mx-auto px-8">
         <div className="flex py-2">
           <Logo />
         </div>
@@ -65,7 +65,7 @@ function MainFooter() {
           </div>
         </div>
       </div>
-      <div className="max-w-screen-xl mx-auto px-6">
+      <div className="mx-auto text-center w-full max-w-[1600px]">
         <hr className="border-gray-500 opacity-50" />
         <div className="py-5 text-sm">
           <p>Copyright © {new Date().getFullYear()} UABLE. All Right Reserve</p>

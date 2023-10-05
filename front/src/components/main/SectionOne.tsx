@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { dummyImg } from "@/constants/constants";
-import SectionProvider from "./SectionProvider";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +14,7 @@ const SectionOne = () => {
     if (sectionOneElement) {
       gsap.to(sectionOneElement, {
         scale: 2, // Set the initial scale to 1 (normal size)
-        duration: 0.2,
+        duration: 1,
         ease: "power1.inOut",
         scrollTrigger: {
           trigger: sectionOneElement,
@@ -23,28 +22,20 @@ const SectionOne = () => {
           end: "bottom 90%",
           scrub: true,
           anticipatePin: 1,
-          markers: true, // For debugging, shows markers on scroll trigger
         },
       });
     }
   }, []);
 
   return (
-    <SectionProvider>
-      <div id="test" className="flex justify-center items-end relative h-screen mb-96">
-        {/* 이미지 요소 */}
-        <img
-          ref={sectionOneRef}
-          src={dummyImg}
-          alt="Dummy Image"
-          style={{
-            width: "50%", // Set width to 100% to fill the screen horizontally
-            height: "50vh", // Set height to 100vh to fill the entire viewport vertically
-            objectFit: "cover", // Ensure the image covers the entire area
-          }}
-        />
+    <div id="test" className="flex justify-center items-end relative h-screen mb-96">
+      <div className="w-1/2 h-1/2 relative">
+        <img ref={sectionOneRef} src={dummyImg} alt="Dummy Image" className="w-full h-full object-cover" />
+        <div className="absolute top-0 left-0 h-full flex items-center">
+          <p className="text-white text-4xl font-bold">Your Text Here</p>
+        </div>
       </div>
-    </SectionProvider>
+    </div>
   );
 };
 
