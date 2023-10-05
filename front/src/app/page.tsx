@@ -4,12 +4,10 @@ import SectionOne from "@/components/main/SectionOne";
 import SectionFour from "@/components/main/SectionFour";
 import SectionFive from "@/components/main/SectionFive";
 import SectionSix from "@/components/main/SectionSix";
-import Footer from "@/components/MainFooter";
 import Sectiontwo from "@/components/main/Sectiontwo";
 import FadeProvider from "@/components/FadeProvider";
 import SectionThree from "@/components/main/SectionThree";
 import { useEffect, useState } from "react";
-import MainFooter from "@/components/MainFooter";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
@@ -37,7 +35,6 @@ export default function Home() {
       <SectionFour />
       <SectionFive />
       <SectionSix />
-      <MainFooter />
     </FadeProvider>
   );
 }
