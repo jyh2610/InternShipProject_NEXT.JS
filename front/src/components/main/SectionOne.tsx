@@ -14,17 +14,16 @@ const SectionOne = () => {
 
     if (sectionOneElement) {
       gsap.to(sectionOneElement, {
-        // 확대 효과 설정
-        scale: 2, // 이미지를 2배 확대
-        duration: 0.2, // 1초 동안 확대 애니메이션 수행
-        ease: "power1.inOut", // 이징 효과 설정 (원하는 이징 효과로 변경 가능)
-
-        // ScrollTrigger 설정
+        scale: 2, // Set the initial scale to 1 (normal size)
+        duration: 0.2,
+        ease: "power1.inOut",
         scrollTrigger: {
           trigger: sectionOneElement,
-          start: "top center", // 스크롤 시작 위치 (뷰포트 중앙 기준)
-          end: "bottom center", // 스크롤 종료 위치 (뷰포트 중앙 기준)
-          scrub: true, // 스크롤 속도에 따라 확대 효과를 조절
+          start: "bottom bottom",
+          end: "bottom 90%",
+          scrub: true,
+          anticipatePin: 1,
+          markers: true, // For debugging, shows markers on scroll trigger
         },
       });
     }
@@ -39,8 +38,9 @@ const SectionOne = () => {
           src={dummyImg}
           alt="Dummy Image"
           style={{
-            width: "50%",
-            height: "300px",
+            width: "50%", // Set width to 100% to fill the screen horizontally
+            height: "50vh", // Set height to 100vh to fill the entire viewport vertically
+            objectFit: "cover", // Ensure the image covers the entire area
           }}
         />
       </div>
