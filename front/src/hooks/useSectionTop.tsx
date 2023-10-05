@@ -19,7 +19,7 @@ function useSectionTop() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [dispatch]);
+  }, [dispatch, sectionOneRef]);
 
   return sectionOneRef;
 }

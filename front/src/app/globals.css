@@ -11,11 +11,12 @@
 
 * {
   font-family: "Pretendard-Regular" !important;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  padding: 0;
+  letter-spacing: -0.25px;
 }
 
 ol,
