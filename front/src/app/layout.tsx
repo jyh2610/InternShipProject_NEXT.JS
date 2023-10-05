@@ -5,6 +5,7 @@ import AuthSession from "@/components/auth/AuthSession";
 
 import type { Metadata } from "next";
 import Nav from "@/components/nav/Nav";
+import MainFooter from "@/components/MainFooter";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <AuthSession>
           <Nav />
           {children}
+          <MainFooter />
         </AuthSession>
       </body>
     </html>

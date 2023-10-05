@@ -24,20 +24,20 @@ ul {
   list-style: none;
 }
 .mainwidth {
+  width: 100%;
   max-width: 1600px;
 }
 
-p{
+p {
   margin: 0;
 }
 
-.footer-nav-list > a{
+.footer-nav-list > a {
   display: block;
   font-size: 0.875rem;
-  color: #9F9F9F;
+  color: #9f9f9f;
   white-space: nowrap;
 }
-
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
 @font-face {
