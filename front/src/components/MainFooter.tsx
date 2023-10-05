@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import { Layout } from "antd";
 import Logo from "./Logo";
 
