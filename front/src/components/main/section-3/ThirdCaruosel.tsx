@@ -21,7 +21,7 @@ function ThirdCarousel() {
       {dummyData.map((_, idx) => {
         return (
           <SwiperSlide key={idx}>
-            <Image src={dummyImg} alt={"dummy"} width={1200} height={500} layout="responsive" />
+            <Image src={dummyImg} alt={"dummy"} width={1200} height={500} />
           </SwiperSlide>
         );
       })}
