@@ -1,7 +1,10 @@
 "use strict";
 
-const auth = require("../models/auth");
-const member = require("../models/member");
+const {auth, member} = require("../models/all");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const axios = require("axios");
+const { detectError } = require("../utils/detectError");
 
 //local SignUp
 const localSignUp = async (user) => {
@@ -10,7 +13,8 @@ const localSignUp = async (user) => {
     // 비밀번호는 최소 하나의 대문자, 숫자, 특수문자(@$!%*?&)를 포함하고, 길이는 8에서 20자
   );
 
-  if (!pwValidation.test(password));
+  if (!pwValidation.test(password))
+    detectError(""
 
 };
 
