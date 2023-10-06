@@ -4,27 +4,37 @@ const auth = require("../models/auth");
 const member = require("../models/member");
 
 //local SignUp
-const localSignUp = async (user) => {};
+const localSignUp = async (user) => {
+  const pwValidation = new RegExp(
+    "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,20}$"
+    // 비밀번호는 최소 하나의 대문자, 숫자, 특수문자(@$!%*?&)를 포함하고, 길이는 8에서 20자
+  );
+
+  if (!pwValidation.test(password));
+
+};
 
 //local SignIn
 const localSignIn = async (user) => {};
 
 
-// const signIn = async (email, password) => {
-//   const hashedPassword = await userDao.getHashedPassword(email);
-//   if (!hashedPassword) detectError("PASSWORD_DOES_NOT_MATCH", 400);
+const signIn = async (user_name, password) => {
+  
 
-//   const compare = await bcrypt.compare(password, hashedPassword);
-//   if (!compare) detectError("PASSWORD_DOES_NOT_MATCH", 400);
+  const hashedPassword = await userDao.getHashedPassword(email);
+  if (!hashedPassword) detectError("PASSWORD_DOES_NOT_MATCH", 400);
 
-//   const [userData] = await userDao.getUserId(email);
+  const compare = await bcrypt.compare(password, hashedPassword);
+  if (!compare) detectError("PASSWORD_DOES_NOT_MATCH", 400);
 
-//   const payLoad = { userId: userData.id };
+  const [userData] = await userDao.getUserId(email);
 
-//   const jwtToken = jwt.sign(payLoad, process.env.JWT_SECRET);
+  const payLoad = { userId: userData.id };
 
-//   return jwtToken;
-// };
+  const jwtToken = jwt.sign(payLoad, process.env.JWT_SECRET);
+
+  return jwtToken;
+};
 
 module.exports = {
   localSignUp,
