@@ -14,11 +14,14 @@ import { data } from "./SwiperData";
 function SectionSwiper() {
   const scrollHeight = useAppSelector((state) => state.scrollStopper.navBottom);
   const scrollTopHeight = useAppSelector((state) => state.scrollStopper.sectionTop);
-  console.log(scrollTopHeight, "dd");
+  console.log(scrollTopHeight, "스크롤 섹션탑 헤이트");
+  console.log(scrollHeight, "스크롤 헤이트");
   const isContact = scrollHeight - scrollTopHeight > 0;
   console.log(isContact, " 접하니");
   const sectionTopRef = useSectionTop();
-  const [activeIndex, setActiveIndex] = useState(0); // 상태 변수로 현재 인덱스를 관리합니다.
+  // 현재인덱스 관리
+  const [activeIndex, setActiveIndex] = useState(0);
+
   // 스와이퍼 슬라이드가 변경될 때 호출되는 콜백 함수
   const handleSlideChange = (swiper: any) => {
     setActiveIndex(swiper.activeIndex); // activeIndex를 상태에 업데이트합니다.
@@ -29,7 +32,7 @@ function SectionSwiper() {
   return (
     <div ref={sectionTopRef}>
       <Swiper
-        mousewheel={isFinal ? true : false}
+        mousewheel={activeIndex !== data.length - 1}
         direction={"vertical"}
         slidesPerView={1}
         autoHeight={true}

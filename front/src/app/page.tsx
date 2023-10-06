@@ -29,7 +29,7 @@ export default function Home() {
 
   return (
     <FadeProvider>
-    
+      <SectionOne />
       <Sectiontwo />
       <SectionThree />
       <SectionFour />
