@@ -1,7 +1,6 @@
 "use client";
 import { useAppSelector } from "@/redux/hooks";
 import ParallaxText from "../ParallaxText";
-
 import useSectionTop from "@/hooks/useSectionTop";
 import SectionProvider from "./SectionProvider";
 
