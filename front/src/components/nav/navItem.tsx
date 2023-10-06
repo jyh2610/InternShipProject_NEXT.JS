@@ -12,12 +12,18 @@ function NavItem() {
   };
 
   return (
-    <>
-      <Button type="text">홈</Button>
+    <div className="flex justify-evenly w-72">
+      <Button className="px-5 mr-1" type="text">
+        홈
+      </Button>
       <NavDropDown title={"제품"} items={data} />
-      <NavDropDown title={"솔루션"} items={data} />
-      <Button type="text">홈</Button>
-    </>
+      <Button className="px-5 mr-1" type="text">
+        솔루션
+      </Button>
+      <Button className="px-5 mr-1" type="text">
+        사전등록
+      </Button>
+    </div>
   );
 }
 

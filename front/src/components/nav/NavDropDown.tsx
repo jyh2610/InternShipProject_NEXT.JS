@@ -14,11 +14,14 @@ function NavDropDown({ title, items }: Props) {
   const dropdownOpenHandler = () => {
     setIsOpen((prev) => !prev);
   };
+  const iconSize = {
+    fontSize: "14px",
+  };
   return (
     <Dropdown menu={items} trigger={["click"]}>
       <Button onClick={dropdownOpenHandler} type="text">
         {title}
-        {isopen ? <DownOutlined /> : <UpOutlined />}
+        {isopen ? <DownOutlined style={iconSize} /> : <UpOutlined style={iconSize} />}
       </Button>
     </Dropdown>
   );

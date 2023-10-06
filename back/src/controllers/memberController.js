@@ -22,3 +22,15 @@ const getUserIDController = async (req, res) => {
 module.exports = {
   getUserIDController
 };
+
+// const { getUserId } = require('../models/services');
+
+// local 회원가입
+
+// local 로그인
+
+// social 부분 아래 추가 예정
+
+// module.exports = {
+//   getUserIDController
+// };

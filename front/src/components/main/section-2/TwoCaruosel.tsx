@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { dummyImg } from "@/constants/constants";
+import { dummyImg, img } from "@/constants/constants";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 
@@ -23,7 +23,7 @@ function TwoCarousel() {
       <Swiper className="mySwiper" navigation={true} loop={true} modules={[Navigation, Pagination]} onSlideChange={handleSlideChange}>
         {dummyData.map((_, idx) => (
           <SwiperSlide style={{ height: "320px", width: "300px" }} key={idx}>
-            <Image
+            {/* <Image
               src={dummyImg}
               alt={"dummy"}
               quality={100}
@@ -31,7 +31,8 @@ function TwoCarousel() {
               style={{
                 objectFit: "contain",
               }}
-            />
+            />{" "} */}
+            <img className="w-full h-full object-container" src={img} />
           </SwiperSlide>
         ))}
       </Swiper>
