@@ -18,12 +18,12 @@ function UpAnimation() {
     if (sectionOneElement && scrollSpinElement) {
       gsap.to(sectionOneElement, {
         scale: 2,
-        duration: 1,
+        duration: 0.2,
         ease: "power1.inOut",
         scrollTrigger: {
           trigger: sectionOneElement,
           start: "bottom bottom",
-          end: "bottom 90%",
+          end: "bottom 80%",
           scrub: true,
           anticipatePin: 1,
         },
@@ -57,7 +57,7 @@ function UpAnimation() {
           backgroundImage: `url(${img})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          width: "100%",
+          width: "1200px",
           height: "100%",
         }}
       >

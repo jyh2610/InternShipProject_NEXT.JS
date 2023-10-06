@@ -4,6 +4,6 @@ import { Spin } from "antd";
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-const ScrollSpin = () => <Spin indicator={antIcon} />;
+const ScrollSpin = () => <Spin style={{ paddingBottom: "50px" }} indicator={antIcon} />;
 
 export default ScrollSpin;
