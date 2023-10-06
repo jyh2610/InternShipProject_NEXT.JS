@@ -1,11 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Pagination, Mousewheel, Navigation } from "swiper/modules";
-import SectionSwiper from "./section-5/SectionSwiper";
-import SectionProvider from "./SectionProvider";
+import React from "react";
 import SectionSwiperGsap from "./section-5/SectionSwiperGsap";
 import { data } from "./section-5/SwiperData";
 import "../../components/main/section-5/style.css";
