@@ -7,7 +7,7 @@ const getMember = async(user_name) => {
     const result = await member.promise().query(
     `
     SELECT 
-        user_no
+        *
     FROM 
         user
     WHERE 
@@ -73,7 +73,7 @@ const getProfile = async(user_no) => {
     return result[0][0];
 };
 // profile 생성
-const registerProfile = async(user_no, nickname, image_url, introdution) => {
+const registerProfile = async(user_no, nickname, image_url=null, introdution=null) => {
     return await member.promise().query(
     `
     INSERT INTO profile (
