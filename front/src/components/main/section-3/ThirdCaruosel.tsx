@@ -9,15 +9,7 @@ import Image from "next/image";
 function ThirdCarousel() {
   const dummyData = [1, 2, 3, 4];
   return (
-    <Swiper
-      slidesPerView={1}
-      loop
-      scrollbar={true}
-      navigation={true}
-      modules={[Navigation, Pagination]}
-      effect="coverflow" // coverflow 효과 설정
-      className="mySwiper "
-    >
+    <Swiper slidesPerView={2} loop={true} scrollbar={true} navigation={true} modules={[Navigation, Pagination]} className="mySwiper ">
       {dummyData.map((_, idx) => {
         return (
           <SwiperSlide key={idx}>

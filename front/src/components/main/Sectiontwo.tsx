@@ -4,7 +4,7 @@ import TwoCaruosel from "./section-2/TwoCaruosel";
 
 function Sectiontwo() {
   return (
-    <section className="flex flex-col  h-screen">
+    <section className="h-screen">
       <Text />
       <TwoCaruosel />
       <BotText />

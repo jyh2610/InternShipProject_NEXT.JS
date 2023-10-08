@@ -1,6 +1,5 @@
 // some-inner-component.jsx
-import { useRef } from "react";
-import { Swiper, useSwiper } from "swiper/react";
+import { useSwiper } from "swiper/react";
 
 function SlideNextBtn() {
   const swiper = useSwiper();

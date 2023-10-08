@@ -16,16 +16,44 @@ function TwoCarousel() {
   const handleSlideChange = (swiper: { realIndex: number }) => {
     setImgIdx(swiper.realIndex);
   };
-  const swiper = useSwiper();
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
+  const handlePrevClick = () => {
+    const swiper = useSwiper();
+    swiper?.slidePrev();
+  };
+
+  const handleNextClick = () => {
+    const swiper = useSwiper();
+    swiper?.slideNext();
+  };
+
   return (
-    <div className="hi flex justify-start h-2/5">
-      <Swiper navigation style={{ margin: "0" }} className="mx-0 w-10/12" loop={true} modules={[Navigation, Pagination]} onSlideChange={handleSlideChange}>
+    <div className=" flex justify-start h-2/5">
+      <Swiper
+        navigation={{
+          nextEl: nextRef?.current,
+          prevEl: prevRef?.current,
+        }}
+        style={{ margin: "0" }}
+        className="mx-0 w-10/12"
+        loop={true}
+        modules={[Navigation, Pagination]}
+        onSlideChange={handleSlideChange}
+      >
         {dummyData.map((_, idx) => (
           <SwiperSlide className="w-full" key={idx}>
-            <img className="w-full h-fit aspect-video" src={dummyImg} />
+            <div className="w-full h-full bg-cover" style={{ backgroundImage: `url(${dummyImg})` }} />
           </SwiperSlide>
         ))}
       </Swiper>
+      <button ref={prevRef} onClick={handlePrevClick}>
+        prev
+      </button>
+      <button ref={nextRef} onClick={handleNextClick}>
+        next
+      </button>
 
       <div className="flex items-end">
         <span className="text-4xl">{imgIdx + 1} </span>/<span className="text-2xl"> {dummyData.length}</span>
