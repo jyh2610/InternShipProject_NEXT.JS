@@ -6,6 +6,7 @@ import { loginObj } from "@/constants/constants";
 
 function LoginBtn() {
   const { data: session } = useSession();
+  const jwt = require("jsonwebtoken");
 
   return session ? (
     <button onClick={() => signOut()}>{session.user?.name}님 로그아웃</button>

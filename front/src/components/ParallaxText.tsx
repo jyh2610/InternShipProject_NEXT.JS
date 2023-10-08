@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion, useScroll, useSpring, useTransform, useMotionValue, useVelocity, useAnimationFrame, useAnimation } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform, useMotionValue, useVelocity, useAnimationFrame } from "framer-motion";
 import { wrap } from "@motionone/utils";
 
 interface ParallaxProps {
@@ -10,14 +10,8 @@ interface ParallaxProps {
 }
 
 function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
-  // 화면 너비의 반을 계산합니다.
-  //   const screenWidth = window?.innerWidth;
-  //   console.log(screenWidth, "dd");
-  //   const halfScreenWidth = screenWidth / 2;
   const baseX = useMotionValue(0);
-
   const { scrollY } = useScroll();
-
   const scrollVelocity = useVelocity(scrollY);
   const smoothVelocity = useSpring(scrollVelocity, {
     damping: 50,
@@ -46,20 +40,14 @@ function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
   });
 
   return (
-    <div className="parallax tracking-tighter whitespace-nowrap font-extrabold leading-normal">
-      <motion.div className="scroller " style={{ x }}>
-        <span className="" style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)", color: "#f5f5f5" }}>
+    <div className="parallax tracking-tighter whitespace-nowrap font-extrabold bg-white leading-normal">
+      <motion.div className="scroller " style={{ x, color: "#fff" }}>
+        <span className="" style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)", color: "#fff" }}>
           {children}
         </span>
-        <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)", color: "#f5f5f5" }}>
-          {children}{" "}
-        </span>
-        <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)", color: "#f5f5f5" }}>
-          {children}{" "}
-        </span>
-        <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)", color: "#f5f5f5" }}>
-          {children}{" "}
-        </span>
+        <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)" }}>{children} </span>
+        <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)" }}>{children} </span>
+        <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)" }}>{children} </span>
       </motion.div>
     </div>
   );
