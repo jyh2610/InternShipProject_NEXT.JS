@@ -51,16 +51,7 @@ function UpAnimation() {
 
   return (
     <div className="w-1/2 h-1/2 relative flex flex-col justify-center items-center">
-      <div
-        ref={sectionOneRef}
-        style={{
-          backgroundImage: `url(${img})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          width: "1200px",
-          height: "100%",
-        }}
-      >
+      <div ref={sectionOneRef} className="bg-cover bg-center w-full h-full" style={{ backgroundImage: `url(${img})` }}>
         <div className="absolute top-10 p-10 flex flex-col items-center">
           <p className="text-white text-2xl">공간은 이야기를 품고 있습니다.</p>
           <p className="text-white text-2xl">우리는 그 이야기를 아름답게 만듭니다.</p>

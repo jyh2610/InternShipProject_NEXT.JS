@@ -1,14 +1,15 @@
 "use client";
 
-import Image from "next/image";
 import { dummyImg, img } from "@/constants/constants";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { A11y, Navigation } from "swiper/modules";
 import { useSwiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useRef, useState } from "react";
+import SlideNextBtn from "./SlideNextBtn";
+import SliderText from "./\bSliderText";
 
 function TwoCarousel() {
   const [imgIdx, setImgIdx] = useState(0);
@@ -18,19 +19,10 @@ function TwoCarousel() {
   };
   const prevRef = useRef(null);
   const nextRef = useRef(null);
-
-  const handlePrevClick = () => {
-    const swiper = useSwiper();
-    swiper?.slidePrev();
-  };
-
-  const handleNextClick = () => {
-    const swiper = useSwiper();
-    swiper?.slideNext();
-  };
+  const swiper = useSwiper();
 
   return (
-    <div className=" flex justify-start h-2/5">
+    <div className=" flex justify-start h-4/5">
       <Swiper
         navigation={{
           nextEl: nextRef?.current,
@@ -39,22 +31,22 @@ function TwoCarousel() {
         style={{ margin: "0" }}
         className="mx-0 w-10/12"
         loop={true}
-        modules={[Navigation, Pagination]}
+        modules={[Navigation, A11y]}
         onSlideChange={handleSlideChange}
       >
         {dummyData.map((_, idx) => (
-          <SwiperSlide className="w-full" key={idx}>
-            <div className="w-full h-full bg-cover" style={{ backgroundImage: `url(${dummyImg})` }} />
+          <SwiperSlide className="w-full h-2/3" key={idx}>
+            <div className="w-full h-full bg-cover flex justify-end items-center" style={{ backgroundImage: `url(${dummyImg})` }}>
+              <SliderText />
+              <SlideNextBtn nextRef={nextRef} />
+            </div>
           </SwiperSlide>
         ))}
+        <SlideNextBtn nextRef={nextRef} />
       </Swiper>
-      <button ref={prevRef} onClick={handlePrevClick}>
-        prev
-      </button>
-      <button ref={nextRef} onClick={handleNextClick}>
-        next
-      </button>
 
+      {/* prev 버튼이 없으면 작동 안 함 해결 필 */}
+      <button className="hidden" ref={prevRef} />
       <div className="flex items-end">
         <span className="text-4xl">{imgIdx + 1} </span>/<span className="text-2xl"> {dummyData.length}</span>
       </div>
