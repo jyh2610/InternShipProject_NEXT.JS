@@ -3,6 +3,9 @@ import type { Config } from "tailwindcss";
 const config: Config = {
   content: ["./src/pages/**/*.{ts,tsx}", "./src/components/**/*.{ts,tsx}", "./src/app/**/*.{ts,tsx}"],
   theme: {
+    backgroundImage: {
+      dummyImg: `url('https://img.freepik.com/free-photo/mid-century-modern-living-room-interior-design-with-monstera-tree_53876-129803.jpg?w=1380&t=st=1696905938~exp=1696906538~hmac=2b2dffc34ca4bb1ad83a4a8bb67880feccdc5fa4197fe0274311f524478257a6')`,
+    },
     extend: {
 
       z:{
