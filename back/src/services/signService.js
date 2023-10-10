@@ -3,7 +3,7 @@
 const {auth, member} = require("../models/all");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const axios = require("axios");
+const axios = require("axios"); // 소셜로그인 구현시 필요
 const { detectError } = require("../utils/detectError");
 
 //local SignUp
@@ -12,9 +12,12 @@ const localSignUp = async (nickname, user_name, email, password, birthday, natio
     "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,20}$"
     // 비밀번호는 최소 하나의 대문자, 숫자, 특수문자(@$!%*?&)를 포함하고, 길이는 8에서 20자
   );
-
   if (!pwValidation.test(password))
     detectError("PASSWORD-ERROR", 400);
+
+  const emailValidation =  new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
+  if (!emailValidation.test(email))
+    detectError("EMAIL-ERROR", 400);
 
   const salt = await bcrypt.genSalt(Number(process.env.SALT_ROUND));
   const hashedPassword = await bcrypt.hash(password, salt);
@@ -35,26 +38,26 @@ const localSignUp = async (nickname, user_name, email, password, birthday, natio
 };
 
 //local SignIn
-const localSignIn = async (user) => {};
+const localSignIn = async (user_name, password) => {
+  //유저 네임에 맞는 유저 넘버, 유저 넘버에 맞는 salt 가져오기
+  const user_no = await member.getMember(user_name).user_no; //user의 user_no 검색
+  const auth_password = await auth.getPassword(user_no); // user_no에 해당하는 auth.password 테이블 조회
+  const hashedPassword = auth_password.password; // 저장된 user의 password(hased)
+  if (!hashedPassword) // 저장된 password 가 없으면 에러
+    detectError("PASSWORD_DOSE_NOT_FOUND", 400);
 
+  const usersalt = auth_password.salt; //user의 salt값
+  const hasedInputPassword = await bcrypt.hash(password, usersalt); // 입력한 password 암호화
+  const compare = await bcrypt.compare(hashedPassword, hasedInputPassword); // 비교
+  if (!compare) // 입력한 것이 다르면 에러
+    detectError("PASSWORD_DOSE_NOT_MATCH", 400);
 
-const signIn = async (user_name, password) => {
-  
+  const payLoad = {user_no};  // jwt를 생성할 payload 지정
+  const Token = jwt.sign(payLoad, Process.env.JWT_SECRET);
 
-  const hashedPassword = await userDao.getHashedPassword(email);
-  if (!hashedPassword) detectError("PASSWORD_DOES_NOT_MATCH", 400);
-
-  const compare = await bcrypt.compare(password, hashedPassword);
-  if (!compare) detectError("PASSWORD_DOES_NOT_MATCH", 400);
-
-  const [userData] = await userDao.getUserId(email);
-
-  const payLoad = { userId: userData.id };
-
-  const jwtToken = jwt.sign(payLoad, process.env.JWT_SECRET);
-
-  return jwtToken;
+  return Token;
 };
+
 
 module.exports = {
   localSignUp,
