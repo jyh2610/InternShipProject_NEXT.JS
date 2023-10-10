@@ -1,6 +1,6 @@
 function SectionProvider({ children }: { children: React.ReactNode }) {
   return (
-    <section data-aos="fade-up" className="h-full">
+    <section data-aos="fade-up" className="h-screen">
       {children}
     </section>
   );

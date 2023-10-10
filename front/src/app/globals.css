@@ -17,7 +17,6 @@
 
 body {
   letter-spacing: -0.25px;
-
 }
 
 ol,
@@ -53,4 +52,23 @@ p {
   /* 폰트 파일 경로를 적절하게 수정하세요. */
   font-weight: normal;
   font-style: normal;
+}
+
+.swiper-button-prev {
+  display: hidden;
+}
+.swiper-button-next {
+  background-color: #fff;
+  opacity: 0.6;
+  height: 250px;
+  width: 250px;
+  border-radius: 70%;
+  color: black !important;
+  margin-right: 100px;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
 }
