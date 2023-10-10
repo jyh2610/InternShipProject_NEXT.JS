@@ -1,7 +1,8 @@
+
 export const loginObj = [
-  { social: "naver", name: "네이버" },
-  { social: "kakao", name: "카카오" },
-  { social: "google", name: "구글" },
+  { social: "kakao", name: "카카오" ,icon:"" },
+  { social: "naver", name: "네이버" ,icon:"" },
+  { social: "google", name: "구글" ,icon:""},
 ];
 
 export const dummyImg =
