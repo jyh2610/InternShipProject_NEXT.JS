@@ -53,22 +53,19 @@ p {
   font-weight: normal;
   font-style: normal;
 }
-
 .swiper-button-prev {
-  display: hidden;
+  display: none !important;
 }
 .swiper-button-next {
-  background-color: #fff;
-  opacity: 0.6;
-  height: 250px;
-  width: 250px;
+  width: 80px !important; /* 네비게이션 버튼의 너비를 조정할 수 있습니다. */
+  height: 80px !important; /* 네비게이션 버튼의 높이를 조정할 수 있습니다. */
   border-radius: 70%;
-  color: black !important;
-  margin-right: 100px;
+  padding: 20px;
+  background-color: white !important;
 }
 
-.swiper-button-prev:after,
-.swiper-button-next:after {
-  font-size: 1.1rem !important;
-  font-weight: 600 !important;
+.swiper-button-next::after {
+  font-size: 1.8rem; /* 아이콘 크기를 조정할 수 있습니다. */
+  font-weight: 500;
+  color: #000; /* 아이콘 색상을 조정할 수 있습니다. */
 }
