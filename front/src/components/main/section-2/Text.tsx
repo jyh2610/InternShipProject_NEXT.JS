@@ -4,7 +4,7 @@ import Link from "next/link";
 
 function Text() {
   return (
-    <div className="flex justify-evenly">
+    <div className="h-1/5 flex justify-evenly items-center">
       <div className="text-5xl leading-none">
         <p>올인원 3D 인테리어</p>
         <p>디자인 도구</p>

@@ -9,7 +9,7 @@ import Image from "next/image";
 function ThirdCarousel() {
   const dummyData = [1, 2, 3, 4];
   return (
-    <Swiper slidesPerView={2} loop={true} scrollbar={true} navigation={true} modules={[Navigation, Pagination]} className="mySwiper ">
+    <Swiper slidesPerView={2} loop={true} scrollbar={true} navigation={true} modules={[Navigation, Pagination]} className="mySwiper">
       {dummyData.map((_, idx) => {
         return (
           <SwiperSlide key={idx}>
