@@ -3,7 +3,7 @@
 const {auth, member} = require("../models/all");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const axios = require("axios");
+const axios = require("axios"); // 소셜로그인 구현시 필요
 const { detectError } = require("../utils/detectError");
 
 //local SignUp
@@ -12,9 +12,12 @@ const localSignUp = async (nickname, user_name, email, password, birthday, natio
     "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,20}$"
     // 비밀번호는 최소 하나의 대문자, 숫자, 특수문자(@$!%*?&)를 포함하고, 길이는 8에서 20자
   );
-
   if (!pwValidation.test(password))
     detectError("PASSWORD-ERROR", 400);
+
+  const emailValidation =  new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
+  if (!emailValidation.test(email))
+    detectError("EMAIL-ERROR", 400);
 
   const salt = await bcrypt.genSalt(Number(process.env.SALT_ROUND));
   const hashedPassword = await bcrypt.hash(password, salt);
