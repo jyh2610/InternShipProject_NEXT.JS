@@ -17,6 +17,7 @@
 
 body {
   letter-spacing: -0.25px;
+  background-color: #fff !important;
 }
 
 ol,
@@ -71,4 +72,11 @@ p {
 .swiper-button-next:after {
   font-size: 1.1rem !important;
   font-weight: 600 !important;
+}
+.vertical-line {
+  width: 2px;
+  height: 18.5625rem;
+  background-color: #000; 
+
+
 }
