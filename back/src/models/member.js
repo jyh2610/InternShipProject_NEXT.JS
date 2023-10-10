@@ -1,6 +1,6 @@
 "use strict";
 
-const member = require("../db/all");
+const member = require("../db/member");
 
 // member 조회
 const getMember = async(user_name) => {

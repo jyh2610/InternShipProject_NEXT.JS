@@ -3,7 +3,7 @@
 const mysql = require('mysql2/promise');
 require('dotenv').config();
 
-const auth = mysql.createPool({
+const pool = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
@@ -13,7 +13,7 @@ const auth = mysql.createPool({
 
 const getConnection = async () =>{
   try{
-    const conn = await auth.getConnection();
+    const conn = await pool.getConnection();
     return conn;
   } catch(err){
     console.error(`Connecion Error: ${err.message}`);
@@ -30,7 +30,7 @@ const releaseConnection = async (conn) =>{
 }
 
 module.exports = {
-  auth,
+  pool,
   getConnection,
   releaseConnection,
 };
