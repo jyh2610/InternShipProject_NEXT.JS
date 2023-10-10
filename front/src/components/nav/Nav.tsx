@@ -17,13 +17,14 @@ function Nav() {
       style={{
         width: "100%",
         height: "80px",
-        backgroundColor: "#F8F8FA",
         position: "fixed",
+        backgroundColor: "transparent",
         zIndex: "999",
         display: "flex",
         alignItems: "center",
         padding: 0,
         lineHeight: 0,
+        color: "white",
       }}
     >
       <div className="Header-wrap w-full max-w-top h-20 flex items-center mx-auto px-5 justify-between aspect-video">

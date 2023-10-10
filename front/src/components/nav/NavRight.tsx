@@ -13,7 +13,7 @@ function NavRight() {
   return (
     <div>
       <NavDropDown title={"한국어"} items={data} />
-      <Button style={{ backgroundColor: "#2AA86B", borderRadius: "14px", color: "white", fontSize: "0.75rem" }} type="text">
+      <Button style={{ borderRadius: "14px", color: "white", fontSize: "0.75rem" }} type="text">
         로그인
       </Button>
     </div>

@@ -13,7 +13,7 @@ type Props = {
 export default function AuthSession({ children }: Props) {
   return (
     <SessionProvider>
-      <Layout>
+      <Layout style={{ backgroundColor: "#fff" }}>
         <Provider store={store}>{children}</Provider>
       </Layout>
     </SessionProvider>

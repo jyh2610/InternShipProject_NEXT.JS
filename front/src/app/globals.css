@@ -9,15 +9,16 @@
   }
 }
 
+
 * {
-  font-family: "Pretendard-Regular" !important;
+  font-family: "Pretendard" !important;
   margin: 0;
   padding: 0;
+  letter-spacing: -0.25px;
 }
 
 body {
   letter-spacing: -0.25px;
-
 }
 
 ol,
@@ -41,16 +42,37 @@ p {
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
-@font-face {
-  font-family: "Pretendard-Regular";
-  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff");
-  font-weight: 400;
-  font-style: normal;
-}
+
+/* 프리텐다드 font-Weight 두께변경 될 수 있도록 변경 23.10.10_수정자 김택용*/
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+
 @font-face {
   font-family: "Roboto";
   src: url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
   /* 폰트 파일 경로를 적절하게 수정하세요. */
   font-weight: normal;
   font-style: normal;
+}
+.swiper-button-prev {
+  display: none !important;
+}
+.swiper-button-next {
+  background: url("../../public/assets/arrow.png") no-repeat;
+  width: 80px !important; /* 네비게이션 버튼의 너비를 조정할 수 있습니다. */
+  height: 80px !important; /* 네비게이션 버튼의 높이를 조정할 수 있습니다. */
+  border-radius: 70%;
+  padding: 20px;
+  background-color: white !important;
+}
+
+.swiper-button-next::after {
+  font-size: 1.8rem; /* 아이콘 크기를 조정할 수 있습니다. */
+  font-weight: 500;
+  color: #000; /* 아이콘 색상을 조정할 수 있습니다. */
+}
+
+/* 23.10.10 작성자 - 김택용 */
+body::-webkit-scrollbar {
+  width: 8px;  /* 스크롤바의 너비 */
+  display: none; /* 스크롤바 삭제 */
 }
