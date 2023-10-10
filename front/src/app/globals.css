@@ -76,7 +76,8 @@ p {
 .vertical-line {
   width: 2px;
   height: 18.5625rem;
-  background-color: #000; 
+  background-color: #F0F0F0; 
+  margin-left: 27.875rem;
 
 
 }
