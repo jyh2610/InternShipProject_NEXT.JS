@@ -5,8 +5,8 @@ import { BsFillArrowRightCircleFill } from "react-icons/bs";
 function SlideNextBtn({ nextRef }: { nextRef: MutableRefObject<HTMLDivElement | null> }) {
   const swiper = useSwiper();
   return (
-    <div className="mr-10" ref={nextRef}>
-      <BsFillArrowRightCircleFill className="text-7xl absolute" onClick={() => swiper?.slideNext()} />
+    <div ref={nextRef} className="mr-10 h-full z-999 absolute top-10 left-0">
+      <BsFillArrowRightCircleFill className="text-7xl z-999 absolute top-10 left-0" onClick={() => swiper?.slideNext()} />
     </div>
   );
 }
