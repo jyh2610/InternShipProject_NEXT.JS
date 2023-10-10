@@ -5,11 +5,27 @@ import { dummyImg } from "@/constants/constants";
 import { Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
+import { EffectCoverflow } from "swiper/modules";
 
 function ThirdCarousel() {
   const dummyData = [1, 2, 3, 4];
   return (
-    <Swiper slidesPerView={2} loop={true} scrollbar={true} navigation={true} modules={[Navigation, Pagination]} className="mySwiper">
+    <Swiper
+      effect={"coverflow"}
+      grabCursor={true}
+      centeredSlides={true}
+      slidesPerView={"auto"}
+      coverflowEffect={{
+        rotate: 20,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      }}
+      pagination={true}
+      modules={[EffectCoverflow, Pagination]}
+      className="mySwiper"
+    >
       {dummyData.map((_, idx) => {
         return (
           <SwiperSlide key={idx}>
