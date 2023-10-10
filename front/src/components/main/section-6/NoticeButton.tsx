@@ -1,7 +1,7 @@
 "use client";
 function NoticeButton() {
   return (
-    <div className="my-6">
+    <div className="my-[1.875rem]">
       <button
         style={{
           background: "#2AA86B",

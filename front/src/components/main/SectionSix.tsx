@@ -1,8 +1,6 @@
 "use client";
-
 import useSectionTop from "@/hooks/useSectionTop";
 import Title from "./section-6/Title";
-import Button from "./section-6/NoticeButton";
 import NoticeButton from "./section-6/NoticeButton";
 import Text from "./section-6/Text";
 
@@ -10,7 +8,6 @@ function SectionSix() {
   const sectionTopRef = useSectionTop();
 
   return (
-    // isHeightDifferencePositive1 &&
     <div className="mx-auto mainwidth max-w-top" ref={sectionTopRef}>
       <Title />
       <div className="relative">
@@ -22,6 +19,7 @@ function SectionSix() {
             height: "37.5rem",
             objectFit: "cover",
             filter: "grayscale(50%)",
+            marginBottom: "10.1875rem",
           }}
         >
           <div className="absolute text-center left-[50%] top-[50%]" style={{ transform: "translate(-50%, -50%)" }}>
