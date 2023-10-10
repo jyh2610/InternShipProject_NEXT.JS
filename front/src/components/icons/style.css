@@ -5,11 +5,10 @@
 }
 
 .chevron {
-  position: absolute;
-  width: 28px;
-  height: 8px;
+  width: 18px;
+  height: 4px;
   opacity: 0;
-  transform: scale3d(0.5, 0.5, 0.5);
+  transform: scale3d(0.3, 0.3, 0.3);
   animation: move 3s ease-out infinite;
 }
 
@@ -27,19 +26,19 @@
   position: absolute;
   top: 0;
   height: 100%;
-  width: 51%;
+  width: 50%;
   background: #fff;
 }
 
 .chevron:before {
   left: 0;
-  transform: skew(0deg, 30deg);
+  transform: skew(0deg, 40deg);
 }
 
 .chevron:after {
   right: 0;
   width: 50%;
-  transform: skew(0deg, -30deg);
+  transform: skew(0deg, -40deg);
 }
 
 @keyframes move {
@@ -56,15 +55,14 @@
   }
   100% {
     opacity: 0;
-    transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+    transform: translateY(50px) scale3d(0.3, 0.3, 0.3);
   }
 }
 
 .text {
   display: block;
-  margin-top: 75px;
+  margin-top: 60px;
   margin-left: -30px;
-  font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
   font-size: 12px;
   color: #fff;
   text-transform: uppercase;
