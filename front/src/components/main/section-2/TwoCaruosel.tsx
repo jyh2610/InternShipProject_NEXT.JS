@@ -1,42 +1,44 @@
-"use client";
-
-import Image from "next/image";
-import { dummyImg, img } from "@/constants/constants";
+import { dummyImg } from "@/constants/constants";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
-
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { useRef, useState } from "react";
+import { A11y, Navigation } from "swiper/modules";
+import { SetStateAction, useRef, useState } from "react";
+import SlideNextBtn from "./SlideNextBtn";
+import SliderText from "./SliderText";
 
 function TwoCarousel() {
-  const ref = useRef(null);
   const [imgIdx, setImgIdx] = useState(0);
   const dummyData = [1, 2, 3, 4];
-  const handleSlideChange = (swiper: { realIndex: number }) => {
+  const handleSlideChange = (swiper: { realIndex: SetStateAction<number> }) => {
     setImgIdx(swiper.realIndex);
   };
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
 
   return (
-    <div className="flex justify-start w-2/3 h-80">
-      <Swiper className="mySwiper" navigation={true} loop={true} modules={[Navigation, Pagination]} onSlideChange={handleSlideChange}>
+    <div className="relative flex justify-start h-4/5">
+      <Swiper
+        navigation={{
+          nextEl: nextRef?.current,
+          prevEl: prevRef?.current,
+        }}
+        style={{ margin: "0" }}
+        className="mx-0 w-10/12"
+        loop={true}
+        modules={[Navigation, A11y]}
+        onSlideChange={handleSlideChange}
+      >
         {dummyData.map((_, idx) => (
-          <SwiperSlide style={{ height: "320px", width: "300px" }} key={idx}>
-            {/* <Image
-              src={dummyImg}
-              alt={"dummy"}
-              quality={100}
-              fill={true}
-              style={{
-                objectFit: "contain",
-              }}
-            />{" "} */}
-            <img className="w-full h-full object-container" src={img} />
+          <SwiperSlide className="w-full h-2/3 relative" key={idx}>
+            <div className="w-full h-full bg-cover flex justify-end items-center" style={{ backgroundImage: `url(${dummyImg})` }}>
+              <SliderText />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="mt-auto mb-0 flex">
+      <SlideNextBtn nextRef={nextRef} />
+      {/* prev 버튼이 없으면 작동 안 함 해결 필 */}
+      <button className="hidden" ref={prevRef} />
+      <div className="flex items-end">
         <span className="text-4xl">{imgIdx + 1} </span>/<span className="text-2xl"> {dummyData.length}</span>
       </div>
     </div>

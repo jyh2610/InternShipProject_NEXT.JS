@@ -1,10 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { data } from "./SwiperData";
-import { kill } from "process";
 import "../section-5/style.css";
 import { useAppSelector } from "@/redux/hooks";
+import SectionSix from "../SectionSix";
 
 gsap.registerPlugin(ScrollTrigger);
 interface SectionSwiperGsapProps {
@@ -12,7 +11,7 @@ interface SectionSwiperGsapProps {
   imageSrc: string;
   title: string;
 }
-const SectionSwiperGsap = ({ id, imageSrc, title }) => {
+const SectionSwiperGsap = ({ id, imageSrc, title }: SectionSwiperGsapProps) => {
   const sectionRef = useRef<SectionSwiperGsapProps>(null);
   const scrollHeight = useAppSelector((state) => state.scrollStopper.navBottom);
   const scrollTopHeight = useAppSelector((state) => state.scrollStopper.sectionTop);
@@ -20,16 +19,22 @@ const SectionSwiperGsap = ({ id, imageSrc, title }) => {
   useEffect(() => {
     const section = sectionRef.current;
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: () => (scrollHeight < scrollTopHeight ? "top top" : "bottom bottom"),
-        pin: true,
-        pinSpacing: false,
+    gsap.fromTo(
+      section.querySelector(".parallax__item__img"),
+      { scale: 1.2 },
+      {
+        scale: 1,
+        duration: 1,
+        scrollTrigger: {
+          trigger: section,
+          start: () => (scrollHeight < scrollTopHeight ? "top top" : "bottom bottom"),
+          end: "+=100%", // 슬라이드가 끝날 때까지 스크롤
+          scrub: true,
+          pin: true,
+          pinSpacing: false,
+        },
       },
-    });
-
-    tl.fromTo(section.querySelector(".parallax__item__img"), { scale: 1.2 }, { scale: 1, duration: 1 });
+    );
   }, []);
 
   return (
