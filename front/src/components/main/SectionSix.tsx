@@ -1,9 +1,9 @@
 "use client";
 
 import useSectionTop from "@/hooks/useSectionTop";
-import { useAppSelector } from "@/redux/hooks";
-import { useEffect, useState } from "react";
 import Title from "./section-6/title";
+import Button from "./section-6/NoticeButton";
+import NoticeButton from "./section-6/NoticeButton";
 
 function SectionSix() {
   const sectionTopRef = useSectionTop();
@@ -28,24 +28,7 @@ function SectionSix() {
               디자인의 세계로 오신 것을 환영합니다. <br />
               <span className="font-bold">우리와 함께 이야기를 시작하세요.</span>
             </p>
-            <button
-              style={{
-                background: "#2AA86B",
-                margin: "0 auto",
-                opacity: "0.8",
-                padding: "16px 30px",
-                borderRadius: "2rem",
-                border: "none",
-                color: "white",
-                fontSize: "1.2rem",
-                zIndex: "-99",
-              }}
-            >
-              <a href="/" className="text-white">
-                {" "}
-                아키플 비즈니스 문의
-              </a>
-            </button>
+            <NoticeButton />
           </div>
         </div>
       </div>
