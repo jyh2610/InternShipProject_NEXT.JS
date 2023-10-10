@@ -7,6 +7,11 @@ const config: Config = {
       dummyImg: `url('https://img.freepik.com/free-photo/mid-century-modern-living-room-interior-design-with-monstera-tree_53876-129803.jpg?w=1380&t=st=1696905938~exp=1696906538~hmac=2b2dffc34ca4bb1ad83a4a8bb67880feccdc5fa4197fe0274311f524478257a6')`,
     },
     extend: {
+
+      z:{
+        back:"-99"
+
+      },
       colors: {
         font: {
           gray: "#A5A5A5",
