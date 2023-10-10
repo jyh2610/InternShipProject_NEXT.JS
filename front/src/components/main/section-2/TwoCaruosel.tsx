@@ -17,10 +17,10 @@ function TwoCarousel() {
   };
 
   return (
-    <div className=" flex justify-start w-screen h-[50rem] ">
-      <Swiper style={{ margin: "0" }} className=" w-10/12" navigation={true} loop={true} modules={[Navigation, A11y]} onSlideChange={handleSlideChange}>
+    <div className=" flex justify-start h-[50rem] ">
+      <Swiper style={{ margin: "0" }} className="" navigation={true} loop={true} modules={[Navigation, A11y]} onSlideChange={handleSlideChange}>
         {dummyData.map((_, idx) => (
-          <SwiperSlide className="aspect-w-16 aspect-h-9" key={idx}>
+          <SwiperSlide className="" key={idx}>
             <div className="bg-dummyImg w-full h-full bg-cover object-cover flex items-end">
               <SliderText />
             </div>

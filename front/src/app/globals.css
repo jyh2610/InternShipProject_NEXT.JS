@@ -57,6 +57,7 @@ p {
   display: none !important;
 }
 .swiper-button-next {
+  background: url("../../public/assets/arrow.png") no-repeat;
   width: 80px !important; /* 네비게이션 버튼의 너비를 조정할 수 있습니다. */
   height: 80px !important; /* 네비게이션 버튼의 높이를 조정할 수 있습니다. */
   border-radius: 70%;
