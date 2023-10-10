@@ -1,9 +1,10 @@
 "use client";
 
 import useSectionTop from "@/hooks/useSectionTop";
-import Title from "./section-6/title";
+import Title from "./section-6/Title";
 import Button from "./section-6/NoticeButton";
 import NoticeButton from "./section-6/NoticeButton";
+import Text from "./section-6/Text";
 
 function SectionSix() {
   const sectionTopRef = useSectionTop();
@@ -24,10 +25,7 @@ function SectionSix() {
           }}
         >
           <div className="absolute text-center left-[50%] top-[50%]" style={{ transform: "translate(-50%, -50%)" }}>
-            <p className="text-[#FFFFFF] text-3xl">
-              디자인의 세계로 오신 것을 환영합니다. <br />
-              <span className="font-bold">우리와 함께 이야기를 시작하세요.</span>
-            </p>
+            <Text />
             <NoticeButton />
           </div>
         </div>
