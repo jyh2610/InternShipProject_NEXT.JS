@@ -4,7 +4,7 @@ const member = require("../db/member");
 
 // member 조회
 const getMember = async(user_name) => {
-    const result = await member.pool.query(
+    return (await member.pool.query(
     `
     SELECT 
         *
@@ -14,8 +14,7 @@ const getMember = async(user_name) => {
         user_name = ?
     `,
     user_name
-    );
-    return result[0][0];
+    ))[0][0];
 };
 // member 등록
 const registerMember = async(user_name, login_type) => {
@@ -60,7 +59,7 @@ const deleteMember = async(user_no) => {
 
 // profile 조회
 const getProfile = async(user_no) => {
-    const result = await member.pool.query(
+    return (await member.pool.query(
     `
     SELECT
         *
@@ -69,8 +68,7 @@ const getProfile = async(user_no) => {
     WHERE
         user_no = ?
     `,
-    user_no);
-    return result[0][0];
+    user_no))[0][0];
 };
 // profile 생성
 const registerProfile = async(user_no, nickname, image_url=null, introduction=null) => {
@@ -120,7 +118,7 @@ const deleteProfile = async(user_no) => {
 
 // Authentication 조회
 const getAuthentication = async(user_no) => {
-    const result = await member.pool.query(
+    return (await member.pool.query(
     `
     SELECT
         *
@@ -129,8 +127,7 @@ const getAuthentication = async(user_no) => {
     WHERE
         user_no = ?
     `,
-    user_no);
-    return result[0][0];
+    user_no))[0][0];
 };
 // Authentication 등록
 const registerAuthentication = async(user_no, gether_agree, cell_phone, email, birthday, sex, nation) => {
@@ -189,8 +186,6 @@ const deleteAuthentication = async(user_no) => {
 
 
 module.exports = {
-    member,
-
     getMember,
     registerMember,
     updateMember,

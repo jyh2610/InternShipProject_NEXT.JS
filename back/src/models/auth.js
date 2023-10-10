@@ -4,7 +4,7 @@ const auth = require("../db/auth");
 
 // password 조회
 const getPassword = async(user_no) => {
-    result = await auth.pool.query(
+    return (await auth.pool.query(
     `
     SELECT
         *
@@ -14,8 +14,7 @@ const getPassword = async(user_no) => {
         user_no = ?
     `,
     user_no
-    );
-    return result[0][0];
+    ))[0][0];
 };
 // password 등록
 const registerPassword = async(user_no, salt, password) => {
@@ -63,7 +62,7 @@ const deletePassword = async(user_no) => {
 
 // Social Login 조회
 const getSocial_login = async(user_no) => {
-    result = await auth.pool.query(
+    return (await auth.pool.query(
     `
     SELECT
         *
@@ -73,12 +72,11 @@ const getSocial_login = async(user_no) => {
         user_no = ?
     `,
     user_no
-    );
-    return result[0][0];
+    ))[0][0];
 };
 // Socail Login 등록
 const registerSocial = async(user_no, salt, password) => {
-    retrun = await auth.pool.query(
+    return await auth.pool.query(
     `
     INSERT INTO social_login(
         user_no,
@@ -121,7 +119,7 @@ const deleteSocial_login = async(user_no) => {
 
 // cidi 조회
 const getCidi = async(user_no) => {
-    const result = await auth.pool.query(
+    return (await auth.pool.query(
     `
     SELECT
         *
@@ -131,12 +129,11 @@ const getCidi = async(user_no) => {
         user_no = ?
     `,
     user_no
-    );
-    return result[0][0];
+    ))[0][0];
 };
 // cidi 조회
 const registerCidi = async(user_no, ci, di) => {
-    retrun = await auth.pool.query(
+    return await auth.pool.query(
     `
     INSERT INTO cidi(
         user_no,

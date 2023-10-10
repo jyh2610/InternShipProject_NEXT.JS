@@ -32,5 +32,5 @@ const releaseConnection = async (conn) =>{
 module.exports = {
   pool,
   getConnection,
-  releaseConnection,
+  releaseConnection
 };
