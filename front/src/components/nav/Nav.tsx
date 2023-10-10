@@ -26,7 +26,7 @@ function Nav() {
         lineHeight: 0,
       }}
     >
-      <div className="Header-wrap w-full max-w-top h-20 flex items-center mx-auto px-5 justify-between">
+      <div className="Header-wrap w-full max-w-top h-20 flex items-center mx-auto px-5 justify-between aspect-video">
         <NavLeft />
         <NavRight />
       </div>
