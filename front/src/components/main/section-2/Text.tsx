@@ -17,9 +17,7 @@ function Text() {
     //     </Link>
     //   </div>
     // </div><>
-    <>
-      <LoginBtn />
-    </>
+    <>{/* <LoginBtn /> */}</>
   );
 }
 

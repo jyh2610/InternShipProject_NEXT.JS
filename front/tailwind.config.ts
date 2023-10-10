@@ -4,6 +4,11 @@ const config: Config = {
   content: ["./src/pages/**/*.{ts,tsx}", "./src/components/**/*.{ts,tsx}", "./src/app/**/*.{ts,tsx}"],
   theme: {
     extend: {
+
+      z:{
+        back:"-99"
+
+      },
       colors: {
         font: {
           gray: "#A5A5A5",

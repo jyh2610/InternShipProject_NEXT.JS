@@ -1,14 +1,9 @@
 "use client";
-import { useAppSelector } from "@/redux/hooks";
 import ParallaxText from "../ParallaxText";
 import useSectionTop from "@/hooks/useSectionTop";
-import SectionProvider from "./SectionProvider";
 
 function SectionFour() {
-  const scrollHeight = useAppSelector((state) => state.scrollStopper.navBottom);
-  const scrollTopHeight = useAppSelector((state) => state.scrollStopper.sectionTop);
   const sectionTopRef = useSectionTop();
-  const isContact = scrollTopHeight - scrollHeight > 0;
   return (
     <>
       <div ref={sectionTopRef} data-anchor="Page 2" className="text-7xl bg-[#fff] h-[50vh]" style={{ overflow: "hidden" }}>
