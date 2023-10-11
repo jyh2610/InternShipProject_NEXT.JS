@@ -1,3 +1,5 @@
+"use strict";
+
 function generateRandomCode() {
     let code = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
