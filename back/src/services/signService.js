@@ -8,6 +8,10 @@ const jwt = require("jsonwebtoken");
 // const axios = require("axios"); // 소셜로그인 구현시 필요
 const { detectError } = require("../utils/detectError");
 
+const sendEmail = require('../utils/sendEmail');
+const verifyCode = require('../utils/verifyCode');
+const {generateRandomCode} = require('../utils/generateRandomCode');
+
 //local SignUp
 const localSignUp = async (nickname, user_name, email, password, birthday, nation, sex) => {
   const pwValidation = new RegExp(
@@ -84,10 +88,26 @@ const localSignIn = async (user_name, password) => {
     expiresIn: "15m"
   });
 
-  const decode = jwt.verify(Token, process.env.JWT_SECRET);
-  console.log(decode);
-
   return Token;
+};
+
+const isDuplicateUsername = async (user_name) => {
+  if (await member.getMember(user_name))
+    return({message:"DUPLICATE_USER_NAME", success: false});
+  return {message:"POSSIBLE_USER_NAME", success: true};
+};
+
+
+const emailValidation = async(email) => {
+
+  const code = 'Your verification code is: 123456';
+
+  sendEmail(email, code).then(success => {
+    if (success)
+      return {success: true}
+    else 
+      return {success: false}
+  });
 };
 
 
@@ -95,4 +115,5 @@ const localSignIn = async (user_name, password) => {
 module.exports = {
   localSignUp,
   localSignIn,
+  isDuplicateUsername
 };
