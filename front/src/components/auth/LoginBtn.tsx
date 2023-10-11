@@ -2,7 +2,9 @@
 
 import { loginObj } from "@/constants/constants";
 import { signIn, signOut, useSession } from "next-auth/react";
-import "../../../public/assets/kakao.svg";
+import kakao from "../../../public/assets/kakao.svg";
+import naver from "../../../public/assets/naver.svg";
+import google from "../../../public/assets/google.svg";
 function LoginBtn() {
   const { data: session } = useSession();
   const jwt = require("jsonwebtoken");
@@ -10,10 +12,7 @@ function LoginBtn() {
   return (
     <>
       {loginObj.map((data) => (
-        <button className=" text-white font-bold h-screen py-2 px-4  rounded" key={data.social} type="button" onClick={() => signIn(data.social)}>
-          <img src={data.icon} alt="아이콘" />
-          {data.social}
-        </button>
+        <img key={data.name} onClick={() => signIn(data.social)} src={data.icon} alt={data.name} />
       ))}
     </>
   );
