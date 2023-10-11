@@ -2,11 +2,27 @@ import React from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, ConfigProvider, Form, Input } from "antd";
 import LoginBtn from "../auth/LoginBtn";
+import axios from "axios";
 
 const SigninForm = () => {
+  const login = (values: any) => {
+    axios
+      .post("http://192.168.0.18:3000/sign/signin", values)
+      .then((response) => {
+        // 로그인이 성공한 경우에 대한 처리
+        console.log("로그인 성공:", response.data);
+      })
+      .catch((error) => {
+        // 로그인이 실패한 경우에 대한 처리
+        console.error("로그인 실패:", error);
+      });
+  };
+
   const onFinish = (values: any) => {
+    login(values);
     console.log("Received values of form: ", values);
   };
+
   return (
     <div>
       <ConfigProvider
@@ -27,7 +43,7 @@ const SigninForm = () => {
           onFinish={onFinish}
         >
           <Form.Item
-            name="아이디 입력"
+            name="user_name"
             rules={[
               {
                 required: true,
@@ -38,7 +54,7 @@ const SigninForm = () => {
             <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="아이디 입력" />
           </Form.Item>
           <Form.Item
-            name="비밀번호 입력"
+            name="password"
             rules={[
               {
                 required: true,
