@@ -2,20 +2,35 @@ import { dummyData } from "@/constants/constants";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation } from "swiper/modules";
+import { SetStateAction } from "react";
 
-function TextSlider({ idx, prevRef, nextRef }: { idx: number; prevRef: any; nextRef: any }) {
+function TextSlider({ idx, setIdx, prevRef, nextRef }: { setIdx: (value: SetStateAction<number>) => void; idx: number; prevRef: any; nextRef: any }) {
+  const handleSlideChange = (swiper: { realIndex: SetStateAction<number> }) => {
+    setIdx(swiper.realIndex);
+    console.log(swiper);
+  };
   return (
     <Swiper
+      onSlideChange={handleSlideChange}
       navigation={{
         prevEl: prevRef?.current,
         nextEl: nextRef?.current,
       }}
       loop={true}
       modules={[Navigation]}
-      className="mySwiper w-1/5 bg-neutral-900"
+      className="mySwiper w-80"
     >
       {dummyData.map((_, index) => (
-        <SwiperSlide key={index}>Slide{index + 1}</SwiperSlide>
+        <SwiperSlide key={index}>
+          <div className="flex justify-center flex-col">
+            Slide{index + 1}
+            <span>슬라이더 이미지, 영상 관련 설명의 타이틀</span>
+            <span>
+              이미지 또는 영상 대한 텍스트, 이미지 또는 영상 대한 텍스트, 이미지 또는 영상 대한 텍스트,이미지 또는 영상 대한 텍스트, 이미지 또는 영상 대한
+              텍스트, 이미지 또는 영상 대한 텍스트,
+            </span>
+          </div>
+        </SwiperSlide>
       ))}
     </Swiper>
   );

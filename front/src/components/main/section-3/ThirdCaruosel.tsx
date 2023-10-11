@@ -3,41 +3,39 @@
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { dummyData, mainImg } from "@/constants/constants";
+import { dummyImg, dummyImgData, img, mainImg } from "@/constants/constants";
 import { Pagination, Navigation, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { SetStateAction } from "react";
 
 interface IdxProps {
   idx: number;
-  setIdx: (value: SetStateAction<number>) => void;
   prevRef: any;
   nextRef: any;
 }
 
-function ThirdCarousel({ idx, setIdx, prevRef, nextRef }: IdxProps) {
-  const handleSlideChange = (swiper: { realIndex: SetStateAction<number> }) => {
-    setIdx(swiper.realIndex);
+function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
+  const swiperObj = {
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 20,
+    navigation: { prevEl: prevRef?.current, nextEl: nextRef?.current },
+    modules: [Navigation],
   };
 
   return (
-    <Swiper
-      onSlideChange={handleSlideChange}
-      loop={true}
-      slidesPerView={2}
-      spaceBetween={0}
-      navigation={{
-        prevEl: prevRef?.current,
-        nextEl: nextRef?.current,
-      }}
-      modules={[Pagination, Navigation]}
-      className="mySwiper w-2/3"
-    >
-      {dummyData.map((_, sliderIdx) => (
-        <SwiperSlide className="w-[300px]" key={sliderIdx}>
-          {idx === sliderIdx ? <img className="w-[300px]" src={mainImg} alt="dummy" /> : <img className="w-[250px]" src={mainImg} alt="dummy" />}
-        </SwiperSlide>
-      ))}
+    <Swiper {...swiperObj} className="mySwiper w-[1200px] h-[400px]">
+      {dummyImgData.map((item, sliderIdx) => {
+        return idx === sliderIdx % 4 ? (
+          <SwiperSlide className="w-[300px]">
+            <img className="w-[300px] h-full" src={item} alt="dummy" />
+          </SwiperSlide>
+        ) : (
+          <SwiperSlide className="w-[200px]">
+            <img className="w-[200px] h-full" src={item} alt="dummy" />
+          </SwiperSlide>
+        );
+      })}
     </Swiper>
   );
 }
