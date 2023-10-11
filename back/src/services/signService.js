@@ -9,7 +9,6 @@ const jwt = require("jsonwebtoken");
 const { detectError } = require("../utils/detectError");
 
 const sendEmail = require('../utils/sendEmail');
-const verifyCode = require('../utils/verifyCode');
 const {generateRandomCode} = require('../utils/generateRandomCode');
 
 //local SignUp
@@ -109,6 +108,7 @@ const emailValidation = async(email) => {
     return success ? {success: true} : {success: false};
   });
 
+  console.log(code);
   //db에 email과 code, 유효시간, 발급시간 저장
 };
 

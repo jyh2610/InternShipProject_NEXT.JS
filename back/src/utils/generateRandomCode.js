@@ -1,4 +1,4 @@
-export function generateRandomCode() {
+function generateRandomCode() {
     let code = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -9,3 +9,5 @@ export function generateRandomCode() {
 
     return code;
 }
+
+module.exports = generateRandomCode;

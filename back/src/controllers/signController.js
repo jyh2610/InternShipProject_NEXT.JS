@@ -32,9 +32,14 @@ const hasId = catchAsync(async(req, res) => {
     return res.status(200).json(await signService.isDuplicateUsername(user_name));
 });
 
+const sendEmail = catchAsync(async(req, res) => {
+    return res.status(200).json(await emailValidation(req.body.email));
+});
+
 
 module.exports ={
     signUp,
     signIn,
-    hasId
+    hasId,
+    sendEmail
 };

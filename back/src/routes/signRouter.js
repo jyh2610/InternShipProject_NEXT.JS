@@ -8,6 +8,7 @@ const {validateToken} = require('../utils/validateToken');
 router.post('/signup', signController.signUp);
 router.post('/signin', signController.signIn);
 router.post('/hasid', signController.hasId);
+router.post('/sendEmail', signController.sendEmail);
 router.post('/validateToken', validateToken);
 
 module.exports = router;
