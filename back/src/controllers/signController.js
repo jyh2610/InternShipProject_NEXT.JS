@@ -25,7 +25,16 @@ const signIn = catchAsync(async(req, res) => {
     return res.status(200).json({accessToken: token, success: true});
 });
 
+const hasId = catchAsync(async(req, res) => {
+    const {user_name} = req.body;
+    if (!user_name) detectError("KEY_ERROR", 400);
+
+    return res.status(200).json(await signService.isDuplicateUsername(user_name));
+});
+
+
 module.exports ={
     signUp,
-    signIn
+    signIn,
+    hasId
 };

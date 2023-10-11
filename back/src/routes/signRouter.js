@@ -5,8 +5,9 @@ const router = express.Router();
 const signController = require('../controllers/signController');
 const {validateToken} = require('../utils/validateToken');
 
-router.post('/signUp', signController.signUp);
-router.post('/signIn', signController.signIn);
+router.post('/signup', signController.signUp);
+router.post('/signin', signController.signIn);
+router.post('/hasid', signController.hasId);
 router.post('/validateToken', validateToken);
 
 module.exports = router;

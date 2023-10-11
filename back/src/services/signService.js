@@ -84,10 +84,18 @@ const localSignIn = async (user_name, password) => {
     expiresIn: "15m"
   });
 
-  const decode = jwt.verify(Token, process.env.JWT_SECRET);
-  console.log(decode);
-
   return Token;
+};
+
+const isDuplicateUsername = async (user_name) => {
+  if (await member.getMember(user_name))
+    return({message:"DUPLICATE_USER_NAME", success: false});
+  return {message:"POSSIBLE_USER_NAME", success: true};
+};
+
+
+const emailValidation = async(email) => {
+
 };
 
 
@@ -95,4 +103,5 @@ const localSignIn = async (user_name, password) => {
 module.exports = {
   localSignUp,
   localSignIn,
+  isDuplicateUsername
 };
