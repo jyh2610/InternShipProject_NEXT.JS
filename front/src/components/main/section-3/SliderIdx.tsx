@@ -7,7 +7,7 @@ function SliderIdx({ idx }: { idx: number }) {
         idx === index ? (
           <div>
             <span className="font-bold">{index + 1}</span>
-            <div className="border-l border-black bg-black p-1"></div>
+            {index !== dummyData.length - 1 && <div className="border-l border-black bg-black p-1"></div>}
           </div>
         ) : (
           <div>
