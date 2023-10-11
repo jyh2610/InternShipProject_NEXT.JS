@@ -2,7 +2,7 @@ import { Button } from "antd";
 
 function BothSliderBtn({ prevRef, nextRef }: { prevRef: any; nextRef: any }) {
   return (
-    <div className="w-20">
+    <div>
       <Button ref={prevRef} type="text">
         이전
       </Button>
