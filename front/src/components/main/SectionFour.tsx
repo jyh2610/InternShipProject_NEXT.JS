@@ -6,7 +6,7 @@ function SectionFour() {
   const sectionTopRef = useSectionTop();
   return (
     <>
-      <div ref={sectionTopRef} data-anchor="Page 2" className="text-7xl bg-[#fff] h-[100vh]" style={{ overflow: "hidden" }}>
+      <div ref={sectionTopRef} style={{ overflow: "hidden", height:""}}>
         <TextAnimation />
       </div>
     </>
