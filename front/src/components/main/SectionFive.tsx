@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import "../../components/main/section-5/style.css";
-// Swiper 라이브러리의 필수 모듈을 추가
 function SectionFive() {
   return (
     <div className="relative">

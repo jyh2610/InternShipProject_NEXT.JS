@@ -19,6 +19,7 @@
 
 body {
   letter-spacing: -0.25px;
+  background-color: #fff !important;
 }
 
 ol,
@@ -70,9 +71,11 @@ p {
   font-weight: 500;
   color: #000; /* 아이콘 색상을 조정할 수 있습니다. */
 }
+.vertical-line {
+  width: 2px;
+  height: 18.5625rem;
+  background-color: #F0F0F0; 
+  margin-left: 27.875rem;
 
-/* 23.10.10 작성자 - 김택용 */
-body::-webkit-scrollbar {
-  width: 8px;  /* 스크롤바의 너비 */
-  display: none; /* 스크롤바 삭제 */
+
 }

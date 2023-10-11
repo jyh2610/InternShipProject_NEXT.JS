@@ -8,6 +8,7 @@ import Sectiontwo from "@/components/main/Sectiontwo";
 import FadeProvider from "@/components/FadeProvider";
 import SectionThree from "@/components/main/SectionThree";
 import { useEffect, useState } from "react";
+import VerticalLine from "@/components/main/verticalline/VerticalLine";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
@@ -33,6 +34,7 @@ export default function Home() {
       <Sectiontwo />
       <SectionThree />
       <SectionFour />
+      <VerticalLine />
       <SectionFive />
       <SectionSix />
     </FadeProvider>

@@ -13,13 +13,8 @@ function LoginBtn() {
   ) : (
     <>
       {loginObj.map((data) => (
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          key={data.social}
-          type="button"
-          onClick={() => signIn(data.social)}
-        >
-          {data.name}
+        <button className=" text-white font-bold py-2 px-4 rounded" key={data.social} type="button" onClick={() => signIn(data.social)}>
+          <img src={data.icon} alt="아이콘" />
         </button>
       ))}
     </>
