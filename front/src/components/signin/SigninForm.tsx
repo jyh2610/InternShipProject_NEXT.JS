@@ -1,22 +1,20 @@
 import React from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, ConfigProvider, Form, Input } from "antd";
+import { ConfigProvider, Form, Input } from "antd";
 import LoginBtn from "../auth/LoginBtn";
-import axios from "axios";
 import LoginButton from "./LoginButton";
 import FindButton from "./FindButton";
-import LoginInput from "./LoginInput";
+import { baseApi } from "@/API/api";
 
 const SigninForm = () => {
+  const api = new baseApi();
   const login = (values: any) => {
-    axios
-      .post("http://192.168.0.18:3000/sign/signin", values)
+    api
+      .post({ url: "/sign/signin", body: values })
       .then((response) => {
-        // 로그인이 성공한 경우에 대한 처리
-        console.log("로그인 성공:", response.data);
+        console.log("로그인 성공:", response);
       })
       .catch((error) => {
-        // 로그인이 실패한 경우에 대한 처리
         console.error("로그인 실패:", error);
       });
   };
@@ -74,7 +72,7 @@ const SigninForm = () => {
             <FindButton />
           </Form.Item>
           <Form.Item>
-            <p>SNS 계정으로 로그인</p>
+            <p className="text-[0.875rem]">SNS 계정으로 로그인</p>
             <LoginBtn />
           </Form.Item>
         </Form>
