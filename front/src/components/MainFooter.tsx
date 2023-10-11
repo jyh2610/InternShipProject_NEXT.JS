@@ -12,7 +12,7 @@ function MainFooter() {
         background: "#2C2C2C",
         color: "#fff",
         padding: "24px",
-        marginTop: "3rem",
+        marginTop: "6rem",
       }}
     >
       <div className="max-w-[1600px] w-full mx-auto px-8">
@@ -65,7 +65,7 @@ function MainFooter() {
           </div>
         </div>
       </div>
-      <div className="mx-auto text-center w-full max-w-[1600px]">
+      <div className="mx-auto text-center w-full max-w-[1600px] px-8">
         <hr className="border-gray-500 opacity-50" />
         <div className="py-5 text-sm">
           <p>Copyright © {new Date().getFullYear()} UABLE. All Right Reserve</p>
