@@ -55,10 +55,10 @@ const SigninForm = () => {
           </Form.Item>
           <Form.Item>
             <a className="login-form-forgot" href="">
-              아이디 찾기
+              아이디 찾기 |
             </a>
             <a className="login-form-forgot" href="">
-              비밀번호 찾기
+              비밀번호 찾기 |
             </a>
             <a href="">회원가입</a>
           </Form.Item>
