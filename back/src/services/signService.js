@@ -91,29 +91,41 @@ const localSignIn = async (user_name, password) => {
   return Token;
 };
 
+// 아이디 중복 체크
 const isDuplicateUsername = async (user_name) => {
   if (await member.getMember(user_name))
     return({message:"DUPLICATE_USER_NAME", success: false});
   return {message:"POSSIBLE_USER_NAME", success: true};
 };
 
-
+// 이메일로 코드 전송
 const emailValidation = async(email) => {
+  const emailValidation = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$");
+  if (!emailValidation.test(email)) detectError("EMAIL-ERROR", 400); // 이메일 형식에 안 맞으면 에러
 
-  const code = 'Your verification code is: 123456';
+  const code = generateRandomCode; // 6자리 랜덤 코드 생성
 
   sendEmail(email, code).then(success => {
-    if (success)
-      return {success: true}
-    else 
-      return {success: false}
+    return success ? {success: true} : {success: false};
   });
+
+  //db에 email과 code, 유효시간, 발급시간 저장
 };
+
+// 인증 코드 검사
+const verifyCode = async(code) => {
+  // db에서 해당 이메일로 조회
+  // 코드 비교
+  // 결과 반환
+};
+
 
 
 
 module.exports = {
   localSignUp,
   localSignIn,
-  isDuplicateUsername
+  isDuplicateUsername,
+  emailValidation,
+  verifyCode
 };
