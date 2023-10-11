@@ -15,21 +15,17 @@ interface IdxProps {
 }
 
 function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
-  return (
-    <Swiper
-      loop={true}
-      slidesPerView={3}
-      spaceBetween={20}
-      navigation={{
-        prevEl: prevRef?.current,
-        nextEl: nextRef?.current,
-      }}
-      modules={[Navigation]}
-      className="mySwiper w-[1200px] h-[400px]"
-    >
-      {dummyImgData.map((item, sliderIdx) => {
-        console.log(idx, sliderIdx);
+  const swiperObj = {
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 20,
+    navigation: { prevEl: prevRef?.current, nextEl: nextRef?.current },
+    modules: [Navigation],
+  };
 
+  return (
+    <Swiper {...swiperObj} className="mySwiper w-[1200px] h-[400px]">
+      {dummyImgData.map((item, sliderIdx) => {
         return idx === sliderIdx % 4 ? (
           <SwiperSlide className="w-[300px]">
             <img className="w-[300px] h-full" src={item} alt="dummy" />

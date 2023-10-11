@@ -18,7 +18,7 @@ function TextSlider({ idx, setIdx, prevRef, nextRef }: { setIdx: (value: SetStat
       }}
       loop={true}
       modules={[Navigation]}
-      className="mySwiper w-1/5 "
+      className="mySwiper w-80"
     >
       {dummyData.map((_, index) => (
         <SwiperSlide key={index}>

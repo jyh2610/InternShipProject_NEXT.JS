@@ -1,14 +1,14 @@
-import { Button } from "antd";
+import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
 
 function BothSliderBtn({ prevRef, nextRef }: { prevRef: any; nextRef: any }) {
   return (
-    <div>
-      <Button ref={prevRef} type="text">
-        이전
-      </Button>
-      <Button ref={nextRef} type="text">
-        다음
-      </Button>
+    <div className="flex justify-center gap-3">
+      <div ref={prevRef}>
+        <BsArrowLeft className="text-4xl  p-1 bg-bg-gray" />
+      </div>
+      <div ref={nextRef}>
+        <BsArrowRight className="text-4xl p-1  bg-bg-gray" />
+      </div>
     </div>
   );
 }
