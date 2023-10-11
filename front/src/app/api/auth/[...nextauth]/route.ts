@@ -20,12 +20,12 @@ const handler = NextAuth({
     async signIn({ account }) {
       console.log(account);
       const accessToken = account?.access_token;
-      console.log(accessToken);
+      // console.log(accessToken);
       // 여기서 accessToken을 가져올 수 있습니다.
       // if (account?.provider === "naver") {
       //   // NaverProvider를 사용하고 있으므로, account.accessToken을 사용할 수 있습니다.
       //   const accessToken = account.access_token;
-      //   console.log(accessToken);
+        console.log(accessToken, "엑세스 토큰입니다.");
       // }
       // if (account?.provider === "google") {
       //   // NaverProvider를 사용하고 있으므로, account.accessToken을 사용할 수 있습니다.

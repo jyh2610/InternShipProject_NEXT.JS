@@ -3,6 +3,9 @@ import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, ConfigProvider, Form, Input } from "antd";
 import LoginBtn from "../auth/LoginBtn";
 import axios from "axios";
+import LoginButton from "./LoginButton";
+import FindButton from "./FindButton";
+import LoginInput from "./LoginInput";
 
 const SigninForm = () => {
   const login = (values: any) => {
@@ -35,8 +38,8 @@ const SigninForm = () => {
       >
         <Form
           name="normal_login"
-          className="login-form"
-          style={{ width: "20%" }}
+          className="login-form text-center"
+          style={{ width: "23.3125rem" }}
           initialValues={{
             remember: true,
           }}
@@ -51,7 +54,7 @@ const SigninForm = () => {
               },
             ]}
           >
-            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="아이디 입력" />
+            <Input prefix={<UserOutlined className="site-form-item-icon h-[2.75rem]" />} placeholder="아이디 입력" disabled />
           </Form.Item>
           <Form.Item
             name="password"
@@ -62,21 +65,13 @@ const SigninForm = () => {
               },
             ]}
           >
-            <Input prefix={<LockOutlined className="site-form-item-icon" />} type="password" placeholder="비밀번호 입력" />
+            <Input prefix={<LockOutlined className="site-form-item-icon h-[2.75rem]" />} type="password" placeholder="비밀번호 입력" disabled />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button" block>
-              로그인
-            </Button>
+            <LoginButton />
           </Form.Item>
-          <Form.Item>
-            <a className="login-form-forgot" href="">
-              아이디 찾기 |
-            </a>
-            <a className="login-form-forgot" href="">
-              비밀번호 찾기 |
-            </a>
-            <a href="">회원가입</a>
+          <Form.Item className="text-center">
+            <FindButton />
           </Form.Item>
           <Form.Item>
             <p>SNS 계정으로 로그인</p>
