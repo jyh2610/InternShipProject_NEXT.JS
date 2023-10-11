@@ -36,6 +36,7 @@ export default function Home() {
       <SectionFour />
       <VerticalLine />
       <SectionFive />
+
       <SectionSix />
     </FadeProvider>
   );

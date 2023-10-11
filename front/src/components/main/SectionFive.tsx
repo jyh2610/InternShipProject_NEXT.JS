@@ -3,19 +3,25 @@ import React from "react";
 import "../../components/main/section-5/style.css";
 function SectionFive() {
   return (
-    <div className="relative">
-      <div className="absolute top-0 font-white text-3xl">
-        <div className="flex justify-around">
-          <p>01</p>
-          <p>아키플 첫번째영역</p>
+    <div className="flex">
+      <div className="relative w-1/4 h-40 bg-gray-200 overflow-hidden transition-all duration-300 group hover:w-[100vw]">
+        <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 group-hover:opacity-100">
+          <img src="https://user-images.githubusercontent.com/144188723/273080155-924670d8-ffc1-433e-9a39-80ba6c1edd47.jpg" alt="이미지" />{" "}
+          <p className="text-gray-700 font-semibold">호버 텍스트</p>
         </div>
-        <p>설명</p>
       </div>
-      <img
-        className="w-full mx-auto"
-        src="https://img.freepik.com/free-photo/empty-chair-in-restaurant_1339-5436.jpg?w=1380&t=st=1695710152~exp=1695710752~hmac=35aaec832880968cd682127a61258c48be0f6b22e944413c35a3150cacdaaeeb"
-        alt="이미지임시"
-      />
+      <div className="relative w-1/4 h-40 bg-gray-200 overflow-hidden transition-all duration-300 group hover:w-[100vw]">
+        <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 group-hover:opacity-100">
+          <img src="https://user-images.githubusercontent.com/144188723/273080155-924670d8-ffc1-433e-9a39-80ba6c1edd47.jpg" alt="이미지" />{" "}
+          <p className="text-gray-700 font-semibold">호버 텍스트</p>
+        </div>
+      </div>
+      <div className="relative w-1/4 h-40 bg-gray-200 overflow-hidden transition-all duration-300 group hover:w-[100vw]">
+        <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 group-hover:opacity-100">
+          <img src="https://user-images.githubusercontent.com/144188723/273080155-924670d8-ffc1-433e-9a39-80ba6c1edd47.jpg" alt="이미지" />{" "}
+          <p className="text-gray-700 font-semibold">호버 텍스트</p>
+        </div>
+      </div>
     </div>
   );
 }

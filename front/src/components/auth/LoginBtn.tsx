@@ -1,9 +1,8 @@
 "use client";
 
-import { signIn, signOut, useSession } from "next-auth/react";
-
 import { loginObj } from "@/constants/constants";
-
+import { signIn, signOut, useSession } from "next-auth/react";
+import "../../../public/assets/kakao.svg";
 function LoginBtn() {
   const { data: session } = useSession();
   const jwt = require("jsonwebtoken");
@@ -13,9 +12,7 @@ function LoginBtn() {
   ) : (
     <>
       {loginObj.map((data) => (
-        <button className=" text-white font-bold py-2 px-4 rounded" key={data.social} type="button" onClick={() => signIn(data.social)}>
-          <img src={data.icon} alt="아이콘" />
-        </button>
+        <img key={data.name} onClick={() => signIn(data.social)} src={`../../../public/assets/${data.social}.svg`} alt={data.name} />
       ))}
     </>
   );
