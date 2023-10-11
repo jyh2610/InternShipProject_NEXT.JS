@@ -10,7 +10,7 @@ export const dummyImg =
 export const img = "https://user-images.githubusercontent.com/144188723/273080155-924670d8-ffc1-433e-9a39-80ba6c1edd47.jpg";
 
 export const mainImg = "https://user-images.githubusercontent.com/144188723/273838726-22f220e9-7401-4673-b6b9-a6be8590095d.png";
-
+export const dummyData = [1, 2, 3, 4];
 export const data = [
   {
     id: 0,
