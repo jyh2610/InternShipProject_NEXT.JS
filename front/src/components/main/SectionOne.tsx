@@ -1,4 +1,3 @@
-import { useState } from "react";
 import BeforeScroll from "./section-1/BeforeScroll";
 
 const SectionOne = () => {

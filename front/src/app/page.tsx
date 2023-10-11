@@ -9,6 +9,7 @@ import FadeProvider from "@/components/FadeProvider";
 import SectionThree from "@/components/main/SectionThree";
 import { useEffect, useState } from "react";
 import VerticalLine from "@/components/main/verticalline/VerticalLine";
+import LoginBtn from "@/components/auth/LoginBtn";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);

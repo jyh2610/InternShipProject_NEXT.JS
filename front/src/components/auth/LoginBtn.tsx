@@ -8,13 +8,12 @@ function LoginBtn() {
   const { data: session } = useSession();
   const jwt = require("jsonwebtoken");
 
-  return session ? (
-    <button onClick={() => signOut()}>{session.user?.name}님 로그아웃</button>
-  ) : (
+  return (
     <>
       {loginObj.map((data) => (
-        <button className=" text-white font-bold py-2 px-4 rounded" key={data.social} type="button" onClick={() => signIn(data.social)}>
+        <button className=" text-white font-bold h-screen py-2 px-4  rounded" key={data.social} type="button" onClick={() => signIn(data.social)}>
           <img src={data.icon} alt="아이콘" />
+          {data.social}
         </button>
       ))}
     </>

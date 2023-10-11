@@ -1,38 +1,43 @@
+"use client";
+
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { dummyImg } from "@/constants/constants";
-import { Pagination, Navigation } from "swiper/modules";
+import { dummyData, mainImg } from "@/constants/constants";
+import { Pagination, Navigation, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Image from "next/image";
-import { EffectCoverflow } from "swiper/modules";
+import { SetStateAction } from "react";
 
-function ThirdCarousel() {
-  const dummyData = [1, 2, 3, 4];
+interface IdxProps {
+  idx: number;
+  setIdx: (value: SetStateAction<number>) => void;
+  prevRef: any;
+  nextRef: any;
+}
+
+function ThirdCarousel({ idx, setIdx, prevRef, nextRef }: IdxProps) {
+  const handleSlideChange = (swiper: { realIndex: SetStateAction<number> }) => {
+    setIdx(swiper.realIndex);
+  };
+
   return (
     <Swiper
-      effect={"coverflow"}
-      grabCursor={true}
-      centeredSlides={true}
-      slidesPerView={"auto"}
-      coverflowEffect={{
-        rotate: 20,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
+      onSlideChange={handleSlideChange}
+      loop={true}
+      slidesPerView={2}
+      spaceBetween={0}
+      navigation={{
+        prevEl: prevRef?.current,
+        nextEl: nextRef?.current,
       }}
-      pagination={true}
-      modules={[EffectCoverflow, Pagination]}
-      className="mySwiper"
+      modules={[Pagination, Navigation]}
+      className="mySwiper w-2/3"
     >
-      {dummyData.map((_, idx) => {
-        return (
-          <SwiperSlide key={idx}>
-            <Image src={dummyImg} alt={"dummy"} width={1200} height={500} />
-          </SwiperSlide>
-        );
-      })}
+      {dummyData.map((_, sliderIdx) => (
+        <SwiperSlide className="w-[300px]" key={sliderIdx}>
+          {idx === sliderIdx ? <img className="w-[300px]" src={mainImg} alt="dummy" /> : <img className="w-[250px]" src={mainImg} alt="dummy" />}
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 }
