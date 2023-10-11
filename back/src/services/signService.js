@@ -9,7 +9,7 @@ const jwt = require("jsonwebtoken");
 const { detectError } = require("../utils/detectError");
 
 const sendEmail = require('../utils/sendEmail');
-const {generateRandomCode} = require('../utils/generateRandomCode');
+const generateRandomCode = require('../utils/generateRandomCode');
 
 //local SignUp
 const localSignUp = async (nickname, user_name, email, password, birthday, nation, sex) => {
@@ -102,13 +102,11 @@ const emailValidation = async(email) => {
   const emailValidation = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$");
   if (!emailValidation.test(email)) detectError("EMAIL-ERROR", 400); // 이메일 형식에 안 맞으면 에러
 
-  const code = generateRandomCode; // 6자리 랜덤 코드 생성
+  const code = generateRandomCode(); // 6자리 랜덤 코드 생성
 
   sendEmail(email, code).then(success => {
     return success ? {success: true} : {success: false};
   });
-
-  console.log(code);
   //db에 email과 code, 유효시간, 발급시간 저장
 };
 

@@ -33,7 +33,7 @@ const hasId = catchAsync(async(req, res) => {
 });
 
 const sendEmail = catchAsync(async(req, res) => {
-    return res.status(200).json(await emailValidation(req.body.email));
+    return res.status(200).json(await signService.emailValidation(req.body.email));
 });
 
 

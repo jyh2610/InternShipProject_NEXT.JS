@@ -6,7 +6,6 @@ function generateRandomCode() {
         const randomIndex = Math.floor(Math.random() * characters.length);
         code += characters[randomIndex];
     }
-
     return code;
 }
 
