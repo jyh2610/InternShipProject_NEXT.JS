@@ -1,35 +1,38 @@
+"use client";
+
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { dummyImg } from "@/constants/constants";
-import { Pagination, Navigation } from "swiper/modules";
+import { dummyImg, dummyImgData, img, mainImg } from "@/constants/constants";
+import { Pagination, Navigation, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Image from "next/image";
-import { EffectCoverflow } from "swiper/modules";
+import { SetStateAction } from "react";
 
-function ThirdCarousel() {
-  const dummyData = [1, 2, 3, 4];
+interface IdxProps {
+  idx: number;
+  prevRef: any;
+  nextRef: any;
+}
+
+function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
+  const swiperObj = {
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 20,
+    navigation: { prevEl: prevRef?.current, nextEl: nextRef?.current },
+    modules: [Navigation],
+  };
+
   return (
-    <Swiper
-      effect={"coverflow"}
-      grabCursor={true}
-      centeredSlides={true}
-      slidesPerView={"auto"}
-      coverflowEffect={{
-        rotate: 20,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
-      }}
-      pagination={true}
-      modules={[EffectCoverflow, Pagination]}
-      className="mySwiper"
-    >
-      {dummyData.map((_, idx) => {
-        return (
-          <SwiperSlide key={idx}>
-            <Image src={dummyImg} alt={"dummy"} width={1200} height={500} />
+    <Swiper {...swiperObj} className="mySwiper w-[1200px] h-[400px]">
+      {dummyImgData.map((item, sliderIdx) => {
+        return idx === sliderIdx % 4 ? (
+          <SwiperSlide className="w-[300px]">
+            <img className="w-[300px] h-full" src={item} alt="dummy" />
+          </SwiperSlide>
+        ) : (
+          <SwiperSlide className="w-[200px]">
+            <img className="w-[200px] h-full" src={item} alt="dummy" />
           </SwiperSlide>
         );
       })}

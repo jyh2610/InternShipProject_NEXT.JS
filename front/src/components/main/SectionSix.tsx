@@ -10,19 +10,24 @@ function SectionSix() {
   return (
     <div className="mx-auto mainwidth max-w-top" ref={sectionTopRef}>
       <Title />
-      <div className="relative">
+      <div className="relative"
+      style={{height:"52.5rem"}}>
         <div
           style={{
             backgroundImage:
-              "url(https://img.freepik.com/free-photo/cafe-and-living-room-loft-style_1150-10726.jpg?w=1380&t=st=1695702593~exp=1695703193~hmac=4a3993d7475357eb141d203d44aaffc5695b8d6ea854a6e80d45b2d95bc2f598)",
+              "url(https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png)",
+            backgroundPosition: "center",
+            backgroundRepeat:"no-repeat",
             width: "100%",
-            height: "37.5rem",
+            height: "52.5rem",
             objectFit: "cover",
-            filter: "grayscale(50%)",
-            marginBottom: "10.1875rem",
           }}
         >
-          <div className="absolute text-center left-[50%] top-[50%]" style={{ transform: "translate(-50%, -50%)" }}>
+          <div className="absolute text-center left-[50%] top-[50%]" style={{ 
+            transform: "translate(-50%, -50%)",
+            width: "100%",
+            maxWidth: "1600px",
+            }}>
             <Text />
             <NoticeButton />
           </div>

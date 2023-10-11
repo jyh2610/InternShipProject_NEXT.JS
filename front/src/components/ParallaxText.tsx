@@ -9,7 +9,7 @@ interface ParallaxProps {
   baseVelocity: number;
 }
 
-function ParallaxText({ children, baseVelocity = 1 }: ParallaxProps) {
+function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -17,15 +17,15 @@ function ParallaxText({ children, baseVelocity = 1 }: ParallaxProps) {
     damping: 50,
     stiffness: 400,
   });
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 2], {
+  const velocityFactor = useTransform(smoothVelocity, [1, 1000], [1, 5], {
     clamp: false,
   });
 
-  const x = useTransform(baseX, (v) => `${wrap(-10, -30, v)}%`);
+  const x = useTransform(baseX, (v) => `${wrap(-20, -100, v)}%`);
 
   const directionFactor = useRef<number>(1);
   useAnimationFrame((t, delta) => {
-    let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
+    let moveBy = directionFactor.current * baseVelocity * (delta / 800);
     if (velocityFactor.get() < 0) {
       directionFactor.current = -1;
     } else if (velocityFactor.get() > 0) {
@@ -38,11 +38,8 @@ function ParallaxText({ children, baseVelocity = 1 }: ParallaxProps) {
   });
 
   return (
-    <div className="parallax tracking-tighter whitespace-nowrap font-extrabold bg-white leading-relaxed">
-      <motion.div className="scroller " style={{ x, color: "#fff" }}>
-        <span className="" style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)", color: "#fff" }}>
-          {children}
-        </span>
+    <div className="parallax tracking-tighter whitespace-nowrap font-bold bg-white" style={{lineHeight:"10rem", fontSize:"7rem"}}>
+      <motion.div className="scroller " style={{ x, color: "#fff",}}>
         <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)" }}>{children} </span>
         <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)" }}>{children} </span>
         <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)" }}>{children} </span>
@@ -52,3 +49,4 @@ function ParallaxText({ children, baseVelocity = 1 }: ParallaxProps) {
 }
 
 export default ParallaxText;
+

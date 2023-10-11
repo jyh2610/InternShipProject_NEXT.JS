@@ -1,26 +1,18 @@
 "use client";
 
-import { signIn, signOut, useSession } from "next-auth/react";
-
 import { loginObj } from "@/constants/constants";
-
+import { signIn, signOut, useSession } from "next-auth/react";
+import kakao from "../../../public/assets/kakao.svg";
+import naver from "../../../public/assets/naver.svg";
+import google from "../../../public/assets/google.svg";
 function LoginBtn() {
   const { data: session } = useSession();
   const jwt = require("jsonwebtoken");
 
-  return session ? (
-    <button onClick={() => signOut()}>{session.user?.name}님 로그아웃</button>
-  ) : (
+  return (
     <>
       {loginObj.map((data) => (
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          key={data.social}
-          type="button"
-          onClick={() => signIn(data.social)}
-        >
-          {data.name}
-        </button>
+        <img key={data.name} onClick={() => signIn(data.social)} src={data.icon} alt={data.name} />
       ))}
     </>
   );
