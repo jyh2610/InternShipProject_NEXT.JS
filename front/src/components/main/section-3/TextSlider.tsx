@@ -22,7 +22,7 @@ function TextSlider({ idx, setIdx, prevRef, nextRef }: { setIdx: (value: SetStat
     >
       {dummyData.map((_, index) => (
         <SwiperSlide key={index}>
-          <div className="flex justify-center flex-col">
+          <div className="flex justify-center flex-col pl-10">
             Slide{index + 1}
             <span>슬라이더 이미지, 영상 관련 설명의 타이틀</span>
             <span>

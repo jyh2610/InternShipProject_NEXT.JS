@@ -6,7 +6,7 @@ function SlideNextBtn({ nextRef }: { nextRef: MutableRefObject<HTMLDivElement | 
   const swiper = useSwiper();
   return (
     <div ref={nextRef} className="mr-10 h-full z-999 absolute top-10 left-0">
-      <BsFillArrowRightCircleFill className="text-7xl z-999 absolute top-10 left-0" onClick={() => swiper?.slideNext()} />
+      <BsFillArrowRightCircleFill className="text-7xl z-10 absolute top-10 left-0 backdrop-blur-[20px]" onClick={() => swiper?.slideNext()} />
     </div>
   );
 }
