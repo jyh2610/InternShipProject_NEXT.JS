@@ -25,7 +25,7 @@ const registerMember = async(user_name, login_type) => {
         login_type
     ) VALUES (
         ?,
-        1
+        ?
     )
     `,
     [user_name, login_type]

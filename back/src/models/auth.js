@@ -75,7 +75,7 @@ const getSocial_login = async(user_no) => {
     ))[0][0];
 };
 // Socail Login 등록
-const registerSocial = async(user_no, salt, password) => {
+const registerSocial_login = async(user_no, salt, password) => {
     return await auth.pool.query(
     `
     INSERT INTO social_login(
@@ -181,7 +181,7 @@ module.exports = {
     deletePassword,
 
     getSocial_login,
-    registerSocial,
+    registerSocial_login,
     updateSocial_login,
     deleteSocial_login,
 

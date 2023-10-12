@@ -47,7 +47,7 @@ const kakaoLogin = catchAsync(async (req, res) => {
 
     if (!kakaoToken) detectError("NOT_ACCESS_TOKEN", 401);
 
-    const kakao_accessToken = await userService.kakaoLogin(kakaoToken);
+    const kakao_accessToken = await signService.kakaoLogin(kakaoToken);
 
     return res.status(200).json({ accessToken: kakao_accessToken });
 });
@@ -58,7 +58,7 @@ const naverLogin = catchAsync(async (req, res) => {
 
     if (!naverToken) detectError("NOT_ACCESS_TOKEN", 401);
 
-    const naver_accessToken = await userService.naverLogin(naverToken);
+    const naver_accessToken = await signService.naverLogin(naverToken);
 
     return res.status(200).json({ accessToken: naver_accessToken });
 });
@@ -69,7 +69,7 @@ const googleLogin = catchAsync(async (req, res) => {
 
     if (!googleToken) detectError("NOT_ACCESS_TOKEN", 401);
 
-    const google_accessToken = await userService.googleLogin(googleToken);
+    const google_accessToken = await signService.googleLogin(googleToken);
 
     return res.status(200).json({ accessToken: google_accessToken });
 });

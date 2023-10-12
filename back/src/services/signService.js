@@ -6,7 +6,7 @@ const verification = require("../models/verification");
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-// const axios = require("axios"); // 소셜로그인 구현시 필요
+const axios = require("axios");
 const { detectError } = require("../utils/detectError");
 
 const sendEmail = require('../utils/sendEmail');
@@ -29,7 +29,7 @@ const localSignUp = async (nickname, user_name, email, password, birthday, natio
   const hashedEmail = await bcrypt.hash(email, salt);
   const hashedbirthday = await bcrypt.hash(birthday.toString(), salt);
 
-  await member.registerMember(user_name, 1);
+  await member.registerMember(user_name, 0);
 
   const user_no = (await member.getMember(user_name)).user_no;
 
@@ -109,10 +109,54 @@ const verifyCode = async(email, code) => {
 };
 
 // kakako
+const kakaoLogin = async (kakaoToken) => {
+  const result = await axios.get("https://kapi.kakao.com/v2/user/me", {
+    headers: {
+      Authorization: `Bearer ${kakaoToken}`,
+      "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+    },
+  });
 
-// naver
+  if (!result) detectError("KAKAO_TOKEN_ERROR", 400);
 
-// goolge
+
+  const { data } = result;
+  const social_login_id = data.id;
+  const nickname = data.properties.nickname;
+  const email = data.kakao_account.email;
+  const social_code = 2;// kakao는 2로 설정함
+  const sex = data.kakao_account.gender; //male, female, 두 개 아니면 etc
+
+  const social_user = await auth.getSocial_login(social_login_id);
+
+  if (!social_user) {
+    await member.registerMember(user_name, 1);
+
+    const user_no = (await member.getMember(user_name)).user_no;
+
+    await Promise.all([
+      auth.registerSocial_login(social_login_id, user_no, social_code, kakaoToken),
+      member.registerProfile(user_no, nickname),
+      member.registerAuthentication(user_no, 1, null, hashedEmail, hashedbirthday, null, sex), // 성별 구조체로 처리, 이메일이랑 생일 암호화 할지 말지 결정
+    ]);
+    await member.createUser(
+      socialId,
+      nickname,
+      email,
+      socialTypeId
+    );
+
+  //   return (accessToken = jwt.sign(
+  //     { userId: newUser.insertId },
+  //     process.env.JWT_SECRET
+  //   ));
+  }
+  return; //(accessToken = jwt.sign({ userId: userId }, process.env.JWT_SECRET));
+};
+
+// naver :3
+
+// goolge: 1
 
 
 
@@ -122,5 +166,8 @@ module.exports = {
   localSignIn,
   isDuplicateUsername,
   emailValidation,
-  verifyCode
+  verifyCode,
+
+  kakaoLogin
+
 };
