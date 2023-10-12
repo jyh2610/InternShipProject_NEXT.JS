@@ -14,14 +14,12 @@ const generateRandomCode = require('../utils/generateRandomCode');
 
 //local SignUp
 const localSignUp = async (nickname, user_name, email, password, birthday, nation, sex) => {
-  const pwValidation = new RegExp(
-    "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,20}$"
-    // 비밀번호는 최소 하나의 대문자, 숫자, 특수문자(@$!%*?&)를 포함하고, 길이는 8에서 20자
-  );
-  if (!pwValidation.test(password)) detectError("PASSWORD-ERROR", 400);
-
   const emailValidation = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$");
   if (!emailValidation.test(email)) detectError("EMAIL-ERROR", 400); // 이메일 형식에 안 맞으면 에러
+
+  // 비밀번호는 최소 하나의 대문자, 숫자, 특수문자(@$!%*?&)를 포함하고, 길이는 8에서 20자
+  const pwValidation = new RegExp("^(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,20}$");
+  if (!pwValidation.test(password)) detectError("PASSWORD-ERROR", 400);
 
   const ismember = await member.getMember(user_name);
     if (ismember) detectError("EXISITING_NAME", 400); //아이디 중복이면 에러
@@ -30,65 +28,45 @@ const localSignUp = async (nickname, user_name, email, password, birthday, natio
   const hashedPassword = await bcrypt.hash(password, salt);
   const hashedEmail = await bcrypt.hash(email, salt);
   const hashedbirthday = await bcrypt.hash(birthday.toString(), salt);
-  
 
-  // const memberConnection = await pool.getConnection(); // member 데이터베이스 연결 얻기
-  // const authConnection = await auth.getConnection(); // auth 데이터베이스 연결 얻기
-  
-  // try {
-  //   await memberConnection.beginTransaction();
-  //   await authConnection.beginTransaction();
+  await member.registerMember(user_name, 1);
 
-    await member.registerMember(user_name, 1);
+  const user_no = (await member.getMember(user_name)).user_no;
 
-    const user_no = (await member.getMember(user_name)).user_no;
+  await Promise.all([
+    auth.registerPassword(user_no, salt, hashedPassword),
+    member.registerProfile(user_no, nickname),
+    member.registerAuthentication(user_no, 1, null, hashedEmail, hashedbirthday, nation, sex),
+  ]);
 
-    await Promise.all([
-      auth.registerPassword(user_no, salt, hashedPassword),
-      member.registerProfile(user_no, nickname),
-      member.registerAuthentication(user_no, 1, null, hashedEmail, hashedbirthday, nation, sex),
-    ]);
-
-    // await memberConnection.commit();
-    // await authConnection.commit();
-
-    return { success: true };
-
-  // } catch (err) {
-  //   await memberConnection.rollback();
-  //   await authConnection.rollback();
-  //   throw err;
-  // } finally {
-  //   memberConnection.disconnect();
-  //   authConnection.disconnect();
-  // }
+  return {message: "User Created success", success: true };
 };
 
 //local SignIn
 const localSignIn = async (user_name, password) => {
   //유저 네임에 맞는 유저 넘버, 유저 넘버에 맞는 salt 가져오기
-  const user_no = (await member.getMember(user_name)).user_no; //user의 user_no 검색
-  if (!user_no)
+  const user = await member.getMember(user_name); //user의 user_no 검색
+  if (!user)
     detectError("NOT_EXISTING_MEMBER", 400);
 
+  const user_no = user.user_no;
   const auth_password = (await auth.getPassword(user_no)); // user_no에 해당하는 auth.password 테이블 조회
   const hashedPassword = auth_password.password; // 저장된 user의 password(hased)
 
   const usersalt = auth_password.salt; //user의 salt값
   const hasedInputPassword = await bcrypt.hash(password, usersalt); // 입력한 password 암호화
 
-  const compare = await bcrypt.compare(hasedInputPassword, hashedPassword); // 비교
-  if (compare)
-    // 입력한 것이 다르면 에러
+  if(hasedInputPassword !== hashedPassword)
     detectError("PASSWORD_DOSE_NOT_MATCH", 400);
+  else{
+    const payLoad = { user_no }; // jwt를 생성할 payload 지정
+    // console.log(payLoad)
+    const Token = jwt.sign(payLoad, process.env.JWT_SECRET, {
+      expiresIn: "15m"
+    });
 
-  const payLoad = { user_no }; // jwt를 생성할 payload 지정
-  console.log(payLoad)
-  const Token = jwt.sign(payLoad, process.env.JWT_SECRET, {
-    expiresIn: "15m"
-  });
-
-  return Token;
+  return {accessToken: Token, success: true};
+  }
 };
 
 // 아이디 중복 체크
@@ -126,8 +104,15 @@ const verifyCode = async(email, code) => {
   
   if ((row.email !== email)||(row.code !== code)) return {message: "INVALID_EMAIL_OR_CODE",success: false};
 
+  await verification.deleteVerifying(email);
   return {message: "VERIFIED",success: true};
 };
+
+// kakako
+
+// naver
+
+// goolge
 
 
 
