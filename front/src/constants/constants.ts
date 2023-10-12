@@ -1,7 +1,7 @@
 export const loginObj = [
-  {id:0, social: "kakao", name: "카카오", icon: "../../public/assets/kakao.svg" },
-  {id:1, social: "naver", name: "네이버", icon: "../../public/assets/naver.svg" },
-  {id:2, social: "google", name: "구글", icon: "../../public/assets/google.svg" },
+  {id:0, social: "kakao", name: "카카오", icon: "/assets/kakao.svg" },
+  {id:1, social: "naver", name: "네이버", icon: "/assets/naver.svg" },
+  {id:2, social: "google", name: "구글", icon: "/assets/google.svg" },
 ];
 
 export const dummyImg =

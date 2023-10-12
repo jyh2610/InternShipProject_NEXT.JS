@@ -5,6 +5,7 @@ import LoginBtn from "../auth/LoginBtn";
 import LoginButton from "./LoginButton";
 import FindButton from "./FindButton";
 import { baseApi } from "@/API/api";
+import SocialLoginButton from "./SocialLoginButton";
 
 const SigninForm = () => {
   const api = new baseApi();
@@ -72,8 +73,7 @@ const SigninForm = () => {
             <FindButton />
           </Form.Item>
           <Form.Item>
-            <p className="text-[0.875rem]">SNS 계정으로 로그인</p>
-            <LoginBtn />
+            <SocialLoginButton />
           </Form.Item>
         </Form>
       </ConfigProvider>
