@@ -1,14 +1,14 @@
-import React from "react";
+import { useRef, useState } from "react";
 import NavItem from "./Item";
+import { LogoWh } from "@/constants/navConst";
 
-function NavLeft() {
+function NavLeft({ scrollY }: { scrollY: number }) {
+  const [isScroll, setIsScroll] = useState(false);
+  const scrollRef = useRef(null);
   return (
-    <div className="flex items-center gap-16">
+    <div ref={scrollRef} className="flex items-center gap-16">
       <div className="w-52 h-10">
-        <img
-          className="w-full h-full object-container"
-          src="https://user-images.githubusercontent.com/144188723/272789232-cfcebc41-3f5a-41b3-8019-aa04f16fd16c.png"
-        />
+        <img className="w-full h-full object-container" src={LogoWh} />
       </div>
       <NavItem />
     </div>

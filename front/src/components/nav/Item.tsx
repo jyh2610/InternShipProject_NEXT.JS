@@ -2,15 +2,22 @@ import { Button } from "antd";
 import { MenuProps } from "antd";
 import NavDropDown from "./NavDropDown";
 
-export const font = {
-  color: "white",
-};
-function NavItem() {
+function NavItem({ scrollY }: { scrollY: number }) {
   const data: MenuProps = {
     items: [
-      { key: "1", label: <a>test 영역</a> },
+      {
+        key: "1",
+        label: (
+          <a>
+            <div>test 영역</div>
+          </a>
+        ),
+      },
       { key: "2", label: <a>test 영역</a> },
     ],
+  };
+  const font = {
+    color: "white",
   };
 
   return (

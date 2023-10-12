@@ -1,17 +1,29 @@
 import { Layout } from "antd";
 
-import useContact from "@/hooks/useContact";
 import NavLeft from "./NavLeft";
 import NavRight from "./NavRight";
+import { useEffect, useState } from "react";
 
 const { Header } = Layout;
 
 function Nav() {
-  const navBotRef = useContact();
+  const [scrollY, setScrollY] = useState(0);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    // 페이지가 로드될 때와 스크롤 이벤트가 발생할 때 스크롤 위치를 업데이트합니다.
+    window.addEventListener("scroll", handleScroll);
+
+    // 컴포넌트가 언마운트될 때 이벤트 리스너를 제거합니다.
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <Header
-      ref={navBotRef}
       style={{
         width: "100%",
         height: "80px",
@@ -26,8 +38,8 @@ function Nav() {
       }}
     >
       <div className="Header-wrap w-full max-w-top h-20 flex items-center mx-auto px-5 justify-between aspect-video">
-        <NavLeft />
-        <NavRight />
+        <NavLeft scrollY={scrollY} />
+        <NavRight scrollY={scrollY} />
       </div>
     </Header>
   );
