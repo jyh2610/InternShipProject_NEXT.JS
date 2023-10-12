@@ -11,7 +11,7 @@ function SectionThree() {
   const prevRef = useRef<HTMLButtonElement | null>(null);
   const nextRef = useRef<HTMLButtonElement | null>(null);
   return (
-    <section className="flex ">
+    <section className="flex justify-between">
       <div className="flex flex-col">
         <TextSlider idx={idx} setIdx={setIdx} prevRef={prevRef} nextRef={nextRef} />
         <BothSliderBtn prevRef={prevRef} nextRef={nextRef} />

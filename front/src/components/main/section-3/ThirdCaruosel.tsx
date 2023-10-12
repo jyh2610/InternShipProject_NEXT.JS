@@ -4,9 +4,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import { dummyImg, dummyImgData, img, mainImg } from "@/constants/constants";
-import { Pagination, Navigation, FreeMode } from "swiper/modules";
+import { Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { SetStateAction } from "react";
+import "./style.css";
+import { SwiperOptions } from "swiper/types";
+import { useState } from "react";
 
 interface IdxProps {
   idx: number;
@@ -15,7 +17,9 @@ interface IdxProps {
 }
 
 function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
-  const swiperObj = {
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
+  const swiperObj: SwiperOptions = {
     loop: true,
     slidesPerView: 3,
     spaceBetween: 20,
@@ -24,19 +28,43 @@ function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
   };
 
   return (
-    <Swiper {...swiperObj} className="mySwiper w-[1200px] h-[400px]">
-      {dummyImgData.map((item, sliderIdx) => {
-        return idx === sliderIdx % 4 ? (
-          <SwiperSlide className="w-[300px]">
-            <img className="w-[300px] h-full" src={item} alt="dummy" />
-          </SwiperSlide>
-        ) : (
-          <SwiperSlide className="w-[200px]">
-            <img className="w-[200px] h-full" src={item} alt="dummy" />
-          </SwiperSlide>
-        );
-      })}
-    </Swiper>
+    <>
+      <Swiper {...swiperObj} thumbs={{ swiper: thumbsSwiper }} className="mySwiper ">
+        {dummyImgData.map((item, sliderIdx) => {
+          return idx === sliderIdx % 4 ? (
+            <SwiperSlide>
+              <img className="h-full" src={item} alt="dummy" />
+            </SwiperSlide>
+          ) : (
+            <SwiperSlide>
+              <img className=" h-full" src={item} alt="dummy" />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+      {/* <Swiper
+        onSwiper={setThumbsSwiper}
+        loop={true}
+        spaceBetween={10}
+        slidesPerView={4}
+        freeMode={true}
+        watchSlidesProgress={true}
+        modules={[Navigation, Thumbs]}
+        className="mySwiper"
+      >
+        {dummyImgData.map((item, sliderIdx) => {
+          return idx === sliderIdx % 4 ? (
+            <SwiperSlide>
+              <img className=" h-full" src={item} alt="dummy" />
+            </SwiperSlide>
+          ) : (
+            <SwiperSlide>
+              <img className=" h-full" src={item} alt="dummy" />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper> */}
+    </>
   );
 }
 
