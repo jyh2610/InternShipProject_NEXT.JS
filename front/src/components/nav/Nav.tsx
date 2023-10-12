@@ -22,19 +22,20 @@ function Nav() {
     };
   }, []);
 
+  const isTop = scrollY === 0 ? "transparent" : "white";
+
   return (
     <Header
       style={{
         width: "100%",
         height: "80px",
         position: "fixed",
-        backgroundColor: "transparent",
+        backgroundColor: isTop,
         zIndex: "999",
         display: "flex",
         alignItems: "center",
         padding: 0,
         lineHeight: 0,
-        color: "white",
       }}
     >
       <div className="Header-wrap w-full max-w-top h-20 flex items-center mx-auto px-5 justify-between aspect-video">

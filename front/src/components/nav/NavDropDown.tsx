@@ -2,7 +2,6 @@ import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Dropdown, Space, Divider, theme } from "antd";
 import { useState } from "react";
-import { font } from "./Item";
 import React from "react";
 
 interface Props {
@@ -34,7 +33,13 @@ function NavDropDown({ title, items, scrollY }: Props) {
       menu={items}
       trigger={["click"]}
     >
-      <Button style={font} onClick={dropdownOpenHandler} type="text">
+      <Button
+        style={{
+          color: isTop,
+        }}
+        onClick={dropdownOpenHandler}
+        type="text"
+      >
         {title}
         {isopen ? <DownOutlined style={iconSize} /> : <UpOutlined style={iconSize} />}
       </Button>
