@@ -1,9 +1,8 @@
-"use client";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Dropdown, Space } from "antd";
 import { useState } from "react";
-import { font } from "./NavItem";
+import { font } from "./Item";
 
 interface Props {
   title: string;

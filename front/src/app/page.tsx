@@ -12,6 +12,7 @@ import VerticalLine from "@/components/main/verticalline/VerticalLine";
 import LoginBtn from "@/components/auth/LoginBtn";
 import WithNavFooter from "@/components/layout/WithNavFooter";
 import MobileSlice from "@/components/main/section-5/MobileSlice";
+import Line from "@/components/main/verticalline/Line";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
@@ -37,6 +38,7 @@ export default function Home() {
         <SectionOne />
         <Sectiontwo />
         <SectionThree />
+        <Line width={0.5} height={20} />
         <SectionFour />
         <VerticalLine />
         <SectionFive />

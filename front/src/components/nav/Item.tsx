@@ -1,4 +1,3 @@
-"use client";
 import { Button } from "antd";
 import { MenuProps } from "antd";
 import NavDropDown from "./NavDropDown";

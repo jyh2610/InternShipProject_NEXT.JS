@@ -1,3 +1,5 @@
+import StyledComponentsRegistry from "@/lib/AntdRegistry";
+
 import "./globals.css";
 import { Inter } from "next/font/google";
 import AuthSession from "@/components/auth/AuthSession";
@@ -15,7 +17,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html>
       <body className={inter.className}>
-        <AuthSession>{children}</AuthSession>
+        <StyledComponentsRegistry>
+          <AuthSession>{children}</AuthSession>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );

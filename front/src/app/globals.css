@@ -126,3 +126,9 @@ p {
     transform: translate3d(-100%, 0, 0);
   }
 }
+
+.text-stroke {
+  -webkit-text-stroke: 1px black; /* 웹킷 브라우저용 */
+  text-stroke: 1px black;
+  -webkit-text-fill-color: white; /* 텍스트 내용이 채워지지 않게 하려면 */
+}
