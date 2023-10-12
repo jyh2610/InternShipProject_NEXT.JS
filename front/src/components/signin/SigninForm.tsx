@@ -6,20 +6,21 @@ import FindButton from "./FindButton";
 import { baseApi } from "@/API/api";
 import SocialLoginButton from "./SocialLoginButton";
 import Logo from "../Logo";
+import { useRouter } from "next/navigation";
 
 const SigninForm = () => {
+  const router = useRouter();
   const api = new baseApi();
-  const login = (values: any) => {
-    api
-      .post({ url: "/sign/signin", body: values })
-      .then((response) => {
-        console.log("로그인 성공:", response);
-      })
-      .catch((error) => {
-        console.error("로그인 실패:", error);
-      });
-  };
 
+  const login = async (values: any) => {
+    try {
+      const res = await api.post({ url: "/sign/signin", body: values });
+      console.log("로그인 성공:", res);
+      res && router.push("/");
+    } catch (error) {
+      console.error("로그인 실패:", error);
+    }
+  };
   const onFinish = (values: any) => {
     login(values);
     console.log("Received values of form: ", values);
