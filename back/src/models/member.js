@@ -31,20 +31,8 @@ const registerMember = async(user_name, login_type) => {
     [user_name, login_type]
     );
 };
-// member 업데이트
-const updateMember = async(user_no, user_name, login_type) => {
-    return await member.pool.query(
-    `
-    UPDATE user
-    SET
-        user_name = ?,
-        login_type = ?
-    WHERE
-        user_no = ?
-    `,
-    [user_name, login_type, user_no]
-    );
-};
+// member 업데이트는 지원 안 함
+
 // member 삭제
 const deleteMember = async(user_no) => {
     return await member.pool.query(
@@ -188,7 +176,6 @@ const deleteAuthentication = async(user_no) => {
 module.exports = {
     getMember,
     registerMember,
-    updateMember,
     deleteMember,
 
     getProfile,

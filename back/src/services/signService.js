@@ -2,6 +2,7 @@
 
 const member = require("../models/member");
 const auth = require("../models/auth");
+const verification = require("../models/verification");
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -104,17 +105,28 @@ const emailValidation = async(email) => {
 
   const code = generateRandomCode(); // 6자리 랜덤 코드 생성
 
+  //db에 email과 code
+  //이미 db에 email이 있다면, 삭제후 다시 저장
+  //없다면 저장
+  if(await verification.getVerifying(email)) await verification.deleteVerifying(email);
+  await verification.generateVerifying(email, code);
+
   sendEmail(email, code).then(success => {
     return success ? {success: true} : {success: false};
   });
-  //db에 email과 code, 유효시간, 발급시간 저장
 };
 
 // 인증 코드 검사
-const verifyCode = async(code) => {
-  // db에서 해당 이메일로 조회
-  // 코드 비교
-  // 결과 반환
+const verifyCode = async(email, code) => {
+  const row = await verification.getVerifying(email);
+  if (!row) return {message: "CODE_NOT_SENT",success: false};
+
+  //인증 시간이 지났으면 실패
+  if (row.expired_at < new Date()) return {message: "VERIFYING_TIME_OUT", success: false};
+  
+  if ((row.email !== email)||(row.code !== code)) return {message: "INVALID_EMAIL_OR_CODE",success: false};
+
+  return {message: "VERIFIED",success: true};
 };
 
 

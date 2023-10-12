@@ -1,6 +1,9 @@
 "use strict";
 
 const nodemailer = require('nodemailer');
+const fs = require('fs');
+
+const htmlContent = fs.readFileSync(__dirname + '/emailVerifyForm.html', 'utf8');
 
 const sendEmail = async (to, code) => {
     const transporter = nodemailer.createTransport({
@@ -15,10 +18,7 @@ const sendEmail = async (to, code) => {
         from: process.env.SMTP_EMAIL,
         to,
         subject: "Archipe Email 인증코드입니다.",
-        html: `
-            <h1>Archiple 인증코드입니다.</h1>
-            <p><strong>${code}</strong></p>
-            `
+        html: htmlContent.replace('${code}', code)
     };
 
     try {

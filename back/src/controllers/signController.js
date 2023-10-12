@@ -36,10 +36,16 @@ const sendEmail = catchAsync(async(req, res) => {
     return res.status(200).json(await signService.emailValidation(req.body.email));
 });
 
+const verifyCode = catchAsync(async(req, res) => {
+    const {email, code} = req.body;
+    return res.status(200).json(await signService.verifyCode(email, code));
+});
+
 
 module.exports ={
     signUp,
     signIn,
     hasId,
-    sendEmail
+    sendEmail,
+    verifyCode
 };
