@@ -1,10 +1,10 @@
-import { img } from "@/constants/constants";
+import { img, mainImg } from "@/constants/constants";
 import React from "react";
 
 const PageImage = () => {
   return (
     <div>
-      <img className="w-maxwidth h-screen" src={img} alt="이미지임시" />
+      <img className="w-screen h-screen" src={mainImg} alt="이미지임시" />
     </div>
   );
 };

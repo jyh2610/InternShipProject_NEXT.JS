@@ -5,8 +5,8 @@ import SigninForm from "@/components/signin/SigninForm";
 import PageImage from "@/components/signin/PageImage";
 const SignIn = () => {
   return (
-    <div className="pt-[11rem] flex">
-      <div className=" mx-[11.5rem]">
+    <div className=" flex">
+      <div className=" mx-[11.5rem] my-auto">
         <SigninTitle />
         <SigninForm />
       </div>

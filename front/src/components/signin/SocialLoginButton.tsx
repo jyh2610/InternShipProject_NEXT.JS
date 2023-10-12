@@ -13,7 +13,7 @@ const SocialLoginButton = () => {
         <p className="text-[0.875rem]">SNS 계정으로 로그인</p>
         <p className="w-1/4 h-0.5 bg-gray-400 my-auto" />
       </div>
-      <div className="flex justify-around">
+      <div className="flex justify-evenly ">
         {loginObj.map((data) => (
           <img key={data.name} onClick={() => signIn(data.social)} src={data.icon} alt={data.name} />
         ))}
