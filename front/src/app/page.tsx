@@ -10,6 +10,7 @@ import SectionThree from "@/components/main/SectionThree";
 import { useEffect, useState } from "react";
 import VerticalLine from "@/components/main/verticalline/VerticalLine";
 import LoginBtn from "@/components/auth/LoginBtn";
+import WithNavFooter from "@/components/layout/WithNavFooter";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
@@ -31,13 +32,15 @@ export default function Home() {
 
   return (
     <FadeProvider>
-      <SectionOne />
-      <Sectiontwo />
-      <SectionThree />
-      <SectionFour />
-      <VerticalLine />
-      <SectionFive />
-      <SectionSix />
+      <WithNavFooter>
+        <SectionOne />
+        <Sectiontwo />
+        <SectionThree />
+        <SectionFour />
+        <VerticalLine />
+        <SectionFive />
+        <SectionSix />
+      </WithNavFooter>
     </FadeProvider>
   );
 }
