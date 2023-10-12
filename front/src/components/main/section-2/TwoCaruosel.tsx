@@ -21,7 +21,7 @@ function TwoCarousel() {
       <Swiper style={{ margin: "0" }} className=" w-10/12" navigation={true} loop={true} modules={[Navigation, A11y]} onSlideChange={handleSlideChange}>
         {dummyData.map((_, idx) => (
           <SwiperSlide className="aspect-w-16 aspect-h-9" key={idx}>
-            <div className="bg-dummyImg w-full h-full bg-cover object-cover flex items-end">
+            <div className="bg-dummyImg bg-no-repeat bg-cover h-full object-cover flex items-end aspect-w-16 aspect-h-9">
               <SliderText />
             </div>
           </SwiperSlide>
@@ -29,9 +29,9 @@ function TwoCarousel() {
       </Swiper>
 
       <div className="flex items-end ml-8 w-24">
-        <span className="text-4xl w-10 text-right">{imgIdx + 1} </span>
+        <span className="text-4xl font-bold w-10 text-right">{imgIdx + 1} </span>
         <span>/</span>
-        <span className="text-2xl  w-10"> {dummyData.length}</span>
+        <span className="text-2xl font-bold  w-10"> {dummyData.length}</span>
       </div>
     </div>
   );

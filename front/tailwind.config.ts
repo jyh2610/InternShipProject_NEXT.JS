@@ -40,6 +40,9 @@ const config: Config = {
       },
     },
   },
+  aspectRatio: {
+    video: "16 / 9",
+  },
   corePlugins: {
     aspectRatio: false,
   },

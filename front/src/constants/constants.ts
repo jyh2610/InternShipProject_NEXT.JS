@@ -1,7 +1,7 @@
 export const loginObj = [
-  {id:0, social: "kakao", name: "카카오", icon: "/assets/kakao.svg" },
-  {id:1, social: "naver", name: "네이버", icon: "/assets/naver.svg" },
-  {id:2, social: "google", name: "구글", icon: "/assets/google.svg" },
+  { id: 0, social: "kakao", name: "카카오", icon: "/assets/kakao.svg" },
+  { id: 1, social: "naver", name: "네이버", icon: "/assets/naver.svg" },
+  { id: 2, social: "google", name: "구글", icon: "/assets/google.svg" },
 ];
 
 export const dummyImg =
@@ -53,18 +53,15 @@ export const data = [
   },
 ];
 export const animationtext1 = [
-  {id:0, text: "공간은 이야기를 품고 있습니다. 우리는 그 이야기를 아름답게 만듭니다." },
-  {id:1, text: "공간은 이야기를 품고 있습니다. 우리는 그 이야기를 아름답게 만듭니다." },
-  {id:2, text: "공간은 이야기를 품고 있습니다. 우리는 그 이야기를 아름답게 만듭니다." },
-  {id:3, text: "공간은 이야기를 품고 있습니다. 우리는 그 이야기를 아름답게 만듭니다." },
- 
-]
+  { id: 0, text: "공간은 이야기를 품고 있습니다. 우리는 그 이야기를 아름답게 만듭니다." },
+  { id: 1, text: "공간은 이야기를 품고 있습니다. 우리는 그 이야기를 아름답게 만듭니다." },
+  { id: 2, text: "공간은 이야기를 품고 있습니다. 우리는 그 이야기를 아름답게 만듭니다." },
+  { id: 3, text: "공간은 이야기를 품고 있습니다. 우리는 그 이야기를 아름답게 만듭니다." },
+];
 
 export const animationtext2 = [
-  {id:0, text: "인테리어는 더 나은 삶을 위한 시작입니다. 우리와 함께 새로운 시작을 경험하세요." },
-  {id:1, text: "인테리어는 더 나은 삶을 위한 시작입니다. 우리와 함께 새로운 시작을 경험하세요." },
-  {id:2, text: "인테리어는 더 나은 삶을 위한 시작입니다. 우리와 함께 새로운 시작을 경험하세요." },
-  {id:3, text: "인테리어는 더 나은 삶을 위한 시작입니다. 우리와 함께 새로운 시작을 경험하세요." },
- 
-
-]
+  { id: 0, text: "인테리어는 더 나은 삶을 위한 시작입니다. 우리와 함께 새로운 시작을 경험하세요." },
+  { id: 1, text: "인테리어는 더 나은 삶을 위한 시작입니다. 우리와 함께 새로운 시작을 경험하세요." },
+  { id: 2, text: "인테리어는 더 나은 삶을 위한 시작입니다. 우리와 함께 새로운 시작을 경험하세요." },
+  { id: 3, text: "인테리어는 더 나은 삶을 위한 시작입니다. 우리와 함께 새로운 시작을 경험하세요." },
+];
