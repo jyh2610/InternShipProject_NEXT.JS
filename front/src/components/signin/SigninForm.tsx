@@ -1,10 +1,11 @@
 import React from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { ConfigProvider, Form, Input } from "antd";
-import LoginBtn from "../auth/LoginBtn";
 import LoginButton from "./LoginButton";
 import FindButton from "./FindButton";
 import { baseApi } from "@/API/api";
+import SocialLoginButton from "./SocialLoginButton";
+import Logo from "../Logo";
 
 const SigninForm = () => {
   const api = new baseApi();
@@ -48,22 +49,22 @@ const SigninForm = () => {
             rules={[
               {
                 required: true,
-                message: "아이디 입력",
+                message: "아이디를 입력해 주세요.",
               },
             ]}
           >
-            <Input prefix={<UserOutlined className="site-form-item-icon h-[2.75rem]" />} placeholder="아이디 입력" disabled />
+            <Input prefix={<UserOutlined className="site-form-item-icon h-[2.75rem]" />} placeholder="아이디 입력" />
           </Form.Item>
           <Form.Item
             name="password"
             rules={[
               {
                 required: true,
-                message: "비밀번호 입력",
+                message: "비밀번호를 입력해주세요 ",
               },
             ]}
           >
-            <Input prefix={<LockOutlined className="site-form-item-icon h-[2.75rem]" />} type="password" placeholder="비밀번호 입력" disabled />
+            <Input prefix={<LockOutlined className="site-form-item-icon h-[2.75rem]" />} type="password" placeholder="비밀번호 입력" />
           </Form.Item>
           <Form.Item>
             <LoginButton />
@@ -72,8 +73,7 @@ const SigninForm = () => {
             <FindButton />
           </Form.Item>
           <Form.Item>
-            <p className="text-[0.875rem]">SNS 계정으로 로그인</p>
-            <LoginBtn />
+            <SocialLoginButton />
           </Form.Item>
         </Form>
       </ConfigProvider>

@@ -2,9 +2,6 @@
 
 import { loginObj } from "@/constants/constants";
 import { signIn, signOut, useSession } from "next-auth/react";
-import kakao from "../../../public/assets/kakao.svg";
-import naver from "../../../public/assets/naver.svg";
-import google from "../../../public/assets/google.svg";
 function LoginBtn() {
   const { data: session } = useSession();
   const jwt = require("jsonwebtoken");
