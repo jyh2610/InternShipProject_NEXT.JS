@@ -31,8 +31,9 @@ function NavItem({ scrollY }: { scrollY: number }) {
         },
       ],
   };
+  const isTop = scrollY === 0 ? "white" : "black";
   const font = {
-    color: "white",
+    color: isTop,
   };
 
   return (
@@ -40,7 +41,7 @@ function NavItem({ scrollY }: { scrollY: number }) {
       <Button style={font} className="px-5 mr-1" type="text">
         홈
       </Button>
-      <NavDropDown title={"제품"} items={data} />
+      <NavDropDown title={"제품"} items={data} scrollY={scrollY} />
       <Button style={font} className="px-5 mr-1" type="text">
         솔루션
       </Button>
