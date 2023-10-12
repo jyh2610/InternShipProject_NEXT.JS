@@ -7,7 +7,7 @@ import PageImage from "@/components/signin/PageImage";
 const SignIn = () => {
   return (
     <div className="flex">
-      <div className="w-1/3">
+      <div className="w-1/3 flex flex-col justify-center items-center mx-auto">
         <SigninTitle />
         <SigninForm />
       </div>
