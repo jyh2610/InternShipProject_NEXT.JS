@@ -21,7 +21,7 @@ function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
 
   const swiperObj: SwiperOptions = {
     loop: true,
-    slidesPerView: 3,
+    slidesPerView: "auto",
     spaceBetween: 20,
     navigation: { prevEl: prevRef?.current, nextEl: nextRef?.current },
     modules: [Navigation],
@@ -30,19 +30,21 @@ function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
 
   return (
     <>
-      <Swiper {...swiperObj} thumbs={{ swiper: thumbsSwiper }} className="mySwiper ">
-        {dummyImgData.map((item, sliderIdx) => {
-          return idx === sliderIdx % 4 ? (
-            <SwiperSlide>
-              <img className="aspect-w-16 aspect-h-9 object-contain w-full h-full" src={item} alt="dummy" />
-            </SwiperSlide>
-          ) : (
-            <SwiperSlide>
-              <img className=" aspect-w-16 aspect-h-9 object-contain w-full h-full" src={item} alt="dummy" />
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+      <div className="w-[600px]">
+        <Swiper {...swiperObj} thumbs={{ swiper: thumbsSwiper }} className="mySwiper ">
+          {dummyImgData.map((item, sliderIdx) => {
+            return idx === sliderIdx % 4 ? (
+              <SwiperSlide style={{ width: "400px", height: "500px" }}>
+                <img className="w-[400px] h-[500px]" src={item} alt="dummy" />
+              </SwiperSlide>
+            ) : (
+              <SwiperSlide style={{ width: "100px", height: "500px" }}>
+                <img className="w-[100px] h-[500px]" src={item} alt="dummy" />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
     </>
   );
 }
