@@ -1,23 +1,25 @@
+"use client";
 import React from "react";
-
+import { useRouter } from "next/router";
+import Link from "next/link";
 const FindButton = () => {
   return (
     <div>
       <div className="flex justify-around">
         <div>
-          <a className="login-form-forgot text-[#000]" href="">
+          <Link href="/" className="login-form-forgot text-[#000]">
             아이디 찾기 |
-          </a>
+          </Link>
         </div>
         <div className="">
-          <a className="login-form-forgot text-[#000]" href="">
+          <Link href="/" className="login-form-forgot text-[#000]">
             비밀번호 찾기 |
-          </a>
+          </Link>
         </div>
         <div className="">
-          <a href="" className="text-[#000]">
+          <Link href="/signin" className="text-[#000]">
             회원가입
-          </a>
+          </Link>
         </div>
       </div>
     </div>
