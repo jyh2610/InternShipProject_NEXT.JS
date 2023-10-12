@@ -98,13 +98,6 @@ p {
   color: transparent;
   -webkit-text-stroke: 1px #4e4e4e;
 }
-/* .flow-text:hover {
-  color: #000;
-}
-.flow-text:hover .flow-wrap {
-  animation-play-state: paused;
-  cursor: pointer;
-} */
 
 .flow-wrap-left {
   animation: textloop 30s linear infinite;
@@ -131,4 +124,13 @@ p {
   -webkit-text-stroke: 1px black; /* 웹킷 브라우저용 */
   text-stroke: 1px black;
   -webkit-text-fill-color: white; /* 텍스트 내용이 채워지지 않게 하려면 */
+}
+
+.ant-dropdown-menu-item:hover {
+  background-color: transparent !important;
+  /* 기타 필요한 스타일 변경 */
+}
+
+.ant-dropdown-menu-item:hover .ant-dropdown-menu-title-content{
+  /* 텍스트 컬러 변경 */
 }

@@ -25,6 +25,7 @@ export class baseApi {
     this.axiosInstance.defaults.headers["Authorization"] = `Bearer ${token}`;
   }
 
+
   async get({ url = "/", options = {} }: IAxiosParams) {
     try {
       const data = await axiosInstance.get(url, {
@@ -39,6 +40,7 @@ export class baseApi {
 
   async post({ url = "/", options = {}, body = {} }: IAxiosParams) {
     try {
+
       const data = await axiosInstance.post(url, body, {
         ...options,
         headers: this.addHeaders(options.headers!),

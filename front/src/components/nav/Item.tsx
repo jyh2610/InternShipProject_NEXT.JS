@@ -5,16 +5,31 @@ import NavDropDown from "./NavDropDown";
 function NavItem({ scrollY }: { scrollY: number }) {
   const data: MenuProps = {
     items: [
-      {
-        key: "1",
-        label: (
-          <a>
-            <div>test 영역</div>
-          </a>
-        ),
-      },
-      { key: "2", label: <a>test 영역</a> },
-    ],
+        { 
+          style: {padding:"0.8rem 0", color: "#fff",},
+          key: "1",
+          label: <a style={{fontWeight:"700",fontSize: "1rem"}}>
+            디자인 & 랜더
+            <span className="block" style={{fontWeight:"400",fontSize: "0.875rem"}}>디자인 & 랜더 카테고리에 작성 될 간단한 텍스트영역</span>
+            </a>
+        },
+        { 
+          style: {padding:"0.8rem 0", color: "#fff",},
+          key: "2",
+          label: <a style={{fontWeight:"700",fontSize: "1rem"}}>
+            애니메이션
+            <span className="block" style={{fontWeight:"400",fontSize: "0.875rem"}}>애니메이션 카테고리에 작성 될 간단한 텍스트영역</span>
+            </a>
+        },
+        { 
+          style: {padding:"0.8rem 0", color: "#fff",},
+          key: "3",
+          label: <a style={{fontWeight:"700",fontSize: "1rem"}}>
+            브랜드갤러리
+            <span className="block" style={{fontWeight:"400",fontSize: "0.875rem"}}>브랜드갤러리 카테고리에 작성 될 간단한 텍스트영역</span>
+            </a>
+        },
+      ],
   };
   const font = {
     color: "white",
