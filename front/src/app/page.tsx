@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import VerticalLine from "@/components/main/verticalline/VerticalLine";
 import LoginBtn from "@/components/auth/LoginBtn";
 import WithNavFooter from "@/components/layout/WithNavFooter";
+import MobileSlice from "@/components/main/section-5/MobileSlice";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
@@ -39,6 +40,7 @@ export default function Home() {
         <SectionFour />
         <VerticalLine />
         <SectionFive />
+        {/* <MobileSlice /> */}
         <SectionSix />
       </WithNavFooter>
     </FadeProvider>
