@@ -18,6 +18,7 @@ function TextSlider({ idx, setIdx, prevRef, nextRef }: { setIdx: (value: SetStat
       }}
       loop={true}
       modules={[Navigation]}
+      allowTouchMove={false}
       className="mySwiper w-80"
     >
       {dummyData.map((_, index) => (

@@ -25,6 +25,7 @@ function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
     spaceBetween: 20,
     navigation: { prevEl: prevRef?.current, nextEl: nextRef?.current },
     modules: [Navigation],
+    allowTouchMove: false,
   };
 
   return (
@@ -33,37 +34,15 @@ function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
         {dummyImgData.map((item, sliderIdx) => {
           return idx === sliderIdx % 4 ? (
             <SwiperSlide>
-              <img className="h-full" src={item} alt="dummy" />
+              <img className="aspect-w-16 aspect-h-9 object-contain w-full h-full" src={item} alt="dummy" />
             </SwiperSlide>
           ) : (
             <SwiperSlide>
-              <img className=" h-full" src={item} alt="dummy" />
+              <img className=" aspect-w-16 aspect-h-9 object-contain w-full h-full" src={item} alt="dummy" />
             </SwiperSlide>
           );
         })}
       </Swiper>
-      {/* <Swiper
-        onSwiper={setThumbsSwiper}
-        loop={true}
-        spaceBetween={10}
-        slidesPerView={4}
-        freeMode={true}
-        watchSlidesProgress={true}
-        modules={[Navigation, Thumbs]}
-        className="mySwiper"
-      >
-        {dummyImgData.map((item, sliderIdx) => {
-          return idx === sliderIdx % 4 ? (
-            <SwiperSlide>
-              <img className=" h-full" src={item} alt="dummy" />
-            </SwiperSlide>
-          ) : (
-            <SwiperSlide>
-              <img className=" h-full" src={item} alt="dummy" />
-            </SwiperSlide>
-          );
-        })}
-      </Swiper> */}
     </>
   );
 }

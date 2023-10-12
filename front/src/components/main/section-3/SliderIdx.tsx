@@ -1,5 +1,4 @@
 import { dummyData } from "@/constants/constants";
-import Line from "../verticalline/Line";
 
 function SliderIdx({ idx }: { idx: number }) {
   return (
