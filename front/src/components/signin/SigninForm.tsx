@@ -49,22 +49,22 @@ const SigninForm = () => {
             rules={[
               {
                 required: true,
-                message: "아이디 입력",
+                message: "아이디를 입력해 주세요.",
               },
             ]}
           >
-            <Input prefix={<UserOutlined className="site-form-item-icon h-[2.75rem]" />} placeholder="아이디 입력" disabled />
+            <Input prefix={<UserOutlined className="site-form-item-icon h-[2.75rem]" />} placeholder="아이디 입력" />
           </Form.Item>
           <Form.Item
             name="password"
             rules={[
               {
                 required: true,
-                message: "비밀번호 입력",
+                message: "비밀번호를 입력해주세요 ",
               },
             ]}
           >
-            <Input prefix={<LockOutlined className="site-form-item-icon h-[2.75rem]" />} type="password" placeholder="비밀번호 입력" disabled />
+            <Input prefix={<LockOutlined className="site-form-item-icon h-[2.75rem]" />} type="password" placeholder="비밀번호 입력" />
           </Form.Item>
           <Form.Item>
             <LoginButton />
