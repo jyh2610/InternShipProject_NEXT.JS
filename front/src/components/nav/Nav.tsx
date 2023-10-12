@@ -1,5 +1,3 @@
-"use client";
-
 import { Layout } from "antd";
 
 import useContact from "@/hooks/useContact";

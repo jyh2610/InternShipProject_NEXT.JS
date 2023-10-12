@@ -1,6 +1,6 @@
 function BotText() {
   return (
-    <div className="flex justify-around mt-56 mb-20 h-full text-font-gray font-semibold leading-none">
+    <div className="flex justify-around mt-56 mb-20 h-full text-font-gray font-semibold max-w-top leading-none">
       <div className="text-5xl flex flex-col ">
         <span>아키플2.0은 </span>
         <span className="text-black">빠르고, 정확합니다.</span>

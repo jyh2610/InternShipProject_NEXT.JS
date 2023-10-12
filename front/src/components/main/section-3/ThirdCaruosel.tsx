@@ -34,12 +34,12 @@ function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
         <Swiper {...swiperObj} thumbs={{ swiper: thumbsSwiper }} className="mySwiper ">
           {dummyImgData.map((item, sliderIdx) => {
             return idx === sliderIdx % 4 ? (
-              <SwiperSlide className="aspect-w-16 aspect-h-9" style={{ width: "70%", height: "50vh" }}>
+              <SwiperSlide className="aspect-w-16 aspect-h-9" style={{ width: "70%" }}>
                 <img className="w-full h-[500px]" src={item} alt="dummy" />
               </SwiperSlide>
             ) : (
-              <SwiperSlide className="aspect-w-16 aspect-h-9" style={{ width: "25%", height: "50vh" }}>
-                <img className="w-full h-[500px]" src={item} alt="dummy" />
+              <SwiperSlide className="aspect-w-16 aspect-h-9" style={{ width: "25%" }}>
+                <img className="w-full h-[500px] " src={item} alt="dummy" />
               </SwiperSlide>
             );
           })}
