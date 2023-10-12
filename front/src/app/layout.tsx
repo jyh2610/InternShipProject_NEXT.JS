@@ -2,10 +2,6 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import AuthSession from "@/components/auth/AuthSession";
 import type { Metadata } from "next";
-import Nav from "@/components/nav/Nav";
-import MainFooter from "@/components/MainFooter";
-import { usePathname, useRouter } from "next/navigation";
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -19,11 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html>
       <body className={inter.className}>
-        <AuthSession>
-          <Nav />
-          {children}
-          <MainFooter />
-        </AuthSession>
+        <AuthSession>{children}</AuthSession>
       </body>
     </html>
   );
