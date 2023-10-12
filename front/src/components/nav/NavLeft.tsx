@@ -1,16 +1,15 @@
-import React from "react";
-import NavItem from "./NavItem";
+import { useRef, useState } from "react";
+import NavItem from "./Item";
+import { LogoWh, LogoGreen } from "@/constants/navConst";
 
-function NavLeft() {
+function NavLeft({ scrollY }: { scrollY: number }) {
+  const isTop = scrollY === 0 ? LogoWh : LogoGreen;
   return (
     <div className="flex items-center gap-16">
       <div className="w-52 h-10">
-        <img
-          className="w-full h-full object-container"
-          src="https://user-images.githubusercontent.com/144188723/272789232-cfcebc41-3f5a-41b3-8019-aa04f16fd16c.png"
-        />
+        <img className="w-full h-full object-container" src={isTop} />
       </div>
-      <NavItem />
+      <NavItem scrollY={scrollY} />
     </div>
   );
 }

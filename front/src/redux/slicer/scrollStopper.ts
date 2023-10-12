@@ -4,13 +4,13 @@ interface isNavState {
   navBottom: number;
   sectionTop: number;
   isContacting: boolean;
-  sectionBottom: number; 
+  sectionBottom: number;
 }
 
 const initialState: isNavState = {
   navBottom: 0,
   sectionTop: 0,
-  sectionBottom: 0, 
+  sectionBottom: 0,
   isContacting: false,
 };
 
@@ -24,7 +24,7 @@ const scrollBehaviorSlice = createSlice({
         state.navBottom = payload.nav;
       }
       if (payload.section !== undefined) {
-        state.sectionTop = payload.section
+        state.sectionTop = payload.section;
         state.sectionBottom = state.sectionTop + 844; // SECTION_HEIGHT는 섹션의 높이
       }
 

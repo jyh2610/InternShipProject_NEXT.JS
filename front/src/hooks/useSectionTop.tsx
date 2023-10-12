@@ -3,7 +3,7 @@ import { useAppDispatch } from "@/redux/hooks";
 import { sectionContact } from "@/redux/slicer/scrollStopper";
 
 function useSectionTop() {
-  const sectionOneRef = useRef<HTMLImageElement | null>(null);
+  const sectionOneRef = useRef<HTMLDivElement | null>(null);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

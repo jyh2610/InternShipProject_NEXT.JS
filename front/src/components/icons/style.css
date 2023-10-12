@@ -6,7 +6,7 @@
 
 .chevron {
   width: 18px;
-  height: 4px;
+  height: 2px;
   opacity: 0;
   transform: scale3d(0.3, 0.3, 0.3);
   animation: move 3s ease-out infinite;

@@ -27,19 +27,19 @@ function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
     modules: [Navigation],
     allowTouchMove: false,
   };
-
+  const dummyImgData = [img, img, img, img, img, img, img, img];
   return (
     <>
-      <div className="w-[600px]">
+      <div className="w-2/3">
         <Swiper {...swiperObj} thumbs={{ swiper: thumbsSwiper }} className="mySwiper ">
           {dummyImgData.map((item, sliderIdx) => {
             return idx === sliderIdx % 4 ? (
-              <SwiperSlide style={{ width: "400px", height: "500px" }}>
-                <img className="w-[400px] h-[500px]" src={item} alt="dummy" />
+              <SwiperSlide className="aspect-w-16 aspect-h-9" style={{ width: "70%" }}>
+                <img className="w-full h-[500px]" src={item} alt="dummy" />
               </SwiperSlide>
             ) : (
-              <SwiperSlide style={{ width: "100px", height: "500px" }}>
-                <img className="w-[100px] h-[500px]" src={item} alt="dummy" />
+              <SwiperSlide className="aspect-w-16 aspect-h-9" style={{ width: "25%" }}>
+                <img className="w-full h-[500px] " src={item} alt="dummy" />
               </SwiperSlide>
             );
           })}
