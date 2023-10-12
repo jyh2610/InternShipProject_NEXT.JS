@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { useRouter } from "next/router";
 import Link from "next/link";
 const FindButton = () => {
   return (
@@ -17,7 +16,7 @@ const FindButton = () => {
           </Link>
         </div>
         <div className="">
-          <Link href="/signin" className="text-[#000]">
+          <Link href="/signup" className="text-[#000]">
             회원가입
           </Link>
         </div>

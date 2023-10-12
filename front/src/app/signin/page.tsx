@@ -3,6 +3,7 @@ import React from "react";
 import SigninTitle from "@/components/signin/SigninTitle";
 import SigninForm from "@/components/signin/SigninForm";
 import PageImage from "@/components/signin/PageImage";
+import Logo from "@/components/Logo";
 const SignIn = () => {
   return (
     <div className=" flex">

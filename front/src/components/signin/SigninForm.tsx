@@ -1,11 +1,11 @@
 import React from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { ConfigProvider, Form, Input } from "antd";
-import LoginBtn from "../auth/LoginBtn";
 import LoginButton from "./LoginButton";
 import FindButton from "./FindButton";
 import { baseApi } from "@/API/api";
 import SocialLoginButton from "./SocialLoginButton";
+import Logo from "../Logo";
 
 const SigninForm = () => {
   const api = new baseApi();
