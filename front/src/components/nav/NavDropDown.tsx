@@ -29,10 +29,15 @@ function NavDropDown({ title, items, scrollY }: Props) {
   };
   const isTop = scrollY === 0 ? "white" : "black";
 
-  const whIcon =
-    "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaBbhSnF3DIHUK33VLtHUIfOkxtP7iDjUNzCnTSV1MH6bZA1kYsCRr5qWRqS_8P2xLq2046ktTjcH2TEHZEGopmFBV2YrA=w1920-h921";
+  const upIcon =
+    scrollY === 0
+      ? "검정아이콘"
+      : "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaBbhSnF3DIHUK33VLtHUIfOkxtP7iDjUNzCnTSV1MH6bZA1kYsCRr5qWRqS_8P2xLq2046ktTjcH2TEHZEGopmFBV2YrA=w1920-h921";
 
-  const blIcon = "블랙 아이콘 이미지 주소";
+  const downIcon =
+    scrollY === 0
+      ? "검정아이콘"
+      : "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaAs5Eu7GLVdB0exOs6AwG6ArsD-SpciakHKfC1fJRFFuonjZ8ZSn8300UzRKs2DWCyzouDLtfpIGnxeNE3orJLuW6pW=w1920-h889";
 
   return (
     <Dropdown dropdownRender={(menu) => <>{React.cloneElement(menu as React.ReactElement, { style: menuStyle })}</>} menu={items} trigger={["click"]}>
@@ -44,13 +49,7 @@ function NavDropDown({ title, items, scrollY }: Props) {
         type="text"
       >
         {title}
-        {isopen ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img alt="드롭다운 아이콘" className={`bg-${isTop}`} src={scrollY === 0 ? whIcon : blIcon} />
-        ) : (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img alt="드롭다운 아이콘" src={scrollY === 0 ? whIcon : blIcon} className={`bg-${isTop}`} />
-        )}
+        {isopen ? <img alt="icon" src={upIcon} /> : <img alt="icon" src={downIcon} />}
       </Button>
     </Dropdown>
   );
