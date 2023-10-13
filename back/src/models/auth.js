@@ -75,34 +75,37 @@ const getSocial_login = async(user_no) => {
     ))[0][0];
 };
 // Socail Login 등록
-const registerSocial_login = async(user_no, salt, password) => {
+const registerSocial_login = async(user_no, social_code, external_id, access_token) => {
     return await auth.pool.query(
     `
     INSERT INTO social_login(
-        user_no,
-        salt,
-        password
+        user_no
+        social_code,
+        external_id,
+        access_token
     ) VALUES (
+        ?,
         ?,
         ?,
         ?
     )
     `,
-    [user_no, salt, password]
+    [user_no, social_code, external_id, access_token]
     );
 };
 // Socail Login 업데이트
-const updateSocial_login = async(user_no, salt, password) => {
+const updateSocial_login = async(user_no, social_code, external_id, access_token) => {
     return await auth.pool.query(
     `
     UPDATE social_login
     SET
-        salt = ?,
-        password = ?
+        social_code = ?,
+        external_id = ?,
+        access_token = ?
     WHERE
         user_no = ?
     `,
-    [salt, password, user_no]
+    [social_code, external_id, access_token, user_no]
     );
 };
 // Socail Login 삭제

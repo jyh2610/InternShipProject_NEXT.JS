@@ -10,7 +10,7 @@ const axios = require("axios");
 const { detectError } = require("../utils/detectError");
 
 const sendEmail = require('../utils/sendEmail');
-const generateRandomCode = require('../utils/generateRandomCode');
+const generateRandomStr = require('../utils/generateRandomStr');
 
 //local SignUp
 const localSignUp = async (nickname, user_name, email, password, birthday, nation, sex) => {
@@ -20,6 +20,8 @@ const localSignUp = async (nickname, user_name, email, password, birthday, natio
   // 비밀번호는 최소 하나의 대문자, 숫자, 특수문자(@$!%*?&)를 포함하고, 길이는 8에서 20자
   const pwValidation = new RegExp("^(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,20}$");
   if (!pwValidation.test(password)) detectError("PASSWORD-ERROR", 400);
+
+  if (user_name.length > 20) detectError("USER_NAME_TOO_LONG_ERROR", 400); 
 
   const ismember = await member.getMember(user_name);
     if (ismember) detectError("EXISITING_NAME", 400); //아이디 중복이면 에러
@@ -81,7 +83,7 @@ const emailValidation = async(email) => {
   const emailValidation = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$");
   if (!emailValidation.test(email)) detectError("EMAIL-ERROR", 400); // 이메일 형식에 안 맞으면 에러
 
-  const code = generateRandomCode(); // 6자리 랜덤 코드 생성
+  const code = generateRandomStr("code", 6); // 6자리 랜덤 코드 생성
 
   //db에 email과 code
   //이미 db에 email이 있다면, 삭제후 다시 저장
@@ -119,46 +121,93 @@ const kakaoLogin = async (kakaoToken) => {
 
   if (!result) detectError("KAKAO_TOKEN_ERROR", 400);
 
-
   const { data } = result;
-  const social_login_id = data.id;
+  const external_id = data.id;
   const nickname = data.properties.nickname;
-  const email = data.kakao_account.email;
   const social_code = 2;// kakao는 2로 설정함
-  const sex = data.kakao_account.gender; //male, female, 두 개 아니면 etc
 
-  const social_user = await auth.getSocial_login(social_login_id);
+  const social_user = await member.getMember(external_id);
 
   if (!social_user) {
-    await member.registerMember(user_name, 1);
+    await member.registerMember(external_id, 1);
 
-    const user_no = (await member.getMember(user_name)).user_no;
+    const user_no = (await member.getMember(external_id)).user_no;
 
     await Promise.all([
-      auth.registerSocial_login(social_login_id, user_no, social_code, kakaoToken),
-      member.registerProfile(user_no, nickname),
-      member.registerAuthentication(user_no, 1, null, hashedEmail, hashedbirthday, null, sex), // 성별 구조체로 처리, 이메일이랑 생일 암호화 할지 말지 결정
+      auth.registerSocial_login(user_no, social_code, external_id, kakaoToken),
+      member.registerProfile(user_no, nickname)
     ]);
-    await member.createUser(
-      socialId,
-      nickname,
-      email,
-      socialTypeId
-    );
 
-  //   return (accessToken = jwt.sign(
-  //     { userId: newUser.insertId },
-  //     process.env.JWT_SECRET
-  //   ));
+    return jwt.sign({user_no}, process.env.JWT_SECRET);
   }
-  return; //(accessToken = jwt.sign({ userId: userId }, process.env.JWT_SECRET));
+  return jwt.sign({user_no: social_user.user_no}, process.env.JWT_SECRET);
 };
 
 // naver :3
+const naverLogin = async (naverToken) => {
+  const result = await axios.get("https://openapi.naver.com/v1/nid/me", {
+    headers: {
+      Authorization: `Bearer ${naverToken}`,
+      "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+    },
+  });
+
+  if (!result) detectError("NAVER_TOKEN_ERROR", 400);
+
+  const { data } = result;
+  const external_id = data.response.id;
+  const nickname = data.response.name;
+  const social_code = 3;// naver는 3으로 설정함
+
+  const social_user = await member.getMember(external_id);
+
+  if (!social_user) {
+    await member.registerMember(external_id, 1);
+
+    const user_no = (await member.getMember(external_id)).user_no;
+
+    await Promise.all([
+      auth.registerSocial_login(user_no, social_code, external_id, naverToken),
+      member.registerProfile(user_no, nickname)
+    ]);
+
+    return jwt.sign({user_no}, process.env.JWT_SECRET);
+  }
+  return jwt.sign({user_no: social_user.user_no}, process.env.JWT_SECRET);
+};
 
 // goolge: 1
+const goolgeLogin = async (goolgeToken) => {
+  const result = await axios.get("https://www.googleapis.com/userinfo/v2/me", {
+    headers: {
+      Authorization: `Bearer ${goolgeToken}`,
+      "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+    },
+  });
 
+  if (!result) detectError("GOOGLE_TOKEN_ERROR", 400);
 
+  const { data } = result;
+  const external_id = data.id;
+  const nickname = dataname;
+  const social_code = 1;// goolge는 1로 설정함
+
+  const social_user = await member.getMember(external_id);
+
+  if (!social_user) {
+    await member.registerMember(external_id, 1);
+
+    const user_no = (await member.getMember(external_id)).user_no;
+
+    await Promise.all([
+      auth.registerSocial_login(user_no, social_code, external_id, goolgeToken),
+      member.registerProfile(user_no, nickname)
+    ]);
+
+    return jwt.sign({user_no}, process.env.JWT_SECRET);
+  }
+  return jwt.sign({user_no: social_user.user_no}, process.env.JWT_SECRET);
+};
 
 
 module.exports = {
@@ -168,6 +217,7 @@ module.exports = {
   emailValidation,
   verifyCode,
 
-  kakaoLogin
-
+  kakaoLogin,
+  naverLogin,
+  goolgeLogin
 };
