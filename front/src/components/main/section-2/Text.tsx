@@ -1,6 +1,7 @@
 "use client";
-import LoginBtn from "@/components/auth/LoginBtn";
 import Link from "next/link";
+
+import LoginBtn from "@/components/auth/LoginBtn";
 
 function Text() {
   return (

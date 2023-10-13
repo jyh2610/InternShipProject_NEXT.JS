@@ -1,5 +1,6 @@
-import { img, mainImg } from "@/constants/constants";
 import React from "react";
+
+import { img, mainImg } from "@/constants/constants";
 
 const PageImage = () => {
   return (

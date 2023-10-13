@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 const BaseLayout = (props: { children: ReactNode }) => {
   return <div> {props.children}</div>;
 };

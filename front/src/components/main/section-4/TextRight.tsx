@@ -1,5 +1,6 @@
-import { animationtext2 } from "@/constants/constants";
 import React from "react";
+
+import { animationtext2 } from "@/constants/constants";
 const TextRight = () => {
   return (
     <div className="flow-text">

@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import scrollStopper from "./slicer/scrollStopper";
 import logger from "redux-logger";
+
+import scrollStopper from "./slicer/scrollStopper";
 
 export const store = configureStore({
   reducer: { scrollStopper },

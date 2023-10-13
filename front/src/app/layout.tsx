@@ -2,7 +2,9 @@ import StyledComponentsRegistry from "@/lib/AntdRegistry";
 
 import "./globals.css";
 import { Inter } from "next/font/google";
+
 import AuthSession from "@/components/auth/AuthSession";
+
 import type { Metadata } from "next";
 const inter = Inter({ subsets: ["latin"] });
 

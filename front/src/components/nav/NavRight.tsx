@@ -1,7 +1,11 @@
 import React from "react";
-import NavDropDown from "./NavDropDown";
-import { Button, MenuProps } from "antd";
+
+import { Button } from "antd";
 import { useRouter } from "next/navigation";
+
+import NavDropDown from "./NavDropDown";
+
+import type { MenuProps } from "antd";
 
 function NavRight({ scrollY }: { scrollY: number }) {
   const route = useRouter();

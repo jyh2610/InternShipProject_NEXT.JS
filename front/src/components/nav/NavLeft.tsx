@@ -1,6 +1,6 @@
-import { useRef, useState } from "react";
+import { LogoGreen, LogoWh } from "@/constants/navConst";
+
 import NavItem from "./Item";
-import { LogoWh, LogoGreen } from "@/constants/navConst";
 
 function NavLeft({ scrollY }: { scrollY: number }) {
   const isTop = scrollY === 0 ? LogoWh : LogoGreen;

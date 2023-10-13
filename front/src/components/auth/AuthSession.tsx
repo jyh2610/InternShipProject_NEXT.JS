@@ -1,9 +1,10 @@
 "use client";
+import { Layout } from "antd";
 import { SessionProvider } from "next-auth/react";
 import { Provider } from "react-redux";
-import { store } from "@/redux/store";
-import { Layout } from "antd";
 import { StyleRegistry } from "styled-jsx";
+
+import { store } from "@/redux/store";
 
 type Props = {
   children: React.ReactNode;

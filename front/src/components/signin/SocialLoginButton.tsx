@@ -1,8 +1,10 @@
 "use client";
 
 import React from "react";
-import { loginObj } from "@/constants/constants";
+
 import { signIn, signOut, useSession } from "next-auth/react";
+
+import { loginObj } from "@/constants/constants";
 const SocialLoginButton = () => {
   const { data: session } = useSession();
   const jwt = require("jsonwebtoken");

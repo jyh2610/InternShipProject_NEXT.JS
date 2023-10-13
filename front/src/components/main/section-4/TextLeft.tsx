@@ -1,5 +1,6 @@
-import { animationtext1 } from "@/constants/constants";
 import React from "react";
+
+import { animationtext1 } from "@/constants/constants";
 
 const TextLeft = () => {
   return (

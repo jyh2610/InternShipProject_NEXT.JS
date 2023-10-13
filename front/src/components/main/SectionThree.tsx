@@ -1,10 +1,11 @@
 "use client";
 
 import { MutableRefObject, useRef, useState } from "react";
-import ThirdCarusel from "./section-3/ThirdCaruosel";
-import TextSlider from "./section-3/TextSlider";
+
 import BothSliderBtn from "./section-3/BothSliderBtn";
 import SliderIdx from "./section-3/SliderIdx";
+import TextSlider from "./section-3/TextSlider";
+import ThirdCarusel from "./section-3/ThirdCaruosel";
 
 function SectionThree() {
   const [idx, setIdx] = useState(0);

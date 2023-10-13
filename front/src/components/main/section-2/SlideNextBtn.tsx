@@ -1,6 +1,7 @@
-import { MutableRefObject } from "react";
-import { useSwiper } from "swiper/react";
+import type { MutableRefObject } from "react";
+
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
+import { useSwiper } from "swiper/react";
 
 function SlideNextBtn({ nextRef }: { nextRef: MutableRefObject<HTMLDivElement | null> }) {
   const swiper = useSwiper();

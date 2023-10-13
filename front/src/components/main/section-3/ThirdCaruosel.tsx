@@ -3,11 +3,14 @@
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { dummyImg, dummyImgData, img, mainImg } from "@/constants/constants";
 import { Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+
+import { dummyImg, dummyImgData, img, mainImg } from "@/constants/constants";
+
 import "./style.css";
-import { SwiperOptions } from "swiper/types";
+import type { SwiperOptions } from "swiper/types";
+
 import { useState } from "react";
 
 interface IdxProps {

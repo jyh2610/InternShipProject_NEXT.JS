@@ -1,8 +1,9 @@
-import { DownOutlined, UpOutlined } from "@ant-design/icons";
-import type { MenuProps } from "antd";
-import { Button, Dropdown, Space, Divider, theme } from "antd";
 import { useState } from "react";
 import React from "react";
+
+import { Button, Dropdown } from "antd";
+
+import type { MenuProps } from "antd";
 
 interface Props {
   title: string;
@@ -15,9 +16,11 @@ function NavDropDown({ title, items, scrollY }: Props) {
   const dropdownOpenHandler = () => {
     setIsOpen((prev) => !prev);
   };
+
   const iconSize = {
     fontSize: "14px",
   };
+
   const menuStyle: React.CSSProperties = {
     boxShadow: "none",
     backgroundColor: "rgba(42, 168, 107, 0.25)",
