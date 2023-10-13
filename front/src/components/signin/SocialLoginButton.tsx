@@ -5,7 +5,6 @@ import React from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import { loginObj } from "@/constants/constants";
-import Image from "next/image";
 
 const SocialLoginButton = () => {
   const { data: session } = useSession();
@@ -21,7 +20,7 @@ const SocialLoginButton = () => {
         {session ? ( // 세션이 있는 경우 로그아웃 버튼을 렌더링
           <button onClick={() => signOut()}>로그아웃</button>
         ) : (
-          loginObj.map((data) => <Image key={data.name} onClick={() => signIn(data.social)} src={data.icon} alt={data.name} />)
+          loginObj.map((data) => <img key={data.name} onClick={() => signIn(data.social)} src={data.icon} alt={data.name} />)
         )}
       </div>
     </>
