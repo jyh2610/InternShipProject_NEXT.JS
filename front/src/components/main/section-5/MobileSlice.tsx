@@ -2,7 +2,6 @@
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { A11y, Navigation } from "swiper/modules";
 import { SetStateAction, useState } from "react";
-import SliderText from "./SliderText";
 
 import "swiper/css";
 import "swiper/css/pagination";

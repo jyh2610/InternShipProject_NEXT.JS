@@ -14,9 +14,11 @@ const SocialLoginButton = () => {
         <p className="w-1/4 h-0.5 bg-gray-400 my-auto" />
       </div>
       <div className="flex justify-evenly ">
-        {loginObj.map((data) => (
-          <img key={data.name} onClick={() => signIn(data.social)} src={data.icon} alt={data.name} />
-        ))}
+        {session ? ( // 세션이 있는 경우 로그아웃 버튼을 렌더링
+          <button onClick={() => signOut()}>로그아웃</button>
+        ) : (
+          loginObj.map((data) => <img key={data.name} onClick={() => signIn(data.social)} src={data.icon} alt={data.name} />)
+        )}
       </div>
     </>
   );
