@@ -1,6 +1,7 @@
 "use client";
+
 import type { SetStateAction } from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { A11y, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,7 +10,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { data } from "@/constants/constants";
-data;
+
 const MobileSlice = () => {
   const [imgIdx, setImgIdx] = useState(0);
 
@@ -21,8 +22,8 @@ const MobileSlice = () => {
       {" "}
       <div className=" flex justify-start h-[50rem] ">
         <Swiper style={{ margin: "0" }} className=" w-10/12" navigation={true} loop={true} modules={[Navigation, A11y]} onSlideChange={handleSlideChange}>
-          {data.map((item, idx) => (
-            <SwiperSlide className="aspect-w-16 aspect-h-9" key={idx}>
+          {data.map((item) => (
+            <SwiperSlide className="aspect-w-16 aspect-h-9" key={imgIdx}>
               <img src={item.img} alt="이미지" />
               <div className="text-[#fff]">
                 <p className=" absolute top-[5rem] ml-[10.25rem] text-[4rem] font-bold">0{item.id + 1}</p>

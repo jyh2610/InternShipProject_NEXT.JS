@@ -3,24 +3,17 @@ import React from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { ConfigProvider, Form, Input } from "antd";
 import { useRouter } from "next/navigation";
+
 import { baseApi } from "@/API/api";
+
 import FindButton from "./FindButton";
 import LoginButton from "./LoginButton";
 import SocialLoginButton from "./SocialLoginButton";
+import { login } from "@/API/login";
 
 const SigninForm = () => {
   const router = useRouter();
-  const api = new baseApi();
 
-  const login = async (values: any) => {
-    try {
-      const res = await api.post({ url: "/sign/signin", body: values });
-      console.log("로그인 성공:", res);
-      res && router.push("/");
-    } catch (error) {
-      console.error("로그인 실패:", error);
-    }
-  };
   const onFinish = (values: any) => {
     login(values);
     console.log("Received values of form: ", values);

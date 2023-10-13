@@ -1,5 +1,3 @@
-"use client";
-
 import FadeProvider from "@/components/FadeProvider";
 import WithNavFooter from "@/components/layout/WithNavFooter";
 import SectionFive from "@/components/main/SectionFive";

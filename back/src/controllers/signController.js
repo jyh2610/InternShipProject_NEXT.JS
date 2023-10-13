@@ -6,10 +6,10 @@ const {catchAsync, detectError} = require("../utils/detectError");
 
 // local signUP
 const signUp =  catchAsync(async(req, res) => {
-    const {nickname, user_name, email, password, birthday, nation, sex} = req.body;
-    if(!user_name || !email || !password) detectError("KEY_ERROR", 400);
+    const {nickname, name, user_name, email, password, birthday, nation, sex} = req.body;
+    if(!name || !user_name || !email || !password) detectError("KEY_ERROR", 400);
 
-    const result = signService.localSignUp(nickname, user_name, email, password, birthday, nation, sex);
+    const result = await signService.localSignUp(nickname, name, user_name, email, password, birthday, nation, sex);
 
     return res.status(201).json(result);
 });
@@ -32,6 +32,13 @@ const hasId = catchAsync(async(req, res) => {
     return res.status(200).json(await signService.isDuplicateUsername(user_name));
 });
 
+const hasNickname = catchAsync(async(req, res) => {
+    const {nickname} = req.body;
+    if (!nickname) detectError("KEY_ERROR", 400);
+
+    return res.status(200).json(await signService.isDuplicateNickname(nickname));
+});
+
 const sendEmail = catchAsync(async(req, res) => {
     return res.status(200).json(await signService.emailValidation(req.body.email));
 });
@@ -47,7 +54,7 @@ const kakaoLogin = catchAsync(async (req, res) => {
 
     if (!kakaoToken) detectError("NOT_ACCESS_TOKEN", 401);
 
-    const kakao_accessToken = await signService.kakaoLogin(kakaoToken);
+    const kakao_accessToken = await signService.kakaoLogin(kakaoToken.split(' ')[1]);
 
     return res.status(200).json({ accessToken: kakao_accessToken });
 });
@@ -57,8 +64,8 @@ const naverLogin = catchAsync(async (req, res) => {
     const naverToken = req.headers.authorization;
 
     if (!naverToken) detectError("NOT_ACCESS_TOKEN", 401);
-
-    const naver_accessToken = await signService.naverLogin(naverToken);
+    
+    const naver_accessToken = await signService.naverLogin(naverToken.split(' ')[1]);
 
     return res.status(200).json({ accessToken: naver_accessToken });
 });
@@ -69,7 +76,7 @@ const googleLogin = catchAsync(async (req, res) => {
 
     if (!googleToken) detectError("NOT_ACCESS_TOKEN", 401);
 
-    const google_accessToken = await signService.googleLogin(googleToken);
+    const google_accessToken = await signService.googleLogin(googleToken.split(' ')[1]);
 
     return res.status(200).json({ accessToken: google_accessToken });
 });
@@ -79,6 +86,8 @@ module.exports ={
     signUp,
     signIn,
     hasId,
+    hasNickname,
+
     sendEmail,
     verifyCode,
 

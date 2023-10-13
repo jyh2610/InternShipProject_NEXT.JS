@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+"use client";
+
+import { memo, useEffect, useState } from "react";
 
 import { Layout } from "antd";
 
@@ -47,4 +49,4 @@ function Nav() {
   );
 }
 
-export default Nav;
+export default memo(Nav);

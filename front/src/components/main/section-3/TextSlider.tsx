@@ -10,15 +10,11 @@ import "swiper/css";
 function TextSlider({ setIdx, prevRef, nextRef }: { setIdx: (value: SetStateAction<number>) => void; idx: number; prevRef: any; nextRef: any }) {
   const handleSlideChange = (swiper: { realIndex: SetStateAction<number> }) => {
     setIdx(swiper.realIndex);
-    console.log(swiper);
   };
   return (
     <Swiper
       onSlideChange={handleSlideChange}
-      navigation={{
-        prevEl: prevRef?.current,
-        nextEl: nextRef?.current,
-      }}
+      navigation={{ prevEl: prevRef, nextEl: nextRef }}
       loop={true}
       modules={[Navigation]}
       allowTouchMove={false}

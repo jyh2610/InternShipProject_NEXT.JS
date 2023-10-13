@@ -24,10 +24,10 @@ const sendEmail = async (to, code) => {
     try {
         const info = await transporter.sendMail(mailOptions);
         //console.log('Email sent:', info.response);
-        return true; // 이메일 전송 성공
+        return {message: "Mail sent!",success: true}; // 이메일 전송 성공
     } catch (error) {
         //console.error('Error sending email:', error);
-        return false; // 이메일 전송 실패
+        return {message: "Failed to send mail",success: false}; // 이메일 전송 실패
     }
 };
 
