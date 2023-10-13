@@ -67,11 +67,15 @@ p {
 }
 .swiper-button-next {
   content: url("../../public/assets/arrow.png");
-  width: 80px !important; /* 네비게이션 버튼의 너비를 조정할 수 있습니다. */
-  height: 80px !important; /* 네비게이션 버튼의 높이를 조정할 수 있습니다. */
+  width: 48px !important; /* 네비게이션 버튼의 너비를 조정할 수 있습니다. */
+  height: 48px !important; /* 네비게이션 버튼의 높이를 조정할 수 있습니다. */
   border-radius: 70%;
-  padding: 20px;
+  padding: 14px;
   backdrop-filter: blur(5px);
+  position: absolute;
+  right: 5% !important;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .swiper-button-next::after {
@@ -133,4 +137,8 @@ p {
 
 .ant-dropdown-menu-item:hover .ant-dropdown-menu-title-content{
   /* 텍스트 컬러 변경 */
+}
+
+.ant-btn:hover{
+  background-color: transparent !important;
 }

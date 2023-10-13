@@ -27,7 +27,7 @@ function Title() {
           <p
             style={{
               color: "#9D9D9D",
-              fontSize: "1.5rem",
+              fontSize: "1.4rem",
               lineHeight: "2.2rem",
               fontWeight: "300",
             }}

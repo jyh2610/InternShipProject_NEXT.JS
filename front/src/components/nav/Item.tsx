@@ -8,7 +8,7 @@ function NavItem({ scrollY }: { scrollY: number }) {
   const data: MenuProps = {
     items: [
       {
-        style: { padding: "0.8rem 0", color: "#fff" },
+        style: { padding: "1.5rem", color: "#fff" },
         key: "1",
         label: (
           <a style={{ fontWeight: "700", fontSize: "1rem" }}>
@@ -20,7 +20,7 @@ function NavItem({ scrollY }: { scrollY: number }) {
         ),
       },
       {
-        style: { padding: "0.8rem 0", color: "#fff" },
+        style: { padding: "0 1.5rem", color: "#fff" },
         key: "2",
         label: (
           <a style={{ fontWeight: "700", fontSize: "1rem" }}>
@@ -32,7 +32,7 @@ function NavItem({ scrollY }: { scrollY: number }) {
         ),
       },
       {
-        style: { padding: "0.8rem 0", color: "#fff" },
+        style: { padding: "1.5rem", color: "#fff" },
         key: "3",
         label: (
           <a style={{ fontWeight: "700", fontSize: "1rem" }}>
@@ -48,6 +48,7 @@ function NavItem({ scrollY }: { scrollY: number }) {
   const isTop = scrollY === 0 ? "white" : "black";
   const font = {
     color: isTop,
+    padding:"0",
   };
 
   return (

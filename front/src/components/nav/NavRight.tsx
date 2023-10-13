@@ -12,17 +12,33 @@ function NavRight({ scrollY }: { scrollY: number }) {
   const moveSignin = () => route.push("/signin");
   const data: MenuProps = {
     items: [
-      { key: "1", label: <a>한국어</a> },
-      { key: "2", label: <a>영어</a> },
+      {
+        style: { padding: "0.5rem 0.5rem 0 0.5rem", color: "#fff" },
+        key: "1",
+        label: (
+          <a style={{ fontWeight: "500", fontSize: "0.875rem" }}>
+            한국어
+          </a>
+        ),
+      },
+      {
+        style: { padding: "0.5rem", color: "#fff" },
+        key: "2",
+        label: (
+          <a style={{ fontWeight: "500", fontSize: "0.875rem" }}>
+            영어
+          </a>
+        ),
+      },
     ],
   };
 
   const isTop = scrollY === 0 ? "white" : "black";
 
   return (
-    <div>
+    <div className="flex items-center">
       <NavDropDown scrollY={scrollY} title={"한국어"} items={data} />
-      <Button onClick={moveSignin} style={{ borderRadius: "14px", color: `${isTop}`, fontSize: "0.75rem" }} type="text">
+      <Button onClick={moveSignin} style={{ color: `${isTop}` }} type="text">
         로그인
       </Button>
     </div>
