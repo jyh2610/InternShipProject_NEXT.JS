@@ -1,5 +1,6 @@
 "use client";
 import { useRef } from "react";
+
 import { wrap } from "@motionone/utils";
 import { motion, useAnimationFrame, useMotionValue, useScroll, useSpring, useTransform, useVelocity } from "framer-motion";
 interface ParallaxProps {
