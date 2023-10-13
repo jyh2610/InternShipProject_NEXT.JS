@@ -1,12 +1,7 @@
 "use client";
-import type { SetStateAction } from "react";
-import { useState } from "react";
-
 import { A11y, Navigation } from "swiper/modules";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-
-import SliderText from "./SliderText";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import { SetStateAction, useState } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -14,7 +9,6 @@ import { data } from "@/constants/constants";
 data;
 const MobileSlice = () => {
   const [imgIdx, setImgIdx] = useState(0);
-  const dummyData = [1, 2, 3, 4];
 
   const handleSlideChange = (swiper: { realIndex: SetStateAction<number> }) => {
     setImgIdx(swiper.realIndex);
