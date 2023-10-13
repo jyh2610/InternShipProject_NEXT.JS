@@ -1,8 +1,6 @@
 "use client";
 import Link from "next/link";
 
-import LoginBtn from "@/components/auth/LoginBtn";
-
 function Text() {
   return (
     <div className="flex justify-around items-center mb-14 max-w-top">

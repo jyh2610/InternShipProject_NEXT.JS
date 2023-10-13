@@ -3,15 +3,13 @@
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { Navigation, Thumbs } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { dummyImg, dummyImgData, img, mainImg } from "@/constants/constants";
+import { img } from "@/constants/constants";
 
 import "./style.css";
 import type { SwiperOptions } from "swiper/types";
-
-import { useState } from "react";
 
 interface IdxProps {
   idx: number;
@@ -20,8 +18,6 @@ interface IdxProps {
 }
 
 function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
-
   const swiperObj: SwiperOptions = {
     loop: true,
     slidesPerView: "auto",
@@ -34,7 +30,7 @@ function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
   return (
     <>
       <div className="w-2/3">
-        <Swiper {...swiperObj} thumbs={{ swiper: thumbsSwiper }} className="mySwiper ">
+        <Swiper {...swiperObj} className="mySwiper ">
           {dummyImgData.map((item, sliderIdx) => {
             return idx === sliderIdx % 4 ? (
               <SwiperSlide className="aspect-w-16 aspect-h-9" style={{ width: "70%" }}>
