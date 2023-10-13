@@ -79,7 +79,7 @@ const registerSocial_login = async(user_no, social_code, external_id, access_tok
     return await auth.pool.query(
     `
     INSERT INTO social_login(
-        user_no
+        user_no,
         social_code,
         external_id,
         access_token

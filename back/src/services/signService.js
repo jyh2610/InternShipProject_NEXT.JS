@@ -106,7 +106,7 @@ const verifyCode = async(email, code) => {
   
   if ((row.email !== email)||(row.code !== code)) return {message: "INVALID_EMAIL_OR_CODE",success: false};
 
-  await verification.deleteVerifying(email);
+  await verification.deleteVerifying(email); //인증 완료후 삭제하는 것 고려
   return {message: "VERIFIED",success: true};
 };
 
@@ -151,14 +151,13 @@ const naverLogin = async (naverToken) => {
       "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
     },
   });
-
   if (!result) detectError("NAVER_TOKEN_ERROR", 400);
 
   const { data } = result;
   const external_id = data.response.id;
   const nickname = data.response.name;
   const social_code = 3;// naver는 3으로 설정함
-
+  
   const social_user = await member.getMember(external_id);
 
   if (!social_user) {
@@ -176,11 +175,11 @@ const naverLogin = async (naverToken) => {
   return jwt.sign({user_no: social_user.user_no}, process.env.JWT_SECRET);
 };
 
-// goolge: 1
-const goolgeLogin = async (goolgeToken) => {
+// google: 1
+const googleLogin = async (googleToken) => {
   const result = await axios.get("https://www.googleapis.com/userinfo/v2/me", {
     headers: {
-      Authorization: `Bearer ${goolgeToken}`,
+      Authorization: `Bearer ${googleToken}`,
       "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
     },
   });
@@ -189,18 +188,18 @@ const goolgeLogin = async (goolgeToken) => {
 
   const { data } = result;
   const external_id = data.id;
-  const nickname = dataname;
-  const social_code = 1;// goolge는 1로 설정함
+  const nickname = data.name;
+  const social_code = 1;// google는 1로 설정함
 
   const social_user = await member.getMember(external_id);
-
+  
   if (!social_user) {
     await member.registerMember(external_id, 1);
 
     const user_no = (await member.getMember(external_id)).user_no;
 
     await Promise.all([
-      auth.registerSocial_login(user_no, social_code, external_id, goolgeToken),
+      auth.registerSocial_login(user_no, social_code, external_id, googleToken),
       member.registerProfile(user_no, nickname)
     ]);
 
@@ -219,5 +218,5 @@ module.exports = {
 
   kakaoLogin,
   naverLogin,
-  goolgeLogin
+  googleLogin
 };
