@@ -17,9 +17,9 @@ function NavDropDown({ title, items, scrollY }: Props) {
     setIsOpen((prev) => !prev);
   };
 
-  const iconSize = {
-    fontSize: "14px",
-  };
+  // const iconSize = {
+  //   fontSize: "14px",
+  // };
 
   const menuStyle: React.CSSProperties = {
     boxShadow: "none",

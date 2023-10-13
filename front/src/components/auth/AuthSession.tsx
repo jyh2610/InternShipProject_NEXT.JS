@@ -1,4 +1,7 @@
 "use client";
+
+import React from "react";
+
 import { Layout } from "antd";
 import { SessionProvider } from "next-auth/react";
 import { Provider } from "react-redux";

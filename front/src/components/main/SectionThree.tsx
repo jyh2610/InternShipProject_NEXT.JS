@@ -1,6 +1,6 @@
 "use client";
 
-import { MutableRefObject, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import BothSliderBtn from "./section-3/BothSliderBtn";
 import SliderIdx from "./section-3/SliderIdx";

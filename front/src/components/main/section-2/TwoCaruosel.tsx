@@ -3,7 +3,7 @@ import type { SetStateAction } from "react";
 import { useState } from "react";
 
 import { A11y, Navigation } from "swiper/modules";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import SliderText from "./SliderText";
 
