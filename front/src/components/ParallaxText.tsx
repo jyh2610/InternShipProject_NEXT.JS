@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion, useScroll, useSpring, useTransform, useMotionValue, useVelocity, useAnimationFrame } from "framer-motion";
+
 import { wrap } from "@motionone/utils";
+import { motion, useAnimationFrame, useMotionValue, useScroll, useSpring, useTransform, useVelocity } from "framer-motion";
 
 interface ParallaxProps {
   children: string;
@@ -38,8 +39,8 @@ function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
   });
 
   return (
-    <div className="parallax tracking-tighter whitespace-nowrap font-bold bg-white" style={{lineHeight:"10rem", fontSize:"7rem"}}>
-      <motion.div className="scroller " style={{ x, color: "#fff",}}>
+    <div className="parallax tracking-tighter whitespace-nowrap font-bold bg-white" style={{ lineHeight: "10rem", fontSize: "7rem" }}>
+      <motion.div className="scroller " style={{ x, color: "#fff" }}>
         <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)" }}>{children} </span>
         <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)" }}>{children} </span>
         <span style={{ textShadow: "-1px 0 rgb(78,78,78), 0 1px rgb(78,78,78), 1px 0 rgb(78,78,78), 0 -1px rgb(78,78,78)" }}>{children} </span>
@@ -49,4 +50,3 @@ function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
 }
 
 export default ParallaxText;
-

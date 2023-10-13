@@ -1,7 +1,8 @@
 "use client";
 
 import { Layout } from "antd";
-import Logo from "./Logo";
+
+// import Logo from "./Logo";
 
 function MainFooter() {
   const { Footer } = Layout;
@@ -16,9 +17,7 @@ function MainFooter() {
       }}
     >
       <div className="max-w-[1600px] w-full mx-auto px-8">
-        <div className="flex py-2">
-          <Logo />
-        </div>
+        <div className="flex py-2">{/* <Logo /> */}</div>
         <div className="flex gap-28">
           <div>
             <div className="address mb-4">

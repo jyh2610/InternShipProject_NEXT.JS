@@ -1,8 +1,10 @@
 "use client";
 
+import React, { useEffect } from "react";
+
 import Aos from "aos";
+
 import "aos/dist/aos.css";
-import { useEffect } from "react";
 
 function FadeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {

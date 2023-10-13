@@ -1,6 +1,6 @@
 "use client";
-import TextRight from "./TextRight";
 import TextLeft from "./TextLeft";
+import TextRight from "./TextRight";
 function TextAnimation() {
   return (
     // <div className="pt-[5rem] pb-[5rem]">

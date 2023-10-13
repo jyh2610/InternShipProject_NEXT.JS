@@ -1,10 +1,13 @@
-import { dummyData } from "@/constants/constants";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import { Navigation } from "swiper/modules";
-import { SetStateAction } from "react";
+import type { SetStateAction } from "react";
 
-function TextSlider({ idx, setIdx, prevRef, nextRef }: { setIdx: (value: SetStateAction<number>) => void; idx: number; prevRef: any; nextRef: any }) {
+import { Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import { dummyData } from "@/constants/constants";
+
+import "swiper/css";
+
+function TextSlider({ setIdx, prevRef, nextRef }: { setIdx: (value: SetStateAction<number>) => void; idx: number; prevRef: any; nextRef: any }) {
   const handleSlideChange = (swiper: { realIndex: SetStateAction<number> }) => {
     setIdx(swiper.realIndex);
     console.log(swiper);

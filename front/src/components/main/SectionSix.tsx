@@ -1,7 +1,7 @@
 "use client";
-import Title from "./section-6/Title";
 import NoticeButton from "./section-6/NoticeButton";
 import Text from "./section-6/Text";
+import Title from "./section-6/Title";
 
 function SectionSix() {
   return (

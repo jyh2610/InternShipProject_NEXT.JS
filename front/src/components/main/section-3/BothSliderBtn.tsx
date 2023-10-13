@@ -1,4 +1,4 @@
-import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 
 function BothSliderBtn({ prevRef, nextRef }: { prevRef: any; nextRef: any }) {
   return (

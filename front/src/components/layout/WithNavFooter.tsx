@@ -1,7 +1,8 @@
 import React from "react";
-import { ReactNode } from "react";
-import Nav from "../nav/Nav";
+import type { ReactNode } from "react";
+
 import MainFooter from "../MainFooter";
+import Nav from "../nav/Nav";
 const WithNavFooter = (props: { children: ReactNode }) => {
   return (
     <div>

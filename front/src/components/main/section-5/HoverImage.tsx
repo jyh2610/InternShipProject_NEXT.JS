@@ -1,5 +1,6 @@
-import { data } from "@/constants/constants";
 import React from "react";
+
+import { data } from "@/constants/constants";
 
 const HoverImage = () => {
   return (
