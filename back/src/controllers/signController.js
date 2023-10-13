@@ -6,10 +6,10 @@ const {catchAsync, detectError} = require("../utils/detectError");
 
 // local signUP
 const signUp =  catchAsync(async(req, res) => {
-    const {nickname, user_name, email, password, birthday, nation, sex} = req.body;
-    if(!user_name || !email || !password) detectError("KEY_ERROR", 400);
+    const {nickname, name, user_name, email, password, birthday, nation, sex} = req.body;
+    if(!name || !user_name || !email || !password) detectError("KEY_ERROR", 400);
 
-    const result = signService.localSignUp(nickname, user_name, email, password, birthday, nation, sex);
+    const result = await signService.localSignUp(nickname, name, user_name, email, password, birthday, nation, sex);
 
     return res.status(201).json(result);
 });
@@ -30,6 +30,13 @@ const hasId = catchAsync(async(req, res) => {
     if (!user_name) detectError("KEY_ERROR", 400);
 
     return res.status(200).json(await signService.isDuplicateUsername(user_name));
+});
+
+const hasNickname = catchAsync(async(req, res) => {
+    const {nickname} = req.body;
+    if (!nickname) detectError("KEY_ERROR", 400);
+
+    return res.status(200).json(await signService.isDuplicateNickname(nickname));
 });
 
 const sendEmail = catchAsync(async(req, res) => {
@@ -79,6 +86,8 @@ module.exports ={
     signUp,
     signIn,
     hasId,
+    hasNickname,
+
     sendEmail,
     verifyCode,
 

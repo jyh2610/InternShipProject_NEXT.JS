@@ -58,38 +58,54 @@ const getProfile = async(user_no) => {
     `,
     user_no))[0][0];
 };
+const getProfileByNickname = async(nickname) => {
+    return (await member.pool.query(
+    `
+    SELECT
+        *
+    FROM
+        profile
+    WHERE
+        nickname = ?
+    `,
+    nickname))[0][0];
+};
+
 // profile 생성
-const registerProfile = async(user_no, nickname, image_url=null, introduction=null) => {
+const registerProfile = async(user_no, nickname, name, image_url=null, introduction=null) => {
     return await member.pool.query(
     `
     INSERT INTO profile (
         user_no,
         nickname,
+        name,
         image_url,
         introduction
     ) VALUES (
         ?,
         ?,
         ?,
+        ?,
         ?
     )
     `,
-    [user_no, nickname, image_url, introduction]
+    [user_no, nickname, name, image_url, introduction]
     );
 };
 // profile 업데이트
-const updateProfile = async(user_no, nickname, image_url, introduction) => {
+const updateProfile = async(user_no, nickname, name, image_url, introduction) => {
     return await member.pool.query(
     `
     UPDATE profile
     SET
         nickname = ?,
+        name =?,
         image_url = ?,
         introduction = ?
     WHERE
         user_no = ?
     `,
-    [nickname, image_url, introduction, user_no]
+    [nickname, name, image_url, introduction, user_no]
     );
 };
 // profile 삭제
@@ -105,7 +121,7 @@ const deleteProfile = async(user_no) => {
 };
 
 // Authentication 조회
-const getAuthentication = async(user_no) => {
+const getAuthentication = async(user_no) => { 
     return (await member.pool.query(
     `
     SELECT
@@ -117,6 +133,7 @@ const getAuthentication = async(user_no) => {
     `,
     user_no))[0][0];
 };
+
 // Authentication 등록
 const registerAuthentication = async(user_no, gether_agree, cell_phone, email, birthday, sex, nation) => {
     return await member.pool.query(
@@ -179,6 +196,7 @@ module.exports = {
     deleteMember,
 
     getProfile,
+    getProfileByNickname,
     registerProfile,
     updateProfile,
     deleteProfile,
