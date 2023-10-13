@@ -3,8 +3,8 @@ import { Layout } from "antd";
 import { SessionProvider } from "next-auth/react";
 import { Provider } from "react-redux";
 import { StyleRegistry } from "styled-jsx";
-
 import { store } from "@/redux/store";
+import React from "react";
 
 type Props = {
   children: React.ReactNode;
