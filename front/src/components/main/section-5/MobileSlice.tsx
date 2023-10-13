@@ -1,7 +1,10 @@
 "use client";
+import type { SetStateAction } from "react";
+import { useState } from "react";
+
 import { A11y, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { SetStateAction, useState } from "react";
+
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
