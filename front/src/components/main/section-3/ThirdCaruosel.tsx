@@ -22,10 +22,11 @@ function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
     loop: true,
     slidesPerView: "auto",
     spaceBetween: 20,
-    navigation: { prevEl: prevRef?.current, nextEl: nextRef?.current },
+    navigation: { prevEl: prevRef, nextEl: nextRef },
     modules: [Navigation],
     allowTouchMove: false,
   };
+
   const dummyImgData = [img, img, img, img, img, img, img, img];
   return (
     <>
