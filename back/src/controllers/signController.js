@@ -67,7 +67,7 @@ const naverLogin = catchAsync(async (req, res) => {
     
     const result = await signService.naverLogin(naverToken.split(' ')[1]);
 
-    return res.status(200).json({ accessToken: result });
+    return res.status(200).json(result);
 });
 
 // 구글 로그인
@@ -78,8 +78,17 @@ const googleLogin = catchAsync(async (req, res) => {
 
     const result = await signService.googleLogin(googleToken.split(' ')[1]);
 
-    return res.status(200).json({ accessToken: result });
+    return res.status(200).json(result);
+
 });
+
+// 로그아웃
+const signOut = catchAsync(async (req, res) => {
+    const result = await signService.signOut(req.user_no);
+    console.log(result);
+    return res.status(200).json({message: "SIGN_OUT_COMPLETED"});
+});
+
 
 // headerTest
 const headerTest = catchAsync(async (req, res) => {
@@ -100,6 +109,8 @@ module.exports ={
     kakaoLogin,
     naverLogin,
     googleLogin,
+
+    signOut,
 
     headerTest
 };

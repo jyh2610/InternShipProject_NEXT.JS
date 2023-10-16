@@ -268,6 +268,9 @@ const naverLogin = async (naverToken) => {
 //   return await generateTokens(social_user.user_no);
 // };
 
+const signOut = async (user_no) => {
+  return await member.deleteRefreshToken(user_no);
+};
 
 
 module.exports = {
@@ -280,5 +283,7 @@ module.exports = {
 
   kakaoLogin,
   naverLogin,
-  googleLogin
+  googleLogin,
+
+  signOut
 };
