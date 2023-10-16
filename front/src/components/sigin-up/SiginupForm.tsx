@@ -1,11 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import { Form } from "antd";
 
+import { formData } from "@/constants/siginupFormData";
+
 import FormItem from "./FormItem";
 import SiginupBtn from "./SiginupBtn";
+
+import type { UserType } from "@/constants/siginupFormData";
 
 const layout = {
   labelCol: { span: 8 },
@@ -26,19 +30,42 @@ const validateMessages = {
 const onFinish = (values: any) => {
   console.log(values);
 };
+export interface formType {
+  nickname: string;
+  name: string;
+  user_name: string;
+  email: string;
+  password: string;
+  birthday: number | null;
+  nation: number | null;
+  sex: number;
+}
+const SiginupForm: React.FC = () => {
+  const [form, setForm] = useState<formType>({
+    nickname: "",
+    name: "",
+    user_name: "",
+    email: "",
+    password: "",
+    birthday: null,
+    nation: null,
+    sex: 1,
+  });
 
-const SiginupForm: React.FC = () => (
-  <Form {...layout} name="nest-messages" onFinish={onFinish} style={{ maxWidth: 600 }} validateMessages={validateMessages}>
-    <FormItem name={["user", "name"]} label="이름" />
-    <FormItem name={["user", "name"]} label="닉네임" />
-    <FormItem name={["user", "name"]} label="아이디" />
-    <FormItem name={["user", "email"]} label="이메일" />
-    <FormItem name={["user", "name"]} label="비밀번호" />
-    <FormItem name={["user", "name"]} label="생일" />
-    <FormItem name={["user", "name"]} label="나라" />
-    <FormItem name={["user", "name"]} label="성별" />
-    <SiginupBtn />
-  </Form>
-);
+  console.log(form);
+
+  return (
+    <>
+      <Form style={{ width: "800px" }} {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+        {formData.map((item: UserType) => {
+          return (
+            <FormItem form={form} setForm={setForm} key={item.label} name={item.name} label={item.label} msg={item.msg} btn={item.btn} btntext={item.btntext} />
+          );
+        })}
+        <SiginupBtn />
+      </Form>
+    </>
+  );
+};
 
 export default SiginupForm;
