@@ -14,6 +14,7 @@ router.post('/verifycode', signController.verifyCode);
 router.post('/kakaologin', signController.kakaoLogin);
 router.post('/naverlogin', signController.naverLogin);
 router.post('/googlelogin', signController.googleLogin);
+router.post('/headertest', signController.headerTest);
 // router.post('/validateToken', validateToken);
 
 module.exports = router;

@@ -11,6 +11,7 @@ const { detectError } = require("../utils/detectError");
 
 const sendEmail = require('../utils/sendEmail');
 const generateRandomStr = require('../utils/generateRandomStr');
+const generateTokens = require('../utils/generateTokens');
 
 //local SignUp
 const localSignUp = async (nickname, name, user_name, email, password, birthday, nation, sex) => {
@@ -51,28 +52,17 @@ const localSignUp = async (nickname, name, user_name, email, password, birthday,
 const localSignIn = async (user_name, password) => {
   //유저 네임에 맞는 유저 넘버, 유저 넘버에 맞는 salt 가져오기
   const user = await member.getMember(user_name); //user의 user_no 검색
-  if (!user)
-    detectError("NOT_EXISTING_MEMBER", 400);
+  if (!user) detectError("NOT_EXISTING_MEMBER", 400);
 
   const user_no = user.user_no;
   const auth_password = (await auth.getPassword(user_no)); // user_no에 해당하는 auth.password 테이블 조회
   const hashedPassword = auth_password.password; // 저장된 user의 password(hased)
 
   const usersalt = auth_password.salt; //user의 salt값
-  const hasedInputPassword = await bcrypt.hash(password, usersalt); // 입력한 password 암호화
+  const hashedInputPassword = await bcrypt.hash(password, usersalt); // 입력한 password 암호화
 
-  if(hasedInputPassword !== hashedPassword)
-    detectError("PASSWORD_DOSE_NOT_MATCH", 400);
-  else{
-    const payLoad = { user_no }; // jwt를 생성할 payload 지정
-    // console.log(payLoad)
-    const Token = jwt.sign(payLoad, process.env.JWT_SECRET, {
-      expiresIn: "15m"
-    });
-
-  const name = (await member.getProfile(user_no)).name;
-  return {name, accessToken: Token, success: true};
-  }
+  if(hashedInputPassword !== hashedPassword) detectError("PASSWORD_DOSE_NOT_MATCH", 400);
+  return await generateTokens(user_no);
 };
 
 // 아이디 중복 체크
@@ -117,107 +107,167 @@ const verifyCode = async(email, code) => {
   return {message: "VERIFIED",success: true};
 };
 
-// kakako :2
-const kakaoLogin = async (kakaoToken) => {
-  const result = await axios.get("https://kapi.kakao.com/v2/user/me", {
-    headers: {
-      Authorization: `Bearer ${kakaoToken}`,
-      "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
-    },
-  }).catch(err => {detectError("INVALID_TOKEN", 400);});
+//소셜로그인
+const socialLogin = async (accessToken, url, social_code) => {
+  try {
+    const result = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+      },
+    });
 
-  if (!result) detectError("KAKAO_TOKEN_ERROR", 400);
+    if (!result) {
+      detectError(`${social_code}_TOKEN_ERROR`, 400);
+    }
 
-  const { data } = result;
-  const external_id = data.id;
-  const nickname = data.properties.nickname;
-  const social_code = 2;// kakao는 2로 설정함
+    const { data } = result;
+    const external_id = social_code === 3 ? data.response.id : data.id;
+    const nickname = social_code === 3 ? data.response.name : data.name;
 
-  const social_user = await member.getMember(external_id);
+    let social_user = await member.getMember(external_id);
 
-  if (!social_user) {
-    await member.registerMember(external_id, 1);
+    if (!social_user) {
+      await member.registerMember(external_id, 1);
+      social_user = await member.getMember(external_id);
 
-    const user_no = (await member.getMember(external_id)).user_no;
+      await Promise.all([
+        auth.registerSocial_login(social_user.user_no, social_code, external_id, accessToken),
+        member.registerProfile(social_user.user_no, nickname)
+      ]);
 
-    await Promise.all([
-      auth.registerSocial_login(user_no, social_code, external_id, kakaoToken),
-      member.registerProfile(user_no, nickname)
-    ]);
+      return await generateTokens(social_user.user_no);
+    }
 
-    return jwt.sign({user_no}, process.env.JWT_SECRET);
+    await auth.updateSocial_login(external_id, accessToken);
+
+    return await generateTokens(social_user.user_no);
+
+  } catch (err) {
+    detectError("INVALID_TOKEN", 400);
   }
-  await auth.updateSocial_login(external_id, kakaoToken);
-  return jwt.sign({user_no: social_user.user_no}, process.env.JWT_SECRET);
 };
 
-// naver :3
-const naverLogin = async (naverToken) => {
-  const result = await axios.get("https://openapi.naver.com/v1/nid/me", {
-    headers: {
-      Authorization: `Bearer ${naverToken}`,
-      "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
-    },
-  }).catch(err => {detectError("INVALID_TOKEN", 400);});
-
-  if (!result) detectError("NAVER_TOKEN_ERROR", 400);
-
-  const { data } = result;
-  const external_id = data.response.id;
-  const nickname = data.response.name;
-  const social_code = 3;// naver는 3으로 설정함
-  
-  const social_user = await member.getMember(external_id);
-
-  if (!social_user) {
-    await member.registerMember(external_id, 1);
-
-    const user_no = (await member.getMember(external_id)).user_no;
-
-    await Promise.all([
-      auth.registerSocial_login(user_no, social_code, external_id, naverToken),
-      member.registerProfile(user_no, nickname)
-    ]);
-
-    return jwt.sign({user_no}, process.env.JWT_SECRET);
-  }
-  await auth.updateSocial_login(external_id, naverToken);
-  return jwt.sign({user_no: social_user.user_no}, process.env.JWT_SECRET);
-};
-
-// google: 1
 const googleLogin = async (googleToken) => {
-  const result = await axios.get("https://www.googleapis.com/userinfo/v2/me", {
-    headers: {
-      Authorization: `Bearer ${googleToken}`,
-      "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
-    },
-  }).catch(err => {detectError("INVALID_TOKEN", 400);});
-
-  if (!result) detectError("GOOGLE_TOKEN_ERROR", 400);
-
-  const { data } = result;
-  const external_id = data.id;
-  const nickname = data.name;
-  const social_code = 1;// google는 1로 설정함
-
-  const social_user = await member.getMember(external_id);
-  
-  if (!social_user) {
-    await member.registerMember(external_id, 1);
-
-    const user_no = (await member.getMember(external_id)).user_no;
-
-    await Promise.all([
-      auth.registerSocial_login(user_no, social_code, external_id, googleToken),
-      member.registerProfile(user_no, nickname)
-    ]);
-
-    return jwt.sign({user_no}, process.env.JWT_SECRET);
-  }
-  await auth.updateSocial_login(external_id, googleToken);  
-  return jwt.sign({user_no: social_user.user_no}, process.env.JWT_SECRET);
+  const url = "https://www.googleapis.com/userinfo/v2/me";
+  const social_code = 1;
+  return await socialLogin(googleToken, url, social_code);
 };
+
+const kakaoLogin = async (kakaoToken) => {
+  const url = "https://kapi.kakao.com/v2/user/me";
+  const social_code = 2;
+  return await socialLogin(kakaoToken, url, social_code);
+};
+
+const naverLogin = async (naverToken) => {
+  const url = "https://openapi.naver.com/v1/nid/me";
+  const social_code = 3;
+  return await socialLogin(naverToken, url, social_code);
+};
+
+// // kakako :2
+// const kakaoLogin = async (kakaoToken) => {
+//   const result = await axios.get("https://kapi.kakao.com/v2/user/me", {
+//     headers: {
+//       Authorization: `Bearer ${kakaoToken}`,
+//       "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+//     },
+//   }).catch(err => {detectError("INVALID_TOKEN", 400);});
+
+//   if (!result) detectError("KAKAO_TOKEN_ERROR", 400);
+
+//   const { data } = result;
+//   const external_id = data.id;
+//   const nickname = data.properties.nickname;
+//   const social_code = 2;// kakao는 2로 설정함
+
+//   const social_user = await member.getMember(external_id);
+
+//   if (!social_user) {
+//     await member.registerMember(external_id, 1);
+
+//     const user_no = (await member.getMember(external_id)).user_no;
+
+//     await Promise.all([
+//       auth.registerSocial_login(user_no, social_code, external_id, kakaoToken),
+//       member.registerProfile(user_no, nickname)
+//     ]);
+//     return await generateTokens(user_no);
+//   }
+//   await auth.updateSocial_login(external_id, kakaoToken);
+
+//   return await generateTokens(social_user.user_no);
+// };
+
+// // naver :3
+// const naverLogin = async (naverToken) => {
+//   const result = await axios.get("https://openapi.naver.com/v1/nid/me", {
+//     headers: {
+//       Authorization: `Bearer ${naverToken}`,
+//       "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+//     },
+//   }).catch(err => {detectError("INVALID_TOKEN", 400);});
+
+//   if (!result) detectError("NAVER_TOKEN_ERROR", 400);
+
+//   const { data } = result;
+//   const external_id = data.response.id;
+//   const nickname = data.response.name;
+//   const social_code = 3;// naver는 3으로 설정함
+  
+//   const social_user = await member.getMember(external_id);
+
+//   if (!social_user) {
+//     await member.registerMember(external_id, 1);
+
+//     const user_no = (await member.getMember(external_id)).user_no;
+
+//     await Promise.all([
+//       auth.registerSocial_login(user_no, social_code, external_id, naverToken),
+//       member.registerProfile(user_no, nickname)
+//     ]);
+
+//     return await generateTokens(user_no);
+//   }
+//   await auth.updateSocial_login(external_id, naverToken);
+
+//   return await generateTokens(social_user.user_no);
+// };
+
+// // google: 1
+// const googleLogin = async (googleToken) => {
+//   const result = await axios.get("https://www.googleapis.com/userinfo/v2/me", {
+//     headers: {
+//       Authorization: `Bearer ${googleToken}`,
+//       "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+//     },
+//   }).catch(err => {detectError("INVALID_TOKEN", 400);});
+
+//   if (!result) detectError("GOOGLE_TOKEN_ERROR", 400);
+
+//   const { data } = result;
+//   const external_id = data.id;
+//   const nickname = data.name;
+//   const social_code = 1;// google는 1로 설정함
+
+//   const social_user = await member.getMember(external_id);
+  
+//   if (!social_user) {
+//     await member.registerMember(external_id, 1);
+
+//     const user_no = (await member.getMember(external_id)).user_no;
+
+//     await Promise.all([
+//       auth.registerSocial_login(user_no, social_code, external_id, googleToken),
+//       member.registerProfile(user_no, nickname)
+//     ]);
+//     return await generateTokens(user_no);
+//   }
+//   await auth.updateSocial_login(external_id, googleToken);
+//   return await generateTokens(social_user.user_no);
+// };
+
 
 
 module.exports = {
