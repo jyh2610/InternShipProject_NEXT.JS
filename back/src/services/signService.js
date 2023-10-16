@@ -70,7 +70,8 @@ const localSignIn = async (user_name, password) => {
       expiresIn: "15m"
     });
 
-  return {accessToken: Token, success: true};
+  const name = (await member.getProfile(user_no)).name;
+  return {name, accessToken: Token, success: true};
   }
 };
 

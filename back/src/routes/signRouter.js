@@ -10,7 +10,7 @@ router.post('/signin', signController.signIn);
 router.post('/hasid', signController.hasId);
 router.post('/hasnickname', signController.hasNickname);
 router.post('/sendemail', signController.sendEmail);
-// router.post('/verifycode', signController.verifyCode);
+router.post('/verifycode', signController.verifyCode);
 router.post('/kakaologin', signController.kakaoLogin);
 router.post('/naverlogin', signController.naverLogin);
 router.post('/googlelogin', signController.googleLogin);
