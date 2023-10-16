@@ -116,7 +116,7 @@ const verifyCode = async(email, code) => {
   return {message: "VERIFIED",success: true};
 };
 
-// kakako
+// kakako :2
 const kakaoLogin = async (kakaoToken) => {
   const result = await axios.get("https://kapi.kakao.com/v2/user/me", {
     headers: {
@@ -146,6 +146,7 @@ const kakaoLogin = async (kakaoToken) => {
 
     return jwt.sign({user_no}, process.env.JWT_SECRET);
   }
+  await auth.updateSocial_login(external_id, kakaoToken);
   return jwt.sign({user_no: social_user.user_no}, process.env.JWT_SECRET);
 };
 
@@ -179,6 +180,7 @@ const naverLogin = async (naverToken) => {
 
     return jwt.sign({user_no}, process.env.JWT_SECRET);
   }
+  await auth.updateSocial_login(external_id, naverToken);
   return jwt.sign({user_no: social_user.user_no}, process.env.JWT_SECRET);
 };
 
@@ -212,6 +214,7 @@ const googleLogin = async (googleToken) => {
 
     return jwt.sign({user_no}, process.env.JWT_SECRET);
   }
+  await auth.updateSocial_login(external_id, googleToken);  
   return jwt.sign({user_no: social_user.user_no}, process.env.JWT_SECRET);
 };
 
@@ -222,7 +225,7 @@ module.exports = {
   isDuplicateUsername,
   isDuplicateNickname,
   emailValidation,
-  verifyCode,
+  verifyCode,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 
   kakaoLogin,
   naverLogin,
