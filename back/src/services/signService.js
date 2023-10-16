@@ -13,7 +13,7 @@ const sendEmail = require('../utils/sendEmail');
 const generateRandomStr = require('../utils/generateRandomStr');
 
 //local SignUp
-const localSignUp = async (nickname, user_name, email, password, birthday, nation, sex) => {
+const localSignUp = async (nickname, name, user_name, email, password, birthday, nation, sex) => {
   const emailValidation = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$");
   if (!emailValidation.test(email)) detectError("EMAIL-ERROR", 400); // 이메일 형식에 안 맞으면 에러
 
@@ -23,8 +23,11 @@ const localSignUp = async (nickname, user_name, email, password, birthday, natio
 
   if (user_name.length > 20) detectError("USER_NAME_TOO_LONG_ERROR", 400); 
 
-  const ismember = await member.getMember(user_name);
-    if (ismember) detectError("EXISITING_NAME", 400); //아이디 중복이면 에러
+  const existingName = await member.getMember(user_name);
+    if (existingName) detectError("EXISITING_USER_NAME", 400); //아이디 중복이면 에러
+  
+  const existingNickname = await member.getProfileByNickname(nickname);
+    if (existingNickname) detectError("EXISITING_NICKNAME", 400); //아이디 중복이면 에러
 
   const salt = await bcrypt.genSalt(Number(process.env.SALT_ROUND));
   const hashedPassword = await bcrypt.hash(password, salt);
@@ -37,7 +40,7 @@ const localSignUp = async (nickname, user_name, email, password, birthday, natio
 
   await Promise.all([
     auth.registerPassword(user_no, salt, hashedPassword),
-    member.registerProfile(user_no, nickname),
+    member.registerProfile(user_no, nickname, name),
     member.registerAuthentication(user_no, 1, null, hashedEmail, hashedbirthday, nation, sex),
   ]);
 
@@ -77,7 +80,12 @@ const isDuplicateUsername = async (user_name) => {
     return({message:"DUPLICATE_USER_NAME", success: false});
   return {message:"POSSIBLE_USER_NAME", success: true};
 };
-
+// 닉네임 중복 체크
+const isDuplicateNickname = async (nickname) => {
+  if (await member.getProfileByNickname(nickname))
+    return({message:"DUPLICATE_NICKNAME", success: false});
+  return {message:"POSSIBLE_NICKNAME", success: true};
+};
 // 이메일로 코드 전송
 const emailValidation = async(email) => {
   const emailValidation = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$");
@@ -91,15 +99,13 @@ const emailValidation = async(email) => {
   if(await verification.getVerifying(email)) await verification.deleteVerifying(email);
   await verification.generateVerifying(email, code);
 
-  sendEmail(email, code).then(success => {
-    return success ? {success: true} : {success: false};
-  });
+  return await sendEmail(email, code);
 };
 
 // 인증 코드 검사
 const verifyCode = async(email, code) => {
   const row = await verification.getVerifying(email);
-  if (!row) return {message: "CODE_NOT_SENT",success: false};
+  if (!row) return {message: "CODE_NOT_SENT", success: false};
 
   //인증 시간이 지났으면 실패
   if (row.expired_at < new Date()) return {message: "VERIFYING_TIME_OUT", success: false};
@@ -117,7 +123,7 @@ const kakaoLogin = async (kakaoToken) => {
       Authorization: `Bearer ${kakaoToken}`,
       "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
     },
-  });
+  }).catch(err => {detectError("INVALID_TOKEN", 400);});
 
   if (!result) detectError("KAKAO_TOKEN_ERROR", 400);
 
@@ -150,7 +156,8 @@ const naverLogin = async (naverToken) => {
       Authorization: `Bearer ${naverToken}`,
       "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
     },
-  });
+  }).catch(err => {detectError("INVALID_TOKEN", 400);});
+
   if (!result) detectError("NAVER_TOKEN_ERROR", 400);
 
   const { data } = result;
@@ -182,7 +189,7 @@ const googleLogin = async (googleToken) => {
       Authorization: `Bearer ${googleToken}`,
       "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
     },
-  });
+  }).catch(err => {detectError("INVALID_TOKEN", 400);});
 
   if (!result) detectError("GOOGLE_TOKEN_ERROR", 400);
 
@@ -213,6 +220,7 @@ module.exports = {
   localSignUp,
   localSignIn,
   isDuplicateUsername,
+  isDuplicateNickname,
   emailValidation,
   verifyCode,
 
