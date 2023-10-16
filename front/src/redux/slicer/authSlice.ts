@@ -4,12 +4,15 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface AuthState {
   accessToken: string | null;
+  refreshToken: string | null;
+  username: string | null;
   // 다른 인증 관련 상태도 추가할 수 있음
 }
 
 const initialState: AuthState = {
   accessToken: null,
-  // 다른 인증 관련 상태 초기값도 여기에 추가
+  refreshToken:null,
+  username:null
 };
 
 const authSlice = createSlice({
@@ -19,10 +22,15 @@ const authSlice = createSlice({
     setAccessToken: (state, action: PayloadAction<string | null>) => {
       state.accessToken = action.payload;
     },
-    // 다른 인증 관련 액션을 추가할 수 있음
+    setRefreshToken: (state, action: PayloadAction<string | null>) => {
+        state.refreshToken = action.payload;
+      },
+      setUserName: (state, action: PayloadAction<string | null>) => {
+        state.username = action.payload;
+      },
   },
 });
 
-export const { setAccessToken } = authSlice.actions;
+export const { setAccessToken, setRefreshToken, setUserName   } = authSlice.actions;
 export default authSlice.reducer;
 
