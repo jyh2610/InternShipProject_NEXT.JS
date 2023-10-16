@@ -112,7 +112,7 @@ const verifyCode = async(email, code) => {
   
   if ((row.email !== email)||(row.code !== code)) return {message: "INVALID_EMAIL_OR_CODE",success: false};
 
-  await verification.deleteVerifying(email); //인증 완료후 삭제하는 것 고려
+  // await verification.deleteVerifying(email); //인증 완료후 삭제하는 것 고려 => 주기적으로 테이블 비워주는게 나을 듯?
   return {message: "VERIFIED",success: true};
 };
 
