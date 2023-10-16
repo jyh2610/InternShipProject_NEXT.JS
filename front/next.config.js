@@ -5,4 +5,22 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+// next.config.js
+
+module.exports = {
+  async headers() {
+    return [
+      // 다른 헤더 설정들...
+
+      {
+        source: "/signin",
+        headers: [
+          {
+            key: "X-Custom-Header",
+            value: "Hello from middleware!",
+          },
+        ],
+      },
+    ];
+  },
+};
