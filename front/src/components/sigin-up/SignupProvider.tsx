@@ -1,27 +1,26 @@
 import React from "react";
 
-import { Layout } from "antd";
 import { Content, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 
 import SideBar from "./SideBar";
 import SideHeader from "./SideHeader";
-import Nav from "../nav/Nav";
 
 function SignupProvider({ children }: { children: React.ReactNode }) {
   return (
-    <Layout className="m-auto w-screen h-screen">
-      <Nav />
-      <Layout>
-        <Header>
+    <div className="w-full">
+      <div style={{ padding: "0" }} className="mainwidth p-0">
+        <Header style={{ padding: "0" }}>
           <SideHeader />
         </Header>
-        <Sider>
-          <SideBar />
-        </Sider>
-        <Content className="isisis">{children}</Content>
-      </Layout>
-    </Layout>
+        <div className="flex">
+          <Sider>
+            <SideBar />
+          </Sider>
+          <Content className="isisis">{children}</Content>
+        </div>
+      </div>
+    </div>
   );
 }
 

@@ -56,7 +56,7 @@ const SiginupForm: React.FC = () => {
 
   return (
     <>
-      <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+      <Form style={{ width: "800px" }} {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
         {formData.map((item: UserType) => {
           return (
             <FormItem form={form} setForm={setForm} key={item.label} name={item.name} label={item.label} msg={item.msg} btn={item.btn} btntext={item.btntext} />
