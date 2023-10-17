@@ -42,11 +42,12 @@ function TwoCarousel() {
                     idx
                 } > <div className = "relative bg-dummyImg bg-center bg-no-repeat bg-cover h-full object-cover aspect-w-16 aspect-h-9"> <SliderText /> </div></SwiperSlide>)
             )
-        }</Swiper> < div className = "flex items-end ml-8 w-24" > <span className = "text-4xl font-bold w-10 text-right" > {
-            imgIdx + 1
-        }</span><span> /</span > <span className = "text-2xl font-bold  w-10" > {
-            dummyData.length
-        }</span></div></div>
+        }</Swiper>       <div className="flex items-end ml-8 w-24">
+        <span className="text-4xl font-bold w-10 text-right">{sumZero(imgIdx + 1)} </span>
+        <span>/</span>
+        <span className="text-2xl font-bold  w-10"> {sumZero(dummyData.length)}</span>
+      </div>
+</div>
     );
 }
 

@@ -10,15 +10,13 @@
 }
 
 * {
-  font-family: "Pretendard" !important;
+  font-family: 'NanumSquareAc', sans-serif;
   margin: 0;
   padding: 0;
-  letter-spacing: -0.25px;
 }
 
 body {
-  letter-spacing: -0.25px;
-  background-color: #fff !important;
+  letter-spacing: -0.5px;
 }
 
 body::-webkit-scrollbar {
@@ -54,6 +52,9 @@ p {
 
 /* 프리텐다드 font-Weight 두께변경 될 수 있도록 변경 23.10.10_수정자 김택용*/
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css");
+
+/* 나눔스퀘어 폰트 추가 23.10.17_수정자 김택용*/
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
 
 @font-face {
   font-family: "Roboto";
