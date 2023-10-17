@@ -2,8 +2,6 @@
 
 import React from "react";
 
-import { Divider } from "antd";
-
 function SideBar() {
   const data = [
     {
@@ -18,7 +16,6 @@ function SideBar() {
   ];
   return (
     <>
-      <Divider />
       {data.map((data) => {
         return <div key={data.title}>{data.title}</div>;
       })}

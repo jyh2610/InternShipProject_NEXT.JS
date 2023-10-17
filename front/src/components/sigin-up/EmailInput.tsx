@@ -53,17 +53,17 @@ function EmailInput() {
   return (
     <Form.Item name={["user", "email"]} label="이메일">
       <div className="flex flex-col text-center">
-        <div className="flex">
-          <Input onChange={domainHandler} name="id" />
+        <div className="flex w-full">
+          <Input style={{ width: "45%" }} onChange={domainHandler} name="id" />
           <span className="my-auto">@</span>
           <div className="flex">
-            <Input name="domain" value={emailValue.domain} onChange={domainHandler} />
+            <Input style={{ width: "45%" }} name="domain" value={emailValue.domain} onChange={domainHandler} />
             <Select defaultValue="직접 입력" style={{ width: 120 }} onChange={handleChange} options={domainData} />
             <Button onClick={codeSubmit}>이메일 인증</Button>
           </div>
         </div>
-        <div className="flex">
-          <Input name="code" value={emailValue.code} onChange={domainHandler} />
+        <div className="flex w-1/2">
+          <Input style={{ width: "45%" }} name="code" value={emailValue.code} onChange={domainHandler} />
           <Button onClick={verifyCode}>인증하기</Button>
         </div>
       </div>

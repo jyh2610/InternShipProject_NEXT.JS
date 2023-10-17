@@ -1,26 +1,29 @@
+"use client";
+
 import React from "react";
 
-import { Content, Header } from "antd/es/layout/layout";
-import Sider from "antd/es/layout/Sider";
+import { Layout } from "antd";
+
+const { Header, Content, Sider } = Layout;
 
 import SideBar from "./SideBar";
 import SideHeader from "./SideHeader";
 
 function SignupProvider({ children }: { children: React.ReactNode }) {
   return (
-    <div className="w-full ">
-      <div style={{ padding: "0" }} className="mainwidth p-0">
-        <Header style={{ padding: "0" }}>
-          <SideHeader />
-        </Header>
-        <div className="flex">
-          <Sider>
+    <Layout>
+      <Header style={{ display: "flex", alignItems: "center", background: "white" }}>
+        <SideHeader />
+      </Header>
+      <Content>
+        <Layout style={{ background: "white" }}>
+          <Sider style={{ background: "white" }}>
             <SideBar />
           </Sider>
-          <Content className="flex  items-center justify-center">{children}</Content>
-        </div>
-      </div>
-    </div>
+          <Content style={{ padding: "0" }}>{children}</Content>
+        </Layout>
+      </Content>
+    </Layout>
   );
 }
 

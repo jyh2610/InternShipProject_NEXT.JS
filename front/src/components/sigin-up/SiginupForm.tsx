@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-import { Form } from "antd";
+import { Divider, Form } from "antd";
 
 import { formData } from "@/constants/siginupFormData";
 
@@ -14,8 +14,8 @@ import SiginupBtn from "./SiginupBtn";
 import type { UserType } from "@/constants/siginupFormData";
 
 const layout = {
-  labelCol: { span: 4 },
-  wrapperCol: { span: 16 },
+  // labelCol: { span: 4 },
+  // wrapperCol: { span: 16 },
 };
 
 const validateMessages = {
@@ -58,14 +58,16 @@ const SiginupForm: React.FC = () => {
       return <DropDownForm key={item.label} setForm={setForm} item={item} />;
     }
     if (item.label === "이메일") {
-      return <EmailInput />;
+      return <EmailInput key={item.label} />;
     }
     // 나머지 경우는 FormItem을 렌더링
     return <FormItem form={form} setForm={setForm} key={item.label} name={item.name} label={item.label} msg={item.msg} btn={item.btn} btntext={item.btntext} />;
   };
   return (
-    <div className="w-full h-full">
-      <Form className="w-full h-full my-auto" {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+    <div>
+      <p>회원정보</p>
+      <Divider />
+      <Form className="my-auto" {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
         {formData.map((item) => renderInput(item))}
         <SiginupBtn />
       </Form>
