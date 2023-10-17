@@ -16,7 +16,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 const SigninForm = () => {
   const route = useRouter();
   const api = new baseApi();
-  const accessToken = useAppSelector((state: any) => state.auth.accessToken);
+  const accessToken = useAppSelector((state) => state.auth.accessToken);
   const dispatch = useAppDispatch();
   const login = async (values: any) => {
     try {

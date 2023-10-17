@@ -17,8 +17,6 @@ export const sendrefreshtoken = async (values: any) => {
                 // 쿠키에 저장
                 console.log(document.cookie);              
               }
-            // accessToken을 localStorage, cookie 등에 저장하지 않는다!
-    
        }
  catch (error) {
   console.error("로그인 실패:", error);
