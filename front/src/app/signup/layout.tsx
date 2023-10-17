@@ -5,10 +5,12 @@ import SignupProvider from "@/components/sigin-up/SignupProvider";
 
 function SignUpLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      <Nav />
+    <div className="h-screen">
+      <div>
+        <Nav />
+      </div>
       <SignupProvider>{children}</SignupProvider>
-    </>
+    </div>
   );
 }
 

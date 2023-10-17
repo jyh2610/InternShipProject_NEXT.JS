@@ -2,13 +2,13 @@
 
 import React from "react";
 
+import { useRouter } from "next/navigation";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import { loginObj } from "@/constants/constants";
-import { useRouter } from "next/navigation";
 
 const SocialLoginButton = () => {
-  const { data: session } = useSession();
+  const { data } = useSession();
   const router = useRouter();
   return (
     <>
@@ -22,7 +22,9 @@ const SocialLoginButton = () => {
           <img
             key={data.name}
             onClick={() => {
-              signIn(data.social);
+              signIn(data.social, {
+                callbackUrl: "/",
+              });
             }}
             src={data.icon}
             alt={data.name}

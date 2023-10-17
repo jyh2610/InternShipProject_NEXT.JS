@@ -7,6 +7,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import SliderText from "./SliderText";
 
+import { sumZero } from "@/lib/sumZero";
+
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -32,9 +34,9 @@ function TwoCarousel() {
       </Swiper>
 
       <div className="flex items-end ml-8 w-24">
-        <span className="text-4xl font-bold w-10 text-right">{imgIdx + 1} </span>
+        <span className="text-4xl font-bold w-10 text-right">{sumZero(imgIdx + 1)} </span>
         <span>/</span>
-        <span className="text-2xl font-bold  w-10"> {dummyData.length}</span>
+        <span className="text-2xl font-bold  w-10"> {sumZero(dummyData.length)}</span>
       </div>
     </div>
   );

@@ -10,10 +10,10 @@ const axiosInstance = axios.create({
 
 const interceptors = axiosInstance.interceptors;
 
-interceptors.request.use((config) => {
-  config.headers.Authorization = `Bearer ${""}`;
-  return config;
-});
+// interceptors.request.use((config) => {
+//   config.headers.Authorization = `Bearer ${""}`;
+//   return config;
+// });
 
 interceptors.response.use(
   (response) => response,

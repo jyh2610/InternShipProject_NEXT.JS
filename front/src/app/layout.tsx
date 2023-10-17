@@ -3,10 +3,11 @@ import React from "react";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
+import type { Metadata } from "next";
+
 import AuthSession from "@/components/auth/AuthSession";
 import StyledComponentsRegistry from "@/lib/AntdRegistry";
 
-import type { Metadata } from "next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
