@@ -17,12 +17,12 @@ function SideBar() {
     },
   ];
   return (
-    <div>
+    <>
       <Divider />
       {data.map((data) => {
         return <div key={data.title}>{data.title}</div>;
       })}
-    </div>
+    </>
   );
 }
 

@@ -6,13 +6,15 @@ import { Form } from "antd";
 
 import { formData } from "@/constants/siginupFormData";
 
+import DropDownForm from "./DropDownForm";
+import EmailInput from "./EmailInput";
 import FormItem from "./FormItem";
 import SiginupBtn from "./SiginupBtn";
 
 import type { UserType } from "@/constants/siginupFormData";
 
 const layout = {
-  labelCol: { span: 8 },
+  labelCol: { span: 4 },
   wrapperCol: { span: 16 },
 };
 
@@ -51,20 +53,23 @@ const SiginupForm: React.FC = () => {
     nation: null,
     sex: 1,
   });
-
-  console.log(form);
-
+  const renderInput = (item: UserType) => {
+    if (item.label === "생년월일" || item.label === "내·외국인" || item.label === "성별") {
+      return <DropDownForm key={item.label} setForm={setForm} item={item} />;
+    }
+    if (item.label === "이메일") {
+      return <EmailInput />;
+    }
+    // 나머지 경우는 FormItem을 렌더링
+    return <FormItem form={form} setForm={setForm} key={item.label} name={item.name} label={item.label} msg={item.msg} btn={item.btn} btntext={item.btntext} />;
+  };
   return (
-    <>
-      <Form style={{ width: "800px" }} {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
-        {formData.map((item: UserType) => {
-          return (
-            <FormItem form={form} setForm={setForm} key={item.label} name={item.name} label={item.label} msg={item.msg} btn={item.btn} btntext={item.btntext} />
-          );
-        })}
+    <div className="w-full h-full">
+      <Form className="w-full h-full my-auto" {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+        {formData.map((item) => renderInput(item))}
         <SiginupBtn />
       </Form>
-    </>
+    </div>
   );
 };
 

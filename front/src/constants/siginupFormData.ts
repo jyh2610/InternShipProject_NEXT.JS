@@ -17,7 +17,7 @@ export const formData: UserType[] = [
     btn: false,
     btntext: "",
   },
-  { name: ["user", "birthday"], label: "생일", msg: [""], btn: false, btntext: "" },
+  { name: ["user", "birthday"], label: "생년월일", msg: [""], btn: false, btntext: "" },
   { name: ["user", "nation"], label: "내·외국인", msg: [""], btn: false, btntext: "" },
   { name: ["user", "sex"], label: "성별", msg: [""], btn: false, btntext: "" },
 ];
@@ -29,3 +29,14 @@ export interface UserType {
   btn: boolean;
   btntext: string;
 }
+
+export const nation = [
+  { label: "내국인", value: 0 },
+  { label: "외국인", value: 1 },
+];
+
+export const sex = [
+  { label: "여", value: 0 },
+  { label: "남", value: 1 },
+  { label: "기타", value: 2 },
+];

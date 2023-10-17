@@ -8,7 +8,7 @@ import SideHeader from "./SideHeader";
 
 function SignupProvider({ children }: { children: React.ReactNode }) {
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <div style={{ padding: "0" }} className="mainwidth p-0">
         <Header style={{ padding: "0" }}>
           <SideHeader />
@@ -17,7 +17,7 @@ function SignupProvider({ children }: { children: React.ReactNode }) {
           <Sider>
             <SideBar />
           </Sider>
-          <Content className="isisis">{children}</Content>
+          <Content className="flex  items-center justify-center">{children}</Content>
         </div>
       </div>
     </div>
