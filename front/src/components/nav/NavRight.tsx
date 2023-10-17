@@ -31,20 +31,12 @@ function NavRight({ scrollY }: { scrollY: number }) {
       {
         style: { padding: "0.5rem 0.5rem 0 0.5rem", color: "#fff" },
         key: "1",
-        label: (
-          <a style={{ fontWeight: "500", fontSize: "0.875rem" }}>
-            한국어
-          </a>
-        ),
+        label: <a style={{ fontWeight: "500", fontSize: "0.875rem" }}>한국어</a>,
       },
       {
         style: { padding: "0.5rem", color: "#fff" },
         key: "2",
-        label: (
-          <a style={{ fontWeight: "500", fontSize: "0.875rem" }}>
-            영어
-          </a>
-        ),
+        label: <a style={{ fontWeight: "500", fontSize: "0.875rem" }}>영어</a>,
       },
     ],
   };
