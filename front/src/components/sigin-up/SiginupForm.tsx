@@ -4,14 +4,14 @@ import React, { useState } from "react";
 
 import { Divider, Form } from "antd";
 
-import { formData } from "@/constants/siginupFormData";
-
 import DropDownForm from "./DropDownForm";
 import EmailInput from "./EmailInput";
 import FormItem from "./FormItem";
 import SiginupBtn from "./SiginupBtn";
 
 import type { UserType } from "@/constants/siginupFormData";
+
+import { formData } from "@/constants/siginupFormData";
 
 const layout = {
   // labelCol: { span: 4 },

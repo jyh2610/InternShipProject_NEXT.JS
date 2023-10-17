@@ -2,14 +2,11 @@
 
 import React from "react";
 
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 import { loginObj } from "@/constants/constants";
-import { useRouter } from "next/navigation";
 
 const SocialLoginButton = () => {
-  const { data: session } = useSession();
-  const router = useRouter();
   return (
     <>
       <div className="flex justify-between item-center mb-[1.4rem]">
@@ -27,7 +24,7 @@ const SocialLoginButton = () => {
             src={data.icon}
             alt={data.name}
           />
-        ))}{" "}
+        ))}
       </div>
     </>
   );
