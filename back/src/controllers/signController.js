@@ -3,7 +3,6 @@
 const signService = require("../services/signService");
 const {catchAsync, detectError} = require("../utils/detectError");
 
-
 // local signUP
 const signUp =  catchAsync(async(req, res) => {
     const {nickname, name, user_name, email, password, birthday, nation, sex} = req.body;
@@ -25,29 +24,6 @@ const signIn = catchAsync(async(req, res) => {
     return res.status(200).json(result);
 });
 
-const hasId = catchAsync(async(req, res) => {
-    const {user_name} = req.body;
-    if (!user_name) detectError("KEY_ERROR", 400);
-
-    return res.status(200).json(await signService.isDuplicateUsername(user_name));
-});
-
-const hasNickname = catchAsync(async(req, res) => {
-    const {nickname} = req.body;
-    if (!nickname) detectError("KEY_ERROR", 400);
-
-    return res.status(200).json(await signService.isDuplicateNickname(nickname));
-});
-
-const sendEmail = catchAsync(async(req, res) => {
-    return res.status(200).json(await signService.emailValidation(req.body.email));
-});
-
-const verifyCode = catchAsync(async(req, res) => {
-    const {email, code} = req.body;
-    return res.status(200).json(await signService.verifyCode(email, code));
-});
-
 // 카카오 로그인
 const kakaoLogin = catchAsync(async (req, res) => {
     const kakaoToken = req.headers.authorization;
@@ -62,7 +38,7 @@ const kakaoLogin = catchAsync(async (req, res) => {
 // 네이버 로그인
 const naverLogin = catchAsync(async (req, res) => {
     const naverToken = req.headers.authorization;
-
+    
     if (!naverToken) detectError("NOT_ACCESS_TOKEN", 401);
     
     const result = await signService.naverLogin(naverToken.split(' ')[1]);
@@ -88,28 +64,12 @@ const signOut = catchAsync(async (req, res) => {
     return res.status(200).json({sucess: true, message: "SIGN_OUT_COMPLETED"});
 });
 
-
-// headerTest
-const headerTest = catchAsync(async (req, res) => {
-    const result = req.headers.authorization.split(' ')[1];
-    return res.status(200).json({ accessToken: result, message:"예 다시 돌려드렸습니다~" });
-});
-
-
 module.exports ={
     signUp,
     signIn,
-    hasId,
-    hasNickname,
-
-    sendEmail,
-    verifyCode,
+    signOut,
 
     kakaoLogin,
     naverLogin,
-    googleLogin,
-
-    signOut,
-
-    headerTest
+    googleLogin
 };
