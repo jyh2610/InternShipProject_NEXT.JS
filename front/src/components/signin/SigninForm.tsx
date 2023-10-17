@@ -2,21 +2,41 @@ import React from "react";
 
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { ConfigProvider, Form, Input } from "antd";
-import { useRouter } from "next/navigation";
-
-import { baseApi } from "@/API/api";
 
 import FindButton from "./FindButton";
 import LoginButton from "./LoginButton";
 import SocialLoginButton from "./SocialLoginButton";
-import { login } from "@/API/login";
+
+import { setAccessToken, setUserName } from "@/redux/slicer/authSlice";
+import axios from "axios";
+import { baseApi } from "@/API/api";
+import { useRouter } from "next/navigation";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 const SigninForm = () => {
-  const router = useRouter();
+  const route = useRouter();
+  const api = new baseApi();
+  const accessToken = useAppSelector((state: any) => state.auth.accessToken);
+  const dispatch = useAppDispatch();
+  const login = async (values: any) => {
+    try {
+      const res = await api.post({ url: "/sign/signin", body: values });
+      const accessToken = res.accessToken;
+      dispatch(setAccessToken(accessToken));
+      dispatch(setUserName(res.name));
+
+      // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
+      axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+      route.push("/");
+    } catch (error) {
+      console.error("로그인 실패:", error);
+    }
+  };
 
   const onFinish = (values: any) => {
     login(values);
     console.log("Received values of form: ", values);
+    dispatch(setAccessToken(accessToken));
   };
 
   return (

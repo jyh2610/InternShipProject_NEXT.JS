@@ -54,9 +54,9 @@ const kakaoLogin = catchAsync(async (req, res) => {
 
     if (!kakaoToken) detectError("NOT_ACCESS_TOKEN", 401);
 
-    const kakao_accessToken = await signService.kakaoLogin(kakaoToken.split(' ')[1]);
+    const result = await signService.kakaoLogin(kakaoToken.split(' ')[1]);
 
-    return res.status(200).json({ accessToken: kakao_accessToken });
+    return res.status(200).json(result);
 });
 
 // 네이버 로그인
@@ -65,9 +65,9 @@ const naverLogin = catchAsync(async (req, res) => {
 
     if (!naverToken) detectError("NOT_ACCESS_TOKEN", 401);
     
-    const naver_accessToken = await signService.naverLogin(naverToken.split(' ')[1]);
+    const result = await signService.naverLogin(naverToken.split(' ')[1]);
 
-    return res.status(200).json({ accessToken: naver_accessToken });
+    return res.status(200).json(result);
 });
 
 // 구글 로그인
@@ -76,9 +76,23 @@ const googleLogin = catchAsync(async (req, res) => {
 
     if (!googleToken) detectError("NOT_ACCESS_TOKEN", 401);
 
-    const google_accessToken = await signService.googleLogin(googleToken.split(' ')[1]);
+    const result = await signService.googleLogin(googleToken.split(' ')[1]);
 
-    return res.status(200).json({ accessToken: google_accessToken });
+    return res.status(200).json(result);
+
+});
+
+// 로그아웃
+const signOut = catchAsync(async (req, res) => {
+    await signService.signOut(req.user_no);
+    return res.status(200).json({sucess: true, message: "SIGN_OUT_COMPLETED"});
+});
+
+
+// headerTest
+const headerTest = catchAsync(async (req, res) => {
+    const result = req.headers.authorization.split(' ')[1];
+    return res.status(200).json({ accessToken: result, message:"예 다시 돌려드렸습니다~" });
 });
 
 
@@ -93,5 +107,9 @@ module.exports ={
 
     kakaoLogin,
     naverLogin,
-    googleLogin
+    googleLogin,
+
+    signOut,
+
+    headerTest
 };

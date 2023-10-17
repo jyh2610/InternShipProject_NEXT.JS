@@ -1,20 +1,28 @@
+"use client";
+
 import React from "react";
 
 import { Layout } from "antd";
-import { Content, Header } from "antd/es/layout/layout";
-import Sider from "antd/es/layout/Sider";
 
-import Nav from "../nav/Nav";
+const { Header, Content, Sider } = Layout;
+
+import SideBar from "./SideBar";
+import SideHeader from "./SideHeader";
 
 function SignupProvider({ children }: { children: React.ReactNode }) {
   return (
-    <Layout className="m-auto w-screen h-screen">
-      <Nav />
-      <Layout>
-        <Header>{/* <SideHeader /> */}</Header>
-        <Sider>{/* <SideBar /> */}</Sider>
-        <Content className="isisis">{children}</Content>
-      </Layout>
+    <Layout>
+      <Header style={{ display: "flex", alignItems: "center", background: "white" }}>
+        <SideHeader />
+      </Header>
+      <Content>
+        <Layout style={{ background: "white" }}>
+          <Sider style={{ background: "white" }}>
+            <SideBar />
+          </Sider>
+          <Content style={{ padding: "0" }}>{children}</Content>
+        </Layout>
+      </Content>
     </Layout>
   );
 }

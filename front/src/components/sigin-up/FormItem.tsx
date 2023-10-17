@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
 
+import { baseApi } from "@/API/api";
+
+import type { formType } from "./SiginupForm";
 import type { UserType } from "@/constants/siginupFormData";
 
-function FormItem({ name, label, msg }: UserType) {
+interface Props extends UserType {
+  form: formType;
+  setForm: Function;
+}
+function FormItem({ name, label, msg, btn, btntext, form, setForm }: Props) {
+  const api = new baseApi();
+  const key = name[1];
+  const [input, setInput] = useState<string | number>();
   const validationRules = [
     {
       required: false,
@@ -15,9 +25,45 @@ function FormItem({ name, label, msg }: UserType) {
       message: msg[0], // 패턴이 맞지 않을 때 표시할 메시지
     },
   ];
+  const FormHandler = (e: { target: { name: string; value: string | number } }) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+    setInput(e.target.value);
+  };
+
+  const endPointCreate = () => {
+    if (key === "nickname") {
+      return "hasnickname";
+    }
+    if (key === "user_name") {
+      return "hasid";
+    }
+    if (key === "email") {
+      return "verifycode";
+    }
+    return null;
+  };
+
+  const vaildateHandler = async () => {
+    const endPoint = endPointCreate();
+    console.log(endPointCreate());
+
+    await api.post({
+      url: `/sign/${endPoint}`,
+      body: {
+        [key]: input,
+      },
+    });
+  };
+
   return (
     <Form.Item name={name} label={label} rules={validationRules}>
-      <Input style={{ backgroundColor: "#F7F7F7" }} />
+      <div className="flex">
+        <Input name={name[1]} onChange={FormHandler} style={{ backgroundColor: "#F7F7F7" }} />
+        {btn && <Button onClick={vaildateHandler}>{btntext}</Button>}
+      </div>
     </Form.Item>
   );
 }

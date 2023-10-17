@@ -65,3 +65,13 @@ export const animationtext2 = [
   { id: 2, text: "인테리어는 더 나은 삶을 위한 시작입니다. 우리와 함께 새로운 시작을 경험하세요." },
   { id: 3, text: "인테리어는 더 나은 삶을 위한 시작입니다. 우리와 함께 새로운 시작을 경험하세요." },
 ];
+
+export const domainData = [
+  { value: "", label: "직접 입력" },
+  { value: "naver.com", label: "네이버" },
+  { value: "gmail.com", label: "구글" },
+  { value: "kakao.com", label: "카카오" },
+  { value: "daum.net", label: "다음" },
+  { value: "nate.com", label: "네이트" },
+  { value: "yahoo.com ", label: "야후" },
+];
