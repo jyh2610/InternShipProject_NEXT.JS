@@ -22,7 +22,9 @@ const SocialLoginButton = () => {
           <img
             key={data.name}
             onClick={() => {
-              signIn(data.social);
+              signIn(data.social, {
+                callbackUrl: "/",
+              });
             }}
             src={data.icon}
             alt={data.name}

@@ -26,15 +26,25 @@ const handler = NextAuth({
   ],
   
   callbacks: {
-    async signIn({ account }:any ) {
-      console.log(account);
-      const accessToken = account?.access_token;
-      const refreshToken = account?.refresh_token;
-  // 액세스 토큰 및 리프레시 토큰을 스토어에 저장
-    // 액세스 토큰과 리프레시 토큰을 헤더에 추가합니다. 
-      console.log(accessToken, "엑세스 토큰입니다.");
-      console.log(refreshToken, "리프레시 토큰입니다.");
-    return true;
+    async signIn({ account, redirect }:any) {
+      // 여기에서 사용자가 로그인을 허용할지 여부를 결정합니다.
+      const isAllowed = true; // 예를 들어, 사용자의 특정 조건을 확인하여 결정할 수 있습니다.
+  
+      if (isAllowed) {
+        // 사용자가 로그인을 허용하면 로그인 흐름을 계속합니다.
+        const accessToken = account?.access_token;
+        const refreshToken = account?.refresh_token;
+        
+        // 액세스 토큰 및 리프레시 토큰을 스토어에 저장
+        // 액세스 토큰과 리프레시 토큰을 헤더에 추가합니다.
+        console.log(accessToken, "엑세스 토큰입니다.");
+        console.log(refreshToken, "리프레시 토큰입니다.");
+        
+        return true; // 로그인을 허용하고 흐름을 계속합니다.
+      } else {
+        // 사용자가 로그인을 거부하면 리다이렉트하고 흐름을 중단합니다.
+        return redirect('/'); // 사용자를 로그인 페이지로 리다이렉트
+      }
     },
     async jwt({ token, account }) { 
       if (account) {
@@ -50,7 +60,7 @@ console.log(session,"세션토큰")
       return session;
     },
   },
-// 커스텀 로그인 페이지를 위해 추가된 부분
+
 
 });
 
