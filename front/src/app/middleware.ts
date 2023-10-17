@@ -1,6 +1,7 @@
-import type { NextRequest, NextFetchEvent } from "next/server";
 import { NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
+
+import type { NextFetchEvent, NextRequest } from "next/server";
 
 const secret = process.env.SECRET;
 

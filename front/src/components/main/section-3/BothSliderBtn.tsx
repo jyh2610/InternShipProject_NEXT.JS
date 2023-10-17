@@ -6,7 +6,6 @@ function BothSliderBtn({ setPrevRef, setNextRef }: { setPrevRef: Function; setNe
   // useRef로 DOM 요소에 대한 레퍼런스 생성
   const prevButtonRef = useRef(null);
   const nextButtonRef = useRef(null);
-  console.log("btn", prevButtonRef);
 
   useEffect(() => {
     // 컴포넌트가 마운트되면 DOM 요소를 할당
