@@ -85,7 +85,7 @@ const googleLogin = catchAsync(async (req, res) => {
 // 로그아웃
 const signOut = catchAsync(async (req, res) => {
     await signService.signOut(req.user_no);
-    return res.status(200).json({sucess: true, sumessage: "SIGN_OUT_COMPLETED"});
+    return res.status(200).json({sucess: true, message: "SIGN_OUT_COMPLETED"});
 });
 
 
