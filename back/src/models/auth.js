@@ -94,18 +94,16 @@ const registerSocial_login = async(user_no, social_code, external_id, access_tok
     );
 };
 // Socail Login 업데이트
-const updateSocial_login = async(user_no, social_code, external_id, access_token) => {
+const updateSocial_login = async(external_id, access_token) => {
     return await auth.pool.query(
     `
     UPDATE social_login
     SET
-        social_code = ?,
-        external_id = ?,
         access_token = ?
     WHERE
-        user_no = ?
+        external_id = ?
     `,
-    [social_code, external_id, access_token, user_no]
+    [access_token, external_id]
     );
 };
 // Socail Login 삭제

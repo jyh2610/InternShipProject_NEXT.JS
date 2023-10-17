@@ -189,6 +189,46 @@ const deleteAuthentication = async(user_no) => {
     );
 };
 
+// refresh_token 조회
+const getRefreshToken = async(user_no) => { 
+    return (await member.pool.query(
+    `
+    SELECT
+        refresh_token
+    FROM
+        refresh_token
+    WHERE
+        user_no = ?
+    `,
+    user_no))[0][0];
+};
+// refresh_token 등록
+const registerRefreshToken = async(user_no, refresh_token) => {
+    return await member.pool.query(
+    `
+    INSERT INTO refresh_token (
+        user_no,
+        refresh_token
+    ) VALUES (
+        ?,
+        ?
+    )
+    `,
+    [user_no, refresh_token]
+    );
+};
+// refresh_token 삭제
+const deleteRefreshToken = async(user_no) => {
+    return await member.pool.query(
+    `
+    DELETE FROM refresh_token
+    WHERE
+        user_no = ?
+    `,
+    [user_no]
+    );
+};
+
 
 module.exports = {
     getMember,
@@ -204,6 +244,10 @@ module.exports = {
     getAuthentication,
     registerAuthentication,
     updateAuthentication,
-    deleteAuthentication
+    deleteAuthentication,
+
+    getRefreshToken,
+    registerRefreshToken,
+    deleteRefreshToken
 };
 
