@@ -1,13 +1,11 @@
-import BotText from "./section-2/BotText";
 import Text from "./section-2/Text";
 import TwoCaruosel from "./section-2/TwoCaruosel";
 
 function Sectiontwo() {
   return (
-    <section className="mt-60">
+    <section className="pt-[10rem] pb-[4rem]">
       <Text />
       <TwoCaruosel />
-      <BotText />
     </section>
   );
 }

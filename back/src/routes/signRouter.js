@@ -3,20 +3,14 @@
 const express = require('express');
 const router = express.Router();
 const signController = require('../controllers/signController');
-const {validateToken} = require('../utils/validateToken');
+const {validateToken} = require('../utils/token');
 
 router.post('/signup', signController.signUp);
 router.post('/signin', signController.signIn);
 router.post('/signout', validateToken, signController.signOut);
-router.post('/hasid', signController.hasId);
-router.post('/hasnickname', signController.hasNickname);
-router.post('/sendemail', signController.sendEmail);
-router.post('/verifycode', signController.verifyCode);
+
 router.post('/kakaologin', signController.kakaoLogin);
 router.post('/naverlogin', signController.naverLogin);
 router.post('/googlelogin', signController.googleLogin);
-
-router.post('/headertest', signController.headerTest);
-// router.post('/validateToken', validateToken);
 
 module.exports = router;

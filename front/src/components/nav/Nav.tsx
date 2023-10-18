@@ -31,7 +31,7 @@ function Nav() {
     <Header
       style={{
         width: "100%",
-        height: "80px",
+        height: "60px",
         position: "fixed",
         backgroundColor: isTop,
         zIndex: "999",
@@ -41,7 +41,7 @@ function Nav() {
         lineHeight: 0,
       }}
     >
-      <div className="Header-wrap w-full max-w-top h-20 flex items-center mx-auto px-5 justify-between aspect-video">
+      <div className="Header-wrap w-full max-w-top flex items-center mx-auto px-5 justify-between aspect-video">
         <NavLeft scrollY={scrollY} />
         <NavRight scrollY={scrollY} />
       </div>

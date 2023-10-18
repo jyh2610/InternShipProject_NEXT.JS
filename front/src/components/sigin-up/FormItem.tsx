@@ -4,8 +4,8 @@ import { Button, Form, Input } from "antd";
 
 import { baseApi } from "@/API/api";
 
-import type { formType } from "./SiginupForm";
 import type { UserType } from "@/constants/siginupFormData";
+import type { formType } from "@/type/signUp";
 
 interface Props extends UserType {
   form: formType;
@@ -51,7 +51,7 @@ function FormItem({ name, label, msg, btn, btntext, form, setForm }: Props) {
     console.log(endPointCreate());
 
     await api.post({
-      url: `/sign/${endPoint}`,
+      url: `/validate/${endPoint}`,
       body: {
         [key]: input,
       },

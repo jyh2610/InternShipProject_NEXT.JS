@@ -8,6 +8,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { img } from "@/constants/constants";
 
+import { img } from "@/constants/constants";
+
+import Slider from "./Slider";
+
 import type { SwiperOptions } from "swiper/types";
 
 import "./style.css";
@@ -31,7 +35,8 @@ function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
   const dummyImgData = [img, img, img, img, img, img, img, img];
   return (
     <>
-      <div className="w-2/3">
+      <Slider />
+      {/* <div className="w-2/3">
         <Swiper {...swiperObj} className="mySwiper ">
           {dummyImgData.map((item, sliderIdx) => {
             return idx === sliderIdx % 4 ? (
@@ -45,7 +50,7 @@ function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
             );
           })}
         </Swiper>
-      </div>
+      </div> */}
     </>
   );
 }
