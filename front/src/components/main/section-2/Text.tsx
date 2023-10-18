@@ -45,7 +45,7 @@ function Text() {
               borderBottom: "1px solid #B2B2B2",
               display: "inline-block",
               paddingRight: "2rem",
-              paddingLeft: "0.5rem",
+              paddingLeft: "0.54rem",
             }}
           >
             <span

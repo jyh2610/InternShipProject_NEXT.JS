@@ -14,7 +14,7 @@ function SectionThree() {
   const [nextRef, setNextRef] = useState(null);
 
   return (
-    <div>
+    <div className="pt-[10rem] pb-[4rem]">
       <div className="page-tit">
         <BotText />
       </div>

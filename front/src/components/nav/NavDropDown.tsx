@@ -25,14 +25,14 @@ function NavDropDown({ title, items, scrollY }: Props) {
     boxShadow: "none",
     backgroundColor: "rgba(42, 168, 107, 0.25)",
     backdropFilter: "blur(20px)",
-    marginTop:"1rem",
+    marginTop: "1rem",
   };
   const isTop = scrollY === 0 ? "white" : "black";
 
   const upIcon =
     scrollY === 0
       ? "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaBbhSnF3DIHUK33VLtHUIfOkxtP7iDjUNzCnTSV1MH6bZA1kYsCRr5qWRqS_8P2xLq2046ktTjcH2TEHZEGopmFBV2YrA=w1920-h921"
-      : "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaBxaKicz9rx17IZwtXSMdncMAG6hQacau3o1KgNJYp28a6UFkEg4dgq5bou6e_vnbNixpgehvtmTU-GosNNqvA4INoD7A=w1920-h889"
+      : "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaBxaKicz9rx17IZwtXSMdncMAG6hQacau3o1KgNJYp28a6UFkEg4dgq5bou6e_vnbNixpgehvtmTU-GosNNqvA4INoD7A=w1920-h889";
 
   const downIcon =
     scrollY === 0
@@ -44,10 +44,10 @@ function NavDropDown({ title, items, scrollY }: Props) {
       <Button
         style={{
           color: isTop,
-          display:"flex",
+          display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          gap:"0.3rem",
+          gap: "0.3rem",
           padding: "0",
         }}
         onClick={dropdownOpenHandler}

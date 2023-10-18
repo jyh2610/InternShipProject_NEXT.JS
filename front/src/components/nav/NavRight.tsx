@@ -40,7 +40,6 @@ function NavRight({ scrollY }: { scrollY: number }) {
       },
     ],
   };
-
   const isTop = scrollY === 0 ? "white" : "black";
   const accessToken = useSelector((state: any) => state.auth.accessToken);
   return (
