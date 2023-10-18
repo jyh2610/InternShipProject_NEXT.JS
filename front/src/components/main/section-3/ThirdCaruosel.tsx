@@ -8,10 +8,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { img } from "@/constants/constants";
 
+import Slider from "./Slider";
+
 import type { SwiperOptions } from "swiper/types";
 
 import "./style.css";
-import Slider from "./Slider";
 
 interface IdxProps {
   idx: number;
@@ -33,7 +34,7 @@ function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
   return (
     <>
       <Slider />
-      <div className="w-2/3">
+      {/* <div className="w-2/3">
         <Swiper {...swiperObj} className="mySwiper ">
           {dummyImgData.map((item, sliderIdx) => {
             return idx === sliderIdx % 4 ? (
@@ -47,7 +48,7 @@ function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
             );
           })}
         </Swiper>
-      </div>
+      </div> */}
     </>
   );
 }
