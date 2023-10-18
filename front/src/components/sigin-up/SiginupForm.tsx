@@ -10,6 +10,7 @@ import FormItem from "./FormItem";
 import SiginupBtn from "./SiginupBtn";
 
 import type { UserType } from "@/constants/siginupFormData";
+import type { formType } from "@/type/signUp";
 
 import { formData } from "@/constants/siginupFormData";
 
@@ -32,16 +33,7 @@ const validateMessages = {
 const onFinish = (values: any) => {
   console.log(values);
 };
-export interface formType {
-  nickname: string;
-  name: string;
-  user_name: string;
-  email: string;
-  password: string;
-  birthday: number | null;
-  nation: number | null;
-  sex: number;
-}
+
 const SiginupForm: React.FC = () => {
   const [form, setForm] = useState<formType>({
     nickname: "",

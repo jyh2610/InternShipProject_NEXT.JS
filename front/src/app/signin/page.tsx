@@ -8,7 +8,6 @@ import SigninForm from "@/components/signin/SigninForm";
 import SigninTitle from "@/components/signin/SigninTitle";
 
 const SignIn = () => {
-  // const { data: session } = useSession();
   return (
     <div className="flex">
       <div className="w-1/3 flex flex-col justify-center items-center mx-auto">
