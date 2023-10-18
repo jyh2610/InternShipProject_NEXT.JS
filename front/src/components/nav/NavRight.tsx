@@ -2,14 +2,15 @@ import React from "react";
 
 import { Button } from "antd";
 import { useRouter } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { setAccessToken, setUserName } from "@/redux/slicer/authSlice";
 
 import NavDropDown from "./NavDropDown";
 
 import type { MenuProps } from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import { setAccessToken, setUserName } from "@/redux/slicer/authSlice";
-import { signOut, useSession } from "next-auth/react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 function NavRight({ scrollY }: { scrollY: number }) {
   const dispatch = useAppDispatch();
