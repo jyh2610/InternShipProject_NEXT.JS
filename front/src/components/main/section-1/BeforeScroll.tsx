@@ -2,11 +2,11 @@
 
 import React from "react";
 
+import MainText from "./MainText";
+
 import ScrollDown from "@/components/icons/ScrollDown";
 import { mainImg } from "@/constants/constants";
 import useContact from "@/hooks/useContact";
-
-import MainText from "./MainText";
 
 function BeforeScroll() {
   const bottomRect = useContact();

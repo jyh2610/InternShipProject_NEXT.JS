@@ -6,9 +6,9 @@ import {useState} from "react";
 import { A11y, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { sumZero } from "@/lib/sumZero";
-
 import SliderText from "./SliderText";
+
+import { sumZero } from "@/lib/sumZero";
 
 import "swiper/css";
 import "swiper/css/pagination";
