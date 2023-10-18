@@ -14,21 +14,14 @@ function SectionThree() {
   const [nextRef, setNextRef] = useState(null);
 
   return (
-<<<<<<< HEAD
-    <div>
+    <div className="pt-[10rem] pb-[4rem]">
       <div className="page-tit">
         <BotText />
-=======
-    <section className="flex justify-between">
-      <div className="flex flex-col">
-        <TextSlider idx={idx} setIdx={setIdx} prevRef={prevRef} nextRef={nextRef} />
-        <BothSliderBtn setPrevRef={setPrevRef} setNextRef={setNextRef} />
->>>>>>> 58b8cd1001c5c6ed0277b73901a3a315326164c0
       </div>
       <section className="flex justify-between">
         <div className="flex flex-col">
           <TextSlider idx={idx} setIdx={setIdx} prevRef={prevRef} nextRef={nextRef} />
-          <BothSliderBtn prevRef={prevRef} nextRef={nextRef} />
+          <BothSliderBtn setPrevRef={setPrevRef} setNextRef={setNextRef} />
         </div>
         <SliderIdx idx={idx} />
         <ThirdCarusel idx={idx} prevRef={prevRef} nextRef={nextRef} />
