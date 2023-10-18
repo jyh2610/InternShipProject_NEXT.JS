@@ -2,13 +2,16 @@
 
 // import React, { useState } from "react";
 
-import { Divider, Form, Input, InputNumber } from "antd";
+import { DatePicker, Divider, Form, Input, InputNumber, Select } from "antd";
 
 // import { formData } from "@/constants/siginupFormData";
 
 // import DropDownForm from "./DropDownForm";
 // import EmailInput from "./EmailInput";
 // import FormItem from "./FormItem";
+import { nation, sex } from "@/constants/siginupFormData";
+
+import EmailInput from "./EmailInput";
 import SiginupBtn from "./SiginupBtn";
 
 // import type { UserType } from "@/constants/siginupFormData";
@@ -63,20 +66,56 @@ const SiginupForm = () => {
       <Divider />
       <Form className="my-auto" {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
         {/* {formData.map((item) => renderInput(item))} */}
-        <Form.Item name={["user", "name"]} label="Name" rules={[{ required: true }]}>
+        <Form.Item name={["user", "name"]} label="이름" rules={[{ required: true }]}>
           <Input />
         </Form.Item>
-        <Form.Item name={["user", "email"]} label="Email" rules={[{ type: "email" }]}>
-          <Input />
-        </Form.Item>
-        <Form.Item name={["user", "age"]} label="Age" rules={[{ type: "number", min: 0, max: 99 }]}>
+        <EmailInput />
+        <Form.Item name={["user", "age"]} label="나이" rules={[{ type: "number", min: 0, max: 99 }]}>
           <InputNumber />
         </Form.Item>
-        <Form.Item name={["user", "website"]} label="Website">
-          <Input />
+        <Form.Item
+          name="password"
+          label="비밀번호"
+          rules={[
+            {
+              required: true,
+              message: "Please input your password!",
+            },
+          ]}
+          hasFeedback
+        >
+          <Input.Password />
         </Form.Item>
-        <Form.Item name={["user", "introduction"]} label="Introduction">
-          <Input.TextArea />
+        <Form.Item
+          name="confirm"
+          label="비밀번호확인"
+          dependencies={["password"]}
+          hasFeedback
+          rules={[
+            {
+              required: true,
+              message: "Please confirm your password!",
+            },
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                if (!value || getFieldValue("password") === value) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(new Error("비밀번호가 일치하지 않습니다."));
+              },
+            }),
+          ]}
+        >
+          <Input.Password />
+        </Form.Item>
+        <Form.Item name={["user", "birthday"]} label="생년월일">
+          <DatePicker />
+        </Form.Item>
+        <Form.Item name={["user", "nation"]} label="내외국">
+          <Select placeholder="선택" options={nation} />
+        </Form.Item>
+        <Form.Item name={["user", "sex"]} label="성별">
+          <Select placeholder="선택" options={sex} />
         </Form.Item>
         <SiginupBtn />
       </Form>
