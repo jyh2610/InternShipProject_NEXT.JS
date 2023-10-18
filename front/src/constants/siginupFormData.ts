@@ -40,3 +40,14 @@ export const sex = [
   { label: "남", value: 1 },
   { label: "기타", value: 2 },
 ];
+
+export const formCondition = {
+  name: 50,
+  email: new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$"),
+  nickname: {
+    length: 12,
+    duplecate: true,
+  },
+  id: true,
+  sex: [0, 1, 2],
+};

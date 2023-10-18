@@ -6,9 +6,9 @@ import "swiper/css/pagination";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import type { SwiperOptions } from "swiper/types";
-
 import { img } from "@/constants/constants";
+
+import type { SwiperOptions } from "swiper/types";
 
 import "./style.css";
 
