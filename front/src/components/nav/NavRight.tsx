@@ -1,59 +1,69 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Button } from "antd";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+
+import { baseApi } from "@/API/api";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { setAccessToken, setRefreshToken } from "@/redux/slicer/authSlice";
 
 import NavDropDown from "./NavDropDown";
 
 import type { MenuProps } from "antd";
-
-import { setAccessToken, setUserName } from "@/redux/slicer/authSlice";
-import { signOut, useSession } from "next-auth/react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { baseApi } from "@/API/api";
-
+import { getCookie, removeCookie } from "@/API/cookie";
+import type { GetServerSideProps } from "next";
+import { useDispatch } from "react-redux";
 function NavRight({ scrollY }: { scrollY: number }) {
   const dispatch = useAppDispatch();
-  const { data: session } = useSession();
-  const username = useAppSelector((state: any) => state.auth.username);
-
   const route = useRouter();
   const moveSignin = () => route.push("/signin");
   // 로컬 로그아웃
   const accesstoken = useAppSelector((state: any) => state.auth.accessToken);
+  console.log(accesstoken, "___________ navright 에서 토큰이 있니");
   const api = new baseApi();
+
+  useEffect(() => {
+    // 리프레시 토큰을 가져오는 코드
+    const refreshToken = getCookie("refresh_Token");
+
+    // 리프레시 토큰을 서버로 보내는 코드
+    const sendRefreshTokenToServer = async (refreshToken: string) => {
+      try {
+        const api = new baseApi();
+        const response = await api.withTokenPost(refreshToken, {
+          url: "/validate/reissuancetoken",
+          options: {
+            headers: {
+              Authorization: `Bearer ${refreshToken}`, // yourAccessToken은 실제 엑세스 토큰 값으로 대체해야 합니다.
+            },
+          },
+        });
+        const newAccessToken = response.accessToken;
+        dispatch(setAccessToken(newAccessToken));
+      } catch (error) {
+        console.error("에러 발생:", error);
+        // 오류 처리
+      }
+    };
+    sendRefreshTokenToServer(refreshToken);
+  }, []);
   const logout = async () => {
     const url = "/sign/signout"; // 요청을 보낼 URL
     const body = {};
     // Access Token 설정
-
     try {
       const response = await api.withTokenPost(accesstoken, { url, body });
       console.log("응답 데이터:_________________________", accesstoken, "\n", response);
     } catch (error) {
       console.error("에러 발생:", error);
     }
+    removeCookie("refresh_Token");
     dispatch(setAccessToken(null));
+    dispatch(setRefreshToken(null));
     route.push("/");
   };
-  // 소셜로그아웃
-  const socialaccesstoken: string | undefined = session?.accessToken;
-  const tokenToUse: string = socialaccesstoken || "";
 
-  const sociallougout = async () => {
-    const url = "/sign/signout"; // 요청을 보낼 URL
-    const body = {};
-    // Access Token 설정
-    try {
-      const response = await api.withTokenPost(tokenToUse, { url, body });
-      console.log("응답 데이터:_________________________", socialaccesstoken, "\n", response);
-    } catch (error) {
-      console.error("에러 발생:", error);
-    }
-    dispatch(setAccessToken(null));
-    signOut();
-    route.push("/");
-  };
   const data: MenuProps = {
     items: [
       { key: "1", label: <a>한국어</a> },
@@ -62,13 +72,12 @@ function NavRight({ scrollY }: { scrollY: number }) {
   };
 
   const isTop = scrollY === 0 ? "white" : "black";
-  const accessToken = useAppSelector((state: any) => state.auth.accessToken);
   return (
     <div>
       <NavDropDown scrollY={scrollY} title={"한국어"} items={data} />
-      {accessToken || session ? (
-        <Button onClick={accessToken ? logout : sociallougout} style={{ borderRadius: "14px", color: `${isTop}`, fontSize: "0.75rem" }} type="text">
-          {username}님 로그아웃
+      {accesstoken ? (
+        <Button onClick={logout} style={{ borderRadius: "14px", color: `${isTop}`, fontSize: "0.75rem" }} type="text">
+          로그아웃
         </Button>
       ) : (
         <Button onClick={moveSignin} style={{ borderRadius: "14px", color: `${isTop}`, fontSize: "0.75rem" }} type="text">
