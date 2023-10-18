@@ -3,16 +3,17 @@ import React from "react";
 import { Button } from "antd";
 import { useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
-import { useDispatch, useSelector } from "react-redux";
 
+import { baseApi } from "@/API/api";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { setAccessToken, setUserName } from "@/redux/slicer/authSlice";
+import { setAccessToken } from "@/redux/slicer/authSlice";
 
 import NavDropDown from "./NavDropDown";
 
 import type { MenuProps } from "antd";
 
 function NavRight({ scrollY }: { scrollY: number }) {
+  const api = new baseApi();
   const dispatch = useAppDispatch();
   const { data: session } = useSession();
   const username = useAppSelector((state: any) => state.auth.username);
@@ -21,7 +22,6 @@ function NavRight({ scrollY }: { scrollY: number }) {
   const moveSignin = () => route.push("/signin");
   // 로컬 로그아웃
   const accesstoken = useAppSelector((state: any) => state.auth.accessToken);
-  const api = new baseApi();
   const logout = async () => {
     const url = "/sign/signout"; // 요청을 보낼 URL
     const body = {};

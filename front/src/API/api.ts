@@ -21,7 +21,6 @@ export class baseApi {
     } as AxiosRequestConfig["headers"];
   }
 
-
   async get({ url = "/", options = {} }: IAxiosParams) {
     try {
       const data = await axiosInstance.get(url, {
@@ -34,7 +33,6 @@ export class baseApi {
     }
   }
 
-  
   async post({ url = "/", options = {}, body = {} }: IAxiosParams) {
     try {
       const data = await axiosInstance.post(url, body, {
@@ -46,7 +44,7 @@ export class baseApi {
       console.error(error);
     }
   }
-  async withTokenPost( token:string,{ url = "/", options = {}, body = {} }: IAxiosParams) {
+  async withTokenPost(token: string, { url = "/", options = {}, body = {} }: IAxiosParams) {
     this.axiosInstance.defaults.headers["Authorization"] = `Bearer ${token}`;
     try {
       const data = await axiosInstance.post(url, body, {
