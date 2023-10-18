@@ -8,8 +8,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { img } from "@/constants/constants";
 
-import { img } from "@/constants/constants";
-
 import Slider from "./Slider";
 
 import type { SwiperOptions } from "swiper/types";

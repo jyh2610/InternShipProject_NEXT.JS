@@ -2,11 +2,6 @@ import React, { useEffect } from "react";
 
 import { Button } from "antd";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
-
-import { baseApi } from "@/API/api";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { setAccessToken, setRefreshToken } from "@/redux/slicer/authSlice";
 
 import NavDropDown from "./NavDropDown";
 
@@ -16,15 +11,43 @@ import { setAccessToken, setUserName } from "@/redux/slicer/authSlice";
 import { signOut, useSession } from "next-auth/react";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { baseApi } from "@/API/api";
+import { getCookie, removeCookie } from "@/API/cookie";
 
 function NavRight({ scrollY }: { scrollY: number }) {
-  const api = new baseApi();
   const dispatch = useAppDispatch();
   const route = useRouter();
   const moveSignin = () => route.push("/signin");
   // 로컬 로그아웃
   const accesstoken = useAppSelector((state: any) => state.auth.accessToken);
   const api = new baseApi();
+
+  // 마운트 될때 리프레시 토큰 보내기
+  useEffect(() => {
+    // 리프레시 토큰을 가져오는 코드
+    const refreshToken = getCookie("refresh_Token");
+
+    // 리프레시 토큰을 서버로 보내는 코드
+    const sendRefreshTokenToServer = async (refreshToken: string) => {
+      try {
+        const api = new baseApi();
+        const response = await api.withTokenPost(refreshToken, {
+          url: "/validate/reissuancetoken",
+          options: { headers: { Authorization: `Bearer ${refreshToken}` } },
+        });
+        const newAccessToken = response.accessToken;
+        setAccessToken(newAccessToken);
+        // 리덕스 스토어에도 저장
+        dispatch(setAccessToken(newAccessToken));
+      } catch (error) {
+        console.error("에러 발생:", error);
+        // 오류 처리
+      }
+    };
+
+    // 컴포넌트가 마운트될 때와 리렌더링될 때마다 실행
+    sendRefreshTokenToServer(refreshToken);
+  }, [dispatch]);
+  //로컬 로그아웃
   const logout = async () => {
     const url = "/sign/signout"; // 요청을 보낼 URL
     const body = {};

@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 import { baseApi } from "@/API/api";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { setAccessToken, setRefreshToken, setUserName } from "@/redux/slicer/authSlice";
+import { setAccessToken, setUserName } from "@/redux/slicer/authSlice";
 
 import FindButton from "./FindButton";
 import LoginButton from "./LoginButton";
