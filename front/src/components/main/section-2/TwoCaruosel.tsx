@@ -24,7 +24,7 @@ function TwoCarousel() {
   return (
     <div style={{ width: "100%", padding: "0 2rem 0 0" }} data-aos="fade-up" data-aos-offset="200" data-aos-delay="100">
       <div className="flex gap-[0.5rem]" style={{ width: "100%", maxWidth: "1600px", padding: "0 4rem 0 0" }}>
-        <div className="shadow-xl	w-full">
+        <div className="shadow-2xl	w-full">
           <Swiper navigation={true} loop={true} modules={[Navigation, A11y]} onSlideChange={handleSlideChange}>
             {dummyData.map((_, idx) => (
               <SwiperSlide key={idx}>

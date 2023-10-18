@@ -18,14 +18,16 @@ function SectionThree() {
       <div className="page-tit">
         <BotText />
       </div>
-      <section className="flex justify-between">
-        <div className="flex flex-col">
-          <TextSlider idx={idx} setIdx={setIdx} prevRef={prevRef} nextRef={nextRef} />
-          <BothSliderBtn setPrevRef={setPrevRef} setNextRef={setNextRef} />
-        </div>
-        <SliderIdx idx={idx} />
-        <ThirdCarusel idx={idx} prevRef={prevRef} nextRef={nextRef} />
-      </section>
+      <div className="w-full ">
+        <section className="flex justify-between" style={{ width: "100%", maxWidth: "1600px", padding: "0 0 0 2rem" }}>
+          <div className="flex flex-col">
+            <TextSlider idx={idx} setIdx={setIdx} prevRef={prevRef} nextRef={nextRef} />
+            <BothSliderBtn setPrevRef={setPrevRef} setNextRef={setNextRef} />
+          </div>
+          <SliderIdx idx={idx} />
+          <ThirdCarusel idx={idx} prevRef={prevRef} nextRef={nextRef} />
+        </section>
+      </div>
     </div>
   );
 }

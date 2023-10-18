@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import type { SwiperOptions } from "swiper/types";
 
+// eslint-disable-next-line import/order
 import { img } from "@/constants/constants";
 
 import "./style.css";
@@ -21,26 +22,28 @@ interface IdxProps {
 function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
   const swiperObj: SwiperOptions = {
     loop: true,
-    slidesPerView: "auto",
+    slidesPerView: 2.5,
     spaceBetween: 20,
     navigation: { prevEl: prevRef, nextEl: nextRef },
     modules: [Navigation],
     allowTouchMove: false,
+    observer: true,
+    observeParents: true,
   };
 
   const dummyImgData = [img, img, img, img, img, img, img, img];
   return (
     <>
-      <div className="w-2/3">
+      <div className="w-full">
         <Swiper {...swiperObj} className="mySwiper ">
           {dummyImgData.map((item, sliderIdx) => {
             return idx === sliderIdx % 4 ? (
-              <SwiperSlide className="aspect-w-16 aspect-h-9" style={{ width: "70%" }}>
-                <img className="w-full h-[500px]" src={item} alt="dummy" />
+              <SwiperSlide className="shadow-2xl" style={{ width: "70%" }}>
+                <img className="w-full h-[100%]" src={item} alt="dummy" />
               </SwiperSlide>
             ) : (
-              <SwiperSlide className="aspect-w-16 aspect-h-9" style={{ width: "25%" }}>
-                <img className="w-full h-[500px] " src={item} alt="dummy" />
+              <SwiperSlide className="" style={{ width: "25%" }}>
+                <img className="w-full h-[100%] " src={item} alt="dummy" />
               </SwiperSlide>
             );
           })}
