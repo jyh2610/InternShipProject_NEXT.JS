@@ -60,7 +60,7 @@ function NavRight({ scrollY }: { scrollY: number }) {
     }
     removeCookie("refresh_Token");
     dispatch(setAccessToken(null));
-    dispatch(setRefreshToken(null));
+
     route.push("/");
   };
 
