@@ -11,6 +11,7 @@ import { img } from "@/constants/constants";
 import type { SwiperOptions } from "swiper/types";
 
 import "./style.css";
+import Slider from "./Slider";
 
 interface IdxProps {
   idx: number;
@@ -31,6 +32,7 @@ function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
   const dummyImgData = [img, img, img, img, img, img, img, img];
   return (
     <>
+      <Slider />
       <div className="w-2/3">
         <Swiper {...swiperObj} className="mySwiper ">
           {dummyImgData.map((item, sliderIdx) => {
