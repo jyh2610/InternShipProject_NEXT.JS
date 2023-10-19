@@ -8,6 +8,7 @@ export const duplicateTest = async (type: string, value: string | number) => {
       type === "hasnickname"
         ? await api.post({ url: `/validate/${type}`, body: { nickname: value } })
         : await api.post({ url: `/validate/${type}`, body: { user_name: value } });
+    console.log(res);
     return res.success;
   } catch (error) {
     console.log(error);
