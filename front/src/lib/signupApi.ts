@@ -4,9 +4,11 @@ const api = new baseApi();
 
 export const duplicateTest = async (type: string, value: string | number) => {
   try {
-    type === "hasnickname"
-      ? await api.post({ url: `/validate/${type}`, body: { nickname: value } })
-      : await api.post({ url: `/validate/${type}`, body: { user_name: value } });
+    const res =
+      type === "hasnickname"
+        ? await api.post({ url: `/validate/${type}`, body: { nickname: value } })
+        : await api.post({ url: `/validate/${type}`, body: { user_name: value } });
+    return res.success;
   } catch (error) {
     console.log(error);
   }
