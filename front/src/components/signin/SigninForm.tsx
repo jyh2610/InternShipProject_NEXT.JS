@@ -5,7 +5,12 @@ import { ConfigProvider, Form, Input } from "antd";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
+import FindButton from "./FindButton";
+import LoginButton from "./LoginButton";
+import SocialLoginButton from "./SocialLoginButton";
+
 import { baseApi } from "@/API/api";
+import { setCookie } from "@/API/cookie";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setAccessToken, setUserName } from "@/redux/slicer/authSlice";
 

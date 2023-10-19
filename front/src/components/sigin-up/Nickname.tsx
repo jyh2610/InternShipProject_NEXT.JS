@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
 
-function Nickname() {
+import { duplicateTest } from "@/lib/signupApi";
+
+function Nickname({ nicknameValue }: { nicknameValue: string }) {
+  const [isNicknameValid, setIsNicknameValid] = useState(false);
+
   return (
     <>
       <Form.Item
+        hasFeedback={isNicknameValid}
         rules={[
           {
             required: true,
@@ -25,6 +30,16 @@ function Nickname() {
       >
         <Input />
       </Form.Item>
+      <Button
+        onClick={() =>
+          duplicateTest("hasnickname", nicknameValue).then((res) => {
+            console.log(res, "{{{{{{{{{{{{{{{");
+            setIsNicknameValid(res);
+          })
+        }
+      >
+        중복검사
+      </Button>
     </>
   );
 }
