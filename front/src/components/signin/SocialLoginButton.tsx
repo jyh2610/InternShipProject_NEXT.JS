@@ -1,43 +1,45 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { useRouter } from "next/router";
+import NextAuth from "next-auth/next";
 import { signIn, useSession } from "next-auth/react";
 
 import { baseApi } from "@/API/api";
 import { setCookie } from "@/API/cookie";
 import { loginObj } from "@/constants/constants";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setAccessToken } from "@/redux/slicer/authSlice";
-import Link from "next/link";
 
 const SocialLoginButton = () => {
   const { data: session } = useSession();
-  const dispatch = useAppDispatch();
-  const router = useRouter;
+  useEffect(() => {
+    // `session` 콜백 함수를 사용하여 `session` 객체를 가져옵니다.
+    // const session = NextAuth?.session();
+    // `session` 객체에서 `token` 속성을 사용하여 토큰을 가져옵니다.
+    // const accessToken = session.token.accessToken;
+    // console.log(accessToken, "새로운 엑세스토큰 ?");
+    // ...
+  }, []);
 
   const api = new baseApi();
   // 소셜로그인
   const sociallogin = async (socialtype: string) => {
-    await signIn(socialtype, { callbackUrl: "/" });
-    const url = `/sign/${socialtype}login`;
-    // Access Token 설정
     try {
-      const socialaccesstoken: any | undefined = session?.accessToken || "";
+      await signIn(socialtype).then((res) => console.log(res));
+
+      // Access Token 설정
+      const socialaccesstoken = session?.accessToken;
+      const url = `/sign/${socialtype}login`;
       // api.setHeaders(socialaccesstoken);
       const response = await api.post({
         url,
         options: {
           headers: {
-            Authorization: `Bearer ${socialaccesstoken.accessToken}`, // yourAccessToken은 실제 엑세스 토큰 값으로 대체해야 합니다.
+            Authorization: `Bearer ${socialaccesstoken}`, // yourAccessToken은 실제 엑세스 토큰 값으로 대체해야 합니다.
           },
         },
       });
-      console.log(response, "________________");
       setCookie("refresh_Token", response.refreshToken);
-      dispatch(setAccessToken(response.accessToken));
-      return <Link href="/" />; // 홈페이지로 이동
     } catch (error) {
       console.error("에러 발생:", error);
       // next auth 에 accesstoken 을 지운다
