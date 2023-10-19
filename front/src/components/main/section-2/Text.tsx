@@ -67,9 +67,9 @@ function Text() {
                         transform="translate(-78.918 -1881.844)"
                         fill="none"
                         stroke="#767676"
-                        stroke-linejoin="round"
-                        stroke-miterlimit="10"
-                        stroke-width="2"
+                        strokeLinejoin="round"
+                        strokeMiterlimit="10"
+                        strokeWidth="2"
                       />
                       <path
                         id="패스_7617"
@@ -78,7 +78,7 @@ function Text() {
                         transform="translate(-23.303 -17.655)"
                         fill="none"
                         stroke="#767676"
-                        stroke-width="2"
+                        strokeWidth="2"
                       />
                     </g>
                   </g>

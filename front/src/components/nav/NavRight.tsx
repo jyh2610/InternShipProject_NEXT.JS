@@ -2,20 +2,16 @@ import React, { useEffect } from "react";
 
 import { Button } from "antd";
 import { useRouter } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
+
+import { baseApi } from "@/API/api";
+import { getCookie, removeCookie } from "@/API/cookie";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { setAccessToken } from "@/redux/slicer/authSlice";
 
 import NavDropDown from "./NavDropDown";
 
 import type { MenuProps } from "antd";
-
-import { setAccessToken } from "@/redux/slicer/authSlice";
-
-import { signOut, useSession } from "next-auth/react";
-
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-
-import { baseApi } from "@/API/api";
-
-import { getCookie, removeCookie } from "@/API/cookie";
 
 function NavRight({ scrollY }: { scrollY: number }) {
   const dispatch = useAppDispatch();
@@ -65,12 +61,11 @@ function NavRight({ scrollY }: { scrollY: number }) {
     }
     removeCookie("refresh_Token");
     dispatch(setAccessToken(null));
-    sendRefreshTokenToServer(refreshToken);
     route.push("/");
   };
-  useEffect(() => {
-    sendRefreshTokenToServer(refreshToken);
-  }, []);
+  // useEffect(() => {
+  //   sendRefreshTokenToServer(refreshToken);
+  // }, []);
   const data: MenuProps = {
     items: [
       {
@@ -89,7 +84,7 @@ function NavRight({ scrollY }: { scrollY: number }) {
   return (
     <div className="flex items-center">
       <NavDropDown scrollY={scrollY} title={"한국어"} items={data} />
-      {accesstoken || session ? (
+      {accesstoken || refreshToken ? (
         <Button onClick={logout} style={{ borderRadius: "14px", color: `${isTop}`, fontSize: "0.75rem" }} type="text">
           로그아웃
         </Button>

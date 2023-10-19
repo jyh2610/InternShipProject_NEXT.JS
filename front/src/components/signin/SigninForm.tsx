@@ -2,49 +2,19 @@ import React from "react";
 
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { ConfigProvider, Form, Input } from "antd";
-import axios from "axios";
-import { useRouter } from "next/navigation";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { setAccessToken } from "@/redux/slicer/authSlice";
 
 import FindButton from "./FindButton";
 import LoginButton from "./LoginButton";
 import SocialLoginButton from "./SocialLoginButton";
 
-import { baseApi } from "@/API/api";
-import { setCookie } from "@/API/cookie";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { setAccessToken, setUserName } from "@/redux/slicer/authSlice";
-
 const SigninForm = () => {
-  const route = useRouter();
-  const api = new baseApi();
   const accessToken = useAppSelector((state) => state.auth.accessToken);
   const dispatch = useAppDispatch();
-  const login = async (values: any) => {
-    try {
-      const res = await api.post({
-        url: "/sign/signin",
-        options: {
-          headers: {
-            Authorization: "Bearerdfweci", // yourAccessToken은 실제 엑세스 토큰 값으로 대체해야 합니다.
-          },
-        },
-        body: values,
-      });
-      const accessToken = res.accessToken;
-      dispatch(setAccessToken(accessToken));
-      setCookie("refresh_Token", res.refreshToken);
-      dispatch(setUserName(res.name));
-
-      // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
-      axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
-      route.push("/");
-    } catch (error) {
-      console.error("로그인 실패:", error);
-    }
-  };
 
   const onFinish = (values: any) => {
-    login(values);
     console.log("Received values of form: ", values);
     dispatch(setAccessToken(accessToken));
   };
