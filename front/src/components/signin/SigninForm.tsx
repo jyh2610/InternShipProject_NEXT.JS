@@ -9,10 +9,6 @@ import { baseApi } from "@/API/api";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setAccessToken, setUserName } from "@/redux/slicer/authSlice";
 
-import FindButton from "./FindButton";
-import LoginButton from "./LoginButton";
-import SocialLoginButton from "./SocialLoginButton";
-import { setCookie } from "@/API/cookie";
 const SigninForm = () => {
   const route = useRouter();
   const api = new baseApi();

@@ -1,18 +1,21 @@
 "use client";
 
-// import React, { useState } from "react";
+import { Button, Divider, Form } from "antd";
 
-import { Divider, Form, Input, InputNumber } from "antd";
+import { baseApi } from "@/API/api";
+import { formatDate } from "@/lib/FormatData";
+import { duplicateTest } from "@/lib/signupApi";
 
-// import { formData } from "@/constants/siginupFormData";
-
-// import DropDownForm from "./DropDownForm";
-// import EmailInput from "./EmailInput";
-// import FormItem from "./FormItem";
+import Birth from "./Birth";
+import EmailInput from "./EmailInput";
+import Name from "./Name";
+import Nickname from "./Nickname";
+import Password from "./Password";
+import Sex from "./Sex";
 import SiginupBtn from "./SiginupBtn";
+import UserID from "./UserID";
 
-// import type { UserType } from "@/constants/siginupFormData";
-// import type { formType } from "@/type/signUp";
+import type { formType } from "@/type/signUp";
 
 const layout = {
   labelCol: { span: 4 },
@@ -22,6 +25,7 @@ const layout = {
 const validateMessages = {
   required: "${label} is required!",
   types: {
+    name: "${label}은 12글자 이하여야합니다.",
     email: "${label} is not a valid email!",
     number: "${label} is not a valid number!",
   },
@@ -35,50 +39,49 @@ const onFinish = (values: any) => {
 };
 
 const SiginupForm = () => {
-  // const [form, setForm] = useState<formType>({
-  //   nickname: "",
-  //   name: "",
-  //   user_name: "",
-  //   email: "",
-  //   password: "",
-  //   birthday: null,
-  //   nation: null,
-  //   sex: 1,
-  // });
+  const api = new baseApi();
+  const [form] = Form.useForm<formType>();
 
-  // const renderInput = (item: UserType) => {
-  //   if (item.label === "생년월일" || item.label === "내·외국인" || item.label === "성별") {
-  //     return <DropDownForm key={item.label} setForm={setForm} item={item} />;
-  //   }
-  //   if (item.label === "이메일") {
-  //     return <EmailInput key={item.label} />;
-  //   }
-  //   // 나머지 경우는 FormItem을 렌더링
-  //   return <FormItem form={form} setForm={setForm} key={item.label} name={item.name} label={item.label} msg={item.msg} btn={item.btn} btntext={item.btntext} />;
-  // };
+  const nicknameValue = Form.useWatch("nickname", form);
+  const user_nameValue = Form.useWatch("user_name", form);
+  console.log(user_nameValue, nicknameValue);
 
+  const validateForm = async () => {
+    try {
+      const { birthday, name, user_name, nickname, password, nation, sex } = await form.validateFields();
+      await api.post({
+        url: "/sign/signup",
+        body: { birthday: formatDate(birthday), name, user_name, nickname, password, nation, sex, email: "jogg4177@naver.com" },
+      });
+    } catch (errorInfo) {
+      console.log("Validation failed:", errorInfo);
+    }
+  };
+
+  const validateSelect = (_: unknown, value: string | number) => {
+    return new Promise<void>((resolve, reject) => {
+      if (value === undefined) {
+        reject("선택해야 합니다.");
+      } else {
+        resolve();
+      }
+    });
+  };
   return (
     <div>
       <p>회원정보</p>
       <Divider />
-      <Form className="my-auto" {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
-        {/* {formData.map((item) => renderInput(item))} */}
-        <Form.Item name={["user", "name"]} label="Name" rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
-        <Form.Item name={["user", "email"]} label="Email" rules={[{ type: "email" }]}>
-          <Input />
-        </Form.Item>
-        <Form.Item name={["user", "age"]} label="Age" rules={[{ type: "number", min: 0, max: 99 }]}>
-          <InputNumber />
-        </Form.Item>
-        <Form.Item name={["user", "website"]} label="Website">
-          <Input />
-        </Form.Item>
-        <Form.Item name={["user", "introduction"]} label="Introduction">
-          <Input.TextArea />
-        </Form.Item>
-        <SiginupBtn />
+      <Form form={form} className="my-auto" {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+        <Name />
+        <Nickname />
+        <Button onClick={() => duplicateTest("hasnickname", nicknameValue)}>중복검사</Button>
+        <UserID />
+        <Button onClick={() => duplicateTest("hasid", user_nameValue)}>중복검사</Button>
+        <EmailInput />
+        <Password />
+        <Birth validateSelect={validateSelect} />
+        <Sex validateSelect={validateSelect} />
+        <SiginupBtn validateForm={validateForm} />
       </Form>
     </div>
   );

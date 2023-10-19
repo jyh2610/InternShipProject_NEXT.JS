@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Button, Form, Input, Select } from "antd";
 
+import { baseApi } from "@/API/api";
 import { domainData } from "@/constants/constants";
 
 import EmailCode from "./EmailCode";
@@ -13,11 +14,16 @@ interface emailType {
 }
 
 function EmailInput() {
+  const api = new baseApi();
+  const [isActive, setIsActive] = useState(false);
+
   const [emailValue, setEmailValue] = useState<emailType>({
     id: "",
     domain: "",
     code: "",
   });
+  const email = `${emailValue.id}@${emailValue.domain}`;
+
   const [isValid, setIsValid] = useState(true);
 
   const domainHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,15 +41,28 @@ function EmailInput() {
 
   const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
 
+  const sendingCode = async () => {
+    try {
+      await api.post({
+        url: "validate/sendemail",
+        body: {
+          email: emailValue.id + "@" + emailValue.domain,
+        },
+      });
+      await setIsActive(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
-    const email = `${emailValue.id}@${emailValue.domain}`;
     const isValidEmail = emailRegex.test(email);
     setIsValid(isValidEmail);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [emailValue]);
 
   return (
-    <div className="">
+    <div>
       <Form.Item
         rules={[
           {
@@ -53,7 +72,7 @@ function EmailInput() {
         ]}
         validateStatus={isValid ? "success" : "error"}
         help={!isValid && "이메일 양식이 틀립니다. 다시 한번 확인하세요."}
-        name={["user", "email"]}
+        name={"email"}
         label="이메일"
       >
         <div className="flex flex-col text-center">
@@ -63,13 +82,12 @@ function EmailInput() {
             <div className="flex">
               <Input style={{ width: "45%" }} name="domain" value={emailValue.domain} onChange={domainHandler} />
               <Select placeholder="직접 입력" style={{ width: 120 }} options={domainData} onChange={selectHandler} />
-              <Button>이메일 인증</Button>
+              <Button onClick={sendingCode}>이메일 인증</Button>
             </div>
           </div>
         </div>
       </Form.Item>
-
-      <EmailCode />
+      <EmailCode setIsActive={setIsActive} isActive={isActive} email={email} />
     </div>
   );
 }
