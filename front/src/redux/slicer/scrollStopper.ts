@@ -19,8 +19,6 @@ const initialAuthState = {
   // 다른 인증 관련 상태도 추가할 수 있음
 };
 
-
-
 const scrollBehaviorSlice = createSlice({
   name: "scrollBehavior",
   initialState,

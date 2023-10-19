@@ -1,3 +1,4 @@
+import { getCookie } from "@/API/cookie";
 import FadeProvider from "@/components/FadeProvider";
 import WithNavFooter from "@/components/layout/WithNavFooter";
 import SectionFive from "@/components/main/SectionFive";
@@ -8,6 +9,8 @@ import SectionThree from "@/components/main/SectionThree";
 import Sectiontwo from "@/components/main/Sectiontwo";
 import Line from "@/components/main/verticalline/Line";
 import VerticalLine from "@/components/main/verticalline/VerticalLine";
+import axios from "axios";
+import { useEffect } from "react";
 
 export default function Home() {
   return (
