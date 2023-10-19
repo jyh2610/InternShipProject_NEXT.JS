@@ -3,6 +3,9 @@ import GoggleProvider from "next-auth/providers/google";
 import KakaoProvider from "next-auth/providers/kakao";
 import NaverProvider from "next-auth/providers/naver";
 
+import { baseApi } from "@/API/api";
+
+const api = new baseApi();
 const handler = NextAuth({
   providers: [
     NaverProvider({
@@ -17,16 +20,33 @@ const handler = NextAuth({
   ],
 
   callbacks: {
+    async signIn() {
+      return true;
+    },
     async jwt({ token, account }) {
       // Persist the OAuth access_token to the token right after signin
       if (account) {
         token.accessToken = account.access_token;
+        const socialaccesstoken = token?.accessToken;
+        const url = `/sign/${account.provider}login`;
+        const res = await api.post({
+          url,
+          options: {
+            headers: {
+              Authorization: `Bearer ${socialaccesstoken}`,
+            },
+          },
+        });
+        return res;
       }
       return token;
     },
-    async session({ session, token }: any) {
-      // Send properties to the client, like an access_token from a provider.
+    async redirect() {
+      return "/";
+    },
+    async session({ token, session }: any) {
       session.accessToken = token.accessToken;
+      session.user.id = token.id;
       return session;
     },
   },

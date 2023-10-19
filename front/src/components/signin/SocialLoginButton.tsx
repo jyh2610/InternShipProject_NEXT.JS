@@ -1,27 +1,22 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 
 import { signIn, useSession } from "next-auth/react";
 
 import { loginObj } from "@/constants/constants";
 
-import type { Session } from "next-auth";
-
 const SocialLoginButton = () => {
-  const { data } = useSession();
-  const { accessToken }: { accessToken: string | null } = data;
+  const { data: session } = useSession(); // Use useSession to access the session data
 
-  useEffect(() => {}, []);
+  // Check if the user is authenticated or if there's an access token
 
   // 소셜로그인
   const sociallogin = async (socialtype: string) => {
-    const result = await signIn(socialtype, {
-      redirect: false,
-    });
-    console.log(result);
-    console.log(11);
-    console.log(accessToken);
+    console.log("hi");
+
+    console.log("hi_______", session);
+    await signIn(socialtype);
   };
 
   return (
