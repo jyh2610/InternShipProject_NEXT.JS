@@ -2,21 +2,31 @@ import React, { useState } from "react";
 
 import { Button, Input } from "antd";
 
+import { baseApi } from "@/API/api";
+
 import Timer from "./Timer";
 
-function EmailCode() {
-  const [isActive, setIsActive] = useState(false);
-  const [seconds, setSeconds] = useState(180); // 3분 타이머, 60초 * 3분
-
+function EmailCode({ email, setIsActive, isActive }: { isActive: boolean; email: string; setIsActive: React.Dispatch<React.SetStateAction<boolean>> }) {
+  const [code, setCode] = useState("");
+  const [seconds, setSeconds] = useState(180);
+  const api = new baseApi();
   const startTimer = () => {
-    setIsActive(true);
     setSeconds(180);
+    api.post({
+      url: "/validate/verifycode",
+      body: {
+        email: email,
+        code: code,
+      },
+    });
   };
 
   return (
     <>
       <Input
         style={{ width: "300px" }}
+        value={code}
+        onChange={(e) => setCode(e.target.value)}
         name="code"
         suffix={<Timer setSeconds={setSeconds} setIsActive={setIsActive} isActive={isActive} seconds={seconds} />}
       />
