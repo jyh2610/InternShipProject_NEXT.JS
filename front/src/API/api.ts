@@ -39,11 +39,12 @@ export class baseApi {
         ...options,
         headers: this.addHeaders(options.headers!),
       });
-      return data.data;
+      return data.data.refreshToken;
     } catch (error) {
       console.error(error);
     }
   }
+
   async withTokenPost(token: string, { url = "/", options = {}, body = {} }: IAxiosParams) {
     this.axiosInstance.defaults.headers["Authorization"] = `Bearer ${token}`;
     try {

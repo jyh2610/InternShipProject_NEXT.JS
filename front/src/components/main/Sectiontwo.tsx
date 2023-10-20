@@ -5,7 +5,9 @@ function Sectiontwo() {
   return (
     <section className="pt-[10rem] pb-[4rem]">
       <Text />
-      <TwoCaruosel />
+      <div className=" flex justify-start	">
+        <TwoCaruosel />
+      </div>
     </section>
   );
 }

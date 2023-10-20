@@ -12,5 +12,5 @@ export const getCookie = (name: any) => {
 };
 //쿠키를 지울때
 export const removeCookie = (name: any) => {
-  return cookies.remove(name);
+  return cookies.remove(name, { path: "/" });
 };
