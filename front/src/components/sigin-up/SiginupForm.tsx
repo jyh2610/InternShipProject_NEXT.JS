@@ -1,10 +1,9 @@
 "use client";
 
-import { Button, Divider, Form } from "antd";
+import { Divider, Form } from "antd";
 
 import { baseApi } from "@/API/api";
 import { formatDate } from "@/lib/FormatData";
-import { duplicateTest } from "@/lib/signupApi";
 
 import Birth from "./Birth";
 import EmailInput from "./EmailInput";
@@ -73,10 +72,8 @@ const SiginupForm = () => {
       <Divider />
       <Form form={form} className="my-auto" {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
         <Name />
-        <Nickname />
-        <Button onClick={() => duplicateTest("hasnickname", nicknameValue)}>중복검사</Button>
-        <UserID />
-        <Button onClick={() => duplicateTest("hasid", user_nameValue)}>중복검사</Button>
+        <Nickname nicknameValue={nicknameValue} />
+        <UserID user={user_nameValue} />
         <EmailInput />
         <Password />
         <Birth validateSelect={validateSelect} />

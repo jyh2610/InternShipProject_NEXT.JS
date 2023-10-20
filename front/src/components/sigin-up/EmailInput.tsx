@@ -16,7 +16,7 @@ interface emailType {
 function EmailInput() {
   const api = new baseApi();
   const [isActive, setIsActive] = useState(false);
-
+  const [confirmemail, setConfirmEmail] = useState(false);
   const [emailValue, setEmailValue] = useState<emailType>({
     id: "",
     domain: "",
@@ -24,11 +24,12 @@ function EmailInput() {
   });
   const email = `${emailValue.id}@${emailValue.domain}`;
 
-  const [isValid, setIsValid] = useState(true);
+  const [isValid, setIsValid] = useState<undefined | boolean>(false);
 
   const domainHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setEmailValue((prev) => {
+      setIsValid(true);
       return { ...prev, [name]: value };
     });
   };
@@ -39,7 +40,7 @@ function EmailInput() {
     });
   };
 
-  const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+  const emailRegexFront = /^[a-z0-9]$/;
 
   const sendingCode = async () => {
     try {
@@ -53,10 +54,11 @@ function EmailInput() {
     } catch (err) {
       console.log(err);
     }
+    setConfirmEmail(true);
   };
 
   useEffect(() => {
-    const isValidEmail = emailRegex.test(email);
+    const isValidEmail = emailRegexFront.test(email);
     setIsValid(isValidEmail);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [emailValue]);
@@ -67,27 +69,38 @@ function EmailInput() {
         rules={[
           {
             required: true,
-            message: "이메일을 입력하세요.",
+          },
+          {
+            validator: () => {
+              if (isValid) {
+                if (!isValid) {
+                  return Promise.resolve();
+                } else {
+                  return Promise.reject(new Error("이메일 형식이 틀립니다."));
+                }
+              }
+              return Promise.resolve(); // 형식 검사를 수행하지 않음
+            },
           },
         ]}
-        validateStatus={isValid ? "success" : "error"}
-        help={!isValid && "이메일 양식이 틀립니다. 다시 한번 확인하세요."}
-        name={"email"}
+        name={["email", "domain"]}
         label="이메일"
       >
         <div className="flex flex-col text-center">
           <div className="flex w-full">
             <Input style={{ width: "45%" }} name="id" onChange={domainHandler} />
             <span className="my-auto">@</span>
-            <div className="flex">
-              <Input style={{ width: "45%" }} name="domain" value={emailValue.domain} onChange={domainHandler} />
-              <Select placeholder="직접 입력" style={{ width: 120 }} options={domainData} onChange={selectHandler} />
-              <Button onClick={sendingCode}>이메일 인증</Button>
-            </div>
+            <Form.Item>
+              <div className="flex">
+                <Input style={{ width: "45%" }} name="domain" value={emailValue.domain} onChange={domainHandler} />
+                <Select placeholder="직접 입력" style={{ width: 120 }} options={domainData} onChange={selectHandler} />
+                <Button onClick={sendingCode}>이메일 인증</Button>
+              </div>
+            </Form.Item>
           </div>
         </div>
       </Form.Item>
-      <EmailCode setIsActive={setIsActive} isActive={isActive} email={email} />
+      {confirmemail && <EmailCode setIsActive={setIsActive} isActive={isActive} email={email} />}
     </div>
   );
 }
