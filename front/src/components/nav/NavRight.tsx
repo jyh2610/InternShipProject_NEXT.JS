@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { Button } from "antd";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
+import { useSelector } from "react-redux";
 
 import { getCookie, removeCookie } from "@/API/cookie";
 import { logOutHandler, refreshTokenHandler } from "@/lib/signinApi";
@@ -69,9 +70,13 @@ function NavRight({ scrollY }: { scrollY: number }) {
   return (
     <div className="flex items-center">
       <NavDropDown scrollY={scrollY} title={"한국어"} items={data} />
-      {accesstoken || refreshToken ? (
-        <Button onClick={logout} style={{ borderRadius: "14px", color: `${isTop}`, fontSize: "0.75rem" }} type="text">
-          로그아웃
+      {accessToken || session ? (
+        <Button
+          onClick={accessToken ? logout : sociallougout}
+          style={{ ...btnLayout, borderRadius: "14px", color: `${isTop}`, padding: "0", fontSize: "0.75rem" }}
+          type="text"
+        >
+          <span>{username}님 로그아웃</span>
         </Button>
       ) : (
         <Button onClick={moveSignin} style={{ color: `${isTop}` }} type="text">
