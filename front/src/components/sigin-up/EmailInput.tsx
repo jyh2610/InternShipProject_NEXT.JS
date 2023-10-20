@@ -74,13 +74,17 @@ function EmailInput() {
       <Form.Item
         rules={[
           {
+            required: true,
+            message: "이메일을 입력하세요",
+          },
+          {
             validator: (_, value: string) => {
               if (value) {
                 // 앞부분(id)과 뒷부분(domain)이 모두 값이 있는 경우에만 유효성 검사 수행
                 if (value.length >= 2) {
                   return Promise.resolve();
                 } else {
-                  return Promise.reject(new Error("이메일 형식이 틀렸습니다."));
+                  return Promise.reject(new Error("이메일 형식이 틀렸습니다.다시 한번 확인 하세요."));
                 }
               }
               return Promise.resolve(); // 형식 검사를 수행하지 않음
@@ -97,6 +101,10 @@ function EmailInput() {
             <Form.Item
               rules={[
                 {
+                  required: true,
+                  message: "이메일을 입력하세요",
+                },
+                {
                   validator: (_, value: string) => {
                     if (value) {
                       // 입력 값이 비어있지 않은 경우에만 유효성 검사 수행
@@ -104,7 +112,7 @@ function EmailInput() {
                         if (value.length >= 2 || value) {
                           return Promise.resolve();
                         } else {
-                          return Promise.reject(new Error("이메일 형식이 틀렸습니다."));
+                          return Promise.reject(new Error("이메일 형식이 틀렸습니다.다시 한번 확인 하세요."));
                         }
                       }
                     }
