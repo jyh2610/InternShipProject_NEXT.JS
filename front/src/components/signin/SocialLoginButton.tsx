@@ -15,8 +15,8 @@ const SocialLoginButton = () => {
   const sociallogin = async (socialtype: string) => {
     try {
       await signIn(socialtype);
-      await setCookie("refresh_token", session?.accessToken!);
-      await route.push("/");
+      setCookie("refresh_token", session?.accessToken!);
+      route.push("/");
     } catch (error) {
       console.log(error);
     }
