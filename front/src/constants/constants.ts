@@ -68,10 +68,10 @@ export const animationtext2 = [
 
 export const domainData = [
   { value: "", label: "직접 입력" },
-  { value: "naver.com", label: "네이버" },
-  { value: "gmail.com", label: "구글" },
-  { value: "kakao.com", label: "카카오" },
-  { value: "daum.net", label: "다음" },
-  { value: "nate.com", label: "네이트" },
-  { value: "yahoo.com ", label: "야후" },
+  { value: "naver.com", label: "naver.com" },
+  { value: "gmail.com", label: "gmail.com" },
+  { value: "kakao.com", label: "kakao.com" },
+  { value: "daum.net", label: "daum.net" },
+  { value: "nate.com", label: "nate.com" },
+  { value: "yahoo.com ", label: "yahoo.com" },
 ];

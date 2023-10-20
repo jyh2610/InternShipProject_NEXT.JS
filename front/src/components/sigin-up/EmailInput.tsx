@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import { Button, Form, Input, Select } from "antd";
+import { Button, Dropdown, Form, Input, Select } from "antd";
 
+import type { MenuProps } from "antd";
 import { baseApi } from "@/API/api";
 import { domainData } from "@/constants/constants";
 
@@ -24,9 +25,12 @@ function EmailInput() {
     code: "",
   });
   const email = `${emailValue.id}@${emailValue.domain}`;
-
+  const [domain, setDomain] = useState("");
   const [isValid, setIsValid] = useState<undefined | boolean>(false);
-
+  const [value, setValue] = useState("");
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
   const domainHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setEmailValue((prev) => {
@@ -40,9 +44,9 @@ function EmailInput() {
       return { ...prev, domain: value };
     });
   };
-
+  console.log();
   const emailRegexFront = /^[a-z0-9]$/;
-  const emailRegexBack = /@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+  // const emailRegexBack = /@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
 
   const sendingCode = async () => {
     try {
@@ -70,15 +74,13 @@ function EmailInput() {
       <Form.Item
         rules={[
           {
-            required: true,
-          },
-          {
             validator: (_, value: string) => {
-              if (isValid) {
-                if (!isValid) {
+              if (value) {
+                // 앞부분(id)과 뒷부분(domain)이 모두 값이 있는 경우에만 유효성 검사 수행
+                if (value.length >= 2) {
                   return Promise.resolve();
                 } else {
-                  return Promise.reject(new Error("이메일 형식이 틀립니다."));
+                  return Promise.reject(new Error("이메일 형식이 틀렸습니다."));
                 }
               }
               return Promise.resolve(); // 형식 검사를 수행하지 않음
@@ -92,10 +94,33 @@ function EmailInput() {
           <div className="flex w-full">
             <Input style={{ width: "45%" }} name="id" onChange={domainHandler} />
             <span className="my-auto">@</span>
-            <Form.Item>
+            <Form.Item
+              rules={[
+                {
+                  validator: (_, value: string) => {
+                    if (value) {
+                      // 입력 값이 비어있지 않은 경우에만 유효성 검사 수행
+                      if (isValid) {
+                        if (value.length >= 2 || value) {
+                          return Promise.resolve();
+                        } else {
+                          return Promise.reject(new Error("이메일 형식이 틀렸습니다."));
+                        }
+                      }
+                    }
+                    return Promise.resolve(); // 형식 검사를 수행하지 않음
+                  },
+                },
+              ]}
+            >
               <div className="flex">
                 <Input style={{ width: "45%" }} name="domain" value={emailValue.domain} onChange={domainHandler} />
+
                 <Select placeholder="직접 입력" style={{ width: 120 }} options={domainData} onChange={selectHandler} />
+
+                {/* <Dropdown menu={{ domainData }} placement="bottom">
+                  <Button>bottom</Button>
+                </Dropdown> */}
                 <Button onClick={sendingCode}>이메일 인증</Button>
               </div>
             </Form.Item>
