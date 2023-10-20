@@ -1,0 +1,31 @@
+.slide_layout {
+    width: 85vw;
+}
+
+@media (max-width:1320px) {}
+
+@media (max-width:991px) {
+
+    .m_section_tit,
+    .m_footer-nav {
+        flex-direction: column;
+    }
+}
+
+@media (max-width:768px) {
+    * {
+        word-break: break-all;
+    }
+
+    .m_slide_wrap {
+        flex-direction: column;
+    }
+
+    .slide_layout {
+        width: 100%;
+    }
+}
+
+@media (max-width:420px) {}
+
+@media (min-width:320px) {}

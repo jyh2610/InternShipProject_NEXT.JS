@@ -19,7 +19,7 @@ function MainFooter() {
             alt="로고"
           />
         </div>
-        <div className="flex gap-28">
+        <div className="m_footer-nav flex gap-28">
           <div>
             <div className="address mb-4">
               <p className="font-bold text-base">주소</p>
@@ -37,7 +37,7 @@ function MainFooter() {
               <p className="text-gray-400 text-sm">admin@uable.co.kr</p>
             </div>
           </div>
-          <div className="footer-nav flex gap-12">
+          <div className="m_footer-nav footer-nav flex gap-12">
             <div>
               <p className="font-bold text-base">회사소개</p>
               <div className="footer-nav-list text-gray-400 text-sm leading-8">

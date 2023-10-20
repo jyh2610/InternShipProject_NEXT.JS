@@ -2,7 +2,7 @@
 function Title() {
   return (
     <div className="mt-[8.875rem] mb-[4rem]">
-      <div className="flex justify-between">
+      <div className="flex justify-between m_section_tit">
         <div className="">
           <div
             className="text-4xl"

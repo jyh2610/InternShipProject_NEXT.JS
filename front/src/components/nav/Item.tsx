@@ -46,13 +46,16 @@ function NavItem({ scrollY }: { scrollY: number }) {
     ],
   };
   const isTop = scrollY === 0 ? "white" : "black";
+
   const font = {
     color: isTop,
     padding: "0",
+    display: "flex",
+    alignItems: "center",
   };
 
   return (
-    <div className="flex justify-evenly w-72">
+    <div className="flex gap-2">
       <Button style={font} className="px-5 mr-1" type="text">
         홈
       </Button>
@@ -61,7 +64,7 @@ function NavItem({ scrollY }: { scrollY: number }) {
         솔루션
       </Button>
       <Button style={font} className="px-5 mr-1" type="text">
-        사전등록
+        다운로드
       </Button>
     </div>
   );
