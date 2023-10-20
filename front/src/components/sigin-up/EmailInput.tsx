@@ -6,7 +6,6 @@ import { baseApi } from "@/API/api";
 import { domainData } from "@/constants/constants";
 
 import EmailCode from "./EmailCode";
-import { error } from "console";
 
 interface emailType {
   id: string;
@@ -42,7 +41,6 @@ function EmailInput() {
   };
 
   const emailRegexFront = /^[a-z0-9]$/;
-  const emailRegexBack = /@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
 
   const sendingCode = async () => {
     try {
@@ -73,7 +71,7 @@ function EmailInput() {
             required: true,
           },
           {
-            validator: (_, value: string) => {
+            validator: () => {
               if (isValid) {
                 if (!isValid) {
                   return Promise.resolve();

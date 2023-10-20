@@ -1,6 +1,9 @@
 "use client";
 
-import { Button, Divider, Form } from "antd";
+import { Divider, Form } from "antd";
+
+import { baseApi } from "@/API/api";
+import { formatDate } from "@/lib/FormatData";
 
 import Birth from "./Birth";
 import EmailInput from "./EmailInput";
@@ -12,9 +15,6 @@ import SiginupBtn from "./SiginupBtn";
 import UserID from "./UserID";
 
 import type { formType } from "@/type/signUp";
-
-import { baseApi } from "@/API/api";
-import { formatDate } from "@/lib/FormatData";
 
 const layout = {
   labelCol: { span: 4 },
