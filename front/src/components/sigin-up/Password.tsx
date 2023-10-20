@@ -19,7 +19,7 @@ function Password() {
               if (pwValidation.test(value)) {
                 return Promise.resolve();
               }
-              return Promise.reject(new Error("이름은 12자 이하이거나 문자여야합니다."));
+              return Promise.reject(new Error("사용불가! 영문대/소문자, 숫자, 특수문자 중 2가지 이상 조합하세요"));
             },
           },
         ]}

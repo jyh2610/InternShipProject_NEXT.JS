@@ -14,14 +14,14 @@ function Nickname({ nicknameValue }: { nicknameValue: string }) {
         rules={[
           {
             required: true,
-            message: "이름을 입력하세요!",
+            message: "닉네임을 입력하세요!",
           },
           {
             validator: (_, value: string) => {
               if (value?.length <= 12 && typeof value === "string") {
                 return Promise.resolve();
               }
-              return Promise.reject(new Error("이름은 12자 이하이거나 문자여야합니다."));
+              return Promise.reject(new Error("유효하지 않은 닉네임입니다."));
             },
           },
         ]}
@@ -33,7 +33,7 @@ function Nickname({ nicknameValue }: { nicknameValue: string }) {
       <Button
         onClick={() =>
           duplicateTest("hasnickname", nicknameValue).then((res) => {
-            console.log(res, "{{{{{{{{{{{{{{{");
+            // console.log(res, "{{{{{{{{{{{{{{{");
             setIsNicknameValid(res);
           })
         }
