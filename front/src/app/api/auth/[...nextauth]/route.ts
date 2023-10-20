@@ -37,17 +37,19 @@ const handler = NextAuth({
             },
           },
         });
-        return res;
+
+        token.customData = res;
       }
+
       return token;
     },
-    async redirect() {
-      return "/";
-    },
-    async session({ token, session }: any) {
-      session.accessToken = token.accessToken;
+    async session({ session, token }: any) {
+      session.accessToken = token.customData;
       session.user.id = token.id;
       return session;
+    },
+    async redirect({ baseUrl }) {
+      return baseUrl;
     },
   },
 });

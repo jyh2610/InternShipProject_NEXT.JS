@@ -44,6 +44,7 @@ export class baseApi {
       console.error(error);
     }
   }
+
   async withTokenPost(token: string, { url = "/", options = {}, body = {} }: IAxiosParams) {
     this.axiosInstance.defaults.headers["Authorization"] = `Bearer ${token}`;
     try {
