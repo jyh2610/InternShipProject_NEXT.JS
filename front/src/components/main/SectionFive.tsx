@@ -1,13 +1,15 @@
 "use client";
-import { useMediaQuery } from "react-responsive";
+import React from "react";
+
+// import { useMediaQuery } from "react-responsive";
 
 import "../../components/main/section-5/style.css";
 import HoverImage from "./section-5/HoverImage";
-import MobileSlice from "./section-5/MobileSlice";
 import { Mobile } from "./section-5/Mobile";
+import MobileSlice from "./section-5/MobileSlice";
 
 function SectionFive() {
-  return <>{Mobile ? <MobileSlice /> : <HoverImage />}</>;
+  return <>{Mobile() ? <MobileSlice /> : <HoverImage />}</>;
 }
 
 export default SectionFive;
