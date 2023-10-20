@@ -42,20 +42,22 @@ function NavRight({ scrollY }: { scrollY: number }) {
     ],
   };
   const isTop = scrollY === 0 ? "white" : "black";
+  const btnLayout = { display: "flex", alignItems: "center" };
+
   const accessToken = useSelector((state: any) => state.auth.accessToken);
   return (
-    <div className="flex items-center">
+    <div className="flex items-center gap-3">
       <NavDropDown scrollY={scrollY} title={"한국어"} items={data} />
       {accessToken || session ? (
         <Button
           onClick={accessToken ? logout : sociallougout}
-          style={{ borderRadius: "14px", color: `${isTop}`, padding: "0", fontSize: "0.75rem" }}
+          style={{ ...btnLayout, borderRadius: "14px", color: `${isTop}`, padding: "0", fontSize: "0.75rem" }}
           type="text"
         >
           <span>{username}님 로그아웃</span>
         </Button>
       ) : (
-        <Button onClick={moveSignin} style={{ color: `${isTop}` }} type="text">
+        <Button onClick={moveSignin} style={{ color: `${isTop}`, padding: "0" }} type="text">
           <span>로그인</span>
         </Button>
       )}

@@ -10,7 +10,7 @@ function SliderText() {
         maxWidth: "1300px",
         zIndex: "1",
         color: "white",
-        bottom: "0px",
+        bottom: "0",
         padding: "0 4rem 4rem 4rem",
         left: "50%",
         transform: "translatex(-50%)",

@@ -25,12 +25,12 @@ function TwoCarousel() {
 
   return (
     <div className="w-full" data-aos="fade-up" data-aos-offset="400" data-aos-delay="100">
-      <div className="flex gap-[0.5rem]">
-        <div className="shadow-2xl w-[100%]">
+      <div className="relative m_slide_wrap flex gap-[0.5rem] w-full">
+        <div className="shadow-2xl slide_layout">
           <Swiper navigation={true} loop={true} modules={[Navigation, A11y]} onSlideChange={handleSlideChange}>
             {dummyData.map((_, idx) => (
               <SwiperSlide key={idx}>
-                <div className="relative bg-dummyImg bg-center bg-no-repeat bg-cover h-[40rem] object-cover">
+                <div className="relative bg-dummyImg bg-center bg-no-repeat bg-cover h-[30rem] lg:h-[40rem] object-cover">
                   <SliderText />
                   <div className="Dimmed"></div>
                 </div>

@@ -46,9 +46,12 @@ function NavItem({ scrollY }: { scrollY: number }) {
     ],
   };
   const isTop = scrollY === 0 ? "white" : "black";
+
   const font = {
     color: isTop,
     padding: "0",
+    display: "flex",
+    alignItems: "center",
   };
 
   return (
