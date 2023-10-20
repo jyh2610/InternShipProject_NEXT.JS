@@ -15,7 +15,7 @@ export default function Home() {
       <WithNavFooter>
         <SectionOne />
         <Sectiontwo />
-        <SectionThree />
+        {/* <SectionThree /> */}
         <Line width={0.5} height={20} />
         <SectionFour />
         <VerticalLine />

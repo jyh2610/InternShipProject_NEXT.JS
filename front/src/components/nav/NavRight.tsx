@@ -2,14 +2,15 @@ import React from "react";
 
 import { Button } from "antd";
 import { useRouter } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
+import { useSelector } from "react-redux";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { setAccessToken } from "@/redux/slicer/authSlice";
 
 import NavDropDown from "./NavDropDown";
 
 import type { MenuProps } from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import { setAccessToken, setUserName } from "@/redux/slicer/authSlice";
-import { signOut, useSession } from "next-auth/react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 function NavRight({ scrollY }: { scrollY: number }) {
   const dispatch = useAppDispatch();
@@ -46,12 +47,16 @@ function NavRight({ scrollY }: { scrollY: number }) {
     <div className="flex items-center">
       <NavDropDown scrollY={scrollY} title={"한국어"} items={data} />
       {accessToken || session ? (
-        <Button onClick={accessToken ? logout : sociallougout} style={{ borderRadius: "14px", color: `${isTop}`, fontSize: "0.75rem" }} type="text">
-          {username}님 로그아웃
+        <Button
+          onClick={accessToken ? logout : sociallougout}
+          style={{ borderRadius: "14px", color: `${isTop}`, padding: "0", fontSize: "0.75rem" }}
+          type="text"
+        >
+          <span>{username}님 로그아웃</span>
         </Button>
       ) : (
         <Button onClick={moveSignin} style={{ color: `${isTop}` }} type="text">
-          로그인
+          <span>로그인</span>
         </Button>
       )}
     </div>

@@ -9,6 +9,8 @@
   }
 }
 
+
+
 * {
   font-family: 'NanumSquareAc', sans-serif;
   margin: 0;
@@ -38,6 +40,11 @@ button {
   width: 100%;
   max-width: 1600px;
   padding: 0 2rem;
+}
+
+.slide_layout {
+  width: 100%;
+  max-width: 1600px;
 }
 
 p {

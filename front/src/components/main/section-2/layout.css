@@ -1,0 +1,15 @@
+@media (max-width:1320px) {}
+
+@media (max-width:991px) {
+
+    .m_section_tit,
+    .m_footer-nav {
+        flex-direction: column;
+    }
+}
+
+@media (max-width:768px) {}
+
+@media (max-width:420px) {}
+
+@media (min-width:320px) {}

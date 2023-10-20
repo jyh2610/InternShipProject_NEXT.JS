@@ -1,10 +1,12 @@
 "use client";
 import Link from "next/link";
 
+import "./layout.css";
+
 function Text() {
   return (
     <div className="mx-auto mainwidth">
-      <div className="flex justify-between pb-20" data-aos="fade-up" data-aos-offset="100" data-aos-delay="50">
+      <div className="m_section_tit flex justify-between pb-20" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50">
         <div
           className="text-4xl"
           style={{

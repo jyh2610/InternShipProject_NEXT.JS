@@ -1,3 +1,5 @@
+import "./layout.css";
+
 function SliderText() {
   return (
     <div

@@ -41,7 +41,7 @@ function Nav() {
         lineHeight: 0,
       }}
     >
-      <div className="Header-wrap w-full max-w-top flex items-center mx-auto px-5 justify-between aspect-video">
+      <div className="mainwidth mx-auto flex items-center justify-between" style={{ height: "60px" }}>
         <NavLeft scrollY={scrollY} />
         <NavRight scrollY={scrollY} />
       </div>
