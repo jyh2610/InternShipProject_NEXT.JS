@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 
 import { Button } from "antd";
 import { useRouter } from "next/navigation";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 
-import { baseApi } from "@/API/api";
 import { getCookie, removeCookie } from "@/API/cookie";
+import { logOutHandler, refreshTokenHandler } from "@/lib/signinApi";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setAccessToken } from "@/redux/slicer/authSlice";
 
@@ -18,21 +18,21 @@ function NavRight({ scrollY }: { scrollY: number }) {
   const route = useRouter();
 
   const moveSignin = () => route.push("/signin");
+
   // 로컬 및 소셜 로그아웃
-  const accesstoken = useAppSelector((state: any) => state.auth.accessToken);
-  const api = new baseApi();
-  const { data: session } = useSession();
+  const accesstoken = useAppSelector((state) => state.auth.accessToken);
+
   // 마운트 될때 리프레시 토큰 보내기
-  const refreshToken = getCookie("refresh_Token");
+
+  const refreshToken = getCookie("refresh_token");
+
   // 리프레시 토큰을 서버로 보내는 코드
+
   const sendRefreshTokenToServer = async (refreshToken: string) => {
     try {
-      const api = new baseApi();
-      const response = await api.post({
-        url: "/validate/reissuancetoken",
-        options: { headers: { Authorization: `Bearer ${refreshToken}` } },
-      });
-      const newAccessToken = response.accessToken;
+      const res = await refreshTokenHandler(refreshToken);
+
+      const newAccessToken = res.accessToken;
       // 리덕스 스토어에도 저장
       dispatch(setAccessToken(newAccessToken));
     } catch (error) {
@@ -43,29 +43,14 @@ function NavRight({ scrollY }: { scrollY: number }) {
   //로컬 로그아웃
   const logout = async () => {
     await signOut({ callbackUrl: "/" });
-    await update(null);
-    const url = "/sign/signout"; // 요청을 보낼 URL
-    // Access Token 설정
-    try {
-      const response = await api.post({
-        url,
-        options: {
-          headers: {
-            Authorization: `Bearer ${accesstoken}`, // yourAccessToken은 실제 엑세스 토큰 값으로 대체해야 합니다.
-          },
-        },
-      });
-      console.log("로그아웃응답 데이터:_________________________", response);
-    } catch (error) {
-      console.error("에러 발생:", error);
-    }
-    removeCookie("refresh_Token");
+    accesstoken && (await logOutHandler(accesstoken));
+    removeCookie("refresh_token");
     dispatch(setAccessToken(null));
-    route.push("/");
   };
-  // useEffect(() => {
-  //   sendRefreshTokenToServer(refreshToken);
-  // }, []);
+  useEffect(() => {
+    !accesstoken && sendRefreshTokenToServer(refreshToken);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [accesstoken]);
   const data: MenuProps = {
     items: [
       {

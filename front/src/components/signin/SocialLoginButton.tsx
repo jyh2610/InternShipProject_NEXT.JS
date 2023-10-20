@@ -2,21 +2,24 @@
 
 import React from "react";
 
+import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
 
+import { setCookie } from "@/API/cookie";
 import { loginObj } from "@/constants/constants";
 
 const SocialLoginButton = () => {
-  const { data: session } = useSession(); // Use useSession to access the session data
-
-  // Check if the user is authenticated or if there's an access token
-
+  const { data: session } = useSession();
+  const route = useRouter();
   // 소셜로그인
   const sociallogin = async (socialtype: string) => {
-    console.log("hi");
-
-    console.log("hi_______", session);
-    await signIn(socialtype);
+    try {
+      await signIn(socialtype);
+      await setCookie("refresh_token", session?.accessToken!);
+      await route.push("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
