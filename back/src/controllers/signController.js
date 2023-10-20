@@ -27,6 +27,7 @@ const signIn = catchAsync(async(req, res) => {
 // 카카오 로그인
 const kakaoLogin = catchAsync(async (req, res) => {
     const kakaoToken = req.headers.authorization;
+    console.log("kakao token:", kakaoToken);
 
     if (!kakaoToken) detectError("NOT_ACCESS_TOKEN", 401);
 
@@ -38,6 +39,8 @@ const kakaoLogin = catchAsync(async (req, res) => {
 // 네이버 로그인
 const naverLogin = catchAsync(async (req, res) => {
     const naverToken = req.headers.authorization;
+    console.log("naver token:", naverToken);
+
     
     if (!naverToken) detectError("NOT_ACCESS_TOKEN", 401);
     
@@ -48,7 +51,8 @@ const naverLogin = catchAsync(async (req, res) => {
 
 // 구글 로그인
 const googleLogin = catchAsync(async (req, res) => {
-    const googleToken = req.headers.authorization;
+    const googleToken = req.headers.authorization;                                                                                                                                                                                                                                                                                                                                                                             
+    console.log("google token:", googleToken);
 
     if (!googleToken) detectError("NOT_ACCESS_TOKEN", 401);
 

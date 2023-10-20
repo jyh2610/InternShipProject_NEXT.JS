@@ -11,7 +11,7 @@ function Password() {
         rules={[
           {
             required: true,
-            message: "Please input your password!",
+            message: "비밀번호를 입력해 주세요.",
           },
           {
             validator: (_, value: string) => {
@@ -19,13 +19,14 @@ function Password() {
               if (pwValidation.test(value)) {
                 return Promise.resolve();
               }
-              return Promise.reject(new Error("이름은 12자 이하이거나 문자여야합니다."));
+              return Promise.reject(new Error(" "));
             },
           },
         ]}
         hasFeedback
       >
-        <Input.Password autoComplete="new-password" />
+        <Input.Password placeholder="*******" autoComplete="new-password" />
+        <span className="text-[0.7rem] font-bold text-gray-400">(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자)</span>
       </Form.Item>
       <Form.Item
         name="checkPassword"
@@ -35,19 +36,19 @@ function Password() {
         rules={[
           {
             required: true,
-            message: "Please confirm your password!",
+            message: "비밀번호확인을 입력해 주세요.",
           },
           ({ getFieldValue }) => ({
             validator(_, value) {
               if (!value || getFieldValue("password") === value) {
                 return Promise.resolve();
               }
-              return Promise.reject(new Error("비밀번호가 일치하지 않습니다."));
+              return Promise.reject(new Error("비밀번호가 다릅니다. 다시 한번 확인 하세요."));
             },
           }),
         ]}
       >
-        <Input.Password autoComplete="new-password" />
+        <Input.Password placeholder="*******" autoComplete="new-password" />
       </Form.Item>
     </>
   );
