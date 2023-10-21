@@ -20,21 +20,14 @@ function NavRight({ scrollY }: { scrollY: number }) {
 
   const moveSignin = () => route.push("/signin");
 
-  // 로컬 및 소셜 로그아웃
   const accesstoken = useAppSelector((state) => state.auth.accessToken);
 
-  // 마운트 될때 리프레시 토큰 보내기
-
   const refreshToken = getCookie("refresh_token");
-
-  // 리프레시 토큰을 서버로 보내는 코드
 
   const sendRefreshTokenToServer = async (refreshToken: string) => {
     try {
       const res = await refreshTokenHandler(refreshToken);
-
       const newAccessToken = res.accessToken;
-      // 리덕스 스토어에도 저장
       dispatch(setAccessToken(newAccessToken));
     } catch (error) {
       console.error("에러 발생:", error);
@@ -48,10 +41,12 @@ function NavRight({ scrollY }: { scrollY: number }) {
     removeCookie("refresh_token");
     dispatch(setAccessToken(null));
   };
+
   useEffect(() => {
     !accesstoken && sendRefreshTokenToServer(refreshToken);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [accesstoken]);
+
   const data: MenuProps = {
     items: [
       {
@@ -70,7 +65,7 @@ function NavRight({ scrollY }: { scrollY: number }) {
   return (
     <div className="flex items-center">
       <NavDropDown scrollY={scrollY} title={"한국어"} items={data} />
-      {/* {accesstoken || refreshToken ? (
+      {accesstoken || refreshToken ? (
         <Button onClick={logout} style={{ borderRadius: "14px", color: `${isTop}`, fontSize: "0.75rem" }} type="text">
           로그아웃
         </Button>
@@ -78,7 +73,7 @@ function NavRight({ scrollY }: { scrollY: number }) {
         <Button onClick={moveSignin} style={{ color: `${isTop}` }} type="text">
           로그인
         </Button>
-      )} */}
+      )}
     </div>
   );
 }
