@@ -6,15 +6,14 @@ export const Mobile = () => {
 
   const mobile = useMediaQuery({ maxWidth: 768 });
 
-  const checkResize = () => {
-    if (mobile) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
-  };
-
   useEffect(() => {
+    const checkResize = () => {
+      if (mobile) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    };
     checkResize();
   }, [mobile]);
 

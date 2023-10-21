@@ -12,7 +12,7 @@ import Slider from "./Slider";
 
 // import type { SwiperOptions } from "swiper/types";
 // eslint-disable-next-line import/order
-import { img } from "@/constants/constants";
+// import { img } from "@/constants/constants";
 
 import "./style.css";
 

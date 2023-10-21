@@ -25,7 +25,6 @@ function EmailInput() {
     code: "",
   });
   const email = `${emailValue.id}@${emailValue.domain}`;
-  const [domain, setDomain] = useState("");
   const [isValid, setIsValid] = useState<undefined | boolean>(false);
 
   const domainHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,7 +42,6 @@ function EmailInput() {
   };
   console.log();
   const emailRegexFront = /^[a-z0-9]$/;
-  const emailRegexBack = /@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
 
   const sendingCode = async () => {
     try {
