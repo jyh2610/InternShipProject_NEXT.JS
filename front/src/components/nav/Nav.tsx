@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 
 import { Layout } from "antd";
+import { usePathname } from "next/navigation";
 
 import NavLeft from "./NavLeft";
 import NavRight from "./NavRight";
@@ -11,6 +12,7 @@ const { Header } = Layout;
 
 function Nav() {
   const [scrollY, setScrollY] = useState(0);
+  const routes = usePathname();
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -25,9 +27,9 @@ function Nav() {
     };
   }, []);
 
-  const isTop = scrollY === 0 ? "transparent" : "white";
+  const isTop = routes !== "/" ? "white" : scrollY === 0 ? "transparent" : "white";
 
-  const lineTop = scrollY === 0 ? "none" : "1px solid #E0E0E0";
+  const lineTop = routes !== "/" ? "1px" : scrollY === 0 ? "none" : "1px solid #E0E0E0";
 
   return (
     <Header
