@@ -5,7 +5,7 @@ import { Button, Form, Input } from "antd";
 import { duplicateTest } from "@/lib/signupApi";
 
 function Nickname({ nicknameValue }: { nicknameValue: string }) {
-  const [isNicknameValid, setIsNicknameValid] = useState(false);
+  const [isNicknameValid, setIsNicknameValid] = useState("");
 
   return (
     <>
@@ -28,7 +28,10 @@ function Nickname({ nicknameValue }: { nicknameValue: string }) {
         name="nickname"
         label="닉네임"
       >
-        <Input />
+        <div className="flex">
+          <Input />
+          {/* {isNicknameValid ? <span className="text-xs">이미 사용하고 있는 아이디입니다</span> : <span className="text-xs">사용가능한 아이디 입니다</span>} */}
+        </div>
       </Form.Item>
       <Button
         onClick={() =>

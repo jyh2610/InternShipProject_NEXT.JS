@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { Button } from "antd";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
+import { useSelector } from "react-redux";
 
 import { getCookie, removeCookie } from "@/API/cookie";
 import { logOutHandler, refreshTokenHandler } from "@/lib/signinApi";
