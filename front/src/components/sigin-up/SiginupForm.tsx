@@ -72,7 +72,8 @@ const SiginupForm = () => {
       <Divider />
       <Form form={form} className="my-auto" {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
         <Name />
-        <Nickname nicknameValue={nicknameValue} />
+        {/* <Nickname nicknameValue={nicknameValue} /> */}
+        <Nickname />
         <UserID user={user_nameValue} />
         <EmailInput />
         <Password />

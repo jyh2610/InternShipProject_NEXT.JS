@@ -26,8 +26,7 @@ function NavRight({ scrollY }: { scrollY: number }) {
   const sendRefreshTokenToServer = async (refreshToken: string) => {
     try {
       const res = await refreshTokenHandler(refreshToken);
-      const newAccessToken = res.accessToken;
-      dispatch(setAccessToken(newAccessToken));
+      dispatch(setAccessToken(res.accessToken));
     } catch (error) {
       console.error("에러 발생:", error);
       // 오류 처리

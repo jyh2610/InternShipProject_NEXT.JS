@@ -45,6 +45,7 @@ function NavItem({ scrollY }: { scrollY: number }) {
       },
     ],
   };
+
   const isTop = scrollY === 0 ? "white" : "black";
 
   const font = {

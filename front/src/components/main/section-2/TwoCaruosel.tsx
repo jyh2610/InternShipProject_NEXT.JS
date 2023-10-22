@@ -45,7 +45,7 @@ function TwoCarousel() {
             </div>
             <div>
               <svg xmlns="http://www.w3.org/2000/svg" width="9" height="22" viewBox="0 0 9.905 25.609">
-                <line id="선_47" data-name="선 47" x1="8" y2="25" transform="translate(0.952 0.305)" fill="none" stroke="#000" stroke-width="2" />
+                <line id="선_47" data-name="선 47" x1="8" y2="25" transform="translate(0.952 0.305)" fill="none" stroke="#000" strokeWidth="2" />
               </svg>
             </div>
             <div className="count_num" style={{ fontSize: "1.2rem", fontWeight: "300", lineHeight: "0" }}>
