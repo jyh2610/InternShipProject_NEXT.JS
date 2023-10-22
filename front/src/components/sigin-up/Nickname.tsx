@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Button, Form, Input } from "antd";
 
-import { duplicateTest } from "@/lib/signupApi";
+// import { duplicateTest } from "@/lib/signupApi";
 
-function Nickname({ nicknameValue }: { nicknameValue: string }) {
-  const [isNicknameValid, setIsNicknameValid] = useState("");
+// function Nickname({ nicknameValue }: { nicknameValue: string }) {
+function Nickname() {
+  // const [isNicknameValid, setIsNicknameValid] = useState("");
 
   return (
     <>
       <Form.Item
-        hasFeedback={isNicknameValid}
+        // hasFeedback={isNicknameValid}
         rules={[
           {
             required: true,
@@ -34,12 +35,11 @@ function Nickname({ nicknameValue }: { nicknameValue: string }) {
         </div>
       </Form.Item>
       <Button
-        onClick={() =>
-          duplicateTest("hasnickname", nicknameValue).then((res) => {
-            // console.log(res, "{{{{{{{{{{{{{{{");
-            setIsNicknameValid(res);
-          })
-        }
+      // onClick={() =>
+      //   duplicateTest("hasnickname", nicknameValue).then((res) => {
+      //     setIsNicknameValid(res);
+      //   })
+      // }
       >
         중복검사
       </Button>

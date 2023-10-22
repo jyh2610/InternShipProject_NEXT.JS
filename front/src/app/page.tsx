@@ -4,7 +4,7 @@ import SectionFive from "@/components/main/SectionFive";
 import SectionFour from "@/components/main/SectionFour";
 import SectionOne from "@/components/main/SectionOne";
 import SectionSix from "@/components/main/SectionSix";
-// import SectionThree from "@/components/main/SectionThree";
+import SectionThree from "@/components/main/SectionThree";
 import Sectiontwo from "@/components/main/Sectiontwo";
 // import Line from "@/components/main/verticalline/Line";
 // import VerticalLine from "@/components/main/verticalline/VerticalLine";
@@ -15,7 +15,7 @@ export default async function Home() {
       <WithNavFooter>
         <SectionOne />
         <Sectiontwo />
-        {/* <SectionThree /> */}
+        <SectionThree />
         {/* <Line width={0.5} height={20} /> */}
         <SectionFour />
         {/* <VerticalLine /> */}

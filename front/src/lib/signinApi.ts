@@ -24,8 +24,6 @@ interface resType {
 }
 
 export const refreshTokenHandler = async (refreshToken: string): Promise<resType> => {
-  console.log(refreshToken);
-
   const res: resType = await api.post({
     url: "/validate/reissuancetoken",
     options: { headers: { Authorization: `Bearer ${refreshToken}` } },
