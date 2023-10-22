@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { Layout } from "antd";
 import { usePathname } from "next/navigation";
+
+import useScroll from "@/hooks/useScroll";
 
 import NavLeft from "./NavLeft";
 import NavRight from "./NavRight";
@@ -11,21 +13,8 @@ import NavRight from "./NavRight";
 const { Header } = Layout;
 
 function Nav() {
-  const [scrollY, setScrollY] = useState(0);
   const routes = usePathname();
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    // 페이지가 로드될 때와 스크롤 이벤트가 발생할 때 스크롤 위치를 업데이트합니다.
-    window.addEventListener("scroll", handleScroll);
-
-    // 컴포넌트가 언마운트될 때 이벤트 리스너를 제거합니다.
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const scrollY = useScroll();
 
   const isTop = routes !== "/" ? "white" : scrollY === 0 ? "transparent" : "white";
 

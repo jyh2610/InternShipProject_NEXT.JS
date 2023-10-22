@@ -25,7 +25,8 @@ function SectionThree() {
             <BothSliderBtn setPrevRef={setPrevRef} setNextRef={setNextRef} />
             <SliderIdx idx={idx} />
           </div>
-          <ThirdCarusel idx={idx} prevRef={prevRef} nextRef={nextRef} />
+          {/* <ThirdCarusel idx={idx} prevRef={prevRef} nextRef={nextRef} /> */}
+          <ThirdCarusel />
         </section>
         {/* <MySwiperComponent /> */}
       </div>

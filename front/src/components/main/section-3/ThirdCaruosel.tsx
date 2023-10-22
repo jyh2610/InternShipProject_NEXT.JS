@@ -16,16 +16,14 @@ import Slider from "./Slider";
 
 import "./style.css";
 
-interface IdxProps {
-  idx: number;
-  prevRef: any;
-  nextRef: any;
-}
+// interface IdxProps {
+//   idx: number;
+//   prevRef: any;
+//   nextRef: any;
+// }
 
 // function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
-function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
-  console.log(idx, prevRef, nextRef);
-
+function ThirdCarousel() {
   // const swiperObj: SwiperOptions = {
   //   loop: true,
   //   slidesPerView: "auto",
@@ -39,22 +37,6 @@ function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
   return (
     <>
       <Slider />
-      {/* <div className="w-2/3">
-      <div className="w-full">
-        <Swiper {...swiperObj} className="mySwiper ">
-          {dummyImgData.map((item, sliderIdx) => {
-            return idx === sliderIdx % 4 ? (
-              <SwiperSlide className="shadow-2xl" style={{ width: "70%" }}>
-                <img className="w-full h-[100%]" src={item} alt="dummy" />
-              </SwiperSlide>
-            ) : (
-              <SwiperSlide className="" style={{ width: "25%" }}>
-                <img className="w-full h-[100%] " src={item} alt="dummy" />
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-      </div> */}
     </>
   );
 }
