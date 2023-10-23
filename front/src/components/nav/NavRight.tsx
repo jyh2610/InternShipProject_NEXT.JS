@@ -22,8 +22,6 @@ function NavRight({ scrollY }: { scrollY: number }) {
 
   const refreshToken: string | null = getCookie("refresh_token");
 
-  console.log(accesstoken);
-
   const sendRefreshTokenToServer = async (refreshToken: string) => {
     const res = await refreshTokenHandler(refreshToken);
     const newAccessToken = res?.accessToken;
@@ -41,6 +39,7 @@ function NavRight({ scrollY }: { scrollY: number }) {
     !accesstoken && sendRefreshTokenToServer(refreshToken!);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [accesstoken]);
+
   const data: MenuProps = {
     items: [
       {
@@ -61,7 +60,7 @@ function NavRight({ scrollY }: { scrollY: number }) {
   return (
     <div className="flex items-center">
       <NavDropDown scrollY={scrollY} title={"한국어"} items={data} />
-      {accesstoken !== null || refreshToken !== null ? (
+      {accesstoken === null || refreshToken === null ? (
         <Button onClick={logout} style={{ borderRadius: "14px", color: `${isTop}`, fontSize: "0.75rem" }} type="text">
           로그아웃
         </Button>
