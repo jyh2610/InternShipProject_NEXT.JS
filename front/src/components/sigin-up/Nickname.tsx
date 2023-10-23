@@ -6,7 +6,21 @@ import { duplicateTest } from "@/lib/signupApi";
 
 function Nickname({ nicknameValue }: { nicknameValue: string }) {
   const [isNicknameValid, setIsNicknameValid] = useState(false);
+  const response = async () => {
+    try {
+      const response = await duplicateTest("hasnickname", nicknameValue);
+      console.log(response, "_________닉네임");
 
+      if (response) {
+        setIsNicknameValid(response);
+      } else {
+        console.error("Response is empty or missing 'success' property.");
+      }
+    } catch (error) {
+      console.error("Error in onClick:", error);
+    }
+  };
+  // setIsNicknameValid(res);
   return (
     <>
       <Form.Item
@@ -32,19 +46,7 @@ function Nickname({ nicknameValue }: { nicknameValue: string }) {
           <Input />
         </div>
       </Form.Item>
-      <Button
-        onClick={async () => {
-          try {
-            const response = await duplicateTest("hasnickname", nicknameValue);
-            console.log(response, "_____");
-            setIsNicknameValid(response.success);
-          } catch (error) {
-            console.error("Error in onClick:", error);
-          }
-        }}
-      >
-        중복검사
-      </Button>
+      <Button onClick={response}>중복검사</Button>
     </>
   );
 }
