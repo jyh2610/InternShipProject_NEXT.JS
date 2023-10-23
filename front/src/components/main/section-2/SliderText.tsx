@@ -3,7 +3,7 @@ import "./layout.css";
 function SliderText() {
   return (
     <div
-      className="p-[2rem] pl-[2rem] md:pl-0 md:p-[4rem] slide-text-wrap flex justify-center flex-col"
+      className="p-[2rem] pl-[2rem] md:p-[4rem] slide-text-wrap flex justify-center flex-col"
       style={{
         position: "absolute",
         width: "100%",

@@ -9,14 +9,12 @@
   }
 }
 
-
-
 * {
   font-family: 'NanumSquareAc', sans-serif;
   margin: 0;
   padding: 0;
   word-break: keep-all;
-
+  box-sizing: border-box;
 }
 
 body {
@@ -60,7 +58,7 @@ p {
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css");
 
 /* 나눔스퀘어 폰트 추가 23.10.17_수정자 김택용*/
-@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
+@import url("https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css");
 
 @font-face {
   font-family: "Roboto";
@@ -76,9 +74,9 @@ p {
 
 .swiper-button-next {
   content: url("../../public/assets/arrow.png");
-  width: 48px !important;
+  width: 24px !important;
   /* 네비게이션 버튼의 너비를 조정할 수 있습니다. */
-  height: 48px !important;
+  height: 24px !important;
   /* 네비게이션 버튼의 높이를 조정할 수 있습니다. */
   border-radius: 70%;
   padding: 14px;
