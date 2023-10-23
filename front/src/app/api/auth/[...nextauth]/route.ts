@@ -38,7 +38,6 @@ const handler = NextAuth({
             },
           },
         });
-        console.log(res);
 
         token.customData = res;
       }
