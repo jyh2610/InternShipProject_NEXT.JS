@@ -1,6 +1,5 @@
 const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 /** @type {import('next').NextConfig} */
-
 module.exports = async (phase) => {
   if (phase === PHASE_DEVELOPMENT_SERVER) {
     return {
@@ -9,7 +8,6 @@ module.exports = async (phase) => {
       },
     };
   }
-
   return {
     server: {
       host: "0.0.0.0",

@@ -7,11 +7,10 @@ import MobileSlice from "./section-5/MobileSlice";
 function SectionFive() {
   return (
     <>
-      {" "}
-      <div className="lg:hidden">
+      <div className="sm:hidden ">
         <MobileSlice />
       </div>
-      <div className="hidden lg:block">
+      <div className="sm:block hidden flex justify-start re_after" data-aos="fade-up" data-aos-offset="400" data-aos-delay="100">
         <HoverImage />
       </div>
     </>
