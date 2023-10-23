@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Layout } from "antd";
 import { usePathname } from "next/navigation";
@@ -15,6 +15,11 @@ const { Header } = Layout;
 function Nav() {
   const routes = usePathname();
   const scrollY = useScroll();
+  const [windowWidth, setWindowWidth] = useState(false);
+  useEffect(() => {
+    window.innerWidth <= 768 ? setWindowWidth(true) : setWindowWidth(true);
+  }, []);
+  console.log(windowWidth);
 
   const isTop = routes !== "/" ? "white" : scrollY === 0 ? "transparent" : "white";
 
