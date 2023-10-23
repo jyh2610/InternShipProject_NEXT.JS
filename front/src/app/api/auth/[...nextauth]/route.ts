@@ -28,6 +28,7 @@ const handler = NextAuth({
       if (account) {
         token.accessToken = account.access_token;
         const socialaccesstoken = token?.accessToken;
+
         const url = `/sign/${account.provider}login`;
         const res = await api.post({
           url,
@@ -37,6 +38,7 @@ const handler = NextAuth({
             },
           },
         });
+        console.log(res);
 
         token.customData = res;
       }

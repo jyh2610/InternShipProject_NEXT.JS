@@ -1,8 +1,9 @@
 import axios from "axios";
 
-const url = process.env.NODE_ENV_BASE_URL;
+// const url = process.env.NODE_ENV_BASE_URL;
+
 const axiosInstance = axios.create({
-  baseURL: url,
+  baseURL: "http://192.168.0.18:3000",
   headers: {
     "Content-Type": "application/json",
   },

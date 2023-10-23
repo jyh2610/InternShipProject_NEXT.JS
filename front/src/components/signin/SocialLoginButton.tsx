@@ -13,13 +13,9 @@ const SocialLoginButton = () => {
   const route = useRouter();
   // 소셜로그인
   const sociallogin = async (socialtype: string) => {
-    try {
-      await signIn(socialtype);
-      setCookie("refresh_token", session?.accessToken!);
-      route.push("/");
-    } catch (error) {
-      console.log(error);
-    }
+    await signIn(socialtype);
+    setCookie("refresh_token", session?.accessToken!);
+    route.push("/");
   };
 
   return (

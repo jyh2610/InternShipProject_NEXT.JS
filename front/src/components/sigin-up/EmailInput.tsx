@@ -46,17 +46,13 @@ function EmailInput() {
   const emailRegexFront = /^[a-z0-9]$/;
 
   const sendingCode = async () => {
-    try {
-      await api.post({
-        url: "validate/sendemail",
-        body: {
-          email: emailValue.id + "@" + emailValue.domain,
-        },
-      });
-      await setIsActive(true);
-    } catch (err) {
-      console.log(err);
-    }
+    await api.post({
+      url: "validate/sendemail",
+      body: {
+        email: emailValue.id + "@" + emailValue.domain,
+      },
+    });
+    setIsActive(true);
     setConfirmEmail(true);
   };
 
