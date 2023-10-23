@@ -24,7 +24,7 @@ function TwoCarousel() {
   };
 
   return (
-    <div className="w-full ">
+    <div className="w-full">
       <div className="relative m_slide_wrap flex gap-[0.5rem] w-full">
         <div className="shadow-2xl slide_layout">
           <Swiper navigation={true} loop={true} modules={[Navigation, A11y]} onSlideChange={handleSlideChange}>
@@ -49,7 +49,6 @@ function TwoCarousel() {
               </svg>
             </div>
             <div className="count_num" style={{ fontSize: "1.2rem", fontWeight: "300", lineHeight: "0" }}>
-              {" "}
               {sumZero(dummyData.length)}
             </div>
           </div>

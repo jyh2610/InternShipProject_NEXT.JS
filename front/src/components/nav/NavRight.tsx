@@ -62,7 +62,7 @@ function NavRight({ scrollY }: { scrollY: number }) {
     <div className="flex items-center">
       <NavDropDown scrollY={scrollY} title={"한국어"} items={data} />
       {accesstoken !== undefined || refreshToken !== undefined ? (
-        <Button onClick={logout} style={{ borderRadius: "14px", color: `${isTop}`, fontSize: "0.75rem" }} type="text">
+        <Button onClick={logout} style={{ color: `${isTop}` }} type="text">
           로그아웃
         </Button>
       ) : (
