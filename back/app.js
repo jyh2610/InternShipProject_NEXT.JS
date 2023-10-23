@@ -8,11 +8,7 @@ const morgan = require('morgan');
 const app = express();
 
 app.use(cors({
-<<<<<<< HEAD
-	origin: 'http://3.37.127.151:443'
-=======
   origin: process.env.CORS_ORIGIN
->>>>>>> ef6755146dcf065fb4e08088b73c724dadd5023a
 }));
 // 같은 ec2내에 잇는 프론트엔드 서버에서 오는 요청만 허용
 app.use(express.json());
