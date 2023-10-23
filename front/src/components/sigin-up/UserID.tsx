@@ -34,7 +34,7 @@ function UserID({ user }: { user: string }) {
         onClick={() =>
           duplicateTest("hasid", user).then((res) => {
             // console.log(res, "{{{{{{{");
-            setIsUserIdValid(res);
+            setIsUserIdValid(res.success);
           })
         }
       >
