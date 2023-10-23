@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Checkbox } from "antd";
 
-const Agreement = ({ type }) => {
+const Agreement = ({ type }: { type: string }) => {
   const [checkOne, setCheckOne] = useState(false);
   const [checkTwo, setCheckTwo] = useState(false);
   const [checkThree, setCheckThree] = useState(false);

@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "next-compose-plugins": "^2.2.1"
+  }
+}
