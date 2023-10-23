@@ -17,21 +17,21 @@ function MainText() {
       >
         <div className="tit">
           <div className=" text-4xl md:text-6xl font-light leading-[3rem] md:leading-[4.3rem]">
-            ㅔ <br />
+            드래그 앤 드롭으로
+            <br />
             손쉬운 3D 가상인테리어 디자인
           </div>
           <div className="pt-3.5 pb-14 text-lg md:text-xl">공간은 이야기를 품고 있습니다. 우리는 그이야기를 아름답게 만듭니다</div>
         </div>
         <button
+          className="w-[100%] h-[60px] md:w-[260px]"
           style={{
             backgroundColor: "rgba(42, 168, 107, 0.25)",
-            backdropFilter: "blur(20px)",
+            backdropFilter: "blur(14px)",
             border: "none",
             borderRadius: "30px",
             color: "white",
             fontSize: "0.75rem",
-            width: "260px",
-            height: "60px",
           }}
         >
           <span style={{ fontSize: "0.875rem", fontWeight: "500" }}>아키플 스튜디오 살펴보기</span>

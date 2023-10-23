@@ -24,7 +24,7 @@ function TwoCarousel() {
   };
 
   return (
-    <div className="w-full" data-aos="fade-up" data-aos-offset="400" data-aos-delay="100">
+    <div className="w-full ">
       <div className="relative m_slide_wrap flex gap-[0.5rem] w-full">
         <div className="shadow-2xl slide_layout">
           <Swiper navigation={true} loop={true} modules={[Navigation, A11y]} onSlideChange={handleSlideChange}>
@@ -38,14 +38,14 @@ function TwoCarousel() {
             ))}
           </Swiper>
         </div>
-        <div className="flex items-end">
+        <div className="items-end hidden md:flex">
           <div className="flex items-baseline" style={{ gap: "0.2rem", justifyContent: "center" }}>
             <div className="active_num" style={{ fontSize: "1.8rem", fontWeight: "700", lineHeight: "0" }}>
               {sumZero(imgIdx + 1)}
             </div>
             <div>
               <svg xmlns="http://www.w3.org/2000/svg" width="9" height="22" viewBox="0 0 9.905 25.609">
-                <line id="선_47" data-name="선 47" x1="8" y2="25" transform="translate(0.952 0.305)" fill="none" stroke="#000" stroke-width="2" />
+                <line id="선_47" data-name="선 47" x1="8" y2="25" transform="translate(0.952 0.305)" fill="none" stroke="#000" strokeWidth="2" />
               </svg>
             </div>
             <div className="count_num" style={{ fontSize: "1.2rem", fontWeight: "300", lineHeight: "0" }}>

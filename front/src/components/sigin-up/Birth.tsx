@@ -11,6 +11,10 @@ function Birth({ validateSelect }: ValidProps) {
     <Form.Item
       rules={[
         {
+          required: true,
+          message: "YYYY-MM-DD",
+        },
+        {
           validator: validateSelect,
         },
       ]}

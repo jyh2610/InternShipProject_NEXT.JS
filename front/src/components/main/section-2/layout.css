@@ -2,6 +2,22 @@
     width: 85vw;
 }
 
+/*slide line design*/
+.re_after{
+    position: relative;
+}
+
+.re_after::after{
+    content: '';
+    display: block;
+    width: 2px;
+    height: 100%;
+    background-color: #dbdbdb;
+    position: absolute;
+    left: 20%;
+    top: 30%;
+}
+
 @media (max-width:1320px) {}
 
 @media (max-width:991px) {

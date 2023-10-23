@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect } from "react";
 
 import { Button } from "antd";
@@ -17,64 +18,55 @@ function NavRight({ scrollY }: { scrollY: number }) {
   const dispatch = useAppDispatch();
   const route = useRouter();
 
-  const moveSignin = () => route.push("/signin");
-
-  // 로컬 및 소셜 로그아웃
   const accesstoken = useAppSelector((state) => state.auth.accessToken);
 
-  // 마운트 될때 리프레시 토큰 보내기
-
-  const refreshToken = getCookie("refresh_token");
-
-  // 리프레시 토큰을 서버로 보내는 코드
+  const refreshToken: string | null = getCookie("refresh_token");
 
   const sendRefreshTokenToServer = async (refreshToken: string) => {
-    try {
-      const res = await refreshTokenHandler(refreshToken);
-
-      const newAccessToken = res.accessToken;
-      // 리덕스 스토어에도 저장
-      dispatch(setAccessToken(newAccessToken));
-    } catch (error) {
-      console.error("에러 발생:", error);
-      // 오류 처리
-    }
+    const res = await refreshTokenHandler(refreshToken);
+    const newAccessToken = res?.accessToken;
+    dispatch(setAccessToken(newAccessToken));
   };
-  //로컬 로그아웃
+
   const logout = async () => {
     await signOut({ callbackUrl: "/" });
     accesstoken && (await logOutHandler(accesstoken));
     removeCookie("refresh_token");
-    dispatch(setAccessToken(null));
+    dispatch(setAccessToken(""));
   };
+
   useEffect(() => {
-    !accesstoken && sendRefreshTokenToServer(refreshToken);
+    !accesstoken && sendRefreshTokenToServer(refreshToken!);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [accesstoken]);
+
   const data: MenuProps = {
     items: [
       {
         style: { padding: "0.5rem 0.5rem 0 0.5rem", color: "#fff" },
         key: "1",
-        label: <a style={{ fontWeight: "500", fontSize: "0.875rem" }}>한국어</a>,
+        label: <div style={{ fontWeight: "500", fontSize: "0.875rem" }}>한국어</div>,
       },
       {
         style: { padding: "0.5rem", color: "#fff" },
         key: "2",
-        label: <a style={{ fontWeight: "500", fontSize: "0.875rem" }}>영어</a>,
+        label: <div style={{ fontWeight: "500", fontSize: "0.875rem" }}>영어</div>,
       },
     ],
   };
+
   const isTop = scrollY === 0 ? "white" : "black";
+  console.log(accesstoken, refreshToken, "ds;lakjfl;askdjflkasdj");
+
   return (
     <div className="flex items-center">
       <NavDropDown scrollY={scrollY} title={"한국어"} items={data} />
-      {accesstoken || refreshToken ? (
+      {accesstoken !== undefined || refreshToken !== undefined ? (
         <Button onClick={logout} style={{ borderRadius: "14px", color: `${isTop}`, fontSize: "0.75rem" }} type="text">
           로그아웃
         </Button>
       ) : (
-        <Button onClick={moveSignin} style={{ color: `${isTop}` }} type="text">
+        <Button onClick={() => route.push("/signin")} style={{ color: `${isTop}` }} type="text">
           로그인
         </Button>
       )}

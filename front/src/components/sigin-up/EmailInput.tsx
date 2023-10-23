@@ -1,12 +1,15 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 
-import { Button, Dropdown, Form, Input, Select } from "antd";
+import { Button, Form, Input, Select } from "antd";
 
-import type { MenuProps } from "antd";
 import { baseApi } from "@/API/api";
 import { domainData } from "@/constants/constants";
 
 import EmailCode from "./EmailCode";
+
+// import type { MenuProps } from "antd";
 
 interface emailType {
   id: string;
@@ -24,12 +27,8 @@ function EmailInput() {
     code: "",
   });
   const email = `${emailValue.id}@${emailValue.domain}`;
-  const [domain, setDomain] = useState("");
   const [isValid, setIsValid] = useState<undefined | boolean>(false);
-  const [value, setValue] = useState("");
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
+
   const domainHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setEmailValue((prev) => {
@@ -45,20 +44,15 @@ function EmailInput() {
   };
   console.log();
   const emailRegexFront = /^[a-z0-9]$/;
-  const emailRegexBack = /@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
 
   const sendingCode = async () => {
-    try {
-      await api.post({
-        url: "validate/sendemail",
-        body: {
-          email: emailValue.id + "@" + emailValue.domain,
-        },
-      });
-      await setIsActive(true);
-    } catch (err) {
-      console.log(err);
-    }
+    await api.post({
+      url: "validate/sendemail",
+      body: {
+        email: emailValue.id + "@" + emailValue.domain,
+      },
+    });
+    setIsActive(true);
     setConfirmEmail(true);
   };
 

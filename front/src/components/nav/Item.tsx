@@ -1,10 +1,17 @@
 import { Button } from "antd";
 
+import { getCookie } from "@/API/cookie";
+import { useAppSelector } from "@/redux/hooks";
+
 import NavDropDown from "./NavDropDown";
 
 import type { MenuProps } from "antd";
 
 function NavItem({ scrollY }: { scrollY: number }) {
+  const accesstoken = useAppSelector((state) => state.auth.accessToken);
+
+  const refreshToken = getCookie("refresh_token");
+
   const data: MenuProps = {
     items: [
       {
@@ -45,6 +52,7 @@ function NavItem({ scrollY }: { scrollY: number }) {
       },
     ],
   };
+
   const isTop = scrollY === 0 ? "white" : "black";
 
   const font = {
@@ -63,9 +71,11 @@ function NavItem({ scrollY }: { scrollY: number }) {
       <Button style={font} className="px-5 mr-1" type="text">
         솔루션
       </Button>
-      <Button style={font} className="px-5 mr-1" type="text">
-        다운로드
-      </Button>
+      {(accesstoken !== undefined || refreshToken !== undefined) && (
+        <Button style={font} className="px-5 mr-1" type="text">
+          다운로드
+        </Button>
+      )}
     </div>
   );
 }
