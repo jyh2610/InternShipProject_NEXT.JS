@@ -1,6 +1,11 @@
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+  openAnalyzer: false,
+});
 const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
-/** @type {import('next').NextConfig} */
-module.exports = async (phase) => {
+const withPlugins = require("next-compose-plugins");
+
+const nextConfig = (phase) => {
   if (phase === PHASE_DEVELOPMENT_SERVER) {
     return {
       eslint: {
@@ -8,6 +13,7 @@ module.exports = async (phase) => {
       },
     };
   }
+
   return {
     server: {
       host: "0.0.0.0",
@@ -17,3 +23,5 @@ module.exports = async (phase) => {
     },
   };
 };
+
+module.exports = withPlugins([withBundleAnalyzer], nextConfig);

@@ -42,9 +42,6 @@ const items: CollapseProps["items"] = [
     ),
   },
 ];
-const onChange = (key: string | string[]) => {
-  console.log(key);
-};
 
 function ProvideInfo() {
   const route = useRouter();
