@@ -8,6 +8,16 @@ interface resType {
 
 const api = new baseApi();
 
+export const loginHandler = async (user_name: string, password: string) => {
+  await api.post({
+    url: "/sign/signin",
+    body: {
+      user_name: user_name,
+      password: password,
+    },
+  });
+};
+
 export const logOutHandler = async (accesstoken: string) => {
   await api.post({
     url: "/sign/signout",

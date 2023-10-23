@@ -1,5 +1,5 @@
-function download() {
+function Download() {
   return <div></div>;
 }
 
-export default download;
+export default Download;
