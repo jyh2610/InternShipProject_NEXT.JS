@@ -21,9 +21,9 @@ const MobileSlice = () => {
     <div>
       <FadeProvider>
         <div className=" flex justify-center h-[40rem] ">
-          <Swiper style={{ margin: "0" }} className=" w-10/12" navigation={true} loop={true} modules={[Navigation, A11y]} onSlideChange={handleSlideChange}>
-            {data.map((item) => (
-              <SwiperSlide className="aspect-w-16 aspect-h-9" key={imgIdx}>
+          <Swiper style={{ margin: "0" }} className=" w-10/12" navigation={true} loop={true} modules={[Navigation, A11y]}>
+            {data.map((item, index) => (
+              <SwiperSlide className="aspect-w-16 aspect-h-9" key={index}>
                 <img src={item.img} alt="이미지" />
                 <div className="text-[#fff]">
                   <p className=" absolute top-[5rem] ml-[3rem] text-[3.75rem] font-bold">0{item.id + 1}</p>
