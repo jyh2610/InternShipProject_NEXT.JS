@@ -32,7 +32,7 @@ function NavRight({ scrollY }: { scrollY: number }) {
     await signOut({ callbackUrl: "/" });
     accesstoken && (await logOutHandler(accesstoken));
     removeCookie("refresh_token");
-    dispatch(setAccessToken(null));
+    dispatch(setAccessToken(""));
   };
 
   useEffect(() => {
@@ -56,11 +56,12 @@ function NavRight({ scrollY }: { scrollY: number }) {
   };
 
   const isTop = scrollY === 0 ? "white" : "black";
+  console.log(accesstoken, refreshToken, "ds;lakjfl;askdjflkasdj");
 
   return (
     <div className="flex items-center">
       <NavDropDown scrollY={scrollY} title={"한국어"} items={data} />
-      {accesstoken === null || refreshToken === null ? (
+      {accesstoken !== undefined || refreshToken !== undefined ? (
         <Button onClick={logout} style={{ borderRadius: "14px", color: `${isTop}`, fontSize: "0.75rem" }} type="text">
           로그아웃
         </Button>

@@ -19,10 +19,10 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setAccessToken: (state, action: PayloadAction<string | null>) => {
+    setAccessToken: (state, action: PayloadAction<string | undefined>) => {
       return { ...state, accessToken: action.payload };
     },
-    setRefreshToken: (state, action: PayloadAction<string | null>) => {
+    setRefreshToken: (state, action: PayloadAction<string | undefined>) => {
       state.refreshToken = action.payload;
     },
     setUserName: (state, action: PayloadAction<string | null>) => {
