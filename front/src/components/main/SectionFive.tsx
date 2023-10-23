@@ -9,7 +9,17 @@ import { Mobile } from "./section-5/Mobile";
 import MobileSlice from "./section-5/MobileSlice";
 
 function SectionFive() {
-  return <>{Mobile() ? <MobileSlice /> : <HoverImage />}</>;
+  return (
+    <>
+      {" "}
+      <div className="lg:hidden">
+        <MobileSlice />
+      </div>
+      <div className="hidden lg:block">
+        <HoverImage />
+      </div>
+    </>
+  );
 }
 
 export default SectionFive;
