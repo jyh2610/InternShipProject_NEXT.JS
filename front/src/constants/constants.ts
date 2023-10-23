@@ -25,28 +25,28 @@ export const dummyImgData = [
 export const data = [
   {
     id: 0,
-    img: "https://img.freepik.com/free-photo/empty-chair-in-restaurant_1339-5436.jpg?w=1380&t=st=1695710152~exp=1695710752~hmac=35aaec832880968cd682127a61258c48be0f6b22e944413c35a3150cacdaaeeb",
+    img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
     title: "아키플2.0<br />첫 번째 영역 타이틀",
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
   {
     id: 1,
-    img: "https://user-images.githubusercontent.com/144188723/273080155-924670d8-ffc1-433e-9a39-80ba6c1edd47.jpg",
+    img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
     title: "아키플2.0<br />첫 번째 영역 타이틀",
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
   {
     id: 2,
-    img: "https://user-images.githubusercontent.com/144188723/273838726-22f220e9-7401-4673-b6b9-a6be8590095d.png",
+    img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
     title: "아키플2.0<br />첫 번째 영역 타이틀",
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
   {
     id: 3,
-    img: "https://img.freepik.com/free-photo/empty-chair-in-restaurant_1339-5436.jpg?w=1380&t=st=1695710152~exp=1695710752~hmac=35aaec832880968cd682127a61258c48be0f6b22e944413c35a3150cacdaaeeb",
+    img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
     title: "아키플2.0<br />첫 번째 영역 타이틀",
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
@@ -68,10 +68,10 @@ export const animationtext2 = [
 
 export const domainData = [
   { value: "", label: "직접 입력" },
-  { value: "naver.com", label: "네이버" },
-  { value: "gmail.com", label: "구글" },
-  { value: "kakao.com", label: "카카오" },
-  { value: "daum.net", label: "다음" },
-  { value: "nate.com", label: "네이트" },
-  { value: "yahoo.com ", label: "야후" },
+  { value: "naver.com", label: "naver.com" },
+  { value: "gmail.com", label: "gmail.com" },
+  { value: "kakao.com", label: "kakao.com" },
+  { value: "daum.net", label: "daum.net" },
+  { value: "nate.com", label: "nate.com" },
+  { value: "yahoo.com ", label: "yahoo.com" },
 ];

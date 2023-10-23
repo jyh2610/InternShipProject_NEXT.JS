@@ -1,7 +1,10 @@
 import axios from "axios";
 
+const url = process.env.NEXT_PUBLIC_BASE_URL;
+console.log(url);
+
 const axiosInstance = axios.create({
-  baseURL: "http://192.168.0.18:3000",
+  baseURL: url,
   headers: {
     "Content-Type": "application/json",
   },

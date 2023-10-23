@@ -2,7 +2,6 @@
 
 import React from "react";
 
-import { Layout } from "antd";
 import { SessionProvider } from "next-auth/react";
 import { Provider } from "react-redux";
 import { StyleRegistry } from "styled-jsx";
@@ -17,9 +16,7 @@ export default function AuthSession({ children }: Props) {
   return (
     <StyleRegistry>
       <SessionProvider>
-        <Layout style={{ backgroundColor: "#fff" }}>
-          <Provider store={store}>{children}</Provider>
-        </Layout>
+        <Provider store={store}>{children}</Provider>
       </SessionProvider>
     </StyleRegistry>
   );

@@ -8,14 +8,14 @@ function Text() {
     <div className="mx-auto mainwidth">
       <div className="m_section_tit flex justify-between pb-20" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50">
         <div
-          className="text-4xl"
+          className="text-3xl md:text-4xl"
           style={{
             lineHeight: "3rem",
             color: "#9D9D9D",
             fontWeight: "300",
           }}
         >
-          <p>올인원 3D 인테리어</p>
+          <p className="leading-[2rem]">올인원 3D 인테리어</p>
           <p
             style={{
               color: "#434343",
@@ -26,15 +26,15 @@ function Text() {
           </p>
         </div>
         <div
-          className="text-[1.4rem] "
+          className="text-[1.2rem] md:text-[1.4rem] py-3 md:py-0"
           style={{
             maxWidth: "580px",
           }}
         >
-          <div className="font-light text-font-gray leading-[2.2rem]">
+          <div className="font-light text-font-gray leading-[2rem] md:leading-[2.2rem]">
             <p>
               아키플 스튜디오 2.0을 통해 고객들은 실제로 거주 공간을 경험하는 것과 유사한 현실감 있는 가상 체험을 할 수 있습니다.
-              <span className="px-1 font-bold text-font-darkBlack">
+              <span className="px-[0.2rem] font-bold text-font-darkBlack">
                 아키플은 거주 공간의 디자인과 느낌을 미리 확인할 수 있어, 고객들이 더 확신을 가지고 결정을
               </span>
               내릴 수 있도록 도와줍니다.
@@ -42,10 +42,9 @@ function Text() {
           </div>
           <Link
             href={"/"}
-            className="down-btn pt-10 pb-2 text-base"
+            className="down-btn pt-10 pb-4 md:pb-2 text-base block w-full md:w-[50%]"
             style={{
               borderBottom: "1px solid #B2B2B2",
-              display: "inline-block",
               paddingRight: "2rem",
               paddingLeft: "0.54rem",
             }}

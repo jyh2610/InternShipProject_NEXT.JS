@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import BothSliderBtn from "./section-3/BothSliderBtn";
 import BotText from "./section-3/BotText";
-import MySwiperComponent from "./section-3/MySwiperComponent";
+// import MySwiperComponent from "./section-3/MySwiperComponent";
 import SliderIdx from "./section-3/SliderIdx";
 import TextSlider from "./section-3/TextSlider";
 import ThirdCarusel from "./section-3/ThirdCaruosel";
@@ -25,9 +25,10 @@ function SectionThree() {
             <BothSliderBtn setPrevRef={setPrevRef} setNextRef={setNextRef} />
             <SliderIdx idx={idx} />
           </div>
-          <ThirdCarusel idx={idx} prevRef={prevRef} nextRef={nextRef} />
+          {/* <ThirdCarusel idx={idx} prevRef={prevRef} nextRef={nextRef} /> */}
+          <ThirdCarusel />
         </section>
-        <MySwiperComponent />
+        {/* <MySwiperComponent /> */}
       </div>
     </div>
   );

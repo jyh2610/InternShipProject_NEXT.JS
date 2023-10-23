@@ -1,4 +1,3 @@
-"use client";
 import TextAnimation from "./section-4/TextAnimation";
 
 function SectionFour() {
