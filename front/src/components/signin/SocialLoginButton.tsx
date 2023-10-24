@@ -10,11 +10,13 @@ import { loginObj } from "@/constants/constants";
 
 const SocialLoginButton = () => {
   const { data: session } = useSession();
+  console.log(session);
+
   const route = useRouter();
   // 소셜로그인
   const sociallogin = async (socialtype: string) => {
     await signIn(socialtype);
-    setCookie("refresh_token", session?.accessToken!);
+    setCookie("refresh_token", session?.accessToken);
     route.push("/");
   };
 
