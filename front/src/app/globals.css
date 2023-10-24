@@ -9,8 +9,6 @@
   }
 }
 
-
-
 * {
   font-family: 'NanumSquareAc', sans-serif;
   margin: 0;
@@ -22,6 +20,11 @@
 body {
   letter-spacing: -0.5px;
   overflow-x: hidden;
+}
+
+a,
+a:hover {
+  text-decoration: none;
 }
 
 body::-webkit-scrollbar {
@@ -60,7 +63,7 @@ p {
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css");
 
 /* 나눔스퀘어 폰트 추가 23.10.17_수정자 김택용*/
-@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
+@import url("https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css");
 
 @font-face {
   font-family: "Roboto";
@@ -76,9 +79,9 @@ p {
 
 .swiper-button-next {
   content: url("../../public/assets/arrow.png");
-  width: 48px !important;
+  width: 20px !important;
   /* 네비게이션 버튼의 너비를 조정할 수 있습니다. */
-  height: 48px !important;
+  height: 20px !important;
   /* 네비게이션 버튼의 높이를 조정할 수 있습니다. */
   border-radius: 70%;
   padding: 14px;
@@ -87,11 +90,14 @@ p {
   right: 5% !important;
   top: 50%;
   transform: translateY(-50%);
+  box-sizing: content-box;
 }
 
 .ant-btn:hover {
-  opacity: 1 !important; /* 원하는 투명도 값으로 수정하세요. 1은 완전 불투명을 나타냅니다. */
+  opacity: 1 !important;
+  /* 원하는 투명도 값으로 수정하세요. 1은 완전 불투명을 나타냅니다. */
 }
+
 .swiper-button-next::after {
   content: url("../../public/assets/arrow.png");
   font-size: 1.8rem;
@@ -122,12 +128,10 @@ p {
 
 .flow-wrap-left {
   animation: textloop 40s linear infinite;
-  padding: 1rem;
 }
 
 .flow-wrap-right {
   animation: textloop 40s linear infinite;
-  padding: 1rem;
   animation-direction: reverse;
 }
 
@@ -159,6 +163,7 @@ p {
 .ant-dropdown-menu-item:hover .ant-dropdown-menu-title-content {
   /* 텍스트 컬러 변경 */
 }
+
 .Dimmed {
   position: absolute;
   width: 100%;

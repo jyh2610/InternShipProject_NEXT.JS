@@ -3,28 +3,41 @@
 }
 
 /*slide line design*/
-.re_after{
+.re_after {
     position: relative;
 }
 
-.re_after::after{
+.re_after::after {
     content: '';
     display: block;
-    width: 2px;
+    width: 1px;
     height: 100%;
-    background-color: #dbdbdb;
+    background-color: #B2B2B2;
     position: absolute;
     left: 20%;
-    top: 30%;
+    top: 15%;
 }
 
 @media (max-width:1320px) {}
 
 @media (max-width:991px) {
 
+    br {
+        display: none;
+    }
+
     .m_section_tit,
     .m_footer-nav {
         flex-direction: column;
+    }
+
+    .flow-text {
+        font-size: 4rem;
+    }
+
+    .after-layout::after {
+        top: 0 !important;
+        height: 80% !important;
     }
 }
 

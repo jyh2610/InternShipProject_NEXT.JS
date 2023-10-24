@@ -23,7 +23,7 @@ declare global {
 function Nav() {
   const routes = usePathname();
   const scrollY = useScroll();
-  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const handleResize = debounce(() => {
