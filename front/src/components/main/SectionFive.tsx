@@ -6,7 +6,7 @@ import MobileSlice from "./section-5/MobileSlice";
 
 function SectionFive() {
   return (
-    <div className="after-layout py-[4rem] md:py=[2rem]" data-aos="fade-up" data-aos-offset="350" data-aos-delay="50">
+    <div className="after-layout py-[4rem] md:py=[2rem]" data-aos="fade-up" data-aos-delay="100">
       {" "}
       <div className="lg:hidden block">
         <MobileSlice />

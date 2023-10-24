@@ -1,7 +1,7 @@
 "use client";
 function Title() {
   return (
-    <div className="mt-[8.875rem] mb-[4rem]">
+    <div className=" my-[4rem]">
       <div className="flex justify-between m_section_tit">
         <div className="w-[100%] md:w-[580px]">
           <div
