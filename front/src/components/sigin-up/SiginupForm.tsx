@@ -68,18 +68,20 @@ const SiginupForm = () => {
   };
   return (
     <div>
-      <p>회원정보</p>
+      <p className="text-[1.5rem] font-bold">회원정보</p>
       <Divider />
-      <Form form={form} className="my-auto" {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
-        <Name />
-        <Nickname nicknameValue={nicknameValue} />
-        <UserID user={user_nameValue} />
-        <EmailInput />
-        <Password />
-        <Birth validateSelect={validateSelect} />
-        <Sex validateSelect={validateSelect} />
-        <SiginupBtn validateForm={validateForm} />
-      </Form>
+      <div className="flex justify-start">
+        <Form form={form} className="my-auto" {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+          <Name />
+          <Nickname nicknameValue={nicknameValue} />
+          <UserID user={user_nameValue} />
+          <EmailInput />
+          <Password />
+          <Birth validateSelect={validateSelect} />
+          <Sex validateSelect={validateSelect} />
+          <SiginupBtn validateForm={validateForm} />
+        </Form>
+      </div>
     </div>
   );
 };

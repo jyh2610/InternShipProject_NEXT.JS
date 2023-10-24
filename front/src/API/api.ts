@@ -39,7 +39,7 @@ export class baseApi {
         ...options,
         headers: this.addHeaders(options.headers!),
       });
-      return data.data.refreshToken;
+      return data.data;
     } catch (error) {
       console.error(error);
     }
