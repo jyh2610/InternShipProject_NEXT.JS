@@ -1,7 +1,7 @@
 "use client";
 function Title() {
   return (
-    <div className=" my-[4rem]">
+    <div className="my-[2rem] md:my-[4rem]">
       <div className="flex justify-between m_section_tit">
         <div className="w-[100%] md:w-[580px]">
           <div
@@ -31,7 +31,7 @@ function Title() {
               fontWeight: "300",
             }}
           >
-            쉽고 빠르게 누구나 할 수 있는 3D 인테리어 솔루션
+            쉽고 빠르게 누구나 할 수 있는 3D 인테리어 솔루션<br></br>
             <span className="px-1 md:px-[0]" style={{ color: "#434343", fontWeight: "700" }}>
               아키플 2.0은 차별화 된 성능을 경험을 하고, 사용자 공간을 미적 감각으로
             </span>

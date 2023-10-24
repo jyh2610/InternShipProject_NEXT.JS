@@ -27,10 +27,10 @@ const MobileSlice = () => {
               <SwiperSlide className="relative" key={index}>
                 <img className="w-full" src={item.img} alt="이미지" />
                 <div className="m_slide_text_box text-[#fff]">
-                  <p className="font-bold">0{item.id + 1}</p>
+                  <p className="text-[1rem] pb-[0.2rem]">0{item.id + 1}</p>
                   <div className="">
-                    <p className="text-[1.5rem] mb-[2rem]" dangerouslySetInnerHTML={{ __html: item.title }} />
-                    <p dangerouslySetInnerHTML={{ __html: item.contentstext }} className=" text-[0.9rem]" />
+                    <p className="text-[1.4rem] font-bold pb-[1rem]" dangerouslySetInnerHTML={{ __html: item.title }} />
+                    <p dangerouslySetInnerHTML={{ __html: item.contentstext }} className=" text-[1.125rem]" />
                   </div>
                 </div>
               </SwiperSlide>

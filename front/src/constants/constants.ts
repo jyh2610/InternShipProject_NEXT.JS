@@ -83,21 +83,21 @@ export const slideData = [
   {
     id: 1,
     img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
-    title: "아키플2.0<br />첫 번째 영역 타이틀",
+    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀",
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
   {
     id: 2,
     img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
-    title: "아키플2.0<br />첫 번째 영역 타이틀",
+    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀",
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
   {
     id: 3,
     img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
-    title: "아키플2.0<br />첫 번째 영역 타이틀",
+    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀",
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
@@ -106,30 +106,26 @@ export const M_slideData = [
   {
     id: 0,
     img: "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCerM_gk2t1D_njWinDkgxA4mXVHGaZC9HXfNM4tII29v1n6X8O8AykbTtolRhZ2PZZQSX4_q1vcBnV_I5qkHGEUm_aIA=w3718-h2160",
-    title: "아키플2.0<br />첫 번째 영역 타이틀",
-    contentstext:
-      "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
+    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀",
+    contentstext: "첫 번째 진행되는 순서에 대한 설명이 들어 갈 영역입니다",
   },
   {
     id: 1,
     img: "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCerM_gk2t1D_njWinDkgxA4mXVHGaZC9HXfNM4tII29v1n6X8O8AykbTtolRhZ2PZZQSX4_q1vcBnV_I5qkHGEUm_aIA=w3718-h2160",
-    title: "아키플2.0<br />두 번째 영역 타이틀",
-    contentstext:
-      "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
+    title: "아키플 스튜디오 2.0<br />두 번째 영역 타이틀",
+    contentstext: "두 번째 진행되는 순서에 대한 설명이 들어 갈 영역입니다",
   },
   {
     id: 2,
     img: "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCerM_gk2t1D_njWinDkgxA4mXVHGaZC9HXfNM4tII29v1n6X8O8AykbTtolRhZ2PZZQSX4_q1vcBnV_I5qkHGEUm_aIA=w3718-h2160",
-    title: "아키플2.0<br />세 번째 영역 타이틀",
-    contentstext:
-      "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
+    title: "아키플 스튜디오 2.0<br />세 번째 영역 타이틀",
+    contentstext: "세 번째 진행되는 순서에 대한 설명이 들어 갈 영역입니다",
   },
   {
     id: 3,
     img: "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCerM_gk2t1D_njWinDkgxA4mXVHGaZC9HXfNM4tII29v1n6X8O8AykbTtolRhZ2PZZQSX4_q1vcBnV_I5qkHGEUm_aIA=w3718-h2160",
-    title: "아키플2.0<br />네 번째 영역 타이틀",
-    contentstext:
-      "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
+    title: "아키플 스튜디오 2.0<br />네 번째 영역 타이틀",
+    contentstext: "네 번째 진행되는 순서에 대한 설명이 들어 갈 영역입니다",
   },
 ];
 

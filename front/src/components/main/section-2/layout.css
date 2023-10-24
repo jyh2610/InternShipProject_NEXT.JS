@@ -22,6 +22,10 @@
 
 @media (max-width:991px) {
 
+    br {
+        display: none;
+    }
+
     .m_section_tit,
     .m_footer-nav {
         flex-direction: column;
