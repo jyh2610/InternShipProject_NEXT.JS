@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-import { Collapse } from "antd";
+import { Collapse, Divider } from "antd";
 import { useRouter } from "next/navigation";
 
 import type { CollapseProps } from "antd";
@@ -9,6 +9,7 @@ import type { CollapseProps } from "antd";
 import Agreement from "@/components/provideinfo/Agreement";
 import Content from "@/components/provideinfo/Content";
 import { provideText, provideTitle } from "@/constants/constants";
+import SideHeader from "@/components/sigin-up/SideHeader";
 
 const items: CollapseProps["items"] = [
   {
@@ -51,6 +52,8 @@ function ProvideInfo() {
   };
   return (
     <div className="mx-[12rem] sm:mx-[8rem]">
+      <SideHeader />
+      <Divider />
       <Collapse items={items} defaultActiveKey={["1"]} onChange={onChange} />
       <button>취소</button>
       <button

@@ -27,3 +27,14 @@ export const formCondition = {
   id: true,
   sex: [0, 1, 2],
 };
+
+export interface loginType {
+  name: [string, string];
+  massage: string[];
+  placeholder: string;
+  key: number;
+}
+export const inputdata = [
+  { key: 0, name: "user_name", massage: "아이디를 입력해 주세요.", placeholder: "아이디 입력" },
+  { key: 1, name: "password", massage: "비밀번호를 입력해주세요", placeholder: "비밀번호 입력" },
+];

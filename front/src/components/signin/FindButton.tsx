@@ -1,20 +1,41 @@
 "use client";
 import React from "react";
 
-import Link from "next/link";
+import { Form } from "antd";
+import { useRouter } from "next/navigation";
+
 const FindButton = () => {
+  const route = useRouter();
+  const data = [
+    {
+      title: "아이디 찾기",
+      link: "/",
+    },
+    {
+      title: "비밀번호 찾기",
+      link: "/",
+    },
+    {
+      title: "회원가입",
+      link: "/signup/provideinfo",
+    },
+  ];
   return (
-    <div className="flex justify-around">
-      <Link href="/" className="login-form-forgot text-[#000]">
-        아이디 찾기 |
-      </Link>
-      <Link href="/" className="login-form-forgot text-[#000]">
-        비밀번호 찾기 |
-      </Link>
-      <Link href="/signup/provideinfo" className="text-[#000]">
-        회원가입
-      </Link>
-    </div>
+    <Form.Item className="text-center">
+      <div className="flex justify-around">
+        {data.map((item) => (
+          <div
+            onClick={() => {
+              route.push(`${item.link}`);
+            }}
+            key={item.title}
+            className="login-form-forgot text-[#000]"
+          >
+            {item.title}
+          </div>
+        ))}
+      </div>
+    </Form.Item>
   );
 };
 

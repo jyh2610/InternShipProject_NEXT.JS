@@ -3,7 +3,7 @@ import React from "react";
 function SideHeader() {
   return (
     <div>
-      <span>회원가입</span>
+      <span className="text-[1.8rem] font-bold">회원가입</span>
     </div>
   );
 }
