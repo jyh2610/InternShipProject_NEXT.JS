@@ -15,19 +15,14 @@ import NavItem from "./Item";
 
 const { Header } = Layout;
 
-declare global {
-  interface window {
-    innerWidth: number;
-  }
-}
 function Nav() {
   const routes = usePathname();
   const scrollY = useScroll();
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState<undefined | number>(undefined);
 
   useEffect(() => {
     const handleResize = debounce(() => {
-      setWindowWidth(window.innerWidth);
+      return windowWidth !== undefined && setWindowWidth(window.innerWidth);
     }, 500);
     window.addEventListener("resize", handleResize);
     return () => {
@@ -59,7 +54,7 @@ function Nav() {
         <div className="logo w-[180px]">
           <img className="w-full h-full object-container" src={Logo} />
         </div>
-        {windowWidth !== null && windowWidth <= 768 ? (
+        {windowWidth !== undefined && windowWidth <= 768 ? (
           <Hamberger />
         ) : (
           <>
