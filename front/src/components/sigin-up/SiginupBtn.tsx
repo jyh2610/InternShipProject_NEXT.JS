@@ -10,7 +10,7 @@ function SiginupBtn({ validateForm }: { validateForm: () => void }) {
       <Button type="primary" htmlType="submit">
         취소
       </Button>
-      <Button onClick={validateForm} type="primary" htmlType="submit">
+      <Button onClick={validateForm} type="primary" className="bg-gray-300" htmlType="submit">
         회원가입
       </Button>
     </Form.Item>

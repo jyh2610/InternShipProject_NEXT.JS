@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import type { SetStateAction } from "react";
+import React, { useState } from "react";
 
 import { A11y, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,11 +13,11 @@ import FadeProvider from "@/components/FadeProvider";
 import { M_slideData } from "@/constants/constants";
 
 const MobileSlice = () => {
-  // const [imgIdx, setImgIdx] = useState(0);
+  const [imgIdx, setImgIdx] = useState(0);
 
-  // const handleSlideChange = (swiper: { realIndex: SetStateAction<number> }) => {
-  //   setImgIdx(swiper.realIndex);
-  // };
+  const handleSlideChange = (swiper: { realIndex: SetStateAction<number> }) => {
+    setImgIdx(swiper.realIndex);
+  };
   return (
     <div>
       <FadeProvider>

@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Button, Form, Input } from "antd";
 
-// import { duplicateTest } from "@/lib/signupApi";
+import { duplicateTest } from "@/lib/signupApi";
 
-// function Nickname({ nicknameValue }: { nicknameValue: string }) {
-function Nickname() {
-  // const [isNicknameValid, setIsNicknameValid] = useState("");
+function Nickname({ nicknameValue }: { nicknameValue: string }) {
+  const [isNicknameValid, setIsNicknameValid] = useState(false);
+  const response = async () => {
+    try {
+      const response = await duplicateTest("hasnickname", nicknameValue);
 
+      if (response.success) {
+        setIsNicknameValid(response.success);
+      } else {
+        console.error("Response is empty or missing 'success' property.");
+      }
+    } catch (error) {
+      console.error("Error in onClick:", error);
+    }
+  };
+  // setIsNicknameValid(res);
   return (
     <>
       <Form.Item
-        // hasFeedback={isNicknameValid}
+        hasFeedback={isNicknameValid}
         rules={[
           {
             required: true,
@@ -31,18 +43,9 @@ function Nickname() {
       >
         <div className="flex">
           <Input />
-          {/* {isNicknameValid ? <span className="text-xs">이미 사용하고 있는 아이디입니다</span> : <span className="text-xs">사용가능한 아이디 입니다</span>} */}
+          <Button onClick={response}>중복확인</Button>
         </div>
       </Form.Item>
-      <Button
-      // onClick={() =>
-      //   duplicateTest("hasnickname", nicknameValue).then((res) => {
-      //     setIsNicknameValid(res);
-      //   })
-      // }
-      >
-        중복검사
-      </Button>
     </>
   );
 }

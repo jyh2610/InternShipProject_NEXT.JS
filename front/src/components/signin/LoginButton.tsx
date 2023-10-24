@@ -13,7 +13,7 @@ const LoginButton = ({ user_name, password }: { user_name: string; password: str
   };
   return (
     <>
-      <Button type="primary" style={{ padding: "1.7rem 16px", lineHeight: 0 }} htmlType="submit" onClick={clickLogin} className="login-form-button" block>
+      <Button style={{ padding: "1.7rem 16px", lineHeight: 0 }} type="primary" htmlType="submit" onClick={clickLogin} className="login-form-button" block>
         로그인
       </Button>
     </>
