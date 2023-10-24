@@ -9,15 +9,17 @@ import SigninTitle from "@/components/signin/SigninTitle";
 
 const SignIn = () => {
   return (
-    <div className="flex">
-      <div className="w-1/3 flex flex-col justify-center items-center mx-auto">
-        <SigninTitle />
-        <SigninForm />
+    <>
+      <div className="flex">
+        <div className="w-1/3 flex flex-col justify-center items-center mx-auto">
+          <SigninTitle />
+          <SigninForm />
+        </div>
+        <div className="w-2/3 hidden md:block">
+          <PageImage />
+        </div>
       </div>
-      <div className="w-2/3">
-        <PageImage />
-      </div>
-    </div>
+    </>
   );
 };
 
