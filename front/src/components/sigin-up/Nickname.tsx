@@ -43,9 +43,9 @@ function Nickname({ nicknameValue }: { nicknameValue: string }) {
       >
         <div className="flex">
           <Input />
+          <Button onClick={response}>중복확인</Button>
         </div>
       </Form.Item>
-      <Button onClick={response}>중복검사</Button>
     </>
   );
 }

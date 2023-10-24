@@ -42,9 +42,11 @@ function UserID({ user }: { user: string }) {
         name="user_name"
         label="아이디"
       >
-        <Input />
+        <div className="flex">
+          <Input />
+          <Button onClick={response}>중복확인</Button>
+        </div>
       </Form.Item>
-      <Button onClick={response}>중복검사</Button>
     </div>
   );
 }
