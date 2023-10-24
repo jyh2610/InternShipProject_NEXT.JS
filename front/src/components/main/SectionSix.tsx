@@ -4,9 +4,9 @@ import Title from "./section-6/Title";
 
 function SectionSix() {
   return (
-    <div className="mx-auto mainwidth max-w-top">
+    <div className="mx-auto mainwidth max-w-top ">
       <Title />
-      <div className="relative" style={{ height: "52.5rem" }}>
+      <div className="relative">
         <div
           style={{
             backgroundImage: "url(https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png)",

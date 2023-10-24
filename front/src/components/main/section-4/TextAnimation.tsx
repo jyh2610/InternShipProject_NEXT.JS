@@ -8,7 +8,7 @@ function TextAnimation() {
     //   <ParallaxText baseVelocity={5}>인테리어는 더 나은 삶을 위한 시작입니다. 우리와 함께 새로운 시작을 경험하세요.</ParallaxText>
     //   <ParallaxText baseVelocity={-5}>인테리어는 더 나은 삶을 위한 시작입니다. 우리와 함께 새로운 시작을 경험하세요.</ParallaxText>
     // </div>
-    <div className="flow-container py-[8rem]">
+    <div className="flow-container py-[4rem] md:py-[8rem]">
       <TextLeft />
       <TextRight />
       <TextLeft />

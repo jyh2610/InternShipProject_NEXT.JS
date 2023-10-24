@@ -74,9 +74,9 @@ p {
 
 .swiper-button-next {
   content: url("../../public/assets/arrow.png");
-  width: 24px !important;
+  width: 20px !important;
   /* 네비게이션 버튼의 너비를 조정할 수 있습니다. */
-  height: 24px !important;
+  height: 20px !important;
   /* 네비게이션 버튼의 높이를 조정할 수 있습니다. */
   border-radius: 70%;
   padding: 14px;
@@ -85,6 +85,7 @@ p {
   right: 5% !important;
   top: 50%;
   transform: translateY(-50%);
+  box-sizing: content-box;
 }
 
 .swiper-button-next::after {
@@ -117,12 +118,10 @@ p {
 
 .flow-wrap-left {
   animation: textloop 40s linear infinite;
-  padding: 1rem;
 }
 
 .flow-wrap-right {
   animation: textloop 40s linear infinite;
-  padding: 1rem;
   animation-direction: reverse;
 }
 

@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import FadeProvider from "@/components/FadeProvider";
-import { data } from "@/constants/constants";
+import { M_slideData } from "@/constants/constants";
 
 const MobileSlice = () => {
   // const [imgIdx, setImgIdx] = useState(0);
@@ -20,14 +20,14 @@ const MobileSlice = () => {
   return (
     <div>
       <FadeProvider>
-        <div className=" flex justify-center h-[40rem] ">
-          <Swiper style={{ margin: "0" }} className=" w-10/12" navigation={true} loop={true} modules={[Navigation, A11y]}>
-            {data.map((item, index) => (
-              <SwiperSlide className="aspect-w-16 aspect-h-9" key={index}>
-                <img src={item.img} alt="이미지" />
+        <div className=" flex justify-center relative">
+          <Swiper style={{ margin: "0" }} className=" w-full" navigation={true} loop={true} modules={[Navigation, A11y]}>
+            {M_slideData.map((item, index) => (
+              <SwiperSlide key={index}>
+                <img src={item.img} alt="이미지" className="w-full" />
                 <div className="text-[#fff]">
-                  <p className=" absolute top-[5rem] ml-[3rem] text-[3.75rem] font-bold">0{item.id + 1}</p>
-                  <div className="absolute ml-[3rem] bottom-[8rem] inset-0 flex flex-col justify-end transition-opacity">
+                  <p className="">0{item.id + 1}</p>
+                  <div className="">
                     <p className="text-[1.5rem] mb-[2rem]" dangerouslySetInnerHTML={{ __html: item.title }} />
                     <p dangerouslySetInnerHTML={{ __html: item.contentstext }} className=" text-[0.9rem]" />
                   </div>
