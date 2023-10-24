@@ -50,7 +50,7 @@ function ProvideInfo() {
     console.log(key);
   };
   return (
-    <div className="mx-[12rem]">
+    <div className="mx-[12rem] sm:mx-[8rem]">
       <Collapse items={items} defaultActiveKey={["1"]} onChange={onChange} />
       <button>취소</button>
       <button

@@ -25,7 +25,7 @@ const MobileSlice = () => {
             <img src={item.img} alt="이미지" />
             <div className="text-[#fff]">
               <p className=" absolute top-[7rem] ml-[3rem] text-[3.75rem] font-bold">0{item.id + 1}</p>
-              <div className="absolute ml-[3rem] bottom-[23rem] inset-0 flex flex-col justify-end transition-opacity">
+              <div className="absolute ml-[3rem] bottom-[6rem] inset-0 flex flex-col justify-end transition-opacity">
                 <p className="text-[1.5rem] mb-[2rem]" dangerouslySetInnerHTML={{ __html: item.title }} />
                 <p dangerouslySetInnerHTML={{ __html: item.contentstext }} className="text-[0.9rem]" />
               </div>
