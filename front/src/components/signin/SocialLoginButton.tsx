@@ -7,24 +7,24 @@ import { signIn, useSession } from "next-auth/react";
 
 import { setCookie } from "@/API/cookie";
 import { loginObj } from "@/constants/constants";
+import { Form } from "antd";
+import SocialTitle from "./SocialTitle";
 
 const SocialLoginButton = () => {
   const { data: session } = useSession();
+  console.log(session);
+
   const route = useRouter();
   // 소셜로그인
   const sociallogin = async (socialtype: string) => {
     await signIn(socialtype);
-    setCookie("refresh_token", session?.accessToken!);
+    setCookie("refresh_token", session?.accessToken);
     route.push("/");
   };
 
   return (
-    <>
-      <div className="flex justify-between item-center mb-[1.4rem]">
-        <p className=" w-1/4 h-0.5 bg-gray-400 my-auto" />
-        <p className="text-[0.875rem]">SNS 계정으로 로그인</p>
-        <p className="w-1/4 h-0.5 bg-gray-400 my-auto" />
-      </div>
+    <Form.Item>
+      <SocialTitle />
       <div className="flex justify-evenly ">
         {loginObj.map((data) => (
           <img
@@ -37,7 +37,7 @@ const SocialLoginButton = () => {
           />
         ))}
       </div>
-    </>
+    </Form.Item>
   );
 };
 

@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { Layout } from "antd";
+import { Divider, Layout } from "antd";
 
 const { Header, Content, Sider } = Layout;
 
@@ -14,6 +14,7 @@ function SignupProvider({ children }: { children: React.ReactNode }) {
     <Layout>
       <Header style={{ display: "flex", alignItems: "center", background: "white" }}>
         <SideHeader />
+        <Divider />
       </Header>
       <Content>
         <Layout style={{ background: "white" }}>

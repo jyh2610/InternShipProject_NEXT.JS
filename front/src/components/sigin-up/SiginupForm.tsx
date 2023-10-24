@@ -15,6 +15,7 @@ import SiginupBtn from "./SiginupBtn";
 import UserID from "./UserID";
 
 import type { formType } from "@/type/signUp";
+import SideHeader from "./SideHeader";
 
 const layout = {
   labelCol: { span: 4 },
@@ -66,9 +67,10 @@ const SiginupForm = () => {
       }
     });
   };
+
   return (
-    <div>
-      <p className="text-[1.5rem] font-bold">회원정보</p>
+    <div className="mx-[12rem] sm:mx-[8rem]">
+      <SideHeader />
       <Divider />
       <div className="flex justify-start">
         <Form form={form} className="my-auto" {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>

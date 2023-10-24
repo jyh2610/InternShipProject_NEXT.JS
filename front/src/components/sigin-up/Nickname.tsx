@@ -19,33 +19,35 @@ function Nickname({ nicknameValue }: { nicknameValue: string }) {
       console.error("Error in onClick:", error);
     }
   };
-  // setIsNicknameValid(res);
+
   return (
     <>
-      <Form.Item
-        hasFeedback={isNicknameValid}
-        rules={[
-          {
-            required: true,
-            message: "닉네임을 입력하세요!",
-          },
-          {
-            validator: (_, value: string) => {
-              if (value?.length <= 12 && typeof value === "string") {
-                return Promise.resolve();
-              }
-              return Promise.reject(new Error("유효하지 않은 닉네임입니다."));
+      <div className="flex">
+        <Form.Item
+          hasFeedback={isNicknameValid}
+          rules={[
+            {
+              required: true,
+              message: "닉네임을 입력하세요!",
             },
-          },
-        ]}
-        name="nickname"
-        label="닉네임"
-      >
-        <div className="flex">
-          <Input />
-          <Button onClick={response}>중복확인</Button>
-        </div>
-      </Form.Item>
+            {
+              validator: (_, value: string) => {
+                if (value?.length <= 12 && typeof value === "string") {
+                  return Promise.resolve();
+                }
+                return Promise.reject(new Error("유효하지 않은 닉네임입니다."));
+              },
+            },
+          ]}
+          name="nickname"
+          label="닉네임"
+        >
+          <div className="flex">
+            <Input />
+            <Button onClick={response}>중복확인</Button>
+          </div>
+        </Form.Item>
+      </div>
     </>
   );
 }
