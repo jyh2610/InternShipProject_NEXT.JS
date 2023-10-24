@@ -37,8 +37,8 @@ function Nav() {
       }}
     >
       <div className="mainwidth mx-auto flex items-center justify-between" style={{ height: "60px" }}>
-        <NavLeft scrollY={scrollY} />
-        <NavRight scrollY={scrollY} />
+        <NavLeft path={routes} scrollY={scrollY} />
+        <NavRight path={routes} scrollY={scrollY} />
       </div>
     </Header>
   );

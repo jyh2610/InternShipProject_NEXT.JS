@@ -13,8 +13,9 @@ import { setAccessToken } from "@/redux/slicer/authSlice";
 import NavDropDown from "./NavDropDown";
 
 import type { MenuProps } from "antd";
+import { NavColorProps } from "@/type/nav";
 
-function NavRight({ scrollY }: { scrollY: number }) {
+function NavRight({ scrollY, path }: NavColorProps) {
   const dispatch = useAppDispatch();
   const route = useRouter();
 
@@ -39,6 +40,7 @@ function NavRight({ scrollY }: { scrollY: number }) {
     !accesstoken && sendRefreshTokenToServer(refreshToken!);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [accesstoken]);
+  const isTop = path !== "/" ? "black" : scrollY === 0 ? "white" : "black";
 
   const data: MenuProps = {
     items: [
@@ -54,9 +56,6 @@ function NavRight({ scrollY }: { scrollY: number }) {
       },
     ],
   };
-
-  const isTop = scrollY === 0 ? "white" : "black";
-  console.log(accesstoken, refreshToken, "ds;lakjfl;askdjflkasdj");
 
   return (
     <div className="flex items-center">
