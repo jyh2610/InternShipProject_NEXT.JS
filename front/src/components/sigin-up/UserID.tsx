@@ -7,6 +7,20 @@ import { duplicateTest } from "@/lib/signupApi";
 function UserID({ user }: { user: string }) {
   const [isUserIdValid, setIsUserIdValid] = useState(false);
 
+  const response = async () => {
+    try {
+      const response = await duplicateTest("hasid", user);
+
+      if (response) {
+        setIsUserIdValid(response.success);
+      } else {
+        console.error("Response is empty or missing 'success' property.");
+      }
+    } catch (error) {
+      console.error("Error in onClick:", error);
+    }
+  };
+
   return (
     <div>
       <Form.Item
@@ -30,16 +44,7 @@ function UserID({ user }: { user: string }) {
       >
         <Input />
       </Form.Item>
-      <Button
-        onClick={() =>
-          duplicateTest("hasid", user).then((res) => {
-            // console.log(res, "{{{{{{{");
-            setIsUserIdValid(res);
-          })
-        }
-      >
-        중복검사
-      </Button>
+      <Button onClick={response}>중복검사</Button>
     </div>
   );
 }

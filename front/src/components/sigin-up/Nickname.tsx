@@ -9,10 +9,9 @@ function Nickname({ nicknameValue }: { nicknameValue: string }) {
   const response = async () => {
     try {
       const response = await duplicateTest("hasnickname", nicknameValue);
-      console.log(response, "_________닉네임");
 
-      if (response) {
-        setIsNicknameValid(response);
+      if (response.success) {
+        setIsNicknameValid(response.success);
       } else {
         console.error("Response is empty or missing 'success' property.");
       }
