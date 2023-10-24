@@ -1,121 +1,3 @@
-a {
-    color: #fff;
-    text-decoration: none;
-}
-
-#parallax__title {
-    position: fixed;
-    left: 20px;
-    top: 20px;
-    z-index: 1000;
-}
-
-#parallax__title h1 {
-    font-size: 30px;
-    border-bottom: 1px dashed #fff;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-    font-weight: 400;
-    display: inline-block;
-}
-
-#parallax__title p {
-    font-size: 16px;
-}
-
-#parallax__title ul {
-    margin-top: 10px;
-}
-
-#parallax__title li {
-    display: inline;
-}
-
-#parallax__title li a {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 1px dashed #fff;
-    display: inline-block;
-    text-align: center;
-    line-height: 20px;
-    font-size: 12px;
-}
-
-#parallax__title li.active a {
-    background: #fff;
-    color: #000;
-}
-
-/* parallax__cont */
-#parallax__cont {
-    overflow: hidden;
-}
-
-.parallax__item {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-#section2,
-#section4,
-#section6,
-#section8 {
-    background-color: #222;
-}
-
-.parallax__item__num {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    font-size: 3vw;
-    line-height: 1;
-    z-index: 10;
-}
-
-.parallax__item__img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* height: 100vh; */
-    background-color: #fff;
-    background-size: cover;
-    background-position: center;
-}
-
-.parallax__item__img::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* height: 100vh; */
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1;
-}
-
-#section0 .parallax__item__img {
-    background-image: url(https://img.freepik.com/free-psd/realistic-modern-bright-dining-room-with-wooden-table-and-chairs_176382-497.jpg?w=826&t=st=1695710195~exp=1695710795~hmac=8cc90441069c4f29ec5c5784d2c09d910dbb743b668e6fd9faf7e8074270f70f);
-}
-
-#section4 .parallax__item__img {
-    background: #fff;
-
-}
-
-.parallax__item__title {
-    font-size: 5vw;
-    z-index: 100;
-    text-transform: uppercase;
-    display: inline-block;
-}
-
 .after-layout {
     position: relative;
 }
@@ -130,4 +12,13 @@ a {
     right: 20%;
     top: -10%;
     z-index: -1;
+}
+
+.m_slide_text_box {
+    width: 100%;
+    padding: 0 2rem;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
 }

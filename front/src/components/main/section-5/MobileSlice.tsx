@@ -21,13 +21,13 @@ const MobileSlice = () => {
   return (
     <div>
       <FadeProvider>
-        <div className=" flex justify-center relative">
-          <Swiper style={{ margin: "0" }} className=" w-full" navigation={true} loop={true} modules={[Navigation, A11y]}>
+        <div className="slide">
+          <Swiper style={{ margin: "0" }} className="w-full" navigation={true} loop={true} modules={[Navigation, A11y]}>
             {M_slideData.map((item, index) => (
-              <SwiperSlide key={index}>
-                <img src={item.img} alt="이미지" className="w-full" />
-                <div className="text-[#fff]">
-                  <p className="">0{item.id + 1}</p>
+              <SwiperSlide className="relative" key={index}>
+                <img className="w-full" src={item.img} alt="이미지" />
+                <div className="m_slide_text_box text-[#fff]">
+                  <p className="font-bold">0{item.id + 1}</p>
                   <div className="">
                     <p className="text-[1.5rem] mb-[2rem]" dangerouslySetInnerHTML={{ __html: item.title }} />
                     <p dangerouslySetInnerHTML={{ __html: item.contentstext }} className=" text-[0.9rem]" />

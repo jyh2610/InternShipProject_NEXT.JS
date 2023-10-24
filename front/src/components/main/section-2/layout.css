@@ -22,14 +22,18 @@
 
 @media (max-width:991px) {
 
-
-    .mainwidth {
-        width: 100%;
-    }
-
     .m_section_tit,
     .m_footer-nav {
         flex-direction: column;
+    }
+
+    .flow-text {
+        font-size: 4rem;
+    }
+
+    .after-layout::after {
+        top: 0 !important;
+        height: 80% !important;
     }
 }
 

@@ -22,6 +22,11 @@ body {
   overflow-x: hidden;
 }
 
+a,
+a:hover {
+  text-decoration: none;
+}
+
 body::-webkit-scrollbar {
   display: none;
 }
@@ -89,8 +94,10 @@ p {
 }
 
 .ant-btn:hover {
-  opacity: 1 !important; /* 원하는 투명도 값으로 수정하세요. 1은 완전 불투명을 나타냅니다. */
+  opacity: 1 !important;
+  /* 원하는 투명도 값으로 수정하세요. 1은 완전 불투명을 나타냅니다. */
 }
+
 .swiper-button-next::after {
   content: url("../../public/assets/arrow.png");
   font-size: 1.8rem;
@@ -156,6 +163,7 @@ p {
 .ant-dropdown-menu-item:hover .ant-dropdown-menu-title-content {
   /* 텍스트 컬러 변경 */
 }
+
 .Dimmed {
   position: absolute;
   width: 100%;

@@ -6,12 +6,12 @@ import MobileSlice from "./section-5/MobileSlice";
 
 function SectionFive() {
   return (
-    <div className="after-layout pb-[4rem] md:py=[2rem]">
+    <div className="after-layout py-[4rem] md:py=[2rem]" data-aos="fade-up" data-aos-offset="350" data-aos-delay="50">
       {" "}
-      <div className="lg:hidden">
+      <div className="lg:hidden block">
         <MobileSlice />
       </div>
-      <div className="sm:block hidden flex justify-start re_after" data-aos="fade-up" data-aos-offset="400" data-aos-delay="100">
+      <div className="lg:block hidden">
         <HoverImage />
       </div>
     </div>
