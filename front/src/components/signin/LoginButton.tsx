@@ -17,9 +17,6 @@ const LoginButton = ({ user_name, password }: { user_name: string; password: str
         <Button style={{ padding: "1.7rem 16px", lineHeight: 0 }} type="primary" htmlType="submit" onClick={clickLogin} className="login-form-button" block>
           로그인
         </Button>
-        <Button style={{ padding: "1.7rem 16px", lineHeight: 0 }} type="primary" htmlType="submit" onClick={clickLogin} className="login-form-button" block>
-          취소
-        </Button>
       </Form.Item>
     </>
   );
