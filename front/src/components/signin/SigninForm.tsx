@@ -50,7 +50,7 @@ const SigninForm = () => {
       theme={{
         token: {
           colorPrimary: "#26AF66",
-          borderRadius: 2,
+          borderRadius: 0,
         },
       }}
     >
@@ -58,7 +58,7 @@ const SigninForm = () => {
         form={form}
         name="normal_login"
         className="login-form text-center"
-        style={{ width: "23.3125rem" }}
+        style={{ width: "100%" }}
         initialValues={{
           remember: true,
         }}

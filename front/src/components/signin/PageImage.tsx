@@ -4,8 +4,8 @@ import { mainImg } from "@/constants/constants";
 
 const PageImage = () => {
   return (
-    <div className="">
-      <img src={mainImg} className="w-[100vw] h-[100vh]" alt="이미지임시" />
+    <div className="w-[100%] h-[100vh]">
+      <img src={mainImg} className="w-[100%] h-[100%]" alt="이미지임시" />
     </div>
   );
 };
