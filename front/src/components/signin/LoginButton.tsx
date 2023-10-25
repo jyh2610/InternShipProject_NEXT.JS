@@ -11,6 +11,10 @@ const LoginButton = ({ user_name, password }: { user_name: string; password: str
     await loginHandler(user_name, password);
     route.push("/");
   }, []);
+
+  const clickCancel = () => {
+    route.push("/");
+  };
   return (
     <>
       <Form.Item>
