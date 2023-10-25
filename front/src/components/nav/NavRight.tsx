@@ -17,7 +17,7 @@ function NavRight({ scrollY, path }: NavColorProps) {
   const accesstoken = useAppSelector((state) => state.auth.accessToken);
   const refreshToken: string | null = getCookie("refresh_token");
   const isTop = scrollY === 0 ? "white" : "black";
-  const isLogin = accesstoken === null && refreshToken === undefined;
+  const isLogin = accesstoken === "" && refreshToken === undefined;
 
   const sendRefreshTokenToServer = useCallback(
     async (refreshToken: string) => {
