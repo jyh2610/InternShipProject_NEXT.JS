@@ -51,17 +51,18 @@ function ProvideInfo() {
     console.log(key);
   };
   return (
-    <div className="mx-[12rem] sm:mx-[8rem]">
+    <div className="mx-[3rem]">
       <SideHeader />
       <Divider />
       <Collapse items={items} defaultActiveKey={["1"]} onChange={onChange} />
-      <button>취소</button>
+      <button className="px-[2.2rem] py-[0.8rem]">취소</button>
       <button
+        className="px-[2.1rem] py-[0.8rem]"
         onClick={() => {
           route.push("/signup/clientinfo");
         }}
       >
-        다음
+        회원가입
       </button>
     </div>
   );

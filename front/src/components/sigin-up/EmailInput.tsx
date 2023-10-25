@@ -42,7 +42,6 @@ function EmailInput() {
       return { ...prev, domain: value };
     });
   };
-  console.log();
   const emailRegexFront = /^[a-z0-9]$/;
 
   const sendingCode = async () => {

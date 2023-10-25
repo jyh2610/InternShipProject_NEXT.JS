@@ -24,7 +24,7 @@ function SideBar() {
       {data.map((data) => {
         return (
           <div
-            className="cursor-pointer my-3 ml-[10rem] hover:font-bold"
+            className="cursor-pointer my-3 ml-[5rem] hover:font-bold"
             onClick={() => {
               route.push(`/signup${data.link}`);
             }}

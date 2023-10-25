@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import { Button, Form } from "antd";
 import { useRouter } from "next/navigation";
@@ -7,10 +7,10 @@ import { loginHandler } from "@/lib/signinApi";
 
 const LoginButton = ({ user_name, password }: { user_name: string; password: string }) => {
   const route = useRouter();
-  const clickLogin = async () => {
+  const clickLogin = useCallback(async () => {
     await loginHandler(user_name, password);
     route.push("/");
-  };
+  }, []);
   return (
     <>
       <Form.Item>

@@ -44,7 +44,6 @@ const SiginupForm = () => {
 
   const nicknameValue = Form.useWatch("nickname", form);
   const user_nameValue = Form.useWatch("user_name", form);
-  console.log(user_nameValue, nicknameValue);
 
   const validateForm = async () => {
     try {

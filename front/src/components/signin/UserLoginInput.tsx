@@ -10,6 +10,7 @@ const UserLoginInput = ({ item }: { item: any }) => {
       rules={[
         {
           required: true,
+          message:{item.key === 1}
         },
       ]}
     >

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useCallback } from "react";
 
 import { ConfigProvider, Form, Input } from "antd";
 
@@ -23,9 +23,9 @@ const SigninForm = () => {
   const userName = Form.useWatch("user_name", form);
   const password = Form.useWatch("password", form);
 
-  const onFinish = () => {
+  const onFinish = useCallback(() => {
     dispatch(setAccessToken(accessToken));
-  };
+  }, []);
   const inputdata = [
     {
       key: 0,
