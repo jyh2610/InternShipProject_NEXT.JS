@@ -20,6 +20,9 @@ const handler = NextAuth({
   ],
 
   callbacks: {
+    async redirect({ baseUrl }) {
+      return baseUrl;
+    },
     async signIn() {
       return true;
     },
@@ -38,7 +41,6 @@ const handler = NextAuth({
             },
           },
         });
-
         token.customData = res.refreshToken;
       }
 
@@ -46,7 +48,6 @@ const handler = NextAuth({
     },
     async session({ session, token }: any) {
       session.accessToken = token.customData;
-      session.user.id = token.id;
 
       return session;
     },

@@ -9,6 +9,7 @@ import Hamberger from "./Hamberger";
 import { debounce } from "lodash";
 import { LogoGreen, LogoWh } from "@/constants/navConst";
 import NavItem from "./Item";
+import { getServerSession } from "next-auth";
 
 const { Header } = Layout;
 
@@ -22,7 +23,6 @@ function Nav() {
       setWindowWidth(window.innerWidth);
     }, 200);
 
-    // 클라이언트 사이드에서만 실행되도록 조건 추가
     if (typeof window !== "undefined") {
       setWindowWidth(window.innerWidth);
       window.addEventListener("resize", handleResize);
@@ -68,4 +68,4 @@ function Nav() {
   );
 }
 
-export default Nav;
+export default React.memo(Nav);
