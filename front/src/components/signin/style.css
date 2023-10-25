@@ -1,0 +1,9 @@
+.login {
+    background-color: #fff;
+    transform: translate(-50%, -50%);
+    padding: 3rem 4rem;
+}
+
+.sns-icon {
+    cursor: pointer;
+}
