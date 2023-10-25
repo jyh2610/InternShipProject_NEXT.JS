@@ -3,37 +3,47 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 export default function Burger({ open, setOpen }: { open: boolean; setOpen: Function }) {
+  const router = useRouter();
+
   const menuStyle = {
     position: "absolute",
+    zIndex: 9999,
     width: "100%",
     height: "100vh",
     top: "0",
     left: "0",
     background: "white",
     display: "flex",
-    flexDirection: "column" as "column",
+    flexDirection: "column",
+    gap: "2rem",
+    justifyContent: "start",
     alignItems: "center",
     marginTop: "60px",
   } as React.CSSProperties;
-  const router = useRouter();
+
   return (
-    <div style={open ? menuStyle : { display: "none" }}>
-      <Button onClick={() => router.push("/signin")} type="text">
-        로그인
-      </Button>
-      <Divider />
-      <Button onClick={() => router.push("/")} type="text">
-        홈
-      </Button>
-      <Divider />
-      <Button style={{ backgroundColor: "#2AA86B" }} type="text">
-        제품
-      </Button>
-      <Divider />
-      <Button type="text">솔루션</Button>
-      <Button onClick={() => router.push("/download")} type="text">
-        다운로드
-      </Button>
-    </div>
+    <ul style={menuStyle}>
+      <li>
+        <div onClick={() => router.push("/signin")}>로그인</div>
+      </li>
+      <li>
+        <div onClick={() => router.push("/")}>홈</div>
+      </li>
+      <li>
+        <div>제품</div>
+        <ul style={{ display: "none" }}>
+          <li>디자인&렌더</li>
+          <li>애니매이션</li>
+          <li>브랜드갤러리</li>
+        </ul>
+      </li>
+      <li>
+        <div>솔루션</div>
+      </li>
+      <li>
+        {" "}
+        <div onClick={() => router.push("/download")}>다운로드</div>
+      </li>
+    </ul>
   );
 }
