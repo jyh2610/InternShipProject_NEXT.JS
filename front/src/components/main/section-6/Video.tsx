@@ -11,7 +11,7 @@ function Video() {
       <div className="w-full md:w-[1600px] mx-auto">
         <div className="video-layout w-full h-full" style={{}}>
           <video loop autoPlay muted className="w-full h-full">
-            <source src="https://drive.google.com/file/d/1m75lIxlqP6Zicycd5GgAfLTi2rjE_0vd" type="video/mp4" />
+            <source src="https://user-images.githubusercontent.com/118269595/277870569-a95c9023-c7b8-41ad-bcd0-b05954349771.mp4" type="video/mp4" />
           </video>
         </div>
         <div
