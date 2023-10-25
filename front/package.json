@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build:window": "set \"GENERATE_SOURCEMAP=false\" && next build",
+    "build:linux": "GENERATE_SOURCEMAP=false next build",
     "start": "next start -p 80",
     "lint": "next lint",
     "lint:fix": "next lint --fix"
