@@ -12,9 +12,6 @@ const LoginButton = ({ user_name, password }: { user_name: string; password: str
     route.push("/");
   }, []);
 
-  const clickCancel = () => {
-    route.push("/");
-  };
   return (
     <>
       <Form.Item>
