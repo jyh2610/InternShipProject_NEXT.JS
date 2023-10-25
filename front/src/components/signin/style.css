@@ -1,9 +1,38 @@
 .login {
     background-color: #fff;
     transform: translate(-50%, -50%);
-    padding: 3rem 4rem;
+    padding: 4rem;
+    width: 100%;
+    max-width: 580px;
 }
 
 .sns-icon {
     cursor: pointer;
+}
+
+.find-btn {
+    position: relative;
+    cursor: pointer;
+}
+
+.find-btn::after {
+    content: "";
+    display: block;
+    width: 2px;
+    height: 10px;
+    background-color: #9d9d9d;
+    position: absolute;
+    top: 5px;
+    right: -40%;
+}
+
+.find-btn:last-child:after {
+    display: none;
+}
+
+@media(max-width: 768px) {
+    .login {
+        height: 100vh;
+        padding: 2rem;
+    }
 }
