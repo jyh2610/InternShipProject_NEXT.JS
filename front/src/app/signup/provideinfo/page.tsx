@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 
 import type { CollapseProps } from "antd";
 
+import "./style.css";
+
 import Agreement from "@/components/provideinfo/Agreement";
 import Content from "@/components/provideinfo/Content";
 import SideHeader from "@/components/sigin-up/SideHeader";
@@ -53,10 +55,8 @@ function ProvideInfo() {
     console.log(key);
   };
   return (
-    <div className="mx-[3rem]">
-      <SideHeader />
-      <Divider />
-      <Collapse items={items} defaultActiveKey={["1"]} onChange={onChange} />
+    <div>
+      <Collapse style={{ borderRadius: "0" }} items={items} defaultActiveKey={["1"]} onChange={onChange} />
       <AgreementBtn />
     </div>
   );

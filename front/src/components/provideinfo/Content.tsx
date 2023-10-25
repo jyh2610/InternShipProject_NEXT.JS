@@ -9,9 +9,8 @@ interface ContentProps {
 const Content: React.FC<ContentProps> = ({ provideText }) => {
   return (
     <div className="flex flex-col">
-      <div className="bg-gray-100 p-8 px-9">
+      <div className="bg-gray-100 p-8 px-9" style={{ overflowY: "scroll", height: "480px" }}>
         <div dangerouslySetInnerHTML={{ __html: provideText }} />
-        <br />
       </div>
     </div>
   );

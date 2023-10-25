@@ -21,11 +21,11 @@ const AgreementBtn = () => {
         },
       }}
     >
-      <div className="flex justify-center my-5">
-        <Button className="px-[2.1rem] py-[0.8rem]" onClick={clickCancel} style={{ lineHeight: 0, backgroundColor: "#EFEFEF" }} type="link" htmlType="submit">
+      <div className="flex justify-center py-[2rem] gap-[1rem]">
+        <Button className="px-[3rem] py-[0.8rem]" onClick={clickCancel} style={{ lineHeight: 0, backgroundColor: "#EFEFEF" }} type="link" htmlType="submit">
           취소
         </Button>
-        <Button style={{ lineHeight: 0 }} type="primary" onClick={clickSignup} className="px-[2.1rem] py-[0.8rem]">
+        <Button style={{ lineHeight: 0 }} type="primary" onClick={clickSignup} className="px-[3rem] py-[0.8rem]">
           다음
         </Button>
       </div>

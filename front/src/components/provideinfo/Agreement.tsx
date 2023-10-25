@@ -30,7 +30,7 @@ const Agreement: React.FC<AgreementProps> = ({ type }) => {
   return (
     <>
       <Checkbox
-        className="justify-end block my-3"
+        className="justify-end block my-[2rem]"
         checked={type === "checkOne" ? checkOne : type === "checkTwo" ? checkTwo : checkThree}
         onChange={handleChange}
       >

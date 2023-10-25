@@ -2,29 +2,22 @@
 
 import React from "react";
 
-import { Divider, Layout } from "antd";
-
-const { Header, Content, Sider } = Layout;
-
 import SideBar from "./SideBar";
 import SideHeader from "./SideHeader";
 
 function SignupProvider({ children }: { children: React.ReactNode }) {
   return (
-    <Layout>
-      <Header style={{ display: "flex", alignItems: "center", background: "white" }}>
+    <div className="mainwidth mx-auto">
+      <div style={{}}>
         <SideHeader />
-        <Divider />
-      </Header>
-      <Content>
-        <Layout style={{ background: "white" }}>
-          <Sider style={{ background: "white" }}>
-            <SideBar />
-          </Sider>
-          <Content style={{ padding: "0" }}>{children}</Content>
-        </Layout>
-      </Content>
-    </Layout>
+      </div>
+      <div className="flex justify-between gap-[1rem] pt-[40px]">
+        <div>
+          <SideBar />
+        </div>
+        <div style={{ width: "90%", borderRadius: "0" }}>{children}</div>
+      </div>
+    </div>
   );
 }
 
