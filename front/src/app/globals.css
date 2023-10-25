@@ -76,7 +76,9 @@ p {
 .swiper-button-prev {
   display: none !important;
 }
-
+.testp > p{
+  font-weight:700;
+}
 .swiper-button-next {
   content: url("../../public/assets/arrow.png");
   width: 20px !important;

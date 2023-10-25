@@ -11,7 +11,6 @@ import Content from "@/components/provideinfo/Content";
 import { provideText, provideTitle } from "@/constants/constants";
 import SideHeader from "@/components/sigin-up/SideHeader";
 import SiginupBtn from "@/components/sigin-up/SiginupBtn";
-import AgreementBtn from "@/components/provideinfo/AgreementBtn";
 
 const items: CollapseProps["items"] = [
   {
@@ -57,7 +56,11 @@ function ProvideInfo() {
       <SideHeader />
       <Divider />
       <Collapse items={items} defaultActiveKey={["1"]} onChange={onChange} />
-      <AgreementBtn />
+      <SiginupBtn
+        validateForm={function (): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
     </div>
   );
 }
