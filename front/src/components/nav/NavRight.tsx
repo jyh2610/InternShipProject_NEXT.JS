@@ -9,8 +9,9 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setAccessToken } from "@/redux/slicer/authSlice";
 import NavDropDown from "./NavDropDown";
 import type { MenuProps } from "antd";
+import { NavColorProps } from "@/type/nav";
 
-function NavRight({ scrollY }: { scrollY: number }) {
+function NavRight({ scrollY, path }: NavColorProps) {
   const dispatch = useAppDispatch();
   const route = useRouter();
   const accesstoken = useAppSelector((state) => state.auth.accessToken);

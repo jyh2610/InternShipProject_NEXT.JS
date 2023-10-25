@@ -1,24 +1,43 @@
 "use client";
 
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import { Layout } from "antd";
 import { usePathname } from "next/navigation";
-
 import useScroll from "@/hooks/useScroll";
-
-import NavLeft from "./NavLeft";
 import NavRight from "./NavRight";
+import Hamberger from "./Hamberger";
+import { debounce } from "lodash";
+import { LogoGreen, LogoWh } from "@/constants/navConst";
+import NavItem from "./Item";
 
 const { Header } = Layout;
 
 function Nav() {
   const routes = usePathname();
   const scrollY = useScroll();
+  const [windowWidth, setWindowWidth] = useState<number>(0); // 초기값 설정
+
+  useEffect(() => {
+    const handleResize = debounce(() => {
+      setWindowWidth(window.innerWidth);
+    }, 200);
+
+    // 클라이언트 사이드에서만 실행되도록 조건 추가
+    if (typeof window !== "undefined") {
+      setWindowWidth(window.innerWidth);
+      window.addEventListener("resize", handleResize);
+    }
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", handleResize);
+      }
+    };
+  }, []);
 
   const isTop = routes !== "/" ? "white" : scrollY === 0 ? "transparent" : "white";
-
   const lineTop = routes !== "/" ? "1px" : scrollY === 0 ? "none" : "1px solid #E0E0E0";
+  const Logo = routes !== "/" ? LogoGreen : scrollY === 0 ? LogoWh : LogoGreen;
 
   return (
     <Header
@@ -36,9 +55,14 @@ function Nav() {
         borderBottom: lineTop,
       }}
     >
-      <div className="mainwidth mx-auto flex items-center justify-between" style={{ height: "60px" }}>
-        <NavLeft scrollY={scrollY} />
-        <NavRight scrollY={scrollY} />
+      <div className="mainwidth mx-auto flex items-center justify-between " style={{ height: "60px" }}>
+        <div className="flex gap-10">
+          <div className="logo w-[180px]">
+            <img className="w-full h-full object-container" src={Logo} />
+          </div>
+          {windowWidth > 768 && <NavItem path={routes} scrollY={scrollY} />}
+        </div>
+        {windowWidth <= 768 ? <Hamberger /> : <NavRight path={routes} scrollY={scrollY} />}
       </div>
     </Header>
   );

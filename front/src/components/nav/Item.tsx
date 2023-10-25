@@ -6,8 +6,9 @@ import { useAppSelector } from "@/redux/hooks";
 import NavDropDown from "./NavDropDown";
 
 import type { MenuProps } from "antd";
+import { NavColorProps } from "@/type/nav";
 
-function NavItem({ scrollY }: { scrollY: number }) {
+function NavItem({ scrollY, path }: NavColorProps) {
   const accesstoken = useAppSelector((state) => state.auth.accessToken);
 
   const refreshToken = getCookie("refresh_token");
@@ -53,7 +54,7 @@ function NavItem({ scrollY }: { scrollY: number }) {
     ],
   };
 
-  const isTop = scrollY === 0 ? "white" : "black";
+  const isTop = path !== "/" ? "black" : scrollY === 0 ? "white" : "black";
 
   const font = {
     color: isTop,

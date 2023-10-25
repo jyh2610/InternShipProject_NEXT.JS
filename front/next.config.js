@@ -1,11 +1,35 @@
+const withPlugins = require("next-compose-plugins");
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
-  openAnalyzer: false,
+  enabled: true,
+  openAnalyzer: true,
 });
 const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
-const withPlugins = require("next-compose-plugins");
+/** @type {import('next').NextConfig} */
 
-const nextConfig = (phase) => {
+// const nextConfig = async (phase) => {
+//   if (phase === PHASE_DEVELOPMENT_SERVER) {
+//     return {
+//       eslint: {
+//         ignoreDuringBuilds: true,
+//       },
+//     };
+//   }
+
+//   return {
+//     server: {
+//       host: "0.0.0.0",
+//     },
+//     eslint: {
+//       ignoreDuringBuilds: true,
+//     },
+//   };
+// };
+// module.exports = withPlugins([
+//   [withBundleAnalyzer],
+//   nextConfig,
+//   // your other plugins here
+// ]);
+module.exports = async (phase) => {
   if (phase === PHASE_DEVELOPMENT_SERVER) {
     return {
       eslint: {
@@ -23,5 +47,3 @@ const nextConfig = (phase) => {
     },
   };
 };
-
-module.exports = withPlugins([withBundleAnalyzer], nextConfig);
