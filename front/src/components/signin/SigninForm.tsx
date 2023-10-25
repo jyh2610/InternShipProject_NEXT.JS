@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 import FindButton from "./FindButton";
 import LoginButton from "./LoginButton";
+
 import SocialLoginButton from "./SocialLoginButton";
 
 import type { formType } from "@/type/signUp";
@@ -26,18 +27,19 @@ const SigninForm = () => {
   const onFinish = useCallback(() => {
     dispatch(setAccessToken(accessToken));
   }, []);
+
   const inputdata = [
     {
       key: 0,
       name: "user_name",
-      icon: <UserOutlined className="site-form-item-icon h-[2.75rem]" />,
+      icon: <UserOutlined className="site-form-item-icon h-[3rem]" />,
       massage: "아이디를 입력해 주세요.",
       placeholder: "아이디 입력",
     },
     {
       key: 1,
       name: "password",
-      icon: <LockOutlined className="site-form-item-icon h-[2.75rem]" />,
+      icon: <LockOutlined className="site-form-item-icon h-[3rem]" />,
       massage: "비밀번호를 입력해주세요",
       placeholder: "비밀번호 입력",
     },
