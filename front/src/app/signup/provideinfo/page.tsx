@@ -8,10 +8,10 @@ import type { CollapseProps } from "antd";
 
 import Agreement from "@/components/provideinfo/Agreement";
 import Content from "@/components/provideinfo/Content";
-import { provideText, provideTitle } from "@/constants/constants";
 import SideHeader from "@/components/sigin-up/SideHeader";
 import SiginupBtn from "@/components/sigin-up/SiginupBtn";
 import AgreementBtn from "@/components/provideinfo/AgreementBtn";
+import { provideText } from "@/constants/constants";
 
 const items: CollapseProps["items"] = [
   {
@@ -19,7 +19,7 @@ const items: CollapseProps["items"] = [
     label: "이용약관",
     children: (
       <div className="flex flex-col">
-        <Content label="이용약관" provideTitle={provideTitle} provideText={provideText} />
+        <Content label="이용약관" provideText={provideText} />
         <Agreement type="checkOne" />
       </div>
     ),
@@ -29,7 +29,7 @@ const items: CollapseProps["items"] = [
     label: "개인정보 수집 및 이용에 대한 안내",
     children: (
       <div className="flex flex-col">
-        <Content label="이용약관" provideTitle={provideTitle} provideText={provideText} />
+        <Content label="이용약관" provideText={provideText} />
         <Agreement type="checkTwo" />
       </div>
     ),
@@ -39,7 +39,7 @@ const items: CollapseProps["items"] = [
     label: "제3자 개인정보 제공동의",
     children: (
       <div className="flex flex-col">
-        <Content label="이용약관" provideTitle={provideTitle} provideText={provideText} />
+        <Content label="이용약관" provideText={provideText} />
         <Agreement type="checkThree" />
       </div>
     ),
