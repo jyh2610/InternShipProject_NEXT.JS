@@ -20,7 +20,7 @@ function Nav() {
   useEffect(() => {
     const handleResize = debounce(() => {
       setWindowWidth(window.innerWidth);
-    }, 500);
+    }, 200);
 
     // 클라이언트 사이드에서만 실행되도록 조건 추가
     if (typeof window !== "undefined") {
@@ -62,15 +62,7 @@ function Nav() {
           </div>
           {windowWidth > 768 && <NavItem path={routes} scrollY={scrollY} />}
         </div>
-        <div>
-          {windowWidth <= 768 ? (
-            <Hamberger />
-          ) : (
-            <>
-              <NavRight path={routes} scrollY={scrollY} />
-            </>
-          )}
-        </div>
+        {windowWidth <= 768 ? <Hamberger /> : <NavRight path={routes} scrollY={scrollY} />}
       </div>
     </Header>
   );
