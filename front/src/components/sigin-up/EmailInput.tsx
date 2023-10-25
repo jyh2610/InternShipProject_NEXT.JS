@@ -88,8 +88,6 @@ function EmailInput() {
       >
         <div className="flex flex-col text-center">
           <div className="flex w-full">
-            <Input style={{ width: "45%" }} name="id" onChange={domainHandler} />
-            <span className="my-auto">@</span>
             <Form.Item
               rules={[
                 {
@@ -114,6 +112,8 @@ function EmailInput() {
               ]}
             >
               <div className="flex">
+                <Input style={{ width: "45%" }} name="id" onChange={domainHandler} />
+                <span className="my-auto">@</span>
                 <Input style={{ width: "45%" }} name="domain" value={emailValue.domain} onChange={domainHandler} />
 
                 <Select placeholder="직접 입력" style={{ width: 120 }} options={domainData} onChange={selectHandler} />

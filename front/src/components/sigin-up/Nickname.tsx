@@ -22,7 +22,7 @@ function Nickname({ nicknameValue }: { nicknameValue: string }) {
 
   return (
     <>
-      <div className="flex">
+      <div>
         <Form.Item
           hasFeedback={isNicknameValid}
           rules={[
