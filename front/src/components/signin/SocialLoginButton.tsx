@@ -21,7 +21,10 @@ const SocialLoginButton = () => {
   return (
     <Form.Item>
       <SocialTitle />
-      <div className="flex justify-center gap-[2rem] ">
+      <div
+        className="flex justify-center gap-[2rem]
+      "
+      >
         {loginObj.map((data) => (
           <img
             className="sns-icon"

@@ -14,7 +14,7 @@ const SignIn = () => {
           <SigninTitle />
           <SigninForm />
         </div>
-        <div className="w-full h-screen">
+        <div className="hidden md:block w-full h-screen">
           <PageImage />
         </div>
       </div>

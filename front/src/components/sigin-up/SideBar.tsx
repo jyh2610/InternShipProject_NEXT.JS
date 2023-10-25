@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 function SideBar() {
-  const route = useRouter();
   const data = [
     {
       title: "약관동의",
@@ -23,13 +22,7 @@ function SideBar() {
     <>
       {data.map((data) => {
         return (
-          <div
-            className="cursor-pointer my-3 ml-[5rem] hover:font-bold"
-            onClick={() => {
-              route.push(`/signup${data.link}`);
-            }}
-            key={data.title}
-          >
+          <div className="cursor-pointer my-3 ml-[5rem]" key={data.title}>
             {data.title}
           </div>
         );

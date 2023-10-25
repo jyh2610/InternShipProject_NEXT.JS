@@ -9,16 +9,16 @@ function BackgroundVideo() {
   return (
     <div className="relative">
       <div className="w-full md:w-[1600px] mx-auto">
-        <div className="video-layout w-full h-full">
+        <div className="video-layout">
           <video
-            width="100%"
-            height="100%"
+            id="video"
             autoPlay // 자동 재생을 활성화
             muted
             loop
             draggable="false"
+            playsInline
           >
-            <source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />
+            <source src="https://user-images.githubusercontent.com/118269595/277870569-a95c9023-c7b8-41ad-bcd0-b05954349771.mp4" type="video/mp4" />
           </video>
         </div>
         <div

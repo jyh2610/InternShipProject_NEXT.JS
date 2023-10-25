@@ -10,6 +10,8 @@ import Agreement from "@/components/provideinfo/Agreement";
 import Content from "@/components/provideinfo/Content";
 import { provideText, provideTitle } from "@/constants/constants";
 import SideHeader from "@/components/sigin-up/SideHeader";
+import SiginupBtn from "@/components/sigin-up/SiginupBtn";
+import AgreementBtn from "@/components/provideinfo/AgreementBtn";
 
 const items: CollapseProps["items"] = [
   {
@@ -55,15 +57,7 @@ function ProvideInfo() {
       <SideHeader />
       <Divider />
       <Collapse items={items} defaultActiveKey={["1"]} onChange={onChange} />
-      <button className="px-[2.2rem] py-[0.8rem]">취소</button>
-      <button
-        className="px-[2.1rem] py-[0.8rem]"
-        onClick={() => {
-          route.push("/signup/clientinfo");
-        }}
-      >
-        회원가입
-      </button>
+      <AgreementBtn />
     </div>
   );
 }

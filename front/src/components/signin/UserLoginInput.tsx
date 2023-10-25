@@ -5,6 +5,7 @@ import React from "react";
 const UserLoginInput = ({ item }: { item: any }) => {
   return (
     <Form.Item
+      style={{ marginBottom: ".5rem", width: "100%" }}
       key={item.massage}
       name={item.name}
       rules={[
