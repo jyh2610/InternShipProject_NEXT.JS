@@ -1,0 +1,10 @@
+.join-pr-btn {
+    padding: 0.8rem 0;
+    font-size: 0.875rem;
+    font-weight: 300;
+}
+
+.join-pr-btn:nth-child(1) {
+    padding-top: 0;
+    font-weight: 700;
+}

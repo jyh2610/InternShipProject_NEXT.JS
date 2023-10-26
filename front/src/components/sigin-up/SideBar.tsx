@@ -24,7 +24,7 @@ function SideBar() {
     <>
       {data.map((data) => {
         return (
-          <div className={`${data.link === pathname ? "font-extrabold my-3 ml-[5rem]" : "my-3 ml-[5rem]"}`} key={data.title}>
+          <div className="join-pr-btn cursor-pointer" key={data.title}>
             {data.title}
           </div>
         );
