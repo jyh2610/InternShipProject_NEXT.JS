@@ -26,7 +26,7 @@ function Password() {
         hasFeedback
       >
         <Input.Password placeholder="*******" autoComplete="new-password" />
-        <span className="text-[0.7rem] font-bold text-gray-400">(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자)</span>
+        <span className="text-[0.7rem] font-bold text-gray-400">(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~20자)</span>
       </Form.Item>
       <Form.Item
         name="checkPassword"
