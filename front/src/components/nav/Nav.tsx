@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Layout } from "antd";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import useScroll from "@/hooks/useScroll";
 import NavRight from "./NavRight";
 import Hamberger from "./Hamberger";
@@ -14,9 +14,11 @@ import { getServerSession } from "next-auth";
 const { Header } = Layout;
 
 function Nav() {
+  const router = useRouter();
   const routes = usePathname();
   const scrollY = useScroll();
   const [windowWidth, setWindowWidth] = useState<number>(0); // 초기값 설정
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = debounce(() => {
@@ -35,9 +37,9 @@ function Nav() {
     };
   }, []);
 
-  const isTop = routes !== "/" ? "white" : scrollY === 0 ? "transparent" : "white";
-  const lineTop = routes !== "/" ? "1px" : scrollY === 0 ? "none" : "1px solid #E0E0E0";
-  const Logo = routes !== "/" ? LogoGreen : scrollY === 0 ? LogoWh : LogoGreen;
+  const isTop = routes !== "/" || open === true ? "white" : scrollY === 0 ? "transparent" : "white";
+  const lineTop = routes !== "/" || open === true ? "1px" : scrollY === 0 ? "none" : "1px solid #E0E0E0";
+  const Logo = routes !== "/" || open === true ? LogoGreen : scrollY === 0 ? LogoWh : LogoGreen;
 
   return (
     <Header
@@ -58,11 +60,11 @@ function Nav() {
       <div className="mainwidth mx-auto flex items-center justify-between " style={{ height: "60px" }}>
         <div className="flex gap-10">
           <div className="logo w-[180px]">
-            <img className="w-full h-full object-container" src={Logo} />
+            <img onClick={() => router.push("/")} className="w-full h-full object-container" src={Logo} />
           </div>
           {windowWidth > 768 && <NavItem path={routes} scrollY={scrollY} />}
         </div>
-        {windowWidth <= 768 ? <Hamberger /> : <NavRight path={routes} scrollY={scrollY} />}
+        {windowWidth <= 768 ? <Hamberger open={open} setOpen={setOpen} /> : <NavRight path={routes} scrollY={scrollY} />}
       </div>
     </Header>
   );

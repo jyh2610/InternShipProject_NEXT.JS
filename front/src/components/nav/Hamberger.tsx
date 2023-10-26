@@ -3,12 +3,11 @@ import React, { useState } from "react";
 import { MenuOutlined } from "@ant-design/icons";
 import Burger from "./Burger";
 
-function Hamberger() {
-  const [open, setOpen] = useState(false);
+function Hamberger({ open, setOpen }: { open: boolean; setOpen: Function }) {
   return (
     <>
       {!open ? (
-        <MenuOutlined onClick={() => setOpen((prev) => !prev)} />
+        <MenuOutlined onClick={() => setOpen((prev: boolean) => !prev)} />
       ) : (
         <div onClick={() => setOpen(false)}>
           <svg
