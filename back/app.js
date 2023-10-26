@@ -10,9 +10,9 @@ const app = express();
 app.use(cors({
   origin: process.env.CORS_ORIGIN
 }));
-// 같은 ec2내에 잇는 프론트엔드 서버에서 오는 요청만 허용
+// 같은 ec2내에 있는 프론트엔드 서버에서 오는 요청만 허용
 app.use(express.json());
-app.use(routes);
+app.use("/api", routes);
 app.use(morgan('dev'));
 
 app.get("/ping", (req, res) => {
