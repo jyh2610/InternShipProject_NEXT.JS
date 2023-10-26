@@ -1,6 +1,6 @@
-import { Button, Divider } from "antd";
-import { useRouter } from "next/navigation";
 import React from "react";
+import { Button, Divider, Space } from "antd";
+import { useRouter } from "next/navigation";
 
 export default function Burger({ open, setOpen }: { open: boolean; setOpen: Function }) {
   const router = useRouter();
@@ -18,29 +18,31 @@ export default function Burger({ open, setOpen }: { open: boolean; setOpen: Func
   } as React.CSSProperties;
 
   return (
-    <ul style={menuStyle}>
-      <div className="h-2/3 flex flex-col items-center justify-between pt-[60px]">
+    <div style={menuStyle}>
+      <ul className="h-2/3 flex flex-col items-center justify-between pt-[60px]">
         <li>
-          <div onClick={() => router.push("/signin")}>로그인</div>
-        </li>
-        <li>
-          <div onClick={() => router.push("/")}>홈</div>
-        </li>
-        <li className="h-24 flex flex-col justify-between items-center">
-          <div>제품</div>
-          <ul>
-            <li>디자인&렌더</li>
-            <li>애니매이션</li>
-            <li>브랜드갤러리</li>
-          </ul>
+          <Button onClick={() => router.push("/signin")}>로그인</Button>
         </li>
         <li>
-          <div>솔루션</div>
+          <Button onClick={() => router.push("/")}>홈</Button>
         </li>
         <li>
-          <div onClick={() => router.push("/download")}>다운로드</div>
+          <Space className="flex flex-col">
+            <h1>제품</h1>
+            <ul className="flex flex-col justify-between">
+              <Button>디자인&렌더</Button>
+              <Button>애니매이션</Button>
+              <Button>브랜드갤러리</Button>
+            </ul>
+          </Space>
         </li>
-      </div>
-    </ul>
+        <li>
+          <Button>솔루션</Button>
+        </li>
+        <li>
+          <Button onClick={() => router.push("/download")}>다운로드</Button>
+        </li>
+      </ul>
+    </div>
   );
 }
