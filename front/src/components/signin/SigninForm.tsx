@@ -15,18 +15,32 @@ import type { formType } from "@/type/signUp";
 import { setAccessToken } from "@/redux/slicer/authSlice";
 import UserLoginInput from "./UserLoginInput";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import baseApi from "@/API/baseApi";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
+interface reqType {
+  user_name: string;
+  password: string;
+  success: boolean;
+}
 const SigninForm = () => {
-  const accessToken = useAppSelector((state) => state.auth.accessToken);
   const dispatch = useAppDispatch();
-  const [form] = Form.useForm<formType>();
+  const route = useRouter();
 
-  const userName = Form.useWatch("user_name", form);
-  const password = Form.useWatch("password", form);
-
-  const onFinish = useCallback(() => {
-    dispatch(setAccessToken(accessToken));
-  }, []);
+  const loginHandler = async (values: reqType) => {
+    await axios.post("http://192.168.0.18:3000/sign/signin", values).then((res) => {
+      console.log(res.data.accessToken);
+      if (res.data.accessToken) {
+        dispatch(setAccessToken(res.data.accessToken));
+        route.push("/");
+      }
+    });
+  };
+  const onFinish = (values: reqType) => {
+    console.log("success", values);
+    loginHandler(values);
+  };
 
   const inputdata = [
     {
@@ -55,7 +69,7 @@ const SigninForm = () => {
       }}
     >
       <Form
-        form={form}
+        // form={form}
         name="normal_login"
         className="login-form text-center"
         style={{ width: "100%" }}
@@ -66,7 +80,7 @@ const SigninForm = () => {
       >
         <UserLoginInput item={inputdata[0]} />
         <UserLoginInput item={inputdata[1]} />
-        <LoginButton user_name={userName} password={password} />
+        <LoginButton />
         <FindButton />
         <SocialLoginButton />
       </Form>
