@@ -24,7 +24,7 @@ function EmailCode({ email, setIsActive, isActive }: { isActive: boolean; email:
   return (
     <>
       <Input
-        style={{ width: "300px" }}
+        style={{ width: "140px" }}
         value={code}
         onChange={(e) => setCode(e.target.value)}
         name="code"
