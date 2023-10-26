@@ -27,9 +27,10 @@ interface reqType {
 const SigninForm = () => {
   const dispatch = useAppDispatch();
   const route = useRouter();
+  // const api = new baseApi();
 
   const loginHandler = async (values: reqType) => {
-    await axios.post("http://192.168.0.18:3000/sign/signin", values).then((res) => {
+    await axios.post("/sign/signin", values).then((res) => {
       console.log(res.data.accessToken);
       if (res.data.accessToken) {
         dispatch(setAccessToken(res.data.accessToken));

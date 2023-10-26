@@ -25,6 +25,7 @@ function EmailInput() {
     domain: "",
     code: "",
   });
+  const [confirmbtn, setConfirmbtn] = useState(false);
   const email = `${emailValue.id}@${emailValue.domain}`;
   const [isValid, setIsValid] = useState<undefined | boolean>(false);
 
@@ -51,6 +52,7 @@ function EmailInput() {
       },
     });
     setIsActive(true);
+    setConfirmbtn(true);
   };
 
   useEffect(() => {
@@ -120,8 +122,8 @@ function EmailInput() {
             </Form.Item>
           </div>
         </div>
+        {emailValue.domain && confirmbtn ? <EmailCode setIsActive={setIsActive} isActive={isActive} email={email} /> : ""}
       </Form.Item>
-      {emailValue.domain && emailValue.id ? <EmailCode setIsActive={setIsActive} isActive={isActive} email={email} /> : ""}
     </div>
   );
 }

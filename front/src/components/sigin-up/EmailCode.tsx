@@ -22,7 +22,7 @@ function EmailCode({ email, setIsActive, isActive }: { isActive: boolean; email:
   };
 
   return (
-    <>
+    <div className="flex">
       <Input
         style={{ width: "140px" }}
         value={code}
@@ -31,7 +31,7 @@ function EmailCode({ email, setIsActive, isActive }: { isActive: boolean; email:
         suffix={<Timer setSeconds={setSeconds} setIsActive={setIsActive} isActive={isActive} seconds={seconds} />}
       />
       <Button onClick={startTimer}>인증하기</Button>
-    </>
+    </div>
   );
 }
 
