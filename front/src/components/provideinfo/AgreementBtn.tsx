@@ -2,10 +2,23 @@ import { Button, ConfigProvider } from "antd";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-const AgreementBtn = () => {
+interface AgreementBtnProps {
+  setCheck: Function;
+  check: {
+    one: boolean;
+    two: boolean;
+    three: boolean;
+  };
+}
+
+const AgreementBtn = ({ check }: AgreementBtnProps) => {
   const route = useRouter();
   const clickSignup = () => {
-    route.push("/signup/clientinfo");
+    if (check.one && check.two && check.three) {
+      route.push("/signup/clientinfo");
+    } else {
+      alert("필수 동의항목을 확인해 주세요.");
+    }
   };
 
   const clickCancel = () => {
