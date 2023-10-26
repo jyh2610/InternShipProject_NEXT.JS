@@ -24,7 +24,7 @@ function Hamberger({ open, setOpen }: { open: boolean; setOpen: Function }) {
           </svg>
         </div>
       )}
-      {open && <Burger open={open} setOpen={setOpen} />}
+      {open && <Burger />}
     </>
   );
 }
