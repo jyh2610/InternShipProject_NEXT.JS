@@ -12,8 +12,8 @@ export const nation = [
 ];
 
 export const sex = [
-  { label: "여", value: 0 },
-  { label: "남", value: 1 },
+  { label: "남", value: 0 },
+  { label: "여", value: 1 },
   { label: "기타", value: 2 },
 ];
 

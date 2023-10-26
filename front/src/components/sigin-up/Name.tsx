@@ -22,9 +22,9 @@ function Name() {
       name={"name"}
       label={<div className="label-tit">이름</div>}
       labelCol={{ span: 1 }}
-      wrapperCol={{ span: 10 }}
+      wrapperCol={{ span: 5 }}
     >
-      <Input />
+      <Input style={{ padding: "0.5rem 0.8rem" }} />
     </Form.Item>
   );
 }

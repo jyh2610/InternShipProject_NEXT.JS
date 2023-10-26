@@ -21,7 +21,7 @@ function Birth({ validateSelect }: ValidProps) {
       name="birthday"
       label="생년월일"
     >
-      <DatePicker />
+      <DatePicker placeholder="YYYY-MM-DD" style={{ cursor: "pointer", width: "15%", padding: "0.5rem 0.8rem" }} />
     </Form.Item>
   );
 }

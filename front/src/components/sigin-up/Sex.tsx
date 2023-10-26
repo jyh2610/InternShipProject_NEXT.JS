@@ -16,8 +16,10 @@ function Sex({ validateSelect }: ValidProps) {
       ]}
       name="sex"
       label="성별"
+      labelCol={{ span: 1 }}
+      wrapperCol={{ span: 5 }}
     >
-      <Select placeholder="선택" options={sex} />
+      <Select style={{ height: "auto" }} placeholder="선택" options={sex} />
     </Form.Item>
   );
 }
