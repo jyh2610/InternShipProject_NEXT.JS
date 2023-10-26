@@ -21,7 +21,7 @@ const AgreementBtn = () => {
         },
       }}
     >
-      <div className="flex justify-center py-[2rem] gap-[1rem]">
+      <div className="flex justify-center py-[2rem] gap-[0.5rem]">
         <Button className="px-[3rem] py-[0.8rem]" onClick={clickCancel} style={{ lineHeight: 0, backgroundColor: "#EFEFEF" }} type="link" htmlType="submit">
           취소
         </Button>
