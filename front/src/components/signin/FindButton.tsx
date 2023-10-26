@@ -22,14 +22,14 @@ const FindButton = () => {
   ];
   return (
     <Form.Item className="text-center">
-      <div className="flex justify-around">
+      <div className="flex justify-center gap-[3rem]">
         {data.map((item) => (
           <div
             onClick={() => {
               route.push(`${item.link}`);
             }}
             key={item.title}
-            className="login-form-forgot text-[#000]"
+            className="find-btn login-form-forgot text-[#000]"
           >
             {item.title}
           </div>

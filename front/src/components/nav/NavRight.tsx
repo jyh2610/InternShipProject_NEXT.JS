@@ -16,6 +16,8 @@ function NavRight({ scrollY, path }: NavColorProps) {
   const route = useRouter();
   const accesstoken = useAppSelector((state) => state.auth.accessToken);
   const refreshToken: string | null = getCookie("refresh_token");
+  const isTop = scrollY === 0 ? "white" : "black";
+  const isLogin = accesstoken === "" && refreshToken === undefined;
 
   const sendRefreshTokenToServer = useCallback(
     async (refreshToken: string) => {
@@ -30,11 +32,11 @@ function NavRight({ scrollY, path }: NavColorProps) {
     await signOut({ callbackUrl: "/" });
     accesstoken && (await logOutHandler(accesstoken));
     removeCookie("refresh_token");
-    dispatch(setAccessToken(""));
+    dispatch(setAccessToken(null));
   }, [accesstoken, dispatch]);
 
   useEffect(() => {
-    !accesstoken && sendRefreshTokenToServer(refreshToken!);
+    isLogin && sendRefreshTokenToServer(refreshToken!);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [accesstoken, sendRefreshTokenToServer, refreshToken]);
 
@@ -56,12 +58,10 @@ function NavRight({ scrollY, path }: NavColorProps) {
     [],
   );
 
-  const isTop = scrollY === 0 ? "white" : "black";
-
   return (
     <div className="flex items-center">
       <NavDropDown scrollY={scrollY} title={"한국어"} items={data} />
-      {accesstoken !== undefined || refreshToken !== undefined ? (
+      {isLogin ? (
         <Button onClick={logout} style={{ color: `${isTop}` }} type="text">
           로그아웃
         </Button>

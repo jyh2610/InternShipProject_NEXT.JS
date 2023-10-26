@@ -2,7 +2,7 @@ import NoticeButton from "./section-6/NoticeButton";
 import Text from "./section-6/Text";
 import Title from "./section-6/Title";
 
-import Video from "./section-6/Video";
+import BackgroundVideo from "./section-6/BackgroundVideo";
 
 function SectionSix() {
   return (
@@ -10,7 +10,7 @@ function SectionSix() {
       <div className="mx-auto mainwidth max-w-top ">
         <Title />
       </div>
-      <Video />
+      <BackgroundVideo />
     </div>
   );
 }

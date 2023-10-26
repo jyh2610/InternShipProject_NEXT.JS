@@ -1,35 +1,30 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
 function SideBar() {
-  const route = useRouter();
+  const pathname = usePathname();
+  console.log(pathname, "_____");
   const data = [
     {
       title: "약관동의",
-      link: "/provideinfo",
+      link: "/signup/provideinfo",
     },
     {
       title: "정보입력",
-      link: "/clientinfo",
+      link: "/signup/clientinfo",
     },
     {
       title: "가입완료",
-      link: "/clientinfo",
+      link: "/",
     },
   ];
   return (
     <>
       {data.map((data) => {
         return (
-          <div
-            className="cursor-pointer my-3 ml-[10rem] hover:font-bold"
-            onClick={() => {
-              route.push(`/signup${data.link}`);
-            }}
-            key={data.title}
-          >
+          <div className="join-pr-btn cursor-pointer" key={data.title}>
             {data.title}
           </div>
         );

@@ -4,15 +4,17 @@ import PageImage from "@/components/signin/PageImage";
 import SigninForm from "@/components/signin/SigninForm";
 import SigninTitle from "@/components/signin/SigninTitle";
 
+import "../../components/signin/style.css";
+
 const SignIn = () => {
   return (
     <>
-      <div className="flex">
-        <div className="w-1/3 flex flex-col justify-center items-center mx-auto">
+      <div className="relativ overflow-hidden">
+        <div className="login absolute left-[50%] top-[50%]">
           <SigninTitle />
           <SigninForm />
         </div>
-        <div className="w-2/3 hidden md:block">
+        <div className="hidden md:block w-full h-screen">
           <PageImage />
         </div>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Divider, Form } from "antd";
+import { ConfigProvider, Divider, Form } from "antd";
 
 import { baseApi } from "@/API/api";
 import { formatDate } from "@/lib/FormatData";
@@ -44,7 +44,6 @@ const SiginupForm = () => {
 
   const nicknameValue = Form.useWatch("nickname", form);
   const user_nameValue = Form.useWatch("user_name", form);
-  console.log(user_nameValue, nicknameValue);
 
   const validateForm = async () => {
     try {
@@ -73,16 +72,26 @@ const SiginupForm = () => {
       <SideHeader />
       <Divider />
       <div className="flex justify-start">
-        <Form form={form} className="my-auto" {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
-          <Name />
-          <Nickname nicknameValue={nicknameValue} />
-          <UserID user={user_nameValue} />
-          <EmailInput />
-          <Password />
-          <Birth validateSelect={validateSelect} />
-          <Sex validateSelect={validateSelect} />
-          <SiginupBtn validateForm={validateForm} />
-        </Form>
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: "#26AF66",
+              colorLink: "#000",
+              borderRadius: 2,
+            },
+          }}
+        >
+          <Form form={form} className="my-auto" {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+            <Name />
+            <Nickname nicknameValue={nicknameValue} />
+            <UserID user={user_nameValue} />
+            <EmailInput />
+            <Password />
+            <Birth validateSelect={validateSelect} />
+            <Sex validateSelect={validateSelect} />
+            <SiginupBtn validateForm={validateForm} />
+          </Form>
+        </ConfigProvider>
       </div>
     </div>
   );

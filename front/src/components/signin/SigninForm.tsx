@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useCallback } from "react";
 
 import { ConfigProvider, Form, Input } from "antd";
 
@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 import FindButton from "./FindButton";
 import LoginButton from "./LoginButton";
+
 import SocialLoginButton from "./SocialLoginButton";
 
 import type { formType } from "@/type/signUp";
@@ -23,21 +24,22 @@ const SigninForm = () => {
   const userName = Form.useWatch("user_name", form);
   const password = Form.useWatch("password", form);
 
-  const onFinish = () => {
+  const onFinish = useCallback(() => {
     dispatch(setAccessToken(accessToken));
-  };
+  }, []);
+
   const inputdata = [
     {
       key: 0,
       name: "user_name",
-      icon: <UserOutlined className="site-form-item-icon h-[2.75rem]" />,
+      icon: <UserOutlined className="site-form-item-icon h-[3rem]" />,
       massage: "아이디를 입력해 주세요.",
       placeholder: "아이디 입력",
     },
     {
       key: 1,
       name: "password",
-      icon: <LockOutlined className="site-form-item-icon h-[2.75rem]" />,
+      icon: <LockOutlined className="site-form-item-icon h-[3rem]" />,
       massage: "비밀번호를 입력해주세요",
       placeholder: "비밀번호 입력",
     },
@@ -48,7 +50,7 @@ const SigninForm = () => {
       theme={{
         token: {
           colorPrimary: "#26AF66",
-          borderRadius: 2,
+          borderRadius: 0,
         },
       }}
     >
@@ -56,7 +58,7 @@ const SigninForm = () => {
         form={form}
         name="normal_login"
         className="login-form text-center"
-        style={{ width: "23.3125rem" }}
+        style={{ width: "100%" }}
         initialValues={{
           remember: true,
         }}
