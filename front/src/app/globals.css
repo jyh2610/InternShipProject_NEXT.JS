@@ -79,6 +79,8 @@ p {
 .testp > p{
   font-weight:700;
 }
+cursor-pointer:nth-chlid(1) {
+}
 .swiper-button-next {
   content: url("../../public/assets/arrow.png");
   width: 20px !important;
