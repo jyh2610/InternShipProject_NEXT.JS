@@ -8,51 +8,50 @@ import NavDropDown from "./NavDropDown";
 import type { MenuProps } from "antd";
 import { NavColorProps } from "@/type/nav";
 
+export const data: MenuProps = {
+  items: [
+    {
+      style: { padding: "1.5rem", color: "#fff" },
+      key: "1",
+      label: (
+        <a style={{ fontWeight: "700", fontSize: "1rem" }}>
+          디자인 & 랜더
+          <span className="block" style={{ fontWeight: "400", fontSize: "0.875rem" }}>
+            디자인 & 랜더 카테고리에 작성 될 간단한 텍스트영역
+          </span>
+        </a>
+      ),
+    },
+    {
+      style: { padding: "0 1.5rem", color: "#fff" },
+      key: "2",
+      label: (
+        <a style={{ fontWeight: "700", fontSize: "1rem" }}>
+          애니메이션
+          <span className="block" style={{ fontWeight: "400", fontSize: "0.875rem" }}>
+            애니메이션 카테고리에 작성 될 간단한 텍스트영역
+          </span>
+        </a>
+      ),
+    },
+    {
+      style: { padding: "1.5rem", color: "#fff" },
+      key: "3",
+      label: (
+        <a style={{ fontWeight: "700", fontSize: "1rem" }}>
+          브랜드갤러리
+          <span className="block" style={{ fontWeight: "400", fontSize: "0.875rem" }}>
+            브랜드갤러리 카테고리에 작성 될 간단한 텍스트영역
+          </span>
+        </a>
+      ),
+    },
+  ],
+};
 function NavItem({ scrollY, path }: NavColorProps) {
   const accesstoken = useAppSelector((state) => state.auth.accessToken);
 
   const refreshToken = getCookie("refresh_token");
-
-  const data: MenuProps = {
-    items: [
-      {
-        style: { padding: "1.5rem", color: "#fff" },
-        key: "1",
-        label: (
-          <a style={{ fontWeight: "700", fontSize: "1rem" }}>
-            디자인 & 랜더
-            <span className="block" style={{ fontWeight: "400", fontSize: "0.875rem" }}>
-              디자인 & 랜더 카테고리에 작성 될 간단한 텍스트영역
-            </span>
-          </a>
-        ),
-      },
-      {
-        style: { padding: "0 1.5rem", color: "#fff" },
-        key: "2",
-        label: (
-          <a style={{ fontWeight: "700", fontSize: "1rem" }}>
-            애니메이션
-            <span className="block" style={{ fontWeight: "400", fontSize: "0.875rem" }}>
-              애니메이션 카테고리에 작성 될 간단한 텍스트영역
-            </span>
-          </a>
-        ),
-      },
-      {
-        style: { padding: "1.5rem", color: "#fff" },
-        key: "3",
-        label: (
-          <a style={{ fontWeight: "700", fontSize: "1rem" }}>
-            브랜드갤러리
-            <span className="block" style={{ fontWeight: "400", fontSize: "0.875rem" }}>
-              브랜드갤러리 카테고리에 작성 될 간단한 텍스트영역
-            </span>
-          </a>
-        ),
-      },
-    ],
-  };
 
   const isTop = path !== "/" ? "black" : scrollY === 0 ? "white" : "black";
 
