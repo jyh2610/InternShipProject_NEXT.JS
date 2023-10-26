@@ -70,6 +70,11 @@ const SiginupForm = () => {
               colorPrimary: "#26AF66",
               colorLink: "#000",
               borderRadius: 2,
+              colorBgContainer: "#F7F7F7",
+              colorBorder: "transparent",
+              colorPrimaryActive: "none",
+              colorPrimaryBorderHover: "none",
+              colorPrimaryHover: "none",
             },
             components: {
               Input: {
@@ -77,7 +82,7 @@ const SiginupForm = () => {
                 activeBorderColor: "none", // Input 체크 되었을 때 보더색상 변경
                 hoverBorderColor: "none", // 마우스 올렸을 때 보더색상 변경
                 colorBorder: "transparent",
-                activeShadow: "none",
+                activeShadow: "none", // Input 체크 박스 그림자 변경
               },
             },
           }}

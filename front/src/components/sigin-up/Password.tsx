@@ -8,6 +8,8 @@ function Password() {
       <Form.Item
         name="password"
         label="비밀번호"
+        labelCol={{ span: 1 }}
+        wrapperCol={{ span: 8 }}
         rules={[
           {
             required: true,
@@ -25,10 +27,11 @@ function Password() {
         ]}
         hasFeedback
       >
-        <Input.Password placeholder="*******" autoComplete="new-password" />
-        <span className="text-[0.7rem] font-bold text-gray-400">(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~20자)</span>
+        <Input.Password placeholder="*******" autoComplete="new-password" style={{ padding: "0.5rem 0.8rem" }} />
+        <span className="text-[0.7rem] font-medium text-gray-400">(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~20자)</span>
       </Form.Item>
       <Form.Item
+        wrapperCol={{ span: 8 }}
         name="checkPassword"
         label={<div className="password-check">비밀번호 확인</div>}
         dependencies={["password"]}
@@ -48,7 +51,7 @@ function Password() {
           }),
         ]}
       >
-        <Input.Password placeholder="*******" autoComplete="new-password" />
+        <Input.Password placeholder="*******" autoComplete="new-password" style={{ padding: "0.5rem 0.8rem" }} />
       </Form.Item>
     </>
   );

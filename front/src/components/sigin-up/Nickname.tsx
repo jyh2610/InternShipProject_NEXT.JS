@@ -41,10 +41,14 @@ function Nickname({ nicknameValue }: { nicknameValue: string }) {
           ]}
           name="nickname"
           label="닉네임"
+          labelCol={{ span: 1 }}
+          wrapperCol={{ span: 7 }}
         >
           <div className="flex gap-[0.5rem]">
-            <Input style={{ backgroundColor: "red" }} className="bg-red" />
-            <Button onClick={response}>중복확인</Button>
+            <Input style={{ padding: "0.5rem 0.8rem" }} />
+            <Button style={{ height: "100%", padding: "0.5rem 1.2rem" }} onClick={response}>
+              중복확인
+            </Button>
           </div>
         </Form.Item>
       </div>
