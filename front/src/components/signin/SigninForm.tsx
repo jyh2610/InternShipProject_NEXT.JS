@@ -38,7 +38,6 @@ const SigninForm = () => {
     });
   };
   const onFinish = (values: reqType) => {
-    console.log("success", values);
     loginHandler(values);
   };
 
