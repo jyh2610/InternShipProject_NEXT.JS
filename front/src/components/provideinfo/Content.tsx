@@ -9,8 +9,7 @@ interface ContentProps {
 const Content: React.FC<ContentProps> = ({ provideText }) => {
   return (
     <div className="flex flex-col">
-      <div className="bg-gray-100 p-8 px-9">
-        {/* <p className="font-extrabold my-4">{provideTitle}</p> */}
+      <div className="bg-gray-100 p-8 px-9 h-[500px] overflow-y-auto	">
         <div className="testp" dangerouslySetInnerHTML={{ __html: provideText }} />
         <br />
       </div>
