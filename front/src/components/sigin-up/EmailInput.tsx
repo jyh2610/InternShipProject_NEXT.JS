@@ -20,7 +20,6 @@ interface emailType {
 function EmailInput() {
   const api = new baseApi();
   const [isActive, setIsActive] = useState(false);
-  const [confirmemail, setConfirmEmail] = useState(false);
   const [emailValue, setEmailValue] = useState<emailType>({
     id: "",
     domain: "",
@@ -52,7 +51,6 @@ function EmailInput() {
       },
     });
     setIsActive(true);
-    setConfirmEmail(true);
   };
 
   useEffect(() => {
@@ -127,7 +125,7 @@ function EmailInput() {
           </div>
         </div>
       </Form.Item>
-      {confirmemail && <EmailCode setIsActive={setIsActive} isActive={isActive} email={email} />}
+      {emailValue.domain && emailValue.id ? <EmailCode setIsActive={setIsActive} isActive={isActive} email={email} /> : ""}
     </div>
   );
 }

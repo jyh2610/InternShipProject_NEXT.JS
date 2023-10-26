@@ -3,7 +3,6 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 interface AgreementBtnProps {
-  setCheck: Function;
   check: {
     one: boolean;
     two: boolean;

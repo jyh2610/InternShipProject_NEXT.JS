@@ -5,7 +5,6 @@ import React from "react";
 
 function SideBar() {
   const pathname = usePathname();
-  console.log(pathname, "_____");
   const data = [
     {
       title: "약관동의",
