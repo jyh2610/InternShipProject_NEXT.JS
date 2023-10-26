@@ -20,7 +20,9 @@ function Name() {
         },
       ]}
       name={"name"}
-      label="이름"
+      label={<div className="label-tit">이름</div>}
+      labelCol={{ span: 1 }}
+      wrapperCol={{ span: 10 }}
     >
       <Input />
     </Form.Item>

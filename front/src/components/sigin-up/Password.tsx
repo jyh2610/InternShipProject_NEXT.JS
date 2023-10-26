@@ -30,7 +30,7 @@ function Password() {
       </Form.Item>
       <Form.Item
         name="checkPassword"
-        label="비밀번호확인"
+        label={<div className="password-check">비밀번호 확인</div>}
         dependencies={["password"]}
         hasFeedback
         rules={[

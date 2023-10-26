@@ -86,8 +86,8 @@ function EmailInput() {
         name={["email", "domain"]}
         label="이메일"
       >
-        <div className="flex flex-col text-center">
-          <div className="flex w-full">
+        <div className="flex flex-col text-center ">
+          <div className="flex " style={{ flexFlow: "column" }}>
             <Form.Item
               rules={[
                 {
@@ -111,16 +111,12 @@ function EmailInput() {
                 },
               ]}
             >
-              <div className="flex">
-                <Input style={{ width: "45%" }} name="id" onChange={domainHandler} />
-                <span className="my-auto">@</span>
-                <Input style={{ width: "45%" }} name="domain" value={emailValue.domain} onChange={domainHandler} />
+              <div className="flex gap-[0.3rem]">
+                <Input style={{ width: "15%" }} name="id" onChange={domainHandler} />
+                <span className="mx-[0.2rem] my-auto">@</span>
+                <Input style={{ width: "25%" }} name="domain" value={emailValue.domain} onChange={domainHandler} />
 
-                <Select placeholder="직접 입력" style={{ width: 120 }} options={domainData} onChange={selectHandler} />
-
-                {/* <Dropdown menu={{ domainData }} placement="bottom">
-                  <Button>bottom</Button>
-                </Dropdown> */}
+                <Select placeholder="직접 입력" style={{ width: "8%" }} options={domainData} onChange={selectHandler} />
                 <Button onClick={sendingCode}>이메일 인증</Button>
               </div>
             </Form.Item>
