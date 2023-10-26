@@ -15,12 +15,6 @@ import SiginupBtn from "./SiginupBtn";
 import UserID from "./UserID";
 
 import type { formType } from "@/type/signUp";
-import SideHeader from "./SideHeader";
-
-const layout = {
-  labelCol: { span: 4 },
-  wrapperCol: { span: 8 },
-};
 
 const validateMessages = {
   required: "${label} is required!",
@@ -68,10 +62,8 @@ const SiginupForm = () => {
   };
 
   return (
-    <div className="mx-[12rem] sm:mx-[8rem]">
-      <SideHeader />
-      <Divider />
-      <div className="flex justify-start">
+    <div className="">
+      <div className="">
         <ConfigProvider
           theme={{
             token: {
@@ -79,9 +71,18 @@ const SiginupForm = () => {
               colorLink: "#000",
               borderRadius: 2,
             },
+            components: {
+              Input: {
+                colorBgContainer: "#F7F7F7",
+                activeBorderColor: "none", // Input 체크 되었을 때 보더색상 변경
+                hoverBorderColor: "none", // 마우스 올렸을 때 보더색상 변경
+                colorBorder: "transparent",
+                activeShadow: "none",
+              },
+            },
           }}
         >
-          <Form form={form} className="my-auto" {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+          <Form form={form} colon={false} labelAlign="left" className="my-auto " name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
             <Name />
             <Nickname nicknameValue={nicknameValue} />
             <UserID user={user_nameValue} />

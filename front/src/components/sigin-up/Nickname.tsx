@@ -42,8 +42,8 @@ function Nickname({ nicknameValue }: { nicknameValue: string }) {
           name="nickname"
           label="닉네임"
         >
-          <div className="flex">
-            <Input />
+          <div className="flex gap-[0.5rem]">
+            <Input style={{ backgroundColor: "red" }} className="bg-red" />
             <Button onClick={response}>중복확인</Button>
           </div>
         </Form.Item>
