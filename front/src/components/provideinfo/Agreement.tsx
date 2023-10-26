@@ -1,40 +1,31 @@
-import React, { useState } from "react";
-
+import React from "react";
 import { Checkbox } from "antd";
 
 interface AgreementProps {
-  type: "checkOne" | "checkTwo" | "checkThree";
+  type: "One" | "Two" | "Three";
+  setCheck: Function;
+  check: {
+    one: boolean;
+    two: boolean;
+    three: boolean;
+  };
 }
-const Agreement: React.FC<AgreementProps> = ({ type }) => {
-  const [checkOne, setCheckOne] = useState(false);
-  const [checkTwo, setCheckTwo] = useState(false);
-  const [checkThree, setCheckThree] = useState(false);
 
+const Agreement = ({ type, check, setCheck }: AgreementProps) => {
   const handleChange = () => {
-    switch (type) {
-      case "checkOne":
-        setCheckOne(!checkOne);
-        break;
-      case "checkTwo":
-        setCheckTwo(!checkTwo);
-        break;
-      case "checkThree":
-        setCheckThree(!checkThree);
-        break;
-      default:
-        // Handle the default case or do nothing
-        break;
+    if (type === "One") {
+      setCheck({ ...check, one: !check.one });
+    } else if (type === "Two") {
+      setCheck({ ...check, two: !check.two });
+    } else {
+      setCheck({ ...check, three: !check.three });
     }
   };
 
   return (
     <>
-      <Checkbox
-        className="justify-end block my-[2rem]"
-        checked={type === "checkOne" ? checkOne : type === "checkTwo" ? checkTwo : checkThree}
-        onChange={handleChange}
-      >
-        아키플 2.0 서비스 이용약관에 동의합니다.
+      <Checkbox className="justify-end block my-[2rem]" checked={type === "One" ? check.one : type === "Two" ? check.two : check.three} onChange={handleChange}>
+        {`아키플 2.0 서비스 이용약관에 동의합니다`}
       </Checkbox>
     </>
   );

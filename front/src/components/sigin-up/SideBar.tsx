@@ -24,7 +24,12 @@ function SideBar() {
     <>
       {data.map((data) => {
         return (
-          <div className="join-pr-btn cursor-pointer" key={data.title}>
+          <div
+            className={`${
+              data.link === pathname ? "font-extrabold py-[0.8rem] text-[0.875rem] cursor-pointer" : "font-light py-[0.8rem] text-[0.875rem] cursor-pointer"
+            }`}
+            key={data.title}
+          >
             {data.title}
           </div>
         );
