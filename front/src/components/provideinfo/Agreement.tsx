@@ -24,7 +24,11 @@ const Agreement = ({ type, check, setCheck }: AgreementProps) => {
 
   return (
     <>
-      <Checkbox className="justify-end block my-[2rem]" checked={type === "One" ? check.one : type === "Two" ? check.two : check.three} onChange={handleChange}>
+      <Checkbox
+        className="flex justify-end block my-[2rem]"
+        checked={type === "One" ? check.one : type === "Two" ? check.two : check.three}
+        onChange={handleChange}
+      >
         {`아키플 2.0 서비스 이용약관에 동의합니다`}
       </Checkbox>
     </>
