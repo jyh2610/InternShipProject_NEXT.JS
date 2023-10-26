@@ -1,9 +1,17 @@
 "use client";
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
+import { getCookie } from "@/API/cookie";
+import { useAppSelector } from "@/redux/hooks";
 import "./layout.css";
 
 function Text() {
+  const router = useRouter();
+  const refreshToken = getCookie("refresh_token");
+  const accessToken = useAppSelector((state) => state.auth.accessToken);
+  const onClick = () => {
+    refreshToken !== null || accessToken !== null ? router.push("/download") : router.push("/signin");
+  };
   return (
     <div className="mx-auto mainwidth">
       <div className="m_section_tit flex justify-between pb-10 md:pb-20" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50">
@@ -40,8 +48,8 @@ function Text() {
               내릴 수 있도록 도와줍니다.
             </p>
           </div>
-          <Link
-            href={"/"}
+          <div
+            onClick={onClick}
             className="down-btn pt-10 pb-4 md:pb-2 text-base block w-full md:w-[50%]"
             style={{
               borderBottom: "1px solid #B2B2B2",
@@ -86,7 +94,7 @@ function Text() {
                 </svg>
               </i>
             </span>
-          </Link>
+          </div>
         </div>
       </div>
     </div>
