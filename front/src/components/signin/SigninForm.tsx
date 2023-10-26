@@ -50,8 +50,8 @@ const SigninForm = () => {
       theme={{
         token: {
           colorPrimary: "#26AF66",
-          colorLink: "gray",
           borderRadius: 0,
+>>>>>>> feature/taekyong
         },
       }}
     >
