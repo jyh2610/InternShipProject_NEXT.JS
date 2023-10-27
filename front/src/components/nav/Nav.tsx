@@ -62,9 +62,14 @@ function Nav() {
           <div className="logo w-[180px]">
             <img onClick={() => router.push("/")} className="w-full h-full object-container" src={Logo} />
           </div>
-          {windowWidth > 768 && <NavItem path={routes} scrollY={scrollY} />}
+          <div className="pc">
+            <NavItem path={routes} scrollY={scrollY} />
+          </div>
         </div>
-        {windowWidth <= 768 ? <Hamberger scrollY={scrollY} open={open} setOpen={setOpen} /> : <NavRight path={routes} scrollY={scrollY} />}
+        <div className="mo">
+          <Hamberger open={open} setOpen={setOpen} />{" "}
+        </div>
+        <NavRight path={routes} scrollY={scrollY} />
       </div>
     </Header>
   );

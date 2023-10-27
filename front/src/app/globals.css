@@ -188,3 +188,17 @@ p {
 .cursor-pointer:nth-child(1) {
   padding-top: 0;
 }
+
+.mo {
+  display: none;
+}
+
+@media(max-width:767px) {
+  .mo {
+    display: block;
+  }
+
+  .pc {
+    display: none;
+  }
+}

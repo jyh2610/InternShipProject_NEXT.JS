@@ -1,26 +1,23 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
-
 import { Button, Form, Input, Select } from "antd";
-
 import { baseApi } from "@/API/api";
 import { domainData } from "@/constants/constants";
-
 import EmailCode from "./EmailCode";
 import Timer from "./Timer";
-
 // import type { MenuProps } from "antd";
-
 interface emailType {
   id: string;
   domain: string;
   code: string;
 }
+<<<<<<< HEAD
 
 interface emailres {
   success: boolean;
 }
+=======
+>>>>>>> feature/taekyong
 function EmailInput() {
   const api = new baseApi();
   const [isActive, setIsActive] = useState(false);
@@ -40,14 +37,12 @@ function EmailInput() {
       return { ...prev, [name]: value };
     });
   };
-
   const selectHandler = (value: string) => {
     setEmailValue((prev) => {
       return { ...prev, domain: value };
     });
   };
   const emailRegexFront = /^[a-z0-9]$/;
-
   const sendingCode = async () => {
     const res: emailres = await api.post({
       url: "validate/sendemail",
@@ -55,7 +50,7 @@ function EmailInput() {
         email: emailValue.id + "@" + emailValue.domain,
       },
     });
-    console.log(res, "d이메일 응답");
+    console.log(res, "이메일 응답");
     if (res.success) {
       setIsActive(true);
       setConfirmbtn(true);
@@ -70,7 +65,6 @@ function EmailInput() {
     setIsValid(isValidEmail);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [emailValue]);
-
   return (
     <div>
       <Form.Item
@@ -142,5 +136,4 @@ function EmailInput() {
     </div>
   );
 }
-
 export default EmailInput;

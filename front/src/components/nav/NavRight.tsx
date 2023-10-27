@@ -59,7 +59,7 @@ function NavRight({ scrollY, path }: NavColorProps) {
   );
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center pc">
       <NavDropDown scrollY={scrollY} title={"한국어"} items={data} />
       {accesstoken ? (
         <Button onClick={logout} style={{ color: `${isTop}` }} type="text">
