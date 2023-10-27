@@ -5,7 +5,7 @@ import Burger from "./Burger";
 
 function Hamberger({ open, setOpen }: { open: boolean; setOpen: Function }) {
   return (
-    <>
+    <div className="Hamberger">
       {!open ? (
         <MenuOutlined onClick={() => setOpen((prev: boolean) => !prev)} />
       ) : (
@@ -25,7 +25,7 @@ function Hamberger({ open, setOpen }: { open: boolean; setOpen: Function }) {
         </div>
       )}
       {open && <Burger />}
-    </>
+    </div>
   );
 }
 
