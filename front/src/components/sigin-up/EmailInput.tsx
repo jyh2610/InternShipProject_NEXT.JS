@@ -1,23 +1,16 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
-
 import { Button, Form, Input, Select } from "antd";
-
 import { baseApi } from "@/API/api";
 import { domainData } from "@/constants/constants";
-
 import EmailCode from "./EmailCode";
 import Timer from "./Timer";
-
 // import type { MenuProps } from "antd";
-
 interface emailType {
   id: string;
   domain: string;
   code: string;
 }
-
 function EmailInput() {
   const api = new baseApi();
   const [isActive, setIsActive] = useState(false);
@@ -29,7 +22,7 @@ function EmailInput() {
   const [confirmbtn, setConfirmbtn] = useState(false);
   const email = `${emailValue.id}@${emailValue.domain}`;
   const [isValid, setIsValid] = useState<undefined | boolean>(false);
-  const [seconds, setSeconds] = useState(180);
+  const [emailbtn, setEmailbtn] = useState(false);
   const domainHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setEmailValue((prev) => {
@@ -37,14 +30,12 @@ function EmailInput() {
       return { ...prev, [name]: value };
     });
   };
-
   const selectHandler = (value: string) => {
     setEmailValue((prev) => {
       return { ...prev, domain: value };
     });
   };
   const emailRegexFront = /^[a-z0-9]$/;
-
   const sendingCode = async () => {
     const res = await api.post({
       url: "validate/sendemail",
@@ -52,16 +43,14 @@ function EmailInput() {
         email: emailValue.id + "@" + emailValue.domain,
       },
     });
-    console.log(res, "d이메일 응답");
+    console.log(res, "이메일 응답");
     if (res.success) {
       setIsActive(true);
       setConfirmbtn(true);
-      setTimeout(
-        () => {
-          setConfirmbtn(false);
-        },
-        3 * 60 * 1000,
-      );
+      setEmailbtn(true);
+      setTimeout(() => {
+        setEmailbtn(false);
+      }, 6000);
     }
   };
   useEffect(() => {
@@ -69,7 +58,6 @@ function EmailInput() {
     setIsValid(isValidEmail);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [emailValue]);
-
   return (
     <div>
       <Form.Item
@@ -129,7 +117,7 @@ function EmailInput() {
                 ) : (
                   <Select placeholder="직접 입력" style={{ width: "8%", height: "auto" }} options={domainData} onChange={selectHandler} />
                 )}
-                <Button style={{ height: "100%", padding: "0.5rem 0.8rem" }} disabled={confirmbtn} onClick={sendingCode}>
+                <Button style={{ height: "100%", padding: "0.5rem 0.8rem" }} disabled={emailbtn} onClick={sendingCode}>
                   이메일 인증
                 </Button>
               </div>
@@ -141,5 +129,4 @@ function EmailInput() {
     </div>
   );
 }
-
 export default EmailInput;
