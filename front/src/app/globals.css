@@ -184,3 +184,7 @@ p {
 .ant-row {
   gap: 1rem;
 }
+
+.cursor-pointer:nth-child(1) {
+  padding-top: 0;
+}

@@ -64,7 +64,7 @@ function Nav() {
           </div>
           {windowWidth > 768 && <NavItem path={routes} scrollY={scrollY} />}
         </div>
-        {windowWidth <= 768 ? <Hamberger open={open} setOpen={setOpen} /> : <NavRight path={routes} scrollY={scrollY} />}
+        {windowWidth <= 768 ? <Hamberger scrollY={scrollY} open={open} setOpen={setOpen} /> : <NavRight path={routes} scrollY={scrollY} />}
       </div>
     </Header>
   );

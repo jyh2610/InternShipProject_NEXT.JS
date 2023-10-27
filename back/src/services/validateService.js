@@ -19,6 +19,13 @@ const isDuplicateNickname = async (nickname) => {
   return { message: "POSSIBLE_NICKNAME", success: true };
 };
 
+//local signUpCheck
+const signUpCheck = async (nickname) =>{
+  const profile = await member.getProfileByNickname(nickname);
+  if (!profile) detectError("NOT_EXITST_NICKNAME", 400);
+  return { name: profile.name, join_date: profile.join_date, success: true}
+}
+
 // 이메일로 코드 전송
 const emailValidation = async (email) => {
   const emailValidation = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$");
@@ -51,6 +58,8 @@ const verifyCode = async (email, code) => {
 module.exports = {
   isDuplicateUsername,
   isDuplicateNickname,
+
+  signUpCheck,
 
   emailValidation,
   verifyCode
