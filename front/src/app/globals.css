@@ -189,12 +189,16 @@ p {
   padding-top: 0;
 }
 
-.Hamberger {
+.mo {
   display: none;
 }
 
-@media (max-width:768px) {
-  .Hamberger {
+@media(max-width:767px) {
+  .mo {
     display: block;
+  }
+
+  .pc {
+    display: none;
   }
 }
