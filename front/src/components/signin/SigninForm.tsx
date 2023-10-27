@@ -15,31 +15,37 @@ import type { formType } from "@/type/signUp";
 import { setAccessToken } from "@/redux/slicer/authSlice";
 import UserLoginInput from "./UserLoginInput";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import baseApi from "@/API/baseApi";
+
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { baseApi } from "@/API/api";
 
 interface reqType {
   user_name: string;
   password: string;
   success: boolean;
+  accessToken: string;
 }
 const SigninForm = () => {
   const dispatch = useAppDispatch();
   const route = useRouter();
-  // const api = new baseApi();
+  const api = new baseApi();
 
   const loginHandler = async (values: reqType) => {
-    await axios.post("/sign/signin", values).then((res) => {
-      console.log(res.data.accessToken);
-      if (res.data.accessToken) {
-        dispatch(setAccessToken(res.data.accessToken));
-        route.push("/");
-      }
-    });
+    try {
+      await api.post({ url: "/sign/signin", body: values }).then((res) => {
+        console.log(res);
+        if (res.accessToken) {
+          dispatch(setAccessToken(res.accessToken));
+          route.push("/");
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
-  const onFinish = (values: reqType) => {
-    loginHandler(values);
+  const onFinish = async (values: reqType) => {
+    await loginHandler(values);
   };
 
   const inputdata = [
