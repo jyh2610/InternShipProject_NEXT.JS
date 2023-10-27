@@ -32,16 +32,19 @@ function EmailCode({ email, setIsActive, isActive }: { isActive: boolean; email:
       {resSuccess ? (
         <p className="text-[#26AF66] font-bold">인증이 완료되었습니다.</p>
       ) : (
-        <div className="flex">
-          <Input
-            style={{ width: "300px" }}
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
-            name="code"
-            suffix={<Timer setSeconds={setSeconds} setIsActive={setIsActive} isActive={isActive} seconds={seconds} />}
-          />
-          <Button onClick={startTimer}>인증하기</Button>
-        </div>
+        <>
+          <p className="text-[#26AF66] text-xs font-bold">인증번호가 발송되었습니다.</p>
+          <div className="flex">
+            <Input
+              style={{ width: "300px" }}
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+              name="code"
+              suffix={<Timer setSeconds={setSeconds} setIsActive={setIsActive} isActive={isActive} seconds={seconds} />}
+            />
+            <Button onClick={startTimer}>인증하기</Button>
+          </div>
+        </>
       )}
     </>
   );
