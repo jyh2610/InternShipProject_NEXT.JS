@@ -115,7 +115,11 @@ function EmailInput() {
                 <Input style={{ width: "15%", padding: "0.5rem 0.8rem" }} name="id" onChange={domainHandler} />
                 <span className="mx-[0.2rem] my-auto">@</span>
                 <Input style={{ width: "25%", padding: "0.5rem 0.8rem" }} name="domain" value={emailValue.domain} onChange={domainHandler} />
-                <Select placeholder="직접 입력" style={{ width: "8%", height: "auto" }} options={domainData} onChange={selectHandler} />
+                {emailValue.domain && confirmbtn ? (
+                  ""
+                ) : (
+                  <Select placeholder="직접 입력" style={{ width: "8%", height: "auto" }} options={domainData} onChange={selectHandler} />
+                )}
                 <Button style={{ height: "100%", padding: "0.5rem 0.8rem" }} onClick={sendingCode}>
                   이메일 인증
                 </Button>
