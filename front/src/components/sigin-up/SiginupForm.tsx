@@ -15,6 +15,7 @@ import SiginupBtn from "./SiginupBtn";
 import UserID from "./UserID";
 
 import type { formType } from "@/type/signUp";
+import TestPassword from "./TestPassword";
 
 const validateMessages = {
   required: "${label} is required!",
@@ -92,7 +93,8 @@ const SiginupForm = () => {
             <Nickname nicknameValue={nicknameValue} />
             <UserID user={user_nameValue} />
             <EmailInput />
-            <Password />
+            {/* <Password /> */}
+            <TestPassword />
             <Birth validateSelect={validateSelect} />
             <Sex validateSelect={validateSelect} />
             <SiginupBtn validateForm={validateForm} />

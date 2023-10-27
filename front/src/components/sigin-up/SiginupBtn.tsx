@@ -14,7 +14,7 @@ function SiginupBtn({ validateForm }: { validateForm: () => void }) {
   return (
     <Form.Item wrapperCol={{ offset: 8 }}>
       <Button className="px-[2.1rem] py-[0.8rem]" style={{ lineHeight: 0, backgroundColor: "#EFEFEF" }} type="link">
-        취소
+        이전
       </Button>
       <Button style={{ lineHeight: 0 }} type="primary" onClick={clickSignup} className="px-[2.1rem] py-[0.8rem]" htmlType="submit">
         회원가입
