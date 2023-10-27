@@ -33,6 +33,7 @@ function Password() {
         name="confirm"
         dependencies={["password"]}
         label={<div className="password-check">비밀번호 확인</div>}
+        labelCol={{ span: 1 }}
         wrapperCol={{ span: 8 }}
         hasFeedback
         rules={[
