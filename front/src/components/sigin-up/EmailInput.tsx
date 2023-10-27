@@ -29,7 +29,7 @@ function EmailInput() {
   const [confirmbtn, setConfirmbtn] = useState(false);
   const email = `${emailValue.id}@${emailValue.domain}`;
   const [isValid, setIsValid] = useState<undefined | boolean>(false);
-  const [seconds, setSeconds] = useState(180);
+  const [emailbtn, setEmailbtn] = useState(false);
   const domainHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setEmailValue((prev) => {
@@ -56,12 +56,10 @@ function EmailInput() {
     if (res.success) {
       setIsActive(true);
       setConfirmbtn(true);
-      setTimeout(
-        () => {
-          setConfirmbtn(false);
-        },
-        3 * 60 * 1000,
-      );
+      setEmailbtn(true);
+      setTimeout(() => {
+        setEmailbtn(false);
+      }, 6000);
     }
   };
   useEffect(() => {
@@ -129,7 +127,7 @@ function EmailInput() {
                 ) : (
                   <Select placeholder="직접 입력" style={{ width: "8%", height: "auto" }} options={domainData} onChange={selectHandler} />
                 )}
-                <Button style={{ height: "100%", padding: "0.5rem 0.8rem" }} disabled={confirmbtn} onClick={sendingCode}>
+                <Button style={{ height: "100%", padding: "0.5rem 0.8rem" }} disabled={emailbtn} onClick={sendingCode}>
                   이메일 인증
                 </Button>
               </div>
