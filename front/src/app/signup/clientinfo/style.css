@@ -1,0 +1,12 @@
+.es-icon {
+    padding-left: 0.5rem;
+}
+
+.es-icon:After {
+    display: inline-block;
+    margin-inline-end: 8px;
+    color: #ff4d4f;
+    font-size: 18px;
+    line-height: 1;
+    content: "*";
+}

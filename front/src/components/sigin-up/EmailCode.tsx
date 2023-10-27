@@ -1,11 +1,7 @@
 import React, { useState } from "react";
-
 import { Button, Input } from "antd";
-
 import { baseApi } from "@/API/api";
-
 import Timer from "./Timer";
-
 function EmailCode({ email, setIsActive, isActive }: { isActive: boolean; email: string; setIsActive: React.Dispatch<React.SetStateAction<boolean>> }) {
   const [code, setCode] = useState("");
   const [seconds, setSeconds] = useState(180);
@@ -26,11 +22,12 @@ function EmailCode({ email, setIsActive, isActive }: { isActive: boolean; email:
         setResSuccess(res.success);
       });
   };
-
   return (
     <>
       {resSuccess ? (
-        <p className="text-[#26AF66] font-bold">인증이 완료되었습니다.</p>
+        <>
+          <p className="text-[#26AF66] font-bold">인증이 완료되었습니다.</p>
+        </>
       ) : (
         <>
           <p className="text-[#26AF66] text-xs font-bold">인증번호가 발송되었습니다.</p>
@@ -49,5 +46,4 @@ function EmailCode({ email, setIsActive, isActive }: { isActive: boolean; email:
     </>
   );
 }
-
 export default EmailCode;

@@ -16,7 +16,7 @@ function SideBar() {
     },
     {
       title: "가입완료",
-      link: "/",
+      link: "/signup/sign-complete",
     },
   ];
   return (
@@ -25,7 +25,7 @@ function SideBar() {
         return (
           <div
             className={`${
-              data.link === pathname ? "font-extrabold py-[0.8rem] text-[0.875rem] cursor-pointer" : "font-light py-[0.8rem] text-[0.875rem] cursor-pointer"
+              data.link === pathname ? "font-extrabold py-[0.5rem] text-[0.875rem] cursor-pointer" : "font-light py-[0.5rem] text-[0.875rem] cursor-pointer"
             }`}
             key={data.title}
           >
