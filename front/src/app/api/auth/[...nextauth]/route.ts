@@ -41,13 +41,13 @@ const handler = NextAuth({
             },
           },
         });
-        token.customData = res.refreshToken;
+        token.customData = res;
       }
 
       return token;
     },
     async session({ session, token }: any) {
-      session.accessToken = token.customData;
+      session.token = token.customData;
 
       return session;
     },
