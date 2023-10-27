@@ -34,10 +34,10 @@ const AgreementBtn = ({ check }: AgreementBtnProps) => {
       }}
     >
       <div className="flex justify-center py-[2rem] gap-[0.5rem]">
-        <Button className="px-[3rem] py-[0.8rem]" onClick={clickCancel} style={{ lineHeight: 0, backgroundColor: "#EFEFEF" }} type="link" htmlType="submit">
+        <Button onClick={clickCancel} style={{ padding: "1.2rem 2rem", lineHeight: 0, backgroundColor: "#EFEFEF" }} type="link" htmlType="submit">
           취소
         </Button>
-        <Button style={{ lineHeight: 0 }} type="primary" onClick={clickSignup} className="px-[3rem] py-[0.8rem]">
+        <Button style={{ padding: "1.2rem 2rem", lineHeight: 0 }} type="primary" onClick={clickSignup}>
           다음
         </Button>
       </div>

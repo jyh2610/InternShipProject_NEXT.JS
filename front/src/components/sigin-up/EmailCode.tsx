@@ -22,15 +22,17 @@ function EmailCode({ email, setIsActive, isActive }: { isActive: boolean; email:
   };
 
   return (
-    <div className="flex">
+    <div className="flex gap-[0.3rem]">
       <Input
-        style={{ width: "140px" }}
+        style={{ padding: "0.5rem 0.8rem", width: "280px" }}
         value={code}
         onChange={(e) => setCode(e.target.value)}
         name="code"
         suffix={<Timer setSeconds={setSeconds} setIsActive={setIsActive} isActive={isActive} seconds={seconds} />}
       />
-      <Button onClick={startTimer}>인증하기</Button>
+      <Button style={{ height: "auto", padding: "0.5rem 0.8rem" }} onClick={startTimer}>
+        인증하기
+      </Button>
     </div>
   );
 }

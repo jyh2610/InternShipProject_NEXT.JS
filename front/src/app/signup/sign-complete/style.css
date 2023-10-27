@@ -1,0 +1,56 @@
+.completr-wrap {
+    width: 100%;
+
+}
+
+.complert-txt {
+    text-align: center;
+    color: #fff;
+    font-size: 1.875rem;
+    line-height: 2.125rem;
+}
+
+.uesr-name {
+    font-weight: 100;
+}
+
+.complert-day {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0 0 1rem;
+}
+
+.complert-content {
+    width: 100%;
+    max-width: 766px;
+    padding: 10rem 8rem;
+    align-items: center;
+    flex-direction: column;
+    background-color: #51BE84;
+    border-radius: 0.5rem;
+    gap: 3rem;
+}
+
+.check-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    padding: 1rem;
+    background-color: #2AA86B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.complert-btn {
+    width: auto;
+    padding: 1rem 2.4rem;
+    background: none;
+    border: none;
+    background-color: #fff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #51BE84;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.05), 0 10px 10px rgba(0, 0, 0, 0.05);
+}
