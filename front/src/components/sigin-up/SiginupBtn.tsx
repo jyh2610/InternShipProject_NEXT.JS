@@ -19,7 +19,7 @@ function SiginupBtn({ validateForm }: { validateForm: () => void }) {
       <Form.Item className="flex justify-center">
         <div className="flex gap-[0.3rem] my-[2rem]">
           <Button style={{ padding: "1.2rem 2rem", lineHeight: 0, backgroundColor: "#EFEFEF" }} onClick={clickBack} type="link">
-            취소
+            이전
           </Button>
           <Button style={{ padding: "1.2rem 2rem", lineHeight: 0 }} type="primary" onClick={clickSignup} className="px-[2.1rem] py-[2rem]" htmlType="submit">
             회원가입
