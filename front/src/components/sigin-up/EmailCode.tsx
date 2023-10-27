@@ -13,6 +13,7 @@ function EmailCode({ email, setIsActive, isActive }: { isActive: boolean; email:
   const api = new baseApi();
   const startTimer = () => {
     setSeconds(180);
+
     api
       .post({
         url: "/validate/verifycode",
@@ -30,7 +31,9 @@ function EmailCode({ email, setIsActive, isActive }: { isActive: boolean; email:
   return (
     <>
       {resSuccess ? (
-        <p className="text-[#26AF66] font-bold">인증이 완료되었습니다.</p>
+        <>
+          <p className="text-[#26AF66] font-bold">인증이 완료되었습니다.</p>
+        </>
       ) : (
         <>
           <p className="text-[#26AF66] text-xs font-bold">인증번호가 발송되었습니다.</p>
