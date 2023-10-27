@@ -32,22 +32,22 @@ const handler = NextAuth({
         token.accessToken = account.access_token;
         const socialaccesstoken = token?.accessToken;
 
-        const url = `/sign/${account.provider}login`;
-        const res = await api.post({
-          url,
-          options: {
-            headers: {
-              Authorization: `Bearer ${socialaccesstoken}`,
-            },
-          },
-        });
-        token.customData = res;
+        // const url = `/sign/${account.provider}login`;
+        // const res = await api.post({
+        //   url,
+        //   options: {
+        //     headers: {
+        //       Authorization: `Bearer ${socialaccesstoken}`,
+        //     },
+        //   },
+        // });
+        // token.customData = res;
       }
 
       return token;
     },
     async session({ session, token }: any) {
-      session.token = token.customData;
+      // session.token = token.customData;
 
       return session;
     },

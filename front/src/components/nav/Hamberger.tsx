@@ -12,7 +12,7 @@ function Hamberger({ open, setOpen, scrollY }: { open: boolean; setOpen: Functio
       {!open ? (
         <MenuOutlined style={{ color: isTop }} onClick={() => setOpen(true)} />
       ) : (
-        <CloseOutlined style={{ color: isTop }} onClick={() => setOpen(false)} />
+        <CloseOutlined style={{ color: "black" }} onClick={() => setOpen(false)} />
       )}
       {open && <Burger />}
     </>
