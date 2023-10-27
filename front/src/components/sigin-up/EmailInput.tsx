@@ -8,6 +8,7 @@ import { baseApi } from "@/API/api";
 import { domainData } from "@/constants/constants";
 
 import EmailCode from "./EmailCode";
+import Timer from "./Timer";
 
 // import type { MenuProps } from "antd";
 
@@ -28,7 +29,7 @@ function EmailInput() {
   const [confirmbtn, setConfirmbtn] = useState(false);
   const email = `${emailValue.id}@${emailValue.domain}`;
   const [isValid, setIsValid] = useState<undefined | boolean>(false);
-
+  const [seconds, setSeconds] = useState(180);
   const domainHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setEmailValue((prev) => {
@@ -45,16 +46,24 @@ function EmailInput() {
   const emailRegexFront = /^[a-z0-9]$/;
 
   const sendingCode = async () => {
-    await api.post({
+    const res = await api.post({
       url: "validate/sendemail",
       body: {
         email: emailValue.id + "@" + emailValue.domain,
       },
     });
-    setIsActive(true);
-    setConfirmbtn(true);
+    console.log(res, "d이메일 응답");
+    if (res.success) {
+      setIsActive(true);
+      setConfirmbtn(true);
+      setTimeout(
+        () => {
+          setConfirmbtn(false);
+        },
+        3 * 60 * 1000,
+      );
+    }
   };
-
   useEffect(() => {
     const isValidEmail = emailRegexFront.test(email);
     setIsValid(isValidEmail);
@@ -120,7 +129,7 @@ function EmailInput() {
                 ) : (
                   <Select placeholder="직접 입력" style={{ width: "8%", height: "auto" }} options={domainData} onChange={selectHandler} />
                 )}
-                <Button style={{ height: "100%", padding: "0.5rem 0.8rem" }} onClick={sendingCode}>
+                <Button style={{ height: "100%", padding: "0.5rem 0.8rem" }} disabled={confirmbtn} onClick={sendingCode}>
                   이메일 인증
                 </Button>
               </div>
