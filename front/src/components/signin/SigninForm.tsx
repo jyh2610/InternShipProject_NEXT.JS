@@ -19,6 +19,7 @@ import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { baseApi } from "@/API/api";
+import { error } from "console";
 
 interface reqType {
   user_name: string;
@@ -33,15 +34,15 @@ const SigninForm = () => {
 
   const loginHandler = async (values: reqType) => {
     try {
-      await api.post({ url: "/sign/signin", body: values }).then((res) => {
-        console.log(res);
-        if (res.accessToken) {
-          dispatch(setAccessToken(res.accessToken));
-          route.push("/");
-        }
-      });
+      const res = await api.post({ url: "/sign/signin", body: values });
+      console.log(res);
+      if (res.accessToken) {
+        dispatch(setAccessToken(res.accessToken));
+        route.push("/");
+      }
     } catch (err) {
       console.log(err);
+      alert("존재하지 않는 회원입니다.");
     }
   };
   const onFinish = async (values: reqType) => {

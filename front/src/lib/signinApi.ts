@@ -1,5 +1,4 @@
 import { baseApi } from "@/API/api";
-import { values } from "lodash";
 
 interface resType {
   message: string;
