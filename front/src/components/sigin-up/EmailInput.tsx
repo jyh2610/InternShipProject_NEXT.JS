@@ -11,13 +11,10 @@ interface emailType {
   domain: string;
   code: string;
 }
-<<<<<<< HEAD
 
 interface emailres {
   success: boolean;
 }
-=======
->>>>>>> feature/taekyong
 function EmailInput() {
   const api = new baseApi();
   const [isActive, setIsActive] = useState(false);
