@@ -34,6 +34,7 @@ const TestPassword = () => {
         name="confirm"
         label={<div className="password-check">비밀번호 확인</div>}
         dependencies={["password"]}
+        wrapperCol={{ span: 8 }}
         hasFeedback
         rules={[
           {
