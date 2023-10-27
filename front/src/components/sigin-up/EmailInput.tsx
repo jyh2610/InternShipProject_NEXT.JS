@@ -18,6 +18,9 @@ interface emailType {
   code: string;
 }
 
+interface emailres {
+  success: boolean;
+}
 function EmailInput() {
   const api = new baseApi();
   const [isActive, setIsActive] = useState(false);
@@ -46,7 +49,7 @@ function EmailInput() {
   const emailRegexFront = /^[a-z0-9]$/;
 
   const sendingCode = async () => {
-    const res = await api.post({
+    const res: emailres = await api.post({
       url: "validate/sendemail",
       body: {
         email: emailValue.id + "@" + emailValue.domain,

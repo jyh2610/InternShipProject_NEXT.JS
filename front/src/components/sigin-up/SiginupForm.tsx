@@ -1,6 +1,7 @@
 "use client";
 
 import { ConfigProvider, Divider, Form } from "antd";
+import locale from "antd/lib/locale/ko_KR";
 
 import { baseApi } from "@/API/api";
 import { formatDate } from "@/lib/FormatData";
@@ -9,11 +10,10 @@ import Birth from "./Birth";
 import EmailInput from "./EmailInput";
 import Name from "./Name";
 import Nickname from "./Nickname";
-import Password from "./Password";
 import Sex from "./Sex";
 import SiginupBtn from "./SiginupBtn";
 import UserID from "./UserID";
-
+import koKR from "antd/lib/locale/ko_KR";
 import type { formType } from "@/type/signUp";
 import TestPassword from "./TestPassword";
 
@@ -66,6 +66,7 @@ const SiginupForm = () => {
     <div className="">
       <div className="">
         <ConfigProvider
+          locale={koKR}
           theme={{
             token: {
               colorPrimary: "#26AF66",
