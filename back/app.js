@@ -12,7 +12,7 @@ app.use(cors({
 }));
 // 같은 ec2내에 있는 프론트엔드 서버에서 오는 요청만 허용
 app.use(express.json());
-app.use("/api", routes);
+app.use("/back", routes);
 app.use(morgan('dev'));
 
 app.get("/ping", (req, res) => {
