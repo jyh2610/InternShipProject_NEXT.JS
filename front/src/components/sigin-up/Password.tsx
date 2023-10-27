@@ -28,7 +28,6 @@ function Password() {
         hasFeedback
       >
         <Input.Password placeholder="*******" style={{ padding: "0.5rem 0.8rem" }} />
-        <span className="text-[0.7rem] font-medium text-gray-400">(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~20자)</span>
       </Form.Item>
       <Form.Item
         name="confirm"
