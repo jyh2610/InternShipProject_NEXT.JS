@@ -116,7 +116,7 @@ function EmailInput() {
                 <span className="my-auto">@</span>
                 <Input style={{ width: "45%" }} name="domain" value={emailValue.domain} onChange={domainHandler} />
 
-                <Select placeholder="직접 입력" style={{ width: 120 }} options={domainData} onChange={selectHandler} />
+                {emailValue.domain && confirmbtn ? "" : <Select placeholder="직접 입력" style={{ width: 120 }} options={domainData} onChange={selectHandler} />}
 
                 {/* <Dropdown menu={{ domainData }} placement="bottom">
                   <Button>bottom</Button>
