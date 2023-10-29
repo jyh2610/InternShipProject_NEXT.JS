@@ -67,7 +67,7 @@ function Nav() {
           </div>
         </div>
         <div className="mo">
-          <Hamberger open={open} setOpen={setOpen} />{" "}
+          <Hamberger open={open} setOpen={setOpen} scrollY={scrollY} />
         </div>
         <NavRight path={routes} scrollY={scrollY} />
       </div>
