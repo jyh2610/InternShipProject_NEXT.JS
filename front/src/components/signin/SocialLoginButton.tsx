@@ -23,7 +23,7 @@ const SocialLoginButton = () => {
   // 소셜로그인
   const sociallogin = async (socialtype: string) => {
     const url = `/sign/${socialtype}login`;
-    const res = await api.post({
+    const res: CustomSession = await api.post({
       url,
       options: {
         headers: {
@@ -32,6 +32,8 @@ const SocialLoginButton = () => {
       },
     });
     console.log(res);
+
+    setCookie("refreshToken", res.token.refreshToken);
   };
 
   return (
