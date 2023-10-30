@@ -2,7 +2,6 @@
 
 import React from "react";
 
-import { SessionProvider } from "next-auth/react";
 import { Provider } from "react-redux";
 import { StyleRegistry } from "styled-jsx";
 
@@ -14,10 +13,8 @@ type Props = {
 
 export default function AuthSession({ children }: Props) {
   return (
-    <StyleRegistry>
-      <SessionProvider refetchOnWindowFocus={true}>
-        <Provider store={store}>{children}</Provider>
-      </SessionProvider>
-    </StyleRegistry>
+    <Provider store={store}>
+      <StyleRegistry>{children}</StyleRegistry>
+    </Provider>
   );
 }

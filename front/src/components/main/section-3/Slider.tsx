@@ -19,7 +19,7 @@ function Slider() {
     <Swiper navigation={true} {...swiperObj} className="mySwiper max-w-top">
       {dummyImgData.map((item, idx) => {
         return (
-          <SwiperSlide className="max-w-top">
+          <SwiperSlide key={idx} className="max-w-top">
             <img key={idx} src={item} alt="img" className="w-full h-[500px]" />
           </SwiperSlide>
         );
