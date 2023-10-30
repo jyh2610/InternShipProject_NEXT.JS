@@ -14,7 +14,8 @@ export interface CustomSession extends Session {
 }
 
 const SocialLoginButton = () => {
-  const { data: session, update } = useSession();
+  const { data: session, update, status } = useSession();
+
   const router = useRouter();
   const accesstoken = useAppSelector((state) => state.auth.accessToken);
   const refreshToken: string | null = getCookie("refresh_token");
@@ -23,13 +24,13 @@ const SocialLoginButton = () => {
   }, [refreshToken, accesstoken]);
 
   const sociallogin = async (socialtype: string) => {
-    update();
-    await signIn(socialtype);
-    console.log(session);
+    const res = await signIn(socialtype);
+    console.log(res);
+
+    console.log(status, session, "================================================================");
 
     if (session) {
       const data = session as unknown as CustomSession;
-      console.log(data.refreshToken);
       setCookie("refresh_token", data?.refreshToken);
     }
   };

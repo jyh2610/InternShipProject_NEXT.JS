@@ -15,7 +15,7 @@ type Props = {
 export default function AuthSession({ children }: Props) {
   return (
     <StyleRegistry>
-      <SessionProvider>
+      <SessionProvider refetchOnWindowFocus={true}>
         <Provider store={store}>{children}</Provider>
       </SessionProvider>
     </StyleRegistry>

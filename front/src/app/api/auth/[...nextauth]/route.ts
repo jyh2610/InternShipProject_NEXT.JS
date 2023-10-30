@@ -29,6 +29,8 @@ const handler = NextAuth({
       if (token.accessToken) {
         token.accessToken = account?.access_token;
         const url = `/sign/${account?.provider}login`;
+        console.log(account?.access_token);
+        console.log(url);
 
         const res: CustomSession = await api.post({
           url,
@@ -38,6 +40,8 @@ const handler = NextAuth({
             },
           },
         });
+        console.log(res);
+
         token.user = res;
       }
 
@@ -45,7 +49,7 @@ const handler = NextAuth({
     },
     async session({ session, token }: any) {
       session.coustomData = token.user;
-      console.log(session.coustomData);
+      console.log(session);
 
       return session.coustomData;
     },
