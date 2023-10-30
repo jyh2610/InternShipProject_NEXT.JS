@@ -64,7 +64,7 @@ function NavItem({ scrollY, path }: NavColorProps) {
   };
 
   return (
-    <div className="flex gap-2">
+    <div className="pc flex gap-2">
       <Button style={font} className="px-5 mr-1" type="text">
         홈
       </Button>

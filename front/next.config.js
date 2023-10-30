@@ -35,6 +35,10 @@ module.exports = async (phase) => {
       eslint: {
         ignoreDuringBuilds: true,
       },
+      swcMinify: false,
+      experimental: {
+        swcTraceProfiling: true,
+      },
     };
   }
 
@@ -45,6 +49,13 @@ module.exports = async (phase) => {
     },
     eslint: {
       ignoreDuringBuilds: true,
+    },
+    swcMinify: false,
+    compiler: {
+      removeConsole: {
+        exclude: ["error"],
+        experimentalDecorators: true,
+      },
     },
   };
 };

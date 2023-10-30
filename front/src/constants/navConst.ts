@@ -6,6 +6,14 @@ export const LogoWh =
 export const LogoGreen =
   "https://lh3.googleusercontent.com/fife/AK0iWDyznQ7xoNp28YyryrL4I4DkPTSwGsNdRcmkQKV9mzBSqNjDn03KVW7MnrHypV5lRSpxiYGRDw86QAvL-0YmFfT5rIwfY_b4Ws25KepbXrXLEUY4i1v5T_NEl20RM5oMBB7Bpg3doE89JZG8tx96EJKS39ZUwNTkZCJb9l4sHWxuuXblL5g7lJtU8lql4nHosU2mAJjDJ_9Qc-VMQQPiGKlgfpcrDkLwuU16mfv4Hn8WtldBXS4GLW0sr9-_cMxYPYCmbUwvf_uMsTg3jVyyV-O6NiWF7Aap_EDuxRRLitn8kkmdzSsBL_TproX3ENQKEqU8FWEYW4nqKp4GJXgAlSwjn9ad7nqGHOxKbCE3xJUEKmaXgao6_1Ih3psuz1KPwQ4lc2d-2jkFqAhVajb382ISDTQYDlv90k9wf7avI96PRCPNjDpchKErmtlWrJe5E_9szeXUJ2Ossel-1hfW7ca5jb5FKqsDUggkaPcMczYQ4tdGVhq1hBL-iR3mrFmZa3P-NZLASw0tj3eli3oCpqgBNlZNGFQTzp2ZT9WYGBfqXY8FxnqGC_wA9s8X6fMft_sORTQ3uNxaSaCEi-ZG_LXTJSfZmctsiuqg-rgieycSUo9d5ZiBZ4Injh4Yf4uQe-D0a0Iv35nooTu3B3yGzzrgznkr0E3MC95HQAT-UGiNiGNPxCddB1T2dYWAgMZaehMfeLx9_vezNsYy1ou8IPF1jIYKVxIRUMroR1jBk-SjZVetFvWu1VCb359Uz_t_bWb1nSenD0r47kirfXmIkXM0j74Vyl9lxvws3wGPWp9xqZq0pfFj076EM1WkDkyRDUSStuABRzkpjDgHAOI5h_pkvU5V3ETPD9ER1yJXKY-USVEhyIUBhstC-3pScBcKFucjnHX0Q_ej-LzVbQVOu9vjQ1t0tBZTe0Sv0HCKDaJ-W6rkpgeh58wLUVvgL8L1wiNzUh3tdzTg=w1365-h889";
 
-
-
-  
+export const inconSrc = (scrollY: number) => {
+  const upIcon =
+    scrollY === 0
+      ? "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaBbhSnF3DIHUK33VLtHUIfOkxtP7iDjUNzCnTSV1MH6bZA1kYsCRr5qWRqS_8P2xLq2046ktTjcH2TEHZEGopmFBV2YrA=w1920-h921"
+      : "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaBxaKicz9rx17IZwtXSMdncMAG6hQacau3o1KgNJYp28a6UFkEg4dgq5bou6e_vnbNixpgehvtmTU-GosNNqvA4INoD7A=w1920-h889";
+  const downIcon =
+    scrollY === 0
+      ? "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaAs5Eu7GLVdB0exOs6AwG6ArsD-SpciakHKfC1fJRFFuonjZ8ZSn8300UzRKs2DWCyzouDLtfpIGnxeNE3orJLuW6pW=w1920-h889"
+      : "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaBiyere-Mf7CsbPWjrhqK49iYMuWBw9gI3ouu_gS2Tak1emkPIFjb9t8boJhDTSZKeBXcZZvxQDMzSkd48fQGCm-JSDcQ=w1920-h921";
+  return [upIcon, downIcon];
+};

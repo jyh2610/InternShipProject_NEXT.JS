@@ -1,15 +1,16 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import { Layout } from "antd";
 import { usePathname, useRouter } from "next/navigation";
 import useScroll from "@/hooks/useScroll";
-import NavRight from "./NavRight";
-import Hamberger from "./Hamberger";
 import { debounce } from "lodash";
 import { LogoGreen, LogoWh } from "@/constants/navConst";
-import NavItem from "./Item";
-import { getServerSession } from "next-auth";
+
+const NavRight = dynamic(() => import("./NavRight"));
+const Hamberger = dynamic(() => import("./Hamberger"));
+const NavItem = dynamic(() => import("./Item"));
 
 const { Header } = Layout;
 
@@ -17,7 +18,7 @@ function Nav() {
   const router = useRouter();
   const routes = usePathname();
   const scrollY = useScroll();
-  const [windowWidth, setWindowWidth] = useState<number>(0); // 초기값 설정
+  const [windowWidth, setWindowWidth] = useState<number | null>(null); // 초기값 설정
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -62,17 +63,16 @@ function Nav() {
           <div className="logo w-[180px]">
             <img onClick={() => router.push("/")} className="w-full h-full object-container" src={Logo} />
           </div>
-          <div className="pc">
-            <NavItem path={routes} scrollY={scrollY} />
-          </div>
+          {windowWidth !== null && windowWidth > 768 && <NavItem path={routes} scrollY={scrollY} />}
         </div>
-        <div className="mo">
-          <Hamberger open={open} setOpen={setOpen} />{" "}
-        </div>
-        <NavRight path={routes} scrollY={scrollY} />
+        {windowWidth !== null && windowWidth <= 768 ? (
+          <Hamberger open={open} setOpen={setOpen} scrollY={scrollY} />
+        ) : (
+          <NavRight path={routes} scrollY={scrollY} />
+        )}
       </div>
     </Header>
   );
 }
 
-export default React.memo(Nav);
+export default Nav;
