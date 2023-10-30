@@ -14,6 +14,8 @@ import type { SwiperOptions } from "swiper/types";
 //eslint-disable-next-line import/order
 
 import "./style.css";
+import TextSlider from "./TextSlider";
+import BotText from "./BotText";
 
 interface IdxProps {
   idx: number;

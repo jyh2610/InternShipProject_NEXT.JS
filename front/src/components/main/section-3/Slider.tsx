@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React from "react";
 
 import { img } from "@/constants/constants";
 import { Navigation } from "swiper/modules";
@@ -14,9 +14,7 @@ function Slider() {
     spaceBetween: 20,
     modules: [Navigation],
   };
-  const onChange = (currentSlide: number) => {
-    console.log(currentSlide);
-  };
+
   return (
     <Swiper navigation={true} {...swiperObj} className="mySwiper max-w-top">
       {dummyImgData.map((item, idx) => {

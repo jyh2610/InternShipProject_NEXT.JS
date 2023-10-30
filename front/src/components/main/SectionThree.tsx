@@ -16,6 +16,7 @@ function SectionThree() {
 
   return (
     <div className="pt-[10rem] pb-[4rem]">
+      <BotText />
       <Slider />
       {/* <div className="page-tit">
         <BotText />

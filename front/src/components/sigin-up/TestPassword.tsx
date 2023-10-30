@@ -1,10 +1,7 @@
 import { Form, Input } from "antd";
-
 import React, { useEffect } from "react";
-
 const TestPassword = () => {
   const pwValidation = new RegExp("^(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,20}$");
-
   return (
     <div>
       <Form.Item
@@ -56,5 +53,4 @@ const TestPassword = () => {
     </div>
   );
 };
-
 export default TestPassword;

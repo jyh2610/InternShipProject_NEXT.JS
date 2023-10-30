@@ -72,11 +72,9 @@ function NavItem({ scrollY, path }: NavColorProps) {
       <Button style={font} className="px-5 mr-1" type="text">
         솔루션
       </Button>
-      {(accesstoken !== undefined || refreshToken !== undefined) && (
-        <Button style={font} className="px-5 mr-1" type="text">
-          다운로드
-        </Button>
-      )}
+      <Button style={font} className="px-5 mr-1" type="text">
+        다운로드
+      </Button>
     </div>
   );
 }
