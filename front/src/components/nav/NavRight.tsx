@@ -74,4 +74,4 @@ function NavRight({ scrollY, path }: NavColorProps) {
   );
 }
 
-export default NavRight;
+export default React.memo(NavRight);
