@@ -8,6 +8,7 @@ import BotText from "./section-3/BotText";
 import SliderIdx from "./section-3/SliderIdx";
 import TextSlider from "./section-3/TextSlider";
 import ThirdCarusel from "./section-3/ThirdCaruosel";
+import Slider from "./section-3/Slider";
 function SectionThree() {
   const [idx, setIdx] = useState(0);
   const [prevRef, setPrevRef] = useState(null);
@@ -15,7 +16,8 @@ function SectionThree() {
 
   return (
     <div className="pt-[10rem] pb-[4rem]">
-      <div className="page-tit">
+      <Slider />
+      {/* <div className="page-tit">
         <BotText />
       </div>
       <div className="w-full ">
@@ -26,10 +28,8 @@ function SectionThree() {
             <SliderIdx idx={idx} />
           </div>
           <ThirdCarusel idx={idx} prevRef={prevRef} nextRef={nextRef} />
-          {/* <ThirdCarusel /> */}
         </section>
-        {/* <MySwiperComponent /> */}
-      </div>
+      </div> */}
     </div>
   );
 }

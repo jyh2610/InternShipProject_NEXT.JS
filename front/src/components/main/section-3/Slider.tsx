@@ -1,25 +1,32 @@
 "use client";
+import React, { useRef } from "react";
 
-import React from "react";
-
-// Import Swiper React components
+import { img } from "@/constants/constants";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { SwiperOptions } from "swiper/types";
+
 function Slider() {
+  const dummyImgData = [img, img, img, img];
+  const swiperObj: SwiperOptions = {
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    modules: [Navigation],
+  };
+  const onChange = (currentSlide: number) => {
+    console.log(currentSlide);
+  };
   return (
-    <div>
-      <Swiper loop style={{ width: "400px", height: "300px", backgroundColor: "green" }} navigation={true} modules={[Navigation]} className="mySwiper">
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
-      </Swiper>
-    </div>
+    <Swiper navigation={true} {...swiperObj} className="mySwiper max-w-top">
+      {dummyImgData.map((item, idx) => {
+        return (
+          <SwiperSlide className="max-w-top">
+            <img key={idx} src={item} alt="img" className="w-full h-[500px]" />
+          </SwiperSlide>
+        );
+      })}
+    </Swiper>
   );
 }
 
