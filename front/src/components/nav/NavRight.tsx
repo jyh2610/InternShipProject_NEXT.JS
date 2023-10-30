@@ -29,7 +29,7 @@ function NavRight({ scrollY, path }: NavColorProps) {
   );
 
   const logout = useCallback(async () => {
-    await signOut({ callbackUrl: "/" });
+    await signOut({ redirect: true });
     accesstoken && (await logOutHandler(accesstoken));
     removeCookie("refresh_token");
     dispatch(setAccessToken(null));
@@ -62,12 +62,12 @@ function NavRight({ scrollY, path }: NavColorProps) {
     <div className="flex items-center pc">
       <NavDropDown scrollY={scrollY} title={"한국어"} items={data} />
       {!accesstoken && !refreshToken ? (
-        <Button onClick={logout} style={{ color: `${isTop}` }} type="text">
-          로그아웃
-        </Button>
-      ) : (
         <Button onClick={() => route.push("/signin")} style={{ color: `${isTop}` }} type="text">
           로그인
+        </Button>
+      ) : (
+        <Button onClick={logout} style={{ color: `${isTop}` }} type="text">
+          로그아웃
         </Button>
       )}
     </div>

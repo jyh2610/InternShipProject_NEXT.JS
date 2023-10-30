@@ -1,39 +1,37 @@
-import React from "react";
-import { useRouter } from "next/router";
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
-import { setCookie } from "@/API/cookie";
+import { getCookie, setCookie } from "@/API/cookie";
 import { loginObj } from "@/constants/constants";
 import { Form } from "antd";
 import SocialTitle from "./SocialTitle";
 import { Session } from "next-auth";
-import { baseApi } from "@/API/api";
+import { useAppSelector } from "@/redux/hooks";
 
-interface CustomSession extends Session {
-  token: {
-    accessToken: string;
-    refreshToken: string;
-  };
+export interface CustomSession extends Session {
+  accessToken: string;
+  refreshToken: string;
 }
 
 const SocialLoginButton = () => {
-  const { data: session } = useSession();
-  const api = new baseApi();
-  // const route = useRouter();
+  const { data: session, update } = useSession();
+  const router = useRouter();
+  const accesstoken = useAppSelector((state) => state.auth.accessToken);
+  const refreshToken: string | null = getCookie("refresh_token");
+  useEffect(() => {
+    (accesstoken || refreshToken) && router.push("/");
+  }, [refreshToken, accesstoken]);
 
-  // 소셜로그인
   const sociallogin = async (socialtype: string) => {
-    const url = `/sign/${socialtype}login`;
-    const res: CustomSession = await api.post({
-      url,
-      options: {
-        headers: {
-          Authorization: `Bearer ${session?.accessToken}`,
-        },
-      },
-    });
-    console.log(res);
+    update();
+    await signIn(socialtype);
+    console.log(session);
 
-    setCookie("refreshToken", res.token.refreshToken);
+    if (session) {
+      const data = session as unknown as CustomSession;
+      console.log(data.refreshToken);
+      setCookie("refresh_token", data?.refreshToken);
+    }
   };
 
   return (
