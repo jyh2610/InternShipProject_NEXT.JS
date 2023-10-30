@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { SwiperOptions } from "swiper/types";
 
 function Slider() {
-  const dummyImgData = [img, img, img, img, img, img, img, img];
+  const dummyImgData = [img, img, img, img];
   const swiperObj: SwiperOptions = {
     loop: true,
     slidesPerView: 1,
