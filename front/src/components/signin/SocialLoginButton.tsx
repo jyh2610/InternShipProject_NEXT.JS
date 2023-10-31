@@ -27,8 +27,8 @@ const SocialLoginButton = () => {
   useEffect(() => {
     const serverData = data as unknown as CustomSession;
     if (serverData) {
-      setCookie("refresh_token", serverData.server.refreshToken);
-      dispatch(setAccessToken(serverData.server.accessToken));
+      setCookie("refresh_token", serverData.server?.refreshToken);
+      dispatch(setAccessToken(serverData.server?.accessToken));
     }
   }, [data, type, path]);
 
@@ -45,12 +45,12 @@ const SocialLoginButton = () => {
     await signIn(socialtype, { callbackUrl: "/signin" });
   };
 
-  if (data) {
-    const serverData = data as unknown as CustomSession;
-    setCookie("refresh_token", serverData.server.refreshToken);
-    dispatch(setAccessToken(serverData.server.accessToken));
-    signOut();
-  }
+  // if (data) {
+  //   const serverData = data as unknown as CustomSession;
+  //   setCookie("refresh_token", serverData.server.refreshToken);
+  //   dispatch(setAccessToken(serverData.server.accessToken));
+  //   signOut();
+  // }
 
   return (
     <Form.Item>
