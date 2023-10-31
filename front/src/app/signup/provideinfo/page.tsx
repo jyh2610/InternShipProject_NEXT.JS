@@ -1,11 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import { Collapse } from "antd";
 
-import type { CollapseProps } from "antd";
-
 import "./style.css";
+
+import type { CollapseProps } from "antd";
 
 import Agreement from "@/components/provideinfo/Agreement";
 import AgreementBtn from "@/components/provideinfo/AgreementBtn";
@@ -54,11 +54,14 @@ function ProvideInfo() {
     },
   ];
 
-  const keyonChange = (key: React.SetStateAction<string[]>) => {
-    setActiveKey(key);
-    console.log(activeKey);
-  };
-  useEffect(() => keyonChange(activeKey), [keyonChange]);
+  const keyonChange = useCallback(
+    (key: React.SetStateAction<string[]>) => {
+      setActiveKey(key);
+      console.log(activeKey);
+    },
+    [activeKey],
+  );
+  useEffect(() => keyonChange(activeKey), [keyonChange, activeKey]);
   return (
     <div>
       <Collapse style={{ borderRadius: "0" }} items={items} activeKey={activeKey.slice(-1)} onChange={keyonChange} />
