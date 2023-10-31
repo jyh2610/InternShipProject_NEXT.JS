@@ -2,6 +2,7 @@ import React from "react";
 
 import { Button, ConfigProvider } from "antd";
 import { useRouter } from "next/navigation";
+import { useAppSelector } from "@/redux/hooks";
 
 interface AgreementBtnProps {
   check: {
@@ -10,15 +11,13 @@ interface AgreementBtnProps {
     three: boolean;
   };
 }
-// 여기에서 필요한 검사를 수행
 
 const AgreementBtn = ({ check }: AgreementBtnProps) => {
   const route = useRouter();
+
   const clickSignup = () => {
     if (check.one && check.two && check.three) {
       route.push("/signup/clientinfo");
-    } else {
-      alert("필수 동의항목을 확인해 주세요.");
     }
   };
 
