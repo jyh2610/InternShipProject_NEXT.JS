@@ -6,14 +6,14 @@ import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { ConfigProvider, Form } from "antd";
 import { useRouter } from "next/navigation";
 
+import { baseApi } from "@/API/api";
+import { useAppDispatch } from "@/redux/hooks";
+import { setAccessToken } from "@/redux/slicer/authSlice";
+
 import FindButton from "./FindButton";
 import LoginButton from "./LoginButton";
 import SocialLoginButton from "./SocialLoginButton";
 import UserLoginInput from "./UserLoginInput";
-
-import { baseApi } from "@/API/api";
-import { useAppDispatch } from "@/redux/hooks";
-import { setAccessToken } from "@/redux/slicer/authSlice";
 
 interface reqType {
   user_name: string;

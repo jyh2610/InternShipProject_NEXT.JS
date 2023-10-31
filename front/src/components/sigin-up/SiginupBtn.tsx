@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import React, { useCallback } from "react";
@@ -6,9 +7,9 @@ import { Button, Form } from "antd";
 import { useRouter } from "next/navigation";
 
 function SiginupBtn({ validateForm }: { validateForm: () => void }) {
-  const clickSignup = useCallback(async () => {
-    route.push("/signup/sign-complete");
-  }, []);
+  // const clickSignup = useCallback(async () => {
+  //   route.push("/signup/sign-complete");
+  // }, []);
   const clickBack = useCallback(async () => {
     route.push("/");
   }, []);

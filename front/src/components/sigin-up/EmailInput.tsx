@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 
 import { Button, Form, Input, Select } from "antd";
 
-import EmailCode from "./EmailCode";
-
 import { baseApi } from "@/API/api";
 import { domainData } from "@/constants/constants";
+
+import EmailCode from "./EmailCode";
 
 // import type { MenuProps } from "antd";
 interface emailType {

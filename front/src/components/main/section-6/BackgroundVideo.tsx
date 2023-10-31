@@ -1,8 +1,8 @@
 "use client";
 
+import NoticeButton from "./NoticeButton";
 import Text from "./Text";
 
-import NoticeButton from "./NoticeButton";
 import "./style.css";
 
 function BackgroundVideo() {
