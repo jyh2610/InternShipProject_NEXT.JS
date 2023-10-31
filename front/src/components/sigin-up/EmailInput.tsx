@@ -6,37 +6,29 @@ import { domainData } from "@/constants/constants";
 import EmailCode from "./EmailCode";
 import Timer from "./Timer";
 // import type { MenuProps } from "antd";
-interface emailType {
-  id: string;
-  domain: string;
-  code: string;
-}
 
 interface emailres {
   success: boolean;
 }
-function EmailInput() {
+
+function EmailInput({ emailValue, setEmailValue, email }: { emailValue: any; setEmailValue: Function; email: string }) {
   const api = new baseApi();
   const [isActive, setIsActive] = useState(false);
-  const [emailValue, setEmailValue] = useState<emailType>({
-    id: "",
-    domain: "",
-    code: "",
-  });
+
   const [confirmbtn, setConfirmbtn] = useState(false);
-  const email = `${emailValue.id}@${emailValue.domain}`;
-  const [isValid, setIsValid] = useState<undefined | boolean>(false);
   const [emailbtn, setEmailbtn] = useState(false);
-  const domainHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setEmailValue((prev) => {
-      setIsValid(true);
-      return { ...prev, [name]: value };
+  const [isValid, setIsValid] = useState(false);
+  console.log(emailValue, "_______");
+  const selectHandler = (value: string) => {
+    setEmailValue((prev: any) => {
+      return { ...prev, domain: value };
     });
   };
-  const selectHandler = (value: string) => {
-    setEmailValue((prev) => {
-      return { ...prev, domain: value };
+  const domainHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setEmailValue((prev: any) => {
+      setIsValid(true);
+      return { ...prev, [name]: value };
     });
   };
   const emailRegexFront = /^[a-z0-9]$/;
@@ -84,7 +76,7 @@ function EmailInput() {
             },
           },
         ]}
-        name={["email", "domain"]}
+        // name={["email"]}
         label="이메일"
       >
         <div className="flex flex-col text-center ">
@@ -111,9 +103,10 @@ function EmailInput() {
                   },
                 },
               ]}
+              name={["email"]}
             >
               <div className="flex gap-[0.3rem]">
-                <Input style={{ width: "15%", padding: "0.5rem 0.8rem" }} name="id" onChange={domainHandler} />
+                <Input style={{ width: "15%", padding: "0.5rem 0.8rem" }} name="id" value={emailValue.id} onChange={domainHandler} />
                 <span className="mx-[0.2rem] my-auto">@</span>
                 <Input style={{ width: "25%", padding: "0.5rem 0.8rem" }} name="domain" value={emailValue.domain} onChange={domainHandler} />
                 {emailValue.domain && confirmbtn ? (

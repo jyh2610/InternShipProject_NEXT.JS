@@ -25,7 +25,7 @@ const Agreement = ({ type, check, setCheck }: AgreementProps) => {
   return (
     <>
       <Checkbox
-        className="flex justify-end block my-[2rem]"
+        className="flex justify-end block mb-[2rem]"
         checked={type === "One" ? check.one : type === "Two" ? check.two : check.three}
         onChange={handleChange}
       >

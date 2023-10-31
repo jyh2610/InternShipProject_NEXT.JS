@@ -1,8 +1,12 @@
 import React from "react";
 
 import { Form, Input } from "antd";
+import { useAppDispatch } from "@/redux/hooks";
+import { setUserName } from "@/redux/slicer/authSlice";
 
-function Name() {
+function Name(this: any) {
+  const dispatch = useAppDispatch();
+
   return (
     <Form.Item
       rules={[
