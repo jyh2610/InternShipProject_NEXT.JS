@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { Button, ConfigProvider } from "antd";
 import { useRouter } from "next/navigation";
-import { useAppDispatch } from "@/redux/hooks";
 
 interface AgreementBtnProps {
   check: {
