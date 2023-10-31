@@ -1,11 +1,10 @@
 "use client";
-// eslint-disable-next-line import/order
+
 import SiginupForm from "@/components/sigin-up/SiginupForm";
 
 import "./style.css";
 import { useAppSelector } from "@/redux/hooks";
 
-// eslint-disable-next-line import/order
 import { useRouter } from "next/navigation";
 
 function Signup() {
