@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import { Form } from "antd";
 import { usePathname, useRouter } from "next/navigation";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 
 import { getCookie, setCookie } from "@/API/cookie";
 import { loginObj } from "@/constants/constants";
