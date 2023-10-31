@@ -1,38 +1,56 @@
-import React from "react";
-import { useRouter } from "next/router";
-import { signIn, useSession } from "next-auth/react";
-import { setCookie } from "@/API/cookie";
-import { loginObj } from "@/constants/constants";
-import { Form } from "antd";
-import SocialTitle from "./SocialTitle";
-import { Session } from "next-auth";
-import { baseApi } from "@/API/api";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
 
-interface CustomSession extends Session {
-  token: {
-    accessToken: string;
-    refreshToken: string;
-  };
+import { Form } from "antd";
+import { usePathname, useRouter } from "next/navigation";
+import { signIn, signOut, useSession } from "next-auth/react";
+
+import { getCookie, setCookie } from "@/API/cookie";
+import { loginObj } from "@/constants/constants";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { setAccessToken } from "@/redux/slicer/authSlice";
+
+import SocialTitle from "./SocialTitle";
+
+import type { Session } from "next-auth";
+
+export interface CustomSession extends Session {
+  server: { accessToken: string; refreshToken: string; success: boolean };
 }
 
 const SocialLoginButton = () => {
-  const { data: session } = useSession();
-  const api = new baseApi();
-  // const route = useRouter();
+  const path = usePathname();
+  const [type, setType] = useState("");
+  const { data } = useSession();
+  const dispatch = useAppDispatch();
 
-  // 소셜로그인
+  useEffect(() => {
+    const serverData = data as unknown as CustomSession;
+    if (serverData) {
+      setCookie("refresh_token", serverData.server.refreshToken);
+      dispatch(setAccessToken(serverData.server.accessToken));
+    }
+  }, [data, type, path]);
+
+  const router = useRouter();
+  const accesstoken = useAppSelector((state) => state.auth.accessToken);
+  const refreshToken: string | null = getCookie("refresh_token");
+
+  useEffect(() => {
+    (accesstoken || refreshToken) && router.push("/");
+  }, [refreshToken, accesstoken, router]);
+
   const sociallogin = async (socialtype: string) => {
-    const url = `/sign/${socialtype}login`;
-    const res = await api.post({
-      url,
-      options: {
-        headers: {
-          Authorization: `Bearer ${session?.accessToken}`,
-        },
-      },
-    });
-    console.log(res);
+    setType(socialtype);
+    await signIn(socialtype, { callbackUrl: "/signin" });
   };
+
+  if (data) {
+    const serverData = data as unknown as CustomSession;
+    setCookie("refresh_token", serverData.server.refreshToken);
+    dispatch(setAccessToken(serverData.server.accessToken));
+    signOut();
+  }
 
   return (
     <Form.Item>

@@ -2,9 +2,12 @@ import React from "react";
 
 import "./globals.css";
 import { Inter } from "next/font/google";
+import { getServerSession } from "next-auth";
 
 import AuthSession from "@/components/auth/AuthSession";
 import StyledComponentsRegistry from "@/lib/AntdRegistry";
+
+import SessionProvider from "../components/auth/SessionProvider";
 
 import type { Metadata } from "next";
 
@@ -16,13 +19,16 @@ export const metadata: Metadata = {
   viewport: "width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const session = await getServerSession();
   return (
     <html>
       <body className={inter.className}>
-        <StyledComponentsRegistry>
-          <AuthSession>{children}</AuthSession>
-        </StyledComponentsRegistry>
+        <SessionProvider session={session}>
+          <StyledComponentsRegistry>
+            <AuthSession>{children}</AuthSession>
+          </StyledComponentsRegistry>
+        </SessionProvider>
       </body>
     </html>
   );

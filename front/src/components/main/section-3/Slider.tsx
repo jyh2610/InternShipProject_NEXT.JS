@@ -1,10 +1,12 @@
 "use client";
 import React from "react";
 
-import { img } from "@/constants/constants";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { SwiperOptions } from "swiper/types";
+
+import { img } from "@/constants/constants";
+
+import type { SwiperOptions } from "swiper/types";
 
 function Slider() {
   const dummyImgData = [img, img, img, img];
@@ -19,7 +21,7 @@ function Slider() {
     <Swiper navigation={true} {...swiperObj} className="mySwiper max-w-top">
       {dummyImgData.map((item, idx) => {
         return (
-          <SwiperSlide className="max-w-top">
+          <SwiperSlide key={idx} className="max-w-top">
             <img key={idx} src={item} alt="img" className="w-full h-[500px]" />
           </SwiperSlide>
         );
