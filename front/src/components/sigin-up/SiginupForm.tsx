@@ -1,9 +1,14 @@
 "use client";
 
+import { useState } from "react";
+
 import { ConfigProvider, Divider, Form } from "antd";
+import { useRouter } from "next/navigation";
 
 import { baseApi } from "@/API/api";
 import { formatDate } from "@/lib/FormatData";
+import { useAppDispatch } from "@/redux/hooks";
+import { setUserName } from "@/redux/slicer/authSlice";
 
 import Birth from "./Birth";
 import EmailInput from "./EmailInput";
@@ -11,13 +16,10 @@ import Name from "./Name";
 import Nickname from "./Nickname";
 import Sex from "./Sex";
 import SiginupBtn from "./SiginupBtn";
-import UserID from "./UserID";
-import type { formType } from "@/type/signUp";
 import TestPassword from "./TestPassword";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useAppDispatch } from "@/redux/hooks";
-import { setUserName } from "@/redux/slicer/authSlice";
+import UserID from "./UserID";
+
+import type { formType } from "@/type/signUp";
 
 const validateMessages = {
   required: "${label} is required!",

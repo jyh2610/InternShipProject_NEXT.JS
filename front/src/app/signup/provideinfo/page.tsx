@@ -9,8 +9,8 @@ import type { CollapseProps } from "antd";
 import "./style.css";
 
 import Agreement from "@/components/provideinfo/Agreement";
-import Content from "@/components/provideinfo/Content";
 import AgreementBtn from "@/components/provideinfo/AgreementBtn";
+import Content from "@/components/provideinfo/Content";
 import { provideText } from "@/constants/constants";
 
 function ProvideInfo() {

@@ -2,7 +2,6 @@ import React from "react";
 
 import "./style.css";
 import { CloudDownloadOutlined } from "@ant-design/icons";
-
 import Link from "next/link";
 
 function Download() {

@@ -1,6 +1,6 @@
 "use client";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
+
 import { getCookie } from "@/API/cookie";
 import { useAppSelector } from "@/redux/hooks";
 import "./layout.css";
