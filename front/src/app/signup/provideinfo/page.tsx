@@ -5,12 +5,12 @@ import { Collapse } from "antd";
 
 import "./style.css";
 
-import type { CollapseProps } from "antd";
-
 import Agreement from "@/components/provideinfo/Agreement";
 import AgreementBtn from "@/components/provideinfo/AgreementBtn";
 import Content from "@/components/provideinfo/Content";
 import { provideText } from "@/constants/constants";
+
+import type { CollapseProps } from "antd";
 
 function ProvideInfo() {
   const [check, setCheck] = useState({

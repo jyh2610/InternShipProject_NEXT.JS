@@ -46,7 +46,16 @@ function Nav() {
   const Logo = routes !== "/" ? LogoGreen : open === true ? LogoGreen : scrollY === 0 ? LogoWh : LogoGreen;
 
   return (
-    <ConfigProvider>
+    <ConfigProvider
+      theme={{
+        components: {
+          Button: {
+            colorBgTextHover: "transparent",
+            colorBgTextActive: "transparent",
+          },
+        },
+      }}
+    >
       <Header
         style={{
           width: "100%",
