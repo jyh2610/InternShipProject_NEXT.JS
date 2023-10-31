@@ -120,22 +120,91 @@ function Download() {
               <div className="install-text">
                 <p>
                   <span className="install-num">02</span>
-                  아래의 순서에 따라 진행해주세요.
+                  실행 런처 다운로드 방법.
                 </p>
               </div>
               <div className="install_02">
                 <ul className="install-item-list">
                   <li className="install-item">
                     <div className="img-wrap">
-                      <img src="" alt="" />
+                      <img
+                        src="https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCpOo1I10Tgoh8eSUG0eUOWdQzqaCZnqe4BGDuCqKx7iHrG8ZPVsgS7QN-VXCLCYzXNpuz6O9ibSwf-HnMIw-S97ObJ=w1920-h888"
+                        alt=""
+                      />
                     </div>
                     <div className="item-txt">
-                      <p>다운받은 파일을 실행합니다.</p>
+                      <p>01) 다운받은 런처 설치 파일을 실행합니다.</p>
                     </div>
                   </li>
-                  <li className="install-item"></li>
-                  <li className="install-item"></li>
-                  <li className="install-item"></li>
+                  <li className="install-item">
+                    <div className="img-wrap">
+                      <img
+                        src="https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCmxRHdX-2YW2b4smnP3xQ5IaDzv5CDWKNuRxFMqBs9K7U7trp6mFgCAjXOtiKOxBjrJI80_atqaJ2cGyh36srBG0LBKg=w1920-h888"
+                        alt=""
+                      />
+                    </div>
+                    <div className="item-txt">
+                      <p>02) 설치할 경로를 지정하고 Install 버튼을 누릅니다.</p>
+                    </div>
+                  </li>
+                  <li className="install-item">
+                    <div className="img-wrap">
+                      <img
+                        src="https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCYiw_8_ANPaInQHILOoJUoUyrIoNZBN3O-Qe45urDuyrP9Ms9Sf4EKbY8bXHjEmMxuiPrzXjq7BjlXhoKG_s5gXhCw=w1920-h888"
+                        alt=""
+                      />
+                    </div>
+                    <div className="item-txt">
+                      <p>03) 설치가 완료될 때까지 대기합니다.</p>
+                    </div>
+                  </li>
+                  <li className="install-item">
+                    <div className="img-wrap">
+                      <img
+                        src="https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCIkyD2ak7PRVID3meEJusdHdInQV8l0NdNGvM4H0UAFYhGhLSpxGg-xkuNoRCXtPRQL2KTtz3Ipzo3Uk_zgID4eJFuCw=w1920-h888"
+                        alt=""
+                      />
+                    </div>
+                    <div className="item-txt">
+                      <p>04) 유에이블 홈페이지에서 회원가입합니다.</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="install-list">
+            <div className="install-03-wrap">
+              <div className="install-text">
+                <p>
+                  <span className="install-num">03</span>
+                  아키플 스튜디오 설치 방법.
+                </p>
+              </div>
+              <div className="install_03">
+                <ul className="install-item-list">
+                  <li className="install-item">
+                    <div className="img-wrap">
+                      <img
+                        src="https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaBfewyceNZd8A8pSPVmLQ8vteXfwkK3olqHiTJ1wLlRl8pgJ7r-oShEhLWpMKLoJXHzO1sKKZO_61AUA89f-KJnmawH1A=w1920-h888"
+                        alt=""
+                      />
+                    </div>
+                    <div className="item-txt">
+                      <p>Archple Studio에 들어가 Intall을 클릭 합니다.</p>
+                    </div>
+                  </li>
+                  <li className="install-item">
+                    <div className="img-wrap">
+                      <img
+                        src="https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaBfewyceNZd8A8pSPVmLQ8vteXfwkK3olqHiTJ1wLlRl8pgJ7r-oShEhLWpMKLoJXHzO1sKKZO_61AUA89f-KJnmawH1A=w1920-h888"
+                        alt=""
+                      />
+                    </div>
+                    <div className="item-txt">
+                      <p>다운로드한 Archple Studio를 실행합니다.</p>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
