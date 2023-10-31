@@ -37,23 +37,22 @@ const authOption = {
   //   async signIn() {
   //     return true;
   //   },
-  //   async jwt({ token, account }) {
+  //   async jwt({ token, account }: any) {
   //     token.token = account?.access_token;
   //     if (account) {
   //       token.token = account?.access_token;
   //       const url = `/sign/${account?.provider}login`;
-  //       // console.log(url);
 
-  //       // const res: CustomSession = await api.post({
-  //       //   url,
-  //       //   options: {
-  //       //     headers: {
-  //       //       Authorization: `Bearer ${account?.access_token}`,
-  //       //     },
-  //       //   },
-  //       // });
-  //       // console.log(res);
-  //       // token.user = res;
+  //       const res: CustomSession = await api.post({
+  //         url,
+  //         options: {
+  //           headers: {
+  //             Authorization: `Bearer ${account?.access_token}`,
+  //           },
+  //         },
+  //       });
+
+  //       token.user = res;
   //       return token;
   //     }
   //     return token;
