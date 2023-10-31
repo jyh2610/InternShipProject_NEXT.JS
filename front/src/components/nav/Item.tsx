@@ -77,7 +77,7 @@ function NavItem({ scrollY, path }: NavColorProps) {
       </Button>
       <Button
         onClick={() => {
-          router.push("./download");
+          router.push("/download");
         }}
         style={font}
         className="px-5 mr-1"

@@ -21,7 +21,7 @@ function Slider() {
       {thirdSlideData.map((item, idx) => {
         return (
           <SwiperSlide key={idx} className="max-w-top">
-            <img key={idx} src={item.img} alt="img" className="w-full h-[500px]" />
+            <img key={idx} src={item.img} alt="img" className="w-full h-[680px]" />
           </SwiperSlide>
         );
       })}

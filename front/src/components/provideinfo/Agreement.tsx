@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-
 import { Checkbox } from "antd";
 
 import { setCheckedThird } from "@/redux/slicer/authSlice";
+import { useAppDispatch } from "@/redux/hooks";
 
 interface AgreementProps {
   type: "One" | "Two" | "Three";
@@ -16,6 +16,8 @@ interface AgreementProps {
 }
 
 const Agreement = ({ type, check, setCheck }: AgreementProps) => {
+  const dispatch = useAppDispatch();
+
   const handleChange = () => {
     if (type === "One") {
       setCheck({ ...check, one: !check.one });
@@ -23,9 +25,9 @@ const Agreement = ({ type, check, setCheck }: AgreementProps) => {
       setCheck({ ...check, two: !check.two });
     } else {
       setCheck({ ...check, three: !check.three });
-      setCheckedThird(check.three);
     }
   };
+  dispatch(setCheckedThird(check.three));
   console.log(check.three, "_____________세번째동의");
   return (
     <>

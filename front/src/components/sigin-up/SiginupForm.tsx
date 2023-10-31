@@ -5,11 +5,6 @@ import { useState } from "react";
 import { ConfigProvider, Form } from "antd";
 import { useRouter } from "next/navigation";
 
-import { baseApi } from "@/API/api";
-import { formatDate } from "@/lib/FormatData";
-import { useAppDispatch } from "@/redux/hooks";
-import { setUserName } from "@/redux/slicer/authSlice";
-
 import Birth from "./Birth";
 import EmailInput from "./EmailInput";
 import Name from "./Name";
@@ -20,6 +15,11 @@ import TestPassword from "./TestPassword";
 import UserID from "./UserID";
 
 import type { formType } from "@/type/signUp";
+
+import { baseApi } from "@/API/api";
+import { formatDate } from "@/lib/FormatData";
+import { useAppDispatch } from "@/redux/hooks";
+import { setUserName } from "@/redux/slicer/authSlice";
 
 const validateMessages = {
   required: "${label} is required!",
@@ -48,6 +48,7 @@ const SiginupForm = () => {
     domain: string;
     code: string;
   }
+
   const nicknameValue = Form.useWatch("nickname", form);
   const user_nameValue = Form.useWatch("user_name", form);
   const email = `${emailValue.id}@${emailValue.domain}`;
