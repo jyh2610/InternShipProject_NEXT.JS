@@ -19,51 +19,51 @@ const authOption = {
       clientSecret: process.env.NODE_ENV_API_GOOGLESECRECT ?? "",
     }),
   ],
-  callbacks: {
-    async jwt({ token, account }: any) {
-      // Persist the OAuth access_token to the token right after signin
-      if (account) {
-        token.accessToken = account.access_token;
-      }
-      return token;
-    },
-    async session({ session, token }: any) {
-      // Send properties to the client, like an access_token from a provider.
-      session.accessToken = token.accessToken;
-      return session;
-    },
-  },
   // callbacks: {
-  //   async signIn() {
-  //     return true;
-  //   },
   //   async jwt({ token, account }: any) {
-  //     token.token = account?.access_token;
+  //     // Persist the OAuth access_token to the token right after signin
   //     if (account) {
-  //       token.token = account?.access_token;
-  //       const url = `/sign/${account?.provider}login`;
-
-  //       const res: CustomSession = await api.post({
-  //         url,
-  //         options: {
-  //           headers: {
-  //             Authorization: `Bearer ${account?.access_token}`,
-  //           },
-  //         },
-  //       });
-
-  //       token.user = res;
-  //       return token;
+  //       token.accessToken = account.access_token;
   //     }
   //     return token;
   //   },
   //   async session({ session, token }: any) {
-  //     console.log(token);
-  //     session.accessToken = token.token;
-  //     session.expire = token.token;
-  //     return session.token;
+  //     // Send properties to the client, like an access_token from a provider.
+  //     session.accessToken = token.accessToken;
+  //     return session;
   //   },
   // },
+  callbacks: {
+    async signIn() {
+      return true;
+    },
+    async jwt({ token, account }: any) {
+      token.token = account?.access_token;
+      if (account) {
+        token.token = account?.access_token;
+        const url = `/sign/${account?.provider}login`;
+
+        const res: CustomSession = await api.post({
+          url,
+          options: {
+            headers: {
+              Authorization: `Bearer ${account?.access_token}`,
+            },
+          },
+        });
+
+        token.server = res;
+        return token;
+      }
+      return token;
+    },
+    async session({ session, token }: any) {
+      session.server = token.server;
+      console.log(session);
+
+      return session;
+    },
+  },
 };
 export const handler = NextAuth(authOption);
 export { handler as GET, handler as POST };
