@@ -8,6 +8,7 @@ import NavDropDown from "./NavDropDown";
 import type { MenuProps } from "antd";
 import { NavColorProps } from "@/type/nav";
 import Link from "next/link";
+import router, { useRouter } from "next/navigation";
 
 export const data: MenuProps = {
   items: [
@@ -50,6 +51,8 @@ export const data: MenuProps = {
   ],
 };
 function NavItem({ scrollY, path }: NavColorProps) {
+  const router = useRouter();
+
   const accesstoken = useAppSelector((state) => state.auth.accessToken);
 
   const refreshToken = getCookie("refresh_token");
@@ -72,7 +75,14 @@ function NavItem({ scrollY, path }: NavColorProps) {
       <Button style={font} className="px-5 mr-1" type="text">
         솔루션
       </Button>
-      <Button style={font} className="px-5 mr-1" type="text">
+      <Button
+        onClick={() => {
+          router.push("./download");
+        }}
+        style={font}
+        className="px-5 mr-1"
+        type="text"
+      >
         다운로드
       </Button>
     </div>
