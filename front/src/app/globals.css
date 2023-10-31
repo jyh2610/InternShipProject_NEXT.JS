@@ -189,6 +189,10 @@ p {
   padding-top: 0;
 }
 
+.logo {
+  cursor: pointer;
+}
+
 .mo {
   display: none;
 }

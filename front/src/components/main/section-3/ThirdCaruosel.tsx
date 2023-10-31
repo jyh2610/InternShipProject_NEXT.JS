@@ -3,27 +3,13 @@
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { Navigation } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import { img } from "@/constants/constants";
-
 import Slider from "./Slider";
 
-import type { SwiperOptions } from "swiper/types";
 //eslint-disable-next-line import/order
 
 import "./style.css";
-import TextSlider from "./TextSlider";
-import BotText from "./BotText";
 
-interface IdxProps {
-  idx: number;
-  prevRef: any;
-  nextRef: any;
-}
-
-function ThirdCarousel({ idx, prevRef, nextRef }: IdxProps) {
+function ThirdCarousel() {
   // const swiperObj: SwiperOptions = {
   //   loop: true,
   //   slidesPerView: "auto",

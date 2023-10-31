@@ -4,7 +4,7 @@ const config: Config = {
   content: ["./src/pages/**/*.{ts,tsx}", "./src/components/**/*.{ts,tsx}", "./src/app/**/*.{ts,tsx}"],
   theme: {
     backgroundImage: {
-      main: `ur('https://user-images.githubusercontent.com/144188723/273838726-22f220e9-7401-4673-b6b9-a6be8590095d.png')`,
+      main: `url('https://user-images.githubusercontent.com/144188723/273838726-22f220e9-7401-4673-b6b9-a6be8590095d.png')`,
       dummyImg: `url('https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaBNoaizXEN7DcMHZmAKMIUpi9Lf1tMzhEsLL-7su8PSbbiaCaus5dsEv1AkcIqZdbLaBV_N8jnlL6MSLVzLvrKz983RDQ=w1920-h889')`,
     },
     extend: {
