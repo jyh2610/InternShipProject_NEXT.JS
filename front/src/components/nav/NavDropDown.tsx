@@ -18,7 +18,7 @@ function NavDropDown({ title, items, scrollY }: Props) {
   const path = usePathname();
   const [isopen, setIsOpen] = useState(false);
   const [upIcon, downIcon] = inconSrc(scrollY, path);
-  const isTop = path !== "/" ? "black" : scrollY !== 0 ? "white" : "black";
+  const isTop = path !== "/" ? "black" : scrollY !== 0 ? "black" : "white";
 
   const dropdownOpenHandler = () => {
     setIsOpen((prev) => !prev);
