@@ -12,8 +12,6 @@ import AgreementBtn from "@/components/provideinfo/AgreementBtn";
 import Content from "@/components/provideinfo/Content";
 import { provideText } from "@/constants/constants";
 
-// eslint-disable-next-line import/order
-
 function ProvideInfo() {
   const [check, setCheck] = useState({
     one: false,
