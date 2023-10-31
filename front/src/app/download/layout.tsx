@@ -1,7 +1,7 @@
 import React from "react";
 
-import Nav from "@/components/nav/Nav";
 import MainFooter from "@/components/MainFooter";
+import Nav from "@/components/nav/Nav";
 
 function SignUpLayout({ children }: { children: React.ReactNode }) {
   return (

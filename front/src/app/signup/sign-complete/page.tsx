@@ -3,7 +3,7 @@ import React from "react";
 import "./style.css";
 import CompleteForm from "@/components/sigin-up/CompleteForm";
 
-async function Complete() {
+function Complete() {
   return <CompleteForm />;
 }
 

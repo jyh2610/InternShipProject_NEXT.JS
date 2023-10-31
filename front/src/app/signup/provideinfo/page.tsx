@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Collapse, Divider } from "antd";
 import { useRouter } from "next/navigation";
@@ -9,8 +9,8 @@ import type { CollapseProps } from "antd";
 import "./style.css";
 
 import Agreement from "@/components/provideinfo/Agreement";
-import Content from "@/components/provideinfo/Content";
 import AgreementBtn from "@/components/provideinfo/AgreementBtn";
+import Content from "@/components/provideinfo/Content";
 import { provideText } from "@/constants/constants";
 
 function ProvideInfo() {
@@ -19,6 +19,8 @@ function ProvideInfo() {
     two: false,
     three: false,
   });
+
+  const [activeKey, setActiveKey] = useState(["1"]);
 
   const items: CollapseProps["items"] = [
     {
@@ -54,12 +56,14 @@ function ProvideInfo() {
   ];
   const route = useRouter();
 
-  const onChange = (key: string | string[]) => {
-    console.log(key);
+  const keyonChange = (key: React.SetStateAction<string[]>) => {
+    setActiveKey(key);
+    console.log(activeKey);
   };
+  useEffect(() => keyonChange(activeKey), [keyonChange]);
   return (
     <div>
-      <Collapse style={{ borderRadius: "0" }} items={items} defaultActiveKey={["1"]} onChange={onChange} />
+      <Collapse style={{ borderRadius: "0" }} items={items} activeKey={activeKey.slice(-1)} onChange={keyonChange} />
       <AgreementBtn check={check} />
     </div>
   );

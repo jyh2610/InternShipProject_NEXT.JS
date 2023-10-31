@@ -6,14 +6,13 @@ import { Button, Form } from "antd";
 import { useRouter } from "next/navigation";
 
 function SiginupBtn({ validateForm }: { validateForm: () => void }) {
-  const route = useRouter();
   const clickSignup = useCallback(async () => {
-    route.push("/signup/clientinfo");
+    route.push("/signup/sign-complete");
   }, []);
   const clickBack = useCallback(async () => {
     route.push("/");
   }, []);
-
+  const route = useRouter();
   return (
     <div style={{ borderTop: "1px solid #E2E2E2" }}>
       <Form.Item className="flex justify-center">
@@ -21,7 +20,7 @@ function SiginupBtn({ validateForm }: { validateForm: () => void }) {
           <Button style={{ padding: "1.2rem 2rem", lineHeight: 0, backgroundColor: "#EFEFEF" }} onClick={clickBack} type="link">
             이전
           </Button>
-          <Button style={{ padding: "1.2rem 2rem", lineHeight: 0 }} type="primary" onClick={clickSignup} className="px-[2.1rem] py-[2rem]" htmlType="submit">
+          <Button style={{ padding: "1.2rem 2rem", lineHeight: 0 }} type="primary" onClick={validateForm} className="px-[2.1rem] py-[2rem]" htmlType="submit">
             회원가입
           </Button>
         </div>
