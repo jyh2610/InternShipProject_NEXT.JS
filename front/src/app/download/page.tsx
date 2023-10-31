@@ -16,7 +16,7 @@ function Download() {
                 <h4 className="page-tit">
                   인테리어 디자이너를 위한
                   <br />
-                  아키플 스튜디오 2.0
+                  <span className="font-bold">아키플 스튜디오 2.0</span>
                 </h4>
                 <p className="page-copylight">
                   창의성과 전문 지식이 결합된 프로페셔널리즘의 확실한 선택입니다.
@@ -68,10 +68,10 @@ function Download() {
                   <li className="item">
                     <div className="item-tit">
                       <span className="badge user">유저</span>
-                      <h3>제목영역</h3>
+                      <h3>나만의 공간디자인을 많은 유저들에게 공유하여, 나만의 포트폴리오</h3>
                     </div>
                     <div className="item-text">
-                      <p>리스트 설명 영역</p>
+                      <p>나만의 공간디자인을 전 세계 사람들과 공유하여, 나만의 포트폴리오를 제작해보세요.</p>
                     </div>
                   </li>
                 </ul>

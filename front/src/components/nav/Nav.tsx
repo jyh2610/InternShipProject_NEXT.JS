@@ -61,7 +61,7 @@ function Nav() {
       <div className="mainwidth mx-auto flex items-center justify-between " style={{ height: "60px" }}>
         <div className="flex gap-10">
           <div className="logo w-[180px]">
-            <img onClick={() => router.push("/")} className="w-full h-full object-container" src={Logo} />
+            <img onClick={() => router.push("/")} className="w-full h-full object-container logo" src={Logo} />
           </div>
           {windowWidth !== null && windowWidth > 768 && <NavItem path={routes} scrollY={scrollY} />}
         </div>
