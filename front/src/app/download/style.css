@@ -4,7 +4,7 @@
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 680px;
+    height: 640px;
     width: 100%;
 }
 
@@ -92,7 +92,7 @@
 }
 
 .section-text {
-    margin-top: 1rem;
+    margin-top: 0.8rem;
     font-size: 1rem;
 }
 
@@ -147,4 +147,70 @@
     line-height: 1.5rem;
     color: rgb(78, 89, 104);
 
+}
+
+.install-list {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+}
+
+.install_01 {
+    width: 100%;
+    height: 340px;
+    background-image: url("https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaDZO1ecfsoGFVVkZ-XuaSzEtT5OEgQDS1zGXF7RpX9hlnMxNVN0V1aKesHbNTfCLCvzceUh2KLjUxl_V-pAPUKvVPo2nA=w1920-h888");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    border-radius: 0.3rem;
+}
+
+.bottom-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    color: #fff;
+    z-index: 1;
+}
+
+.bottom-text-tit {
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+
+.bottom-copylight {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.875rem;
+}
+
+.install-text {
+    padding: 1rem 0;
+    font-size: 1.15rem;
+}
+
+.install-num {
+    font-weight: 700;
+    margin-right: 0.3rem;
+}
+
+.install-item-list {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.install-item {
+    width: calc(100%/2 - 8px);
+    padding: 2rem;
+    background-color: #9d9d9d;
+    border-radius: 0.3rem;
 }

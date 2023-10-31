@@ -25,7 +25,7 @@ function Download() {
                   프로젝트를 성공적으로 완료할 수 있습니다. 전문 설계사와 함께하는 경험을 즐기세요.
                 </p>
               </div>
-              <Link href={"https://installer.launcher.xsolla.com/xlauncher-builds/xsolla-launcher-update/5982/bin/web_installer.exe"}>
+              {/* <Link href={"https://installer.launcher.xsolla.com/xlauncher-builds/xsolla-launcher-update/5982/bin/web_installer.exe"}>
                 <button className="down-btn">
                   <span>
                     <i className="down-icon">
@@ -34,7 +34,7 @@ function Download() {
                     다운로드
                   </span>
                 </button>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
@@ -79,7 +79,69 @@ function Download() {
             </div>
           </div>
         </div>
-        <div className="bottom_section">하단 텍스트 영역입니다.</div>
+        <div className="bottom_section">
+          <div className="mainwidth mx-auto">
+            <div className="section-text-wrap pt-[10rem] pb-[3rem]">
+              <h4 className="section-tit">빠르고 간단하게 설치해야죠.</h4>
+              <p className="section-text">설치방법 안내</p>
+            </div>
+          </div>
+          <div className="install-list">
+            <div className="install-01-wrap">
+              <div className="install-text">
+                <p>
+                  <span className="install-num">01</span>
+                  다운로드 버튼을 눌러 아키플 스튜디오 2.0 설치파일을 받으세요.
+                </p>
+              </div>
+              <div className="install_01">
+                <div className="bottom-text">
+                  <div className="text-center">
+                    <h4 className="bottom-text-tit">아키플 스튜디오 2.0 클라이언트 다운로드</h4>
+                    <p className="bottom-copylight">프로그램 실행을 위해 클라이언트를 다운로드하여 설치하시기 바랍니다.</p>
+                  </div>
+                  <div className="bottom-dw-btn">
+                    <Link href={"https://installer.launcher.xsolla.com/xlauncher-builds/xsolla-launcher-update/5982/bin/web_installer.exe"}>
+                      <button className="down-btn">
+                        <span>
+                          <i className="down-icon">
+                            <CloudDownloadOutlined />
+                          </i>
+                          다운로드
+                        </span>
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="install-list">
+            <div className="install-02-wrap">
+              <div className="install-text">
+                <p>
+                  <span className="install-num">02</span>
+                  아래의 순서에 따라 진행해주세요.
+                </p>
+              </div>
+              <div className="install_02">
+                <ul className="install-item-list">
+                  <li className="install-item">
+                    <div className="img-wrap">
+                      <img src="" alt="" />
+                    </div>
+                    <div className="item-txt">
+                      <p>다운받은 파일을 실행합니다.</p>
+                    </div>
+                  </li>
+                  <li className="install-item"></li>
+                  <li className="install-item"></li>
+                  <li className="install-item"></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

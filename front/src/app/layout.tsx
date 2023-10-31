@@ -7,6 +7,7 @@ import AuthSession from "@/components/auth/AuthSession";
 import StyledComponentsRegistry from "@/lib/AntdRegistry";
 
 import type { Metadata } from "next";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +20,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html>
+      <Head>
+        <link rel="icon" href="./favicon.ico" />
+      </Head>
       <body className={inter.className}>
         <StyledComponentsRegistry>
           <AuthSession>{children}</AuthSession>
