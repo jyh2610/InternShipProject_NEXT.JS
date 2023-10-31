@@ -14,6 +14,10 @@ import SiginupBtn from "./SiginupBtn";
 import UserID from "./UserID";
 import type { formType } from "@/type/signUp";
 import TestPassword from "./TestPassword";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useAppDispatch } from "@/redux/hooks";
+import { setUserName } from "@/redux/slicer/authSlice";
 
 const validateMessages = {
   required: "${label} is required!",
@@ -32,19 +36,35 @@ const onFinish = (values: any) => {
 };
 
 const SiginupForm = () => {
+  const dispatch = useAppDispatch();
+  const [emailValue, setEmailValue] = useState<emailType>({ id: "", domain: "", code: "" }); // 이메일 입력값을 상태로 관리
   const api = new baseApi();
   const [form] = Form.useForm<formType>();
 
+  interface emailType {
+    id: string;
+    domain: string;
+    code: string;
+  }
   const nicknameValue = Form.useWatch("nickname", form);
   const user_nameValue = Form.useWatch("user_name", form);
+  const email = `${emailValue.id}@${emailValue.domain}`;
 
+  console.log(email, "ghyyydee");
+  const route = useRouter();
   const validateForm = async () => {
     try {
+      console.log(email, "ghyyydee");
       const { birthday, name, user_name, nickname, password, nation, sex } = await form.validateFields();
-      await api.post({
+
+      const res = await api.post({
         url: "/sign/signup",
-        body: { birthday: formatDate(birthday), name, user_name, nickname, password, nation, sex, email: "jogg4177@naver.com" },
+        body: { birthday: formatDate(birthday), name, user_name, nickname, password, nation, sex, email: emailValue.id + "@" + emailValue.domain },
       });
+      if (res.success) {
+        dispatch(setUserName(user_name));
+        route.push("/signup/sign-complete");
+      }
     } catch (errorInfo) {
       console.log("Validation failed:", errorInfo);
     }
@@ -90,7 +110,7 @@ const SiginupForm = () => {
             <Name />
             <Nickname nicknameValue={nicknameValue} />
             <UserID user={user_nameValue} />
-            <EmailInput />
+            <EmailInput emailValue={emailValue} setEmailValue={setEmailValue} email={email} />
             {/* <Password /> */}
             <TestPassword />
             <Birth validateSelect={validateSelect} ko_KR={""} />
