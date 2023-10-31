@@ -16,6 +16,8 @@ import type { formType } from "@/type/signUp";
 import TestPassword from "./TestPassword";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAppDispatch } from "@/redux/hooks";
+import { setUserName } from "@/redux/slicer/authSlice";
 
 const validateMessages = {
   required: "${label} is required!",
@@ -34,6 +36,7 @@ const onFinish = (values: any) => {
 };
 
 const SiginupForm = () => {
+  const dispatch = useAppDispatch();
   const [emailValue, setEmailValue] = useState<emailType>({ id: "", domain: "", code: "" }); // 이메일 입력값을 상태로 관리
   const api = new baseApi();
   const [form] = Form.useForm<formType>();
@@ -59,6 +62,7 @@ const SiginupForm = () => {
         body: { birthday: formatDate(birthday), name, user_name, nickname, password, nation, sex, email: emailValue.id + "@" + emailValue.domain },
       });
       if (res.success) {
+        dispatch(setUserName(user_name));
         route.push("/signup/sign-complete");
       }
     } catch (errorInfo) {
