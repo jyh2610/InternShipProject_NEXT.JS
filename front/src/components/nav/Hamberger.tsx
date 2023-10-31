@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
-import Burger from "./Burger";
 import { usePathname } from "next/navigation";
+
+import Burger from "./Burger";
 
 function Hamberger({ open, setOpen, scrollY }: { open: boolean; setOpen: Function; scrollY: number }) {
   const router = usePathname();

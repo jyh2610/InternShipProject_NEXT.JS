@@ -1,8 +1,8 @@
-const withPlugins = require("next-compose-plugins");
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: true,
-  openAnalyzer: true,
-});
+// const withPlugins = require("next-compose-plugins");
+// const withBundleAnalyzer = require("@next/bundle-analyzer")({
+//   enabled: true,
+//   openAnalyzer: true,
+// });
 const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 /** @type {import('next').NextConfig} */
 
