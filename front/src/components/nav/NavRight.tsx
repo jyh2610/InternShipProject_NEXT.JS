@@ -38,6 +38,7 @@ function NavRight({ scrollY }: NavColorProps) {
     accesstoken && (await logOutHandler(accesstoken));
     removeCookie("refresh_token");
     dispatch(setAccessToken(null));
+    alert("로그아웃되었습니다.");
   }, [accesstoken, dispatch]);
 
   useEffect(() => {

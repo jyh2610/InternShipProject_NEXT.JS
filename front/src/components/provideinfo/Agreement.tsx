@@ -1,10 +1,8 @@
 "use client";
 import React from "react";
-
 import { Checkbox } from "antd";
 
 import { setCheckedThird } from "@/redux/slicer/authSlice";
-
 interface AgreementProps {
   type: "One" | "Two" | "Three";
   setCheck: Function;
