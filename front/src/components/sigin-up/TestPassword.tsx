@@ -1,5 +1,6 @@
-import { Form, Input } from "antd";
 import React, { useEffect } from "react";
+
+import { Form, Input } from "antd";
 const TestPassword = () => {
   const pwValidation = new RegExp("^(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,20}$");
   return (

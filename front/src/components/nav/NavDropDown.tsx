@@ -3,8 +3,9 @@ import React from "react";
 
 import { Button, Dropdown } from "antd";
 
-import type { MenuProps } from "antd";
 import { inconSrc } from "@/constants/navConst";
+
+import type { MenuProps } from "antd";
 
 interface Props {
   title: string;
