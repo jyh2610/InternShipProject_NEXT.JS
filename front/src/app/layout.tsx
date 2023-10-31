@@ -2,13 +2,14 @@ import React from "react";
 
 import "./globals.css";
 import { Inter } from "next/font/google";
+import { getServerSession } from "next-auth";
 
 import AuthSession from "@/components/auth/AuthSession";
 import StyledComponentsRegistry from "@/lib/AntdRegistry";
 
-import type { Metadata } from "next";
-import { getServerSession } from "next-auth";
 import SessionProvider from "../components/auth/SessionProvider";
+
+import type { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
 

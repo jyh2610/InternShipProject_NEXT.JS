@@ -1,10 +1,12 @@
 "use client";
 import React from "react";
 
-import { img } from "@/constants/constants";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { SwiperOptions } from "swiper/types";
+
+import { img } from "@/constants/constants";
+
+import type { SwiperOptions } from "swiper/types";
 
 function Slider() {
   const dummyImgData = [img, img, img, img];

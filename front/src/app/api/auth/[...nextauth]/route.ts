@@ -4,7 +4,8 @@ import KakaoProvider from "next-auth/providers/kakao";
 import NaverProvider from "next-auth/providers/naver";
 
 import { baseApi } from "@/API/api";
-import { CustomSession } from "@/components/signin/SocialLoginButton";
+
+import type { CustomSession } from "@/components/signin/SocialLoginButton";
 
 const api = new baseApi();
 const authOption = {
@@ -19,20 +20,6 @@ const authOption = {
       clientSecret: process.env.NODE_ENV_API_GOOGLESECRECT ?? "",
     }),
   ],
-  // callbacks: {
-  //   async jwt({ token, account }: any) {
-  //     // Persist the OAuth access_token to the token right after signin
-  //     if (account) {
-  //       token.accessToken = account.access_token;
-  //     }
-  //     return token;
-  //   },
-  //   async session({ session, token }: any) {
-  //     // Send properties to the client, like an access_token from a provider.
-  //     session.accessToken = token.accessToken;
-  //     return session;
-  //   },
-  // },
   callbacks: {
     async signIn() {
       return true;
@@ -59,8 +46,6 @@ const authOption = {
     },
     async session({ session, token }: any) {
       session.server = token.server;
-      console.log(session);
-
       return session;
     },
   },

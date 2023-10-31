@@ -1,18 +1,18 @@
 "use client";
 
-import { useState } from "react";
+// import { useState } from "react";
 
-import BothSliderBtn from "./section-3/BothSliderBtn";
+// import BothSliderBtn from "./section-3/BothSliderBtn";
 import BotText from "./section-3/BotText";
 // import MySwiperComponent from "./section-3/MySwiperComponent";
-import SliderIdx from "./section-3/SliderIdx";
-import TextSlider from "./section-3/TextSlider";
-import ThirdCarusel from "./section-3/ThirdCaruosel";
 import Slider from "./section-3/Slider";
+// import SliderIdx from "./section-3/SliderIdx";
+// import TextSlider from "./section-3/TextSlider";
+// import ThirdCarusel from "./section-3/ThirdCaruosel";
 function SectionThree() {
-  const [idx, setIdx] = useState(0);
-  const [prevRef, setPrevRef] = useState(null);
-  const [nextRef, setNextRef] = useState(null);
+  // const [idx, setIdx] = useState(0);
+  // const [prevRef, setPrevRef] = useState(null);
+  // const [nextRef, setNextRef] = useState(null);
 
   return (
     <div className="pt-[10rem] pb-[4rem]">

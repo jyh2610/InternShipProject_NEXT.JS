@@ -1,14 +1,18 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
+
+import { Form } from "antd";
 import { usePathname, useRouter } from "next/navigation";
-import { signIn, useSession, signOut } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
+
 import { getCookie, setCookie } from "@/API/cookie";
 import { loginObj } from "@/constants/constants";
-import { Form } from "antd";
-import SocialTitle from "./SocialTitle";
-import { Session } from "next-auth";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { baseApi } from "@/API/api";
 import { setAccessToken } from "@/redux/slicer/authSlice";
+
+import SocialTitle from "./SocialTitle";
+
+import type { Session } from "next-auth";
 
 export interface CustomSession extends Session {
   server: { accessToken: string; refreshToken: string; success: boolean };
@@ -25,7 +29,6 @@ const SocialLoginButton = () => {
     if (serverData) {
       setCookie("refresh_token", serverData.server.refreshToken);
       dispatch(setAccessToken(serverData.server.accessToken));
-      console.log(serverData);
     }
   }, [data, type, path]);
 
@@ -35,7 +38,7 @@ const SocialLoginButton = () => {
 
   useEffect(() => {
     (accesstoken || refreshToken) && router.push("/");
-  }, [refreshToken, accesstoken]);
+  }, [refreshToken, accesstoken, router]);
 
   const sociallogin = async (socialtype: string) => {
     setType(socialtype);
@@ -46,6 +49,7 @@ const SocialLoginButton = () => {
     const serverData = data as unknown as CustomSession;
     setCookie("refresh_token", serverData.server.refreshToken);
     dispatch(setAccessToken(serverData.server.accessToken));
+    signOut();
   }
 
   return (
