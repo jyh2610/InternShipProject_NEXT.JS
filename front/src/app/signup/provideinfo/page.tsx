@@ -55,8 +55,12 @@ function ProvideInfo() {
   ];
 
   const keyonChange = useCallback(
-    (key: React.SetStateAction<string[]>) => {
-      setActiveKey(key);
+    (key: string | string[]) => {
+      if (Array.isArray(key)) {
+        setActiveKey(key);
+      } else {
+        setActiveKey([key]); // Convert the string to an array
+      }
       console.log(activeKey);
     },
     [activeKey],
