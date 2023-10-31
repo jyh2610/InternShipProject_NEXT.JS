@@ -7,7 +7,7 @@ import Link from "next/link";
 function Download() {
   return (
     <>
-      <div className="wrap mt-[60px]">
+      <div className="wrap">
         <div className="top_section">
           <div className="mainwidth mx-auto h-[100%] relative">
             <div className="page-text">
