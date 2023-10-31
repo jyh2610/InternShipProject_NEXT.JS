@@ -2,6 +2,7 @@ import { useState } from "react";
 import React from "react";
 
 import { Button, Dropdown } from "antd";
+import { usePathname } from "next/navigation";
 
 import { inconSrc } from "@/constants/navConst";
 
@@ -14,9 +15,10 @@ interface Props {
 }
 
 function NavDropDown({ title, items, scrollY }: Props) {
+  const path = usePathname();
   const [isopen, setIsOpen] = useState(false);
-  const [upIcon, downIcon] = inconSrc(scrollY);
-  const isTop = scrollY === 0 ? "white" : "black";
+  const [upIcon, downIcon] = inconSrc(scrollY, path);
+  const isTop = path !== "/" ? "black" : scrollY !== 0 ? "white" : "black";
 
   const dropdownOpenHandler = () => {
     setIsOpen((prev) => !prev);

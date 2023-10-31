@@ -39,17 +39,18 @@ function Nav() {
       }
     };
   }, []);
+  const rederNav = routes === "/" ? "fixed" : undefined;
 
-  const isTop = routes !== "/" || open === true ? "white" : scrollY === 0 ? "transparent" : "white";
-  const lineTop = routes !== "/" || open === true ? "1px" : scrollY === 0 ? "none" : "1px solid #E0E0E0";
-  const Logo = routes !== "/" || open === true ? LogoGreen : scrollY === 0 ? LogoWh : LogoGreen;
+  const isTop = routes !== "/" ? "white" : open === true ? "white" : scrollY === 0 ? "transparent" : "white";
+  const lineTop = routes !== "/" ? "1px" : open === true ? "1px" : scrollY === 0 ? "none" : "1px solid #E0E0E0";
+  const Logo = routes !== "/" ? LogoGreen : open === true ? LogoGreen : scrollY === 0 ? LogoWh : LogoGreen;
 
   return (
     <Header
       style={{
         width: "100%",
         height: "60px",
-        position: "fixed",
+        position: rederNav,
         top: "0",
         backgroundColor: isTop,
         zIndex: "999",
