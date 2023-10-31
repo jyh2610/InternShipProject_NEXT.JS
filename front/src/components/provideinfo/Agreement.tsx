@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-
 import { Checkbox } from "antd";
 
 import { setCheckedThird } from "@/redux/slicer/authSlice";
