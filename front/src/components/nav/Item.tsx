@@ -1,14 +1,14 @@
 import { Button } from "antd";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-import { getCookie } from "@/API/cookie";
-import { useAppSelector } from "@/redux/hooks";
+// import { getCookie } from "@/API/cookie";
+// import { useAppSelector } from "@/redux/hooks";
 
 import NavDropDown from "./NavDropDown";
 
+import type { NavColorProps } from "@/type/nav";
 import type { MenuProps } from "antd";
-import { NavColorProps } from "@/type/nav";
-import Link from "next/link";
-import router, { useRouter } from "next/navigation";
 
 export const data: MenuProps = {
   items: [
@@ -53,9 +53,9 @@ export const data: MenuProps = {
 function NavItem({ scrollY, path }: NavColorProps) {
   const router = useRouter();
 
-  const accesstoken = useAppSelector((state) => state.auth.accessToken);
+  // const accesstoken = useAppSelector((state) => state.auth.accessToken);
 
-  const refreshToken = getCookie("refresh_token");
+  // const refreshToken = getCookie("refresh_token");
 
   const isTop = path !== "/" ? "black" : scrollY === 0 ? "white" : "black";
 
