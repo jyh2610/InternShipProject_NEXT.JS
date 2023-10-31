@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
 import { usePathname } from "next/navigation";

@@ -5,6 +5,7 @@ import { Button, Input } from "antd";
 import { baseApi } from "@/API/api";
 
 import Timer from "./Timer";
+
 function EmailCode({ email, setIsActive, isActive }: { isActive: boolean; email: string; setIsActive: React.Dispatch<React.SetStateAction<boolean>> }) {
   const [code, setCode] = useState("");
   const [seconds, setSeconds] = useState(180);

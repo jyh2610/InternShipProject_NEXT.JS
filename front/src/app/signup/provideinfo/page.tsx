@@ -1,8 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-import { Collapse, Divider } from "antd";
-import { useRouter } from "next/navigation";
+import { Collapse } from "antd";
 
 import type { CollapseProps } from "antd";
 
@@ -54,7 +53,6 @@ function ProvideInfo() {
       ),
     },
   ];
-  const route = useRouter();
 
   const keyonChange = (key: React.SetStateAction<string[]>) => {
     setActiveKey(key);

@@ -10,6 +10,7 @@ interface AgreementBtnProps {
     three: boolean;
   };
 }
+// 여기에서 필요한 검사를 수행
 
 const AgreementBtn = ({ check }: AgreementBtnProps) => {
   const route = useRouter();

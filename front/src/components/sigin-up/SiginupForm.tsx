@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { ConfigProvider, Divider, Form } from "antd";
+import { ConfigProvider, Form } from "antd";
 import { useRouter } from "next/navigation";
 
 import { baseApi } from "@/API/api";

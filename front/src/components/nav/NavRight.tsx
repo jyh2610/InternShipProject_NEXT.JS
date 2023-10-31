@@ -2,7 +2,7 @@
 import React, { useCallback, useEffect, useMemo } from "react";
 
 import { Button } from "antd";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 
 import { getCookie, removeCookie } from "@/API/cookie";
@@ -13,14 +13,15 @@ import { setAccessToken } from "@/redux/slicer/authSlice";
 import NavDropDown from "./NavDropDown";
 
 import type { NavColorProps } from "@/type/nav";
-import type { MenuProps } from "antd";
+// import type { MenuProps } from "antd";
 
-function NavRight({ scrollY, path }: NavColorProps) {
+function NavRight({ scrollY }: NavColorProps) {
   const dispatch = useAppDispatch();
   const route = useRouter();
+  const path = usePathname();
   const accesstoken = useAppSelector((state) => state.auth.accessToken);
   const refreshToken: string | null = getCookie("refresh_token");
-  const isTop = scrollY === 0 ? "white" : "black";
+  const isTop = path !== "/" ? "black" : scrollY === 0 ? "white" : "black";
   const isLogin = accesstoken === "" && refreshToken === undefined;
 
   const sendRefreshTokenToServer = useCallback(
