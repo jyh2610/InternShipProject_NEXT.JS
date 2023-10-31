@@ -2,6 +2,7 @@ import React from "react";
 
 import "./globals.css";
 import { Inter } from "next/font/google";
+import Head from "next/head";
 import { getServerSession } from "next-auth";
 
 import AuthSession from "@/components/auth/AuthSession";
@@ -27,6 +28,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const session = await getServerSession();
   return (
     <html>
+      <Head>
+        <link rel="icon" href="./favicon.ico" />
+      </Head>
       <body className={inter.className}>
         <SessionProvider session={session}>
           <StyledComponentsRegistry>
