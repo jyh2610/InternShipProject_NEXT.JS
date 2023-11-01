@@ -17,7 +17,7 @@ import type { formType } from "@/type/signUp";
 
 import { baseApi } from "@/API/api";
 import { formatDate } from "@/lib/FormatData";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setUserName } from "@/redux/slicer/authSlice";
 import EmailNew from "./EmailNew";
 
@@ -38,6 +38,8 @@ const onFinish = (values: any) => {
 };
 
 const SiginupForm = () => {
+  const checked = useAppSelector((state) => state.auth.checkedthird);
+  //
   const dispatch = useAppDispatch();
   const api = new baseApi();
   const [form] = Form.useForm<formType>();
@@ -64,7 +66,7 @@ const SiginupForm = () => {
         body: sendingData,
       });
       if (res.success) {
-        dispatch(setUserName(user_name));
+        dispatch(setUserName(name));
         route.push("/signup/sign-complete");
       }
     } catch (errorInfo) {
@@ -81,48 +83,52 @@ const SiginupForm = () => {
       }
     });
   };
-
-  return (
-    <div className="">
+  if (checked) {
+    return (
       <div className="">
-        <ConfigProvider
-          theme={{
-            token: {
-              colorPrimary: "#26AF66",
-              colorLink: "#000",
-              borderRadius: 2,
-              colorBgContainer: "#F7F7F7",
-              colorBorder: "transparent",
-              colorPrimaryActive: "none",
-              colorPrimaryBorderHover: "none",
-              colorPrimaryHover: "none",
-            },
-            components: {
-              Input: {
+        <div className="">
+          <ConfigProvider
+            theme={{
+              token: {
+                colorPrimary: "#26AF66",
+                colorLink: "#000",
+                borderRadius: 2,
                 colorBgContainer: "#F7F7F7",
-                activeBorderColor: "none", // Input 체크 되었을 때 보더색상 변경
-                hoverBorderColor: "none", // 마우스 올렸을 때 보더색상 변경
                 colorBorder: "transparent",
-                activeShadow: "none", // Input 체크 박스 그림자 변경
+                colorPrimaryActive: "none",
+                colorPrimaryBorderHover: "none",
+                colorPrimaryHover: "none",
               },
-            },
-          }}
-        >
-          <Form form={form} colon={false} labelAlign="left" className="my-auto " name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
-            <Name />
-            <Nickname nicknameValue={nicknameValue} />
-            <UserID user={user_nameValue} />
-            {/* <EmailInput emailValue={emailValue} setEmailValue={setEmailValue} email={email} /> */}
-            <EmailNew emailformValue={fullEmail} />
-            <TestPassword />
-            <Birth validateSelect={validateSelect} ko_KR={""} />
-            <Sex validateSelect={validateSelect} ko_KR={""} />
-            <SiginupBtn validateForm={validateForm} />
-          </Form>
-        </ConfigProvider>
+              components: {
+                Input: {
+                  colorBgContainer: "#F7F7F7",
+                  activeBorderColor: "none", // Input 체크 되었을 때 보더색상 변경
+                  hoverBorderColor: "none", // 마우스 올렸을 때 보더색상 변경
+                  colorBorder: "transparent",
+                  activeShadow: "none", // Input 체크 박스 그림자 변경
+                },
+              },
+            }}
+          >
+            <Form form={form} colon={false} labelAlign="left" className="my-auto " name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+              <Name />
+              <Nickname nicknameValue={nicknameValue} />
+              <UserID user={user_nameValue} />
+              {/* <EmailInput emailValue={emailValue} setEmailValue={setEmailValue} email={email} /> */}
+              <EmailNew emailformValue={fullEmail} />
+              <TestPassword />
+              <Birth validateSelect={validateSelect} ko_KR={""} />
+              <Sex validateSelect={validateSelect} ko_KR={""} />
+              <SiginupBtn validateForm={validateForm} />
+            </Form>
+          </ConfigProvider>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    alert("필수 동의 항목을 체크해주세요");
+    return route.push("/signup/provideinfo");
+  }
 };
 
 export default SiginupForm;
