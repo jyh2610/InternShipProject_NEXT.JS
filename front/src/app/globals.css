@@ -50,7 +50,7 @@ p {
   margin: 0;
 }
 
-.footer-nav-list>a {
+.footer-nav-list > a {
   display: block;
   font-size: 0.875rem;
   color: #9f9f9f;
@@ -91,7 +91,7 @@ p {
   transform: rotate(180deg);
 }
 
-.testp>p {
+.testp > p {
   font-weight: 700;
 }
 
@@ -189,7 +189,7 @@ p {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.testp>h4 {
+.testp > h4 {
   font-weight: 700;
   font-size: 1.125rem;
 }

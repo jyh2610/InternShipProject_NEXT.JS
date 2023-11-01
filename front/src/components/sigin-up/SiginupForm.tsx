@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 import { ConfigProvider, Form } from "antd";
 import { useRouter } from "next/navigation";
 
@@ -38,6 +36,8 @@ const onFinish = (values: any) => {
 };
 
 const SiginupForm = () => {
+  //const checked = useAppSelector((state) => state.auth.checkedthird);
+  //
   const dispatch = useAppDispatch();
   const api = new baseApi();
   const [form] = Form.useForm<formType>();
@@ -64,7 +64,7 @@ const SiginupForm = () => {
         body: sendingData,
       });
       if (res.success) {
-        dispatch(setUserName(user_name));
+        dispatch(setUserName(name));
         route.push("/signup/sign-complete");
       }
     } catch (errorInfo) {
@@ -123,6 +123,10 @@ const SiginupForm = () => {
       </div>
     </div>
   );
+  // } else {
+  //   alert("필수 동의 항목을 체크해주세요");
+  //   return route.push("/signup/provideinfo");
+  // }
 };
 
 export default SiginupForm;
