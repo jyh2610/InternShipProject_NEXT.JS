@@ -26,10 +26,13 @@ const authOption = {
     },
     async jwt({ token, account }: any) {
       token.token = account?.access_token;
-      console.log(account, 1 )
+      console.log(token,'---------')
+      console.log(111)
+      console.log(account, '--------------' )
       if (account) {
         token.token = account?.access_token;
-        const url =`/sign/${account?.provider}login`
+        const url = '/sign/' + account.provider + 'login';
+
         console.log(url,2);
 
         console.log(account,3);
@@ -38,7 +41,8 @@ const authOption = {
           url,
           options: {
             headers: {
-              Authorization: `Bearer ${account?.access_token}`,
+              Authorization:'Bearer ' + (account ? account.access_token : '')
+,
             },
           },
         });
