@@ -155,7 +155,7 @@ function Download() {
                       />
                     </div>
                     <div className="item-txt">
-                      <p>03) 설치가 완료될 때까지 대기합니다.</p>
+                      <p>03) 설치가 완료될 때까지 대기 합니다.</p>
                     </div>
                   </li>
                   <li className="install-item">
@@ -166,7 +166,7 @@ function Download() {
                       />
                     </div>
                     <div className="item-txt">
-                      <p>04) 유에이블 홈페이지에서 회원가입합니다.</p>
+                      <p>04) 완료가 되면 finish 버튼을 누르면 런처 설치가 완료 됩니다.</p>
                     </div>
                   </li>
                 </ul>
