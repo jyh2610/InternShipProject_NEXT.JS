@@ -12,8 +12,6 @@ const EmailNew = ({ emailformValue }: { emailformValue: string }) => {
   const selectHandler = () => {
     emailformValue;
   };
-  //const emailidvalidation = "^[a-zA-Z0-9._-]$";
-  //const emaildomainvalidation = "@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$";
   return (
     <div>
       <div className="flex gap-[0.3rem]">

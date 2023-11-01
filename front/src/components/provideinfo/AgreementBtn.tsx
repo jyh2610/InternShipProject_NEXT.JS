@@ -2,7 +2,6 @@ import React from "react";
 
 import { Button, ConfigProvider } from "antd";
 import { useRouter } from "next/navigation";
-import { useAppSelector } from "@/redux/hooks";
 
 interface AgreementBtnProps {
   check: {
