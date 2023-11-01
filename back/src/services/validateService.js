@@ -59,7 +59,7 @@ module.exports = {
   isDuplicateUsername,
   isDuplicateNickname,
 
-  signUpCheck,
+  // signUpCheck,
 
   emailValidation,
   verifyCode
