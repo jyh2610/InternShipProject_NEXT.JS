@@ -1,21 +1,25 @@
 "use client";
 
-import { ConfigProvider, Divider, Form } from "antd";
-import locale from "antd/lib/locale/ko_KR";
+import { useState } from "react";
 
-import { baseApi } from "@/API/api";
-import { formatDate } from "@/lib/FormatData";
+import { ConfigProvider, Form } from "antd";
+import { useRouter } from "next/navigation";
 
 import Birth from "./Birth";
-import EmailInput from "./EmailInput";
 import Name from "./Name";
 import Nickname from "./Nickname";
 import Sex from "./Sex";
 import SiginupBtn from "./SiginupBtn";
-import UserID from "./UserID";
-import koKR from "antd/lib/locale/ko_KR";
-import type { formType } from "@/type/signUp";
 import TestPassword from "./TestPassword";
+import UserID from "./UserID";
+
+import type { formType } from "@/type/signUp";
+
+import { baseApi } from "@/API/api";
+import { formatDate } from "@/lib/FormatData";
+import { useAppDispatch } from "@/redux/hooks";
+import { setUserName } from "@/redux/slicer/authSlice";
+import EmailNew from "./EmailNew";
 
 const validateMessages = {
   required: "${label} is required!",
@@ -34,19 +38,35 @@ const onFinish = (values: any) => {
 };
 
 const SiginupForm = () => {
+  const dispatch = useAppDispatch();
   const api = new baseApi();
   const [form] = Form.useForm<formType>();
 
   const nicknameValue = Form.useWatch("nickname", form);
   const user_nameValue = Form.useWatch("user_name", form);
 
+  const emailId = Form.useWatch("emailId", form); // 이메일 아이디 부분 값
+  const emailDomain = Form.useWatch("emailDomain", form); // 도메인 부분 값
+
+  const fullEmail = `${emailId}@${emailDomain}`; //
+  console.log(emailId, "사인업폼 ");
+  const route = useRouter();
+  // const email = `${emailValue.id}@${emailValue.domain}`;
   const validateForm = async () => {
     try {
       const { birthday, name, user_name, nickname, password, nation, sex } = await form.validateFields();
-      await api.post({
+      console.log("asdasd");
+      // console.log(email, "_______sd");
+      const sendingData = { birthday: formatDate(birthday), name, user_name, nickname, password, nation, sex, email: fullEmail };
+      // console.log(email, "ghyyydee");
+      const res = await api.post({
         url: "/sign/signup",
-        body: { birthday: formatDate(birthday), name, user_name, nickname, password, nation, sex, email: "jogg4177@naver.com" },
+        body: sendingData,
       });
+      if (res.success) {
+        dispatch(setUserName(user_name));
+        route.push("/signup/sign-complete");
+      }
     } catch (errorInfo) {
       console.log("Validation failed:", errorInfo);
     }
@@ -66,7 +86,6 @@ const SiginupForm = () => {
     <div className="">
       <div className="">
         <ConfigProvider
-          locale={koKR}
           theme={{
             token: {
               colorPrimary: "#26AF66",
@@ -93,11 +112,11 @@ const SiginupForm = () => {
             <Name />
             <Nickname nicknameValue={nicknameValue} />
             <UserID user={user_nameValue} />
-            <EmailInput />
-            {/* <Password /> */}
+            {/* <EmailInput emailValue={emailValue} setEmailValue={setEmailValue} email={email} /> */}
+            <EmailNew emailformValue={fullEmail} />
             <TestPassword />
-            <Birth validateSelect={validateSelect} />
-            <Sex validateSelect={validateSelect} />
+            <Birth validateSelect={validateSelect} ko_KR={""} />
+            <Sex validateSelect={validateSelect} ko_KR={""} />
             <SiginupBtn validateForm={validateForm} />
           </Form>
         </ConfigProvider>

@@ -1,8 +1,5 @@
-import NoticeButton from "./section-6/NoticeButton";
-import Text from "./section-6/Text";
-import Title from "./section-6/Title";
-
 import BackgroundVideo from "./section-6/BackgroundVideo";
+import Title from "./section-6/Title";
 
 function SectionSix() {
   return (

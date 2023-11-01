@@ -1,44 +1,35 @@
 "use client";
 import React, { useEffect, useState } from "react";
+
 import { Button, Form, Input, Select } from "antd";
+
+import EmailCode from "./EmailCode";
+
 import { baseApi } from "@/API/api";
 import { domainData } from "@/constants/constants";
-import EmailCode from "./EmailCode";
-import Timer from "./Timer";
+
 // import type { MenuProps } from "antd";
-interface emailType {
-  id: string;
-  domain: string;
-  code: string;
-}
-<<<<<<< HEAD
 
 interface emailres {
   success: boolean;
 }
-=======
->>>>>>> feature/taekyong
-function EmailInput() {
+function EmailInput({ emailValue, setEmailValue, email }: { emailValue: any; setEmailValue: any; email: string }) {
   const api = new baseApi();
+
   const [isActive, setIsActive] = useState(false);
-  const [emailValue, setEmailValue] = useState<emailType>({
-    id: "",
-    domain: "",
-    code: "",
-  });
+
   const [confirmbtn, setConfirmbtn] = useState(false);
-  const email = `${emailValue.id}@${emailValue.domain}`;
   const [isValid, setIsValid] = useState<undefined | boolean>(false);
   const [emailbtn, setEmailbtn] = useState(false);
   const domainHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setEmailValue((prev) => {
+    setEmailValue((prev: any) => {
       setIsValid(true);
       return { ...prev, [name]: value };
     });
   };
   const selectHandler = (value: string) => {
-    setEmailValue((prev) => {
+    setEmailValue((prev: any) => {
       return { ...prev, domain: value };
     });
   };
@@ -63,7 +54,6 @@ function EmailInput() {
   useEffect(() => {
     const isValidEmail = emailRegexFront.test(email);
     setIsValid(isValidEmail);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [emailValue]);
   return (
     <div>
@@ -87,7 +77,7 @@ function EmailInput() {
             },
           },
         ]}
-        name={["email", "domain"]}
+        name={["email"]}
         label="이메일"
       >
         <div className="flex flex-col text-center ">

@@ -1,22 +1,27 @@
 "use client";
-import React, { useEffect, useMemo, useCallback } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
+
 import { Button } from "antd";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
+
 import { getCookie, removeCookie } from "@/API/cookie";
 import { logOutHandler, refreshTokenHandler } from "@/lib/signinApi";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setAccessToken } from "@/redux/slicer/authSlice";
-import NavDropDown from "./NavDropDown";
-import type { MenuProps } from "antd";
-import { NavColorProps } from "@/type/nav";
 
-function NavRight({ scrollY, path }: NavColorProps) {
+import NavDropDown from "./NavDropDown";
+
+import type { NavColorProps } from "@/type/nav";
+// import type { MenuProps } from "antd";
+
+function NavRight({ scrollY }: NavColorProps) {
   const dispatch = useAppDispatch();
   const route = useRouter();
+  const path = usePathname();
   const accesstoken = useAppSelector((state) => state.auth.accessToken);
   const refreshToken: string | null = getCookie("refresh_token");
-  const isTop = scrollY === 0 ? "white" : "black";
+  const isTop = path !== "/" ? "black" : scrollY === 0 ? "white" : "black";
   const isLogin = accesstoken === "" && refreshToken === undefined;
 
   const sendRefreshTokenToServer = useCallback(
@@ -29,10 +34,11 @@ function NavRight({ scrollY, path }: NavColorProps) {
   );
 
   const logout = useCallback(async () => {
-    await signOut({ callbackUrl: "/" });
+    await signOut({ redirect: true });
     accesstoken && (await logOutHandler(accesstoken));
     removeCookie("refresh_token");
     dispatch(setAccessToken(null));
+    alert("로그아웃되었습니다.");
   }, [accesstoken, dispatch]);
 
   useEffect(() => {
@@ -61,17 +67,17 @@ function NavRight({ scrollY, path }: NavColorProps) {
   return (
     <div className="flex items-center pc">
       <NavDropDown scrollY={scrollY} title={"한국어"} items={data} />
-      {accesstoken ? (
-        <Button onClick={logout} style={{ color: `${isTop}` }} type="text">
-          로그아웃
-        </Button>
-      ) : (
+      {!accesstoken && !refreshToken ? (
         <Button onClick={() => route.push("/signin")} style={{ color: `${isTop}` }} type="text">
           로그인
+        </Button>
+      ) : (
+        <Button onClick={logout} style={{ color: `${isTop}` }} type="text">
+          로그아웃
         </Button>
       )}
     </div>
   );
 }
 
-export default NavRight;
+export default React.memo(NavRight);

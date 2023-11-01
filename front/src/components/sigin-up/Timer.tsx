@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 
 function Timer({ isActive, seconds, setSeconds, setIsActive }: { setSeconds: Function; setIsActive: Function; isActive: boolean; seconds: number }) {
   const decrementSeconds = useCallback(() => {

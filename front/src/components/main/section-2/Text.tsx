@@ -1,6 +1,6 @@
 "use client";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
+
 import { getCookie } from "@/API/cookie";
 import { useAppSelector } from "@/redux/hooks";
 import "./layout.css";
@@ -50,11 +50,12 @@ function Text() {
           </div>
           <div
             onClick={onClick}
-            className="down-btn pt-10 pb-4 md:pb-2 text-base block w-full md:w-[50%]"
+            className="main-down-btn pt-10 pb-4 md:pb-2 text-base block w-full md:w-[50%]"
             style={{
               borderBottom: "1px solid #B2B2B2",
               paddingRight: "2rem",
               paddingLeft: "0.54rem",
+              cursor: "pointer",
             }}
           >
             <span

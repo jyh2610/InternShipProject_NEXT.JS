@@ -1,8 +1,8 @@
-const withPlugins = require("next-compose-plugins");
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: true,
-  openAnalyzer: true,
-});
+// const withPlugins = require("next-compose-plugins");
+// const withBundleAnalyzer = require("@next/bundle-analyzer")({
+//   enabled: true,
+//   openAnalyzer: true,
+// });
 const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 /** @type {import('next').NextConfig} */
 
@@ -32,19 +32,46 @@ const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 module.exports = async (phase) => {
   if (phase === PHASE_DEVELOPMENT_SERVER) {
     return {
+      images: {
+        remotePatterns: [
+          {
+            protocol: "https",
+            hostname: "user-images.githubusercontent.com",
+          },
+        ],
+      },
       eslint: {
         ignoreDuringBuilds: true,
+      },
+      swcMinify: false,
+      experimental: {
+        swcTraceProfiling: true,
       },
     };
   }
 
   return {
+    images: {
+      remotePatterns: [
+        {
+          protocol: "https",
+          hostname: "user-images.githubusercontent.com",
+        },
+      ],
+    },
     server: {
       host: "0.0.0.0",
       port: 8080,
     },
     eslint: {
       ignoreDuringBuilds: true,
+    },
+    swcMinify: false,
+    compiler: {
+      removeConsole: {
+        exclude: ["error"],
+        experimentalDecorators: true,
+      },
     },
   };
 };

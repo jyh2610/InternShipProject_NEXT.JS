@@ -2,7 +2,7 @@ import React from "react";
 
 import { Form, Input } from "antd";
 
-function Name() {
+function Name(this: any) {
   return (
     <Form.Item
       rules={[

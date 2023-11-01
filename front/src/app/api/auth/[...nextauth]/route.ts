@@ -5,53 +5,50 @@ import NaverProvider from "next-auth/providers/naver";
 
 import { baseApi } from "@/API/api";
 
+import type { CustomSession } from "@/components/signin/SocialLoginButton";
+
 const api = new baseApi();
-const handler = NextAuth({
+const authOption = {
   providers: [
     NaverProvider({
-      clientId: process.env.NODE_ENV_API_NAVERID || "",
-      clientSecret: process.env.NODE_ENV_API_NAVERSECRECT || "",
+      clientId: process.env.NODE_ENV_API_NAVERID ?? "",
+      clientSecret: process.env.NODE_ENV_API_NAVERSECRECT ?? "",
     }),
-    KakaoProvider({ clientId: process.env.NODE_ENV_API_KAKAOID || "", clientSecret: process.env.NODE_ENV_API_KAKAOSECRECT || "" }),
+    KakaoProvider({ clientId: process.env.NODE_ENV_API_KAKAOID ?? "", clientSecret: process.env.NODE_ENV_API_KAKAOSECRECT || "" }),
     GoggleProvider({
-      clientId: process.env.NODE_ENV_API_GOOGLEEID || "",
-      clientSecret: process.env.NODE_ENV_API_GOOGLESECRECT || "",
+      clientId: process.env.NODE_ENV_API_GOOGLEEID ?? "",
+      clientSecret: process.env.NODE_ENV_API_GOOGLESECRECT ?? "",
     }),
   ],
-
   callbacks: {
-    async redirect({ baseUrl }) {
-      return baseUrl;
-    },
     async signIn() {
       return true;
     },
-    async jwt({ token, account }) {
-      // Persist the OAuth access_token to the token right after signin
+    async jwt({ token, account }: any) {
+      token.token = account?.access_token;
       if (account) {
-        token.accessToken = account.access_token;
-        const socialaccesstoken = token?.accessToken;
+        token.token = account?.access_token;
+        const url = `/sign/${account?.provider}login`;
 
-        // const url = `/sign/${account.provider}login`;
-        // const res = await api.post({
-        //   url,
-        //   options: {
-        //     headers: {
-        //       Authorization: `Bearer ${socialaccesstoken}`,
-        //     },
-        //   },
-        // });
-        // token.customData = res;
+        const res: CustomSession = await api.post({
+          url,
+          options: {
+            headers: {
+              Authorization: `Bearer ${account?.access_token}`,
+            },
+          },
+        });
+
+        token.server = res;
+        return token;
       }
-
       return token;
     },
     async session({ session, token }: any) {
-      // session.token = token.customData;
-
+      session.server = token.server;
       return session;
     },
   },
-});
-
+};
+export const handler = NextAuth(authOption);
 export { handler as GET, handler as POST };

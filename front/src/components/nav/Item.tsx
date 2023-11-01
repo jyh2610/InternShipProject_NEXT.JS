@@ -1,13 +1,14 @@
 import { Button } from "antd";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-import { getCookie } from "@/API/cookie";
-import { useAppSelector } from "@/redux/hooks";
+// import { getCookie } from "@/API/cookie";
+// import { useAppSelector } from "@/redux/hooks";
 
 import NavDropDown from "./NavDropDown";
 
+import type { NavColorProps } from "@/type/nav";
 import type { MenuProps } from "antd";
-import { NavColorProps } from "@/type/nav";
-import Link from "next/link";
 
 export const data: MenuProps = {
   items: [
@@ -50,9 +51,11 @@ export const data: MenuProps = {
   ],
 };
 function NavItem({ scrollY, path }: NavColorProps) {
-  const accesstoken = useAppSelector((state) => state.auth.accessToken);
+  const router = useRouter();
 
-  const refreshToken = getCookie("refresh_token");
+  // const accesstoken = useAppSelector((state) => state.auth.accessToken);
+
+  // const refreshToken = getCookie("refresh_token");
 
   const isTop = path !== "/" ? "black" : scrollY === 0 ? "white" : "black";
 
@@ -64,7 +67,7 @@ function NavItem({ scrollY, path }: NavColorProps) {
   };
 
   return (
-    <div className="flex gap-2">
+    <div className="pc flex gap-2">
       <Button style={font} className="px-5 mr-1" type="text">
         홈
       </Button>
@@ -72,11 +75,16 @@ function NavItem({ scrollY, path }: NavColorProps) {
       <Button style={font} className="px-5 mr-1" type="text">
         솔루션
       </Button>
-      {(accesstoken !== undefined || refreshToken !== undefined) && (
-        <Button style={font} className="px-5 mr-1" type="text">
-          다운로드
-        </Button>
-      )}
+      <Button
+        onClick={() => {
+          router.push("/download");
+        }}
+        style={font}
+        className="px-5 mr-1"
+        type="text"
+      >
+        다운로드
+      </Button>
     </div>
   );
 }

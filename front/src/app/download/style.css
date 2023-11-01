@@ -1,0 +1,235 @@
+/*top_section 영역*/
+.top_section {
+    background-image: url("https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaDZO1ecfsoGFVVkZ-XuaSzEtT5OEgQDS1zGXF7RpX9hlnMxNVN0V1aKesHbNTfCLCvzceUh2KLjUxl_V-pAPUKvVPo2nA=w1920-h888");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 640px;
+    width: 100%;
+}
+
+.page-text {
+    width: 100%;
+    max-width: 640px;
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.page-tit {
+    font-size: 2.2rem;
+    font-weight: 100;
+    padding: 0.875rem 0;
+}
+
+.page-copylight {
+    font-size: 1rem;
+    line-height: 1.75rem;
+    font-weight: 400;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 0 2.8rem 0;
+}
+
+.down-btn {
+    background: none;
+    border: none;
+    outline: none;
+    width: 200px;
+    height: 48px;
+    padding: 1.65rem 0;
+    border-radius: 0.3rem;
+    background-color: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(2rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+}
+
+.down-btn:hover {
+    background-color: rgba(42, 168, 107, 0.65);
+    backdrop-filter: blur(0rem);
+}
+
+.down-btn>span {
+    color: #fff;
+    font-size: 0.875rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.down-btn .down-icon {
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*guide 영역*/
+.guide {
+    padding: 10rem 0 5rem 0;
+    background-color: #f5f5f5;
+}
+
+.section-text-wrap {
+    text-align: center;
+}
+
+.section-tit {
+    font-size: 2.2rem;
+}
+
+.section-text {
+    margin-top: 0.8rem;
+    font-size: 1rem;
+}
+
+.item-list {
+    padding: 5rem 0 0 0;
+}
+
+.item-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.item {
+    border-radius: 0.3rem;
+    background-color: #fff;
+    padding: 5.4rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% / 3 - 24px);
+}
+
+.badge {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+    font-weight: 700;
+    border-radius: 0.3rem;
+}
+
+.badge.marketing {
+    background-color: rgba(255, 179, 49, 0.16);
+    color: #dd7d02;
+}
+
+.badge.partner {
+    color: #3182f6;
+    background-color: rgba(49, 130, 246, 0.16);
+}
+
+.badge.user {
+    color: #029359;
+    background-color: rgba(2, 162, 98, 0.16);
+}
+
+.item-tit h3 {
+    margin: 1.4rem 0 2rem 0;
+    font-size: 1.5rem;
+}
+
+.item-text p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: rgb(78, 89, 104);
+
+}
+
+.install-list {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+}
+
+.install_01 {
+    width: 100%;
+    height: 340px;
+    background-image: url("https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaDZO1ecfsoGFVVkZ-XuaSzEtT5OEgQDS1zGXF7RpX9hlnMxNVN0V1aKesHbNTfCLCvzceUh2KLjUxl_V-pAPUKvVPo2nA=w1920-h888");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    border-radius: 0.3rem;
+}
+
+.bottom-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    color: #fff;
+    z-index: 1;
+}
+
+.bottom-text-tit {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.bottom-copylight {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.875rem;
+}
+
+.install-text {
+    padding: 1rem 0;
+    font-size: 1.15rem;
+}
+
+.install-num {
+    font-weight: 700;
+    margin-right: 0.3rem;
+}
+
+.install-item-list {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.install-item {
+    width: calc(100%/2 - 8px);
+    padding: 1.8rem;
+    background-color: #f5f5f5;
+    border-radius: 0.3rem;
+}
+
+.item-txt {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.img-wrap {
+    height: 340px;
+    overflow: hidden;
+}
+
+.img-wrap>img {
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+    border-radius: 0.3rem;
+}

@@ -1,10 +1,14 @@
 "use client";
 
 import React from "react";
+
 import Link from "next/link";
+
 import { getDateTime } from "@/lib/dateFormat";
+import { useAppSelector } from "@/redux/hooks";
 
 function CompleteForm() {
+  const username = useAppSelector((state) => state.auth.username);
   const signTime = getDateTime();
   return (
     <>
@@ -26,7 +30,7 @@ function CompleteForm() {
                 </svg>
               </span>
               <div className="complert-txt">
-                <p className="uesr-name">김택용 님 환영합니다!</p> {/* 가입 된 회원의 이름이 나타나게 처리 */}
+                <p className="uesr-name">{username} 님 환영합니다!</p> {/* 가입 된 회원의 이름이 나타나게 처리 */}
                 <p className="uesr-complert font-bold">회원가입 완료 되었습니다.</p>
               </div>
               <div className="complert-day">

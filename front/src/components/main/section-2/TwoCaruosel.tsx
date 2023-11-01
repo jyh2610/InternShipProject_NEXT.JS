@@ -28,7 +28,14 @@ function TwoCarousel() {
     <div className="w-full">
       <div className="relative m_slide_wrap flex gap-[0.5rem] w-full">
         <div className="shadow-2xl slide_layout">
-          <Swiper navigation={true} loop={true} modules={[Navigation, A11y]} onSlideChange={handleSlideChange}>
+          <Swiper
+            navigation={{
+              nextEl: ".swiper-button-next", // Specify next button element
+            }}
+            loop={true}
+            modules={[Navigation, A11y]}
+            onSlideChange={handleSlideChange}
+          >
             {dummyData.map((_, idx) => (
               <SwiperSlide key={idx}>
                 <div className="relative bg-dummyImg bg-center bg-no-repeat bg-cover h-[30rem] lg:h-[40rem] object-cover">
@@ -37,6 +44,7 @@ function TwoCarousel() {
                 </div>
               </SwiperSlide>
             ))}
+            <div className="swiper-button-next" />
           </Swiper>
         </div>
         <div className="items-end hidden md:flex">
