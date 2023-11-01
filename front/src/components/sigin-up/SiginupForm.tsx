@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 import { ConfigProvider, Form } from "antd";
 import { useRouter } from "next/navigation";
 
@@ -17,9 +15,10 @@ import type { formType } from "@/type/signUp";
 
 import { baseApi } from "@/API/api";
 import { formatDate } from "@/lib/FormatData";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setUserName } from "@/redux/slicer/authSlice";
 import EmailNew from "./EmailNew";
+import { useEffect } from "react";
 
 const validateMessages = {
   required: "${label} is required!",
@@ -38,6 +37,8 @@ const onFinish = (values: any) => {
 };
 
 const SiginupForm = () => {
+  const checked = useAppSelector((state) => state.auth.checkedthird);
+  //
   const dispatch = useAppDispatch();
   const api = new baseApi();
   const [form] = Form.useForm<formType>();
@@ -64,7 +65,7 @@ const SiginupForm = () => {
         body: sendingData,
       });
       if (res.success) {
-        dispatch(setUserName(user_name));
+        dispatch(setUserName(name));
         route.push("/signup/sign-complete");
       }
     } catch (errorInfo) {
@@ -81,7 +82,12 @@ const SiginupForm = () => {
       }
     });
   };
-
+  useEffect(() => {
+    if (!checked) {
+      alert("필수 동의 항목을 체크해주세요");
+      route.push("/signup/provideinfo");
+    }
+  }, []);
   return (
     <div className="">
       <div className="">
@@ -123,6 +129,10 @@ const SiginupForm = () => {
       </div>
     </div>
   );
+  // } else {
+  //   alert("필수 동의 항목을 체크해주세요");
+  //   return route.push("/signup/provideinfo");
+  // }
 };
 
 export default SiginupForm;

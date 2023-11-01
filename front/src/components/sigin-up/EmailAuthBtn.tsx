@@ -10,7 +10,6 @@ const EmailAuthBtn = ({
   setEmailbtn,
   setConfirmbtn,
   setIsActive,
-  isActive,
 }: {
   emailformValue: string;
   emailbtn: boolean;
@@ -43,7 +42,7 @@ const EmailAuthBtn = ({
   return (
     <div>
       {" "}
-      <Button style={{ height: "100%", padding: "0.5rem 1.2rem" }} disabled={emailbtn} onClick={sendingCode}>
+      <Button style={{ height: "auto", padding: "0.5rem 0.8rem" }} disabled={emailbtn} onClick={sendingCode}>
         이메일 인증
       </Button>
     </div>
