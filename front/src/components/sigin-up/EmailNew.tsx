@@ -58,7 +58,12 @@ const EmailNew = ({ emailformValue }: { emailformValue: string }) => {
             label=""
             rules={[{ message: "도메인을 선택하거나 입력해 주세요." }]}
           >
-            <Select placeholder="직접 입력" style={{ height: "100%", padding: "0.5rem 0.8rem" }} options={domainData} onChange={selectHandler} />
+            <Select
+              placeholder="직접 입력"
+              style={{ height: "2.4rem", marginBottom: "-2rem", padding: "0 0.8rem" }}
+              options={domainData}
+              onChange={selectHandler}
+            />
           </Form.Item>
         )}
         <EmailAuthBtn
@@ -71,7 +76,7 @@ const EmailNew = ({ emailformValue }: { emailformValue: string }) => {
           emailformValue={emailformValue}
         />
       </div>
-      <div style={{ marginLeft: "4rem", padding: "0.2rem 0.8rem" }}>
+      <div style={{ marginLeft: "4rem", marginBottom: "2rem", padding: "0.2rem 0.8rem" }}>
         {confirmbtn && <EmailCode setIsActive={setIsActive} isActive={isActive} email={emailformValue} />}
       </div>{" "}
     </div>

@@ -1,15 +1,24 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import Link from "next/link";
 
 import { getDateTime } from "@/lib/dateFormat";
 import { useAppSelector } from "@/redux/hooks";
+import { useRouter } from "next/navigation";
 
 function CompleteForm() {
   const username = useAppSelector((state) => state.auth.username);
   const signTime = getDateTime();
+  const route = useRouter();
+
+  useEffect(() => {
+    if (!username) {
+      alert("필수 동의 항목을 체크해주세요");
+      route.push("/signup/provideinfo");
+    }
+  });
   return (
     <>
       <div className="completr-wrap">
