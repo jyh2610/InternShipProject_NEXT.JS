@@ -46,6 +46,11 @@ const SocialLoginButton = () => {
     await signIn(socialtype, { callbackUrl: "/signin" });
   };
 
+  if (data) {
+    const serverData = data as unknown as CustomSession;
+    setCookie("refresh_token", serverData.server?.refreshToken);
+    dispatch(setAccessToken(serverData.server?.accessToken));
+  }
   return (
     <Form.Item>
       <SocialTitle />

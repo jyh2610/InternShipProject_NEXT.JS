@@ -10,6 +10,7 @@ const EmailAuthBtn = ({
   setEmailbtn,
   setConfirmbtn,
   setIsActive,
+  isActive,
 }: {
   emailformValue: string;
   emailbtn: boolean;

@@ -61,7 +61,6 @@ function ProvideInfo() {
       } else {
         setActiveKey([key]); // Convert the string to an array
       }
-      console.log(activeKey);
     },
     [activeKey],
   );
