@@ -23,7 +23,6 @@ function EmailCode({ email, setIsActive, isActive }: { isActive: boolean; email:
         },
       })
       .then((res) => {
-        console.log(res.success);
         setResSuccess(res.success);
       });
   };

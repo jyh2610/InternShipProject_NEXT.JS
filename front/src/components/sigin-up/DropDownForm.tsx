@@ -16,7 +16,6 @@ function DropDownForm({ item, setForm }: { setForm: Function; item: UserType }) 
       };
     });
   };
-  console.log(selectData[0].value);
   return (
     <Form.Item name={item.name} label={item.label}>
       {item.label === "생년월일" ? <DatePicker /> : <Select onChange={selectHandler} placeholder="선택" style={{ width: 200 }} options={selectData}></Select>}
