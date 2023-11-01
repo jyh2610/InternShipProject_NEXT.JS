@@ -38,7 +38,17 @@ const EmailNew = ({ emailformValue }: { emailformValue: string }) => {
         <Form.Item
           name="emailDomain" // 두 번째 Form.Item
           label=""
-          rules={[{ message: "도메인을 입력해 주세요." }]}
+          rules={[
+            { required: true, message: "도메인을 입력해 주세요." },
+            {
+              validator: (_, value) => {
+                if (value.length > 2 && value.includes(".")) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(new Error("유효하지 않은 이메일 입니다."));
+              },
+            },
+          ]}
         >
           <Input style={{ padding: "0.5rem 0.2rem" }} />
         </Form.Item>
