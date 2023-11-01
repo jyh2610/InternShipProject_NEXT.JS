@@ -13,7 +13,6 @@ function EmailCode({ email, setIsActive, isActive }: { isActive: boolean; email:
   const api = new baseApi();
   const startTimer = () => {
     setSeconds(180);
-
     api
       .post({
         url: "/validate/verifycode",
