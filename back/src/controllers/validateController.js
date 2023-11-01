@@ -54,7 +54,7 @@ module.exports ={
     hasId,
     hasNickname,
 
-    signUpCheck,
+    // signUpCheck,
 
     sendEmail,
     verifyCode,
