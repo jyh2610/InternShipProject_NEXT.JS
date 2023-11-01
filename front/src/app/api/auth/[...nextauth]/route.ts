@@ -3,11 +3,11 @@ import GoggleProvider from "next-auth/providers/google";
 import KakaoProvider from "next-auth/providers/kakao";
 import NaverProvider from "next-auth/providers/naver";
 
-// import { baseApi } from "@/API/api";
+import { baseApi } from "@/API/api";
 
-// import type { CustomSession } from "@/components/signin/SocialLoginButton";
+import type { CustomSession } from "@/components/signin/SocialLoginButton";
 
-// const api = new baseApi();
+const api = new baseApi();
 const authOption = {
   providers: [
     NaverProvider({
@@ -37,17 +37,17 @@ const authOption = {
 
         console.log(account, 3);
 
-        // const res: CustomSession = await api.post({
-        //   url,
-        //   options: {
-        //     headers: {
-        //       Authorization: "Bearer " + (account ? account.access_token : ""),
-        //     },
-        //   },
-        // });
-        // console.log(res);
+        const res: CustomSession = await api.post({
+          url,
+          options: {
+            headers: {
+              Authorization: "Bearer " + (account ? account.access_token : ""),
+            },
+          },
+        });
+        console.log(res);
 
-        // token.server = res;
+        token.server = res;
         return token;
       }
       return token;
