@@ -12,16 +12,25 @@ function Slider() {
   const swiperObj: SwiperOptions = {
     loop: true,
     slidesPerView: 1,
-    spaceBetween: 20,
     modules: [Navigation],
   };
 
   return (
     <Swiper navigation={true} {...swiperObj} className="mySwiper max-w-top">
       {thirdSlideData.map((item, idx) => {
+        const { img, title, contentstext } = item;
         return (
           <SwiperSlide key={idx} className="max-w-top">
-            <img key={idx} src={item.img} alt="img" className="w-full h-[680px]" />
+            <div
+              key={idx}
+              className=" w-full h-[680px]"
+              style={{ backgroundImage: `url(${img})`, backgroundRepeat: "no-repeat", backgroundPosition: "center center", backgroundSize: "cover" }}
+            >
+              <div className="three-slide-text">
+                <p dangerouslySetInnerHTML={{ __html: title }}></p>
+                <p dangerouslySetInnerHTML={{ __html: contentstext }}></p>
+              </div>
+            </div>
           </SwiperSlide>
         );
       })}

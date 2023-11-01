@@ -9,6 +9,8 @@ import Agreement from "@/components/provideinfo/Agreement";
 import AgreementBtn from "@/components/provideinfo/AgreementBtn";
 import Content from "@/components/provideinfo/Content";
 import { provideText } from "@/constants/constants";
+import { PrivacyText } from "@/constants/constants";
+import { informationText } from "@/constants/constants";
 
 import type { CollapseProps } from "antd";
 
@@ -37,7 +39,7 @@ function ProvideInfo() {
       label: "개인정보 수집 및 이용에 대한 안내",
       children: (
         <div className="flex flex-col ">
-          <Content label="이용약관" provideText={provideText} />
+          <Content label="개인정보 수집" provideText={PrivacyText} />
           <Agreement type="Two" check={check} setCheck={setCheck} />
         </div>
       ),
@@ -47,7 +49,7 @@ function ProvideInfo() {
       label: "제3자 개인정보 제공동의",
       children: (
         <div className="flex flex-col">
-          <Content label="이용약관" provideText={provideText} />
+          <Content label="제3자 제공" provideText={informationText} />
           <Agreement type="Three" check={check} setCheck={setCheck} />
         </div>
       ),
