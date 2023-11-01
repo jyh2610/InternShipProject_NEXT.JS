@@ -33,11 +33,10 @@ const SigninForm = () => {
       if (res.accessToken) {
         dispatch(setAccessToken(res.accessToken));
         route.push("/");
-      } else {
-        alert("존재하지 않는 회원입니다.");
       }
     } catch (err) {
       console.log(err);
+      alert("존재하지 않는 회원입니다.");
     }
   };
   const onFinish = async (values: reqType) => {

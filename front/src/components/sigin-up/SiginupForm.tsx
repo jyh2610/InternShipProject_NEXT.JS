@@ -6,7 +6,6 @@ import { ConfigProvider, Form } from "antd";
 import { useRouter } from "next/navigation";
 
 import Birth from "./Birth";
-import EmailInput from "./EmailInput";
 import Name from "./Name";
 import Nickname from "./Nickname";
 import Sex from "./Sex";
@@ -20,6 +19,7 @@ import { baseApi } from "@/API/api";
 import { formatDate } from "@/lib/FormatData";
 import { useAppDispatch } from "@/redux/hooks";
 import { setUserName } from "@/redux/slicer/authSlice";
+import EmailNew from "./EmailNew";
 
 const validateMessages = {
   required: "${label} is required!",
@@ -38,32 +38,30 @@ const onFinish = (values: any) => {
 };
 
 const SiginupForm = () => {
-  const [emailValue, setEmailValue] = useState<emailType>({ id: "", domain: "", code: "" }); // 이메일 입력값을 상태로 관리
-
   const dispatch = useAppDispatch();
   const api = new baseApi();
   const [form] = Form.useForm<formType>();
 
-  interface emailType {
-    id: string;
-    domain: string;
-    code: string;
-  }
-
   const nicknameValue = Form.useWatch("nickname", form);
   const user_nameValue = Form.useWatch("user_name", form);
-  const email = `${emailValue.id}@${emailValue.domain}`;
 
-  console.log(email, "ghyyydee");
+  const emailId = Form.useWatch("emailId", form); // 이메일 아이디 부분 값
+  const emailDomain = Form.useWatch("emailDomain", form); // 도메인 부분 값
+
+  const fullEmail = `${emailId}@${emailDomain}`; //
+  console.log(emailId, "사인업폼 ");
   const route = useRouter();
+  // const email = `${emailValue.id}@${emailValue.domain}`;
   const validateForm = async () => {
     try {
-      console.log(email, "ghyyydee");
       const { birthday, name, user_name, nickname, password, nation, sex } = await form.validateFields();
-
+      console.log("asdasd");
+      // console.log(email, "_______sd");
+      const sendingData = { birthday: formatDate(birthday), name, user_name, nickname, password, nation, sex, email: fullEmail };
+      // console.log(email, "ghyyydee");
       const res = await api.post({
         url: "/sign/signup",
-        body: { birthday: formatDate(birthday), name, user_name, nickname, password, nation, sex, email: emailValue.id + "@" + emailValue.domain },
+        body: sendingData,
       });
       if (res.success) {
         dispatch(setUserName(user_name));
@@ -114,8 +112,8 @@ const SiginupForm = () => {
             <Name />
             <Nickname nicknameValue={nicknameValue} />
             <UserID user={user_nameValue} />
-            <EmailInput emailValue={emailValue} setEmailValue={setEmailValue} email={email} />
-            {/* <Password /> */}
+            {/* <EmailInput emailValue={emailValue} setEmailValue={setEmailValue} email={email} /> */}
+            <EmailNew emailformValue={fullEmail} />
             <TestPassword />
             <Birth validateSelect={validateSelect} ko_KR={""} />
             <Sex validateSelect={validateSelect} ko_KR={""} />
