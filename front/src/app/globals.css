@@ -10,12 +10,11 @@
 }
 
 * {
-  font-family: "NanumSquareAc", sans-serif;
+  font-family: "NanumSquareAc", "Noto Sans KR",'Apple SD Gothic Neo','Malgun Gothic',arial,sans-serif;
   margin: 0;
   padding: 0;
   word-break: keep-all;
   box-sizing: border-box;
-
 }
 
 body {
@@ -46,7 +45,9 @@ button {
   max-width: 1600px;
   padding: 0 2rem;
 }
-
+p, a, h1, h2, h3, h4, h5, h6{
+  transform: skew(-0.1deg);
+}
 p {
   margin: 0;
 }
@@ -65,7 +66,7 @@ p {
 
 /* 나눔스퀘어 폰트 추가 23.10.17_수정자 김택용*/
 @import url("https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css");
-
+@import url("http://fonts.googleapis.com/earlyaccess/notosanskr.css");
 @font-face {
   font-family: "Roboto";
   src: url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");

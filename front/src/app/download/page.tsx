@@ -117,7 +117,7 @@ function Download() {
             </div>
           </div>
           <div className="install-list">
-            <div className="install-02-wrap">
+            <div className="install-02-wrap" data-aos="fade-up" data-aos-offset="100" data-aos-delay="100">
               <div className="install-text">
                 <p>
                   <span className="install-num">02</span>
@@ -175,7 +175,7 @@ function Download() {
             </div>
           </div>
           <div className="install-list">
-            <div className="install-03-wrap">
+            <div className="install-03-wrap" data-aos="fade-up" data-aos-offset="150" data-aos-delay="150">
               <div className="install-text">
                 <p>
                   <span className="install-num">03</span>
