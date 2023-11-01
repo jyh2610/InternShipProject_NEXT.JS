@@ -67,6 +67,8 @@ const signOut = async (user_no) => {
 
 //소셜로그인
 const socialLogin = async (accessToken, url, social_code) => {
+  console.log("\n\n\naccessToken", accessToken, "\n\n\n");
+  
   try {
     const result = await axios.get(url, {
       headers: {
@@ -80,8 +82,9 @@ const socialLogin = async (accessToken, url, social_code) => {
     }
 
     const { data } = result;
-    const external_id = social_code === 3 ? data.response.id : data.id;
-    const nickname = social_code === 3 ? data.response.name : data.name;
+    const external_id = String(social_code === 3 ? data.response.id : data.id);
+    const nickname = social_code === 3 ? data.response.name : (social_code === 2 ? data.properties.nickname : data.name);
+    
 
     let social_user = await member.getMember(external_id);
 
@@ -96,12 +99,12 @@ const socialLogin = async (accessToken, url, social_code) => {
 
       return await generateTokens(social_user.user_no);
     }
-
     await auth.updateSocial_login(external_id, accessToken);
 
     return await generateTokens(social_user.user_no);
 
   } catch (err) {
+    console.error(err.message);
     detectError("INVALID_TOKEN", 400);
   }
 };
