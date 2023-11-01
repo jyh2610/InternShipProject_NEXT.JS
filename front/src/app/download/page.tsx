@@ -166,7 +166,7 @@ function Download() {
                       />
                     </div>
                     <div className="item-txt">
-                      <p>04) 완료가 되면 finish 버튼을 누르면 런처 설치가 완료 됩니다.</p>
+                      <p>04) finish 버튼을 누르면 런처 설치가 완료 됩니다.</p>
                     </div>
                   </li>
                 </ul>
