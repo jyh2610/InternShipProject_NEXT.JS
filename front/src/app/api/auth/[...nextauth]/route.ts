@@ -3,11 +3,11 @@ import GoggleProvider from "next-auth/providers/google";
 import KakaoProvider from "next-auth/providers/kakao";
 import NaverProvider from "next-auth/providers/naver";
 
-import { baseApi } from "@/API/api";
+// import { baseApi } from "@/API/api";
 
-import type { CustomSession } from "@/components/signin/SocialLoginButton";
+// import type { CustomSession } from "@/components/signin/SocialLoginButton";
 
-const api = new baseApi();
+// const api = new baseApi();
 const authOption = {
   providers: [
     NaverProvider({
@@ -26,29 +26,28 @@ const authOption = {
     },
     async jwt({ token, account }: any) {
       token.token = account?.access_token;
-      console.log(token,'---------')
-      console.log(111)
-      console.log(account, '--------------' )
+      console.log(token, "---------");
+      console.log(111);
+      console.log(account, "--------------");
       if (account) {
         token.token = account?.access_token;
-        const url = '/sign/' + account.provider + 'login';
+        const url = "/sign/" + account.provider + "login";
 
-        console.log(url,2);
+        console.log(url, 2);
 
-        console.log(account,3);
+        console.log(account, 3);
 
-        const res: CustomSession = await api.post({
-          url,
-          options: {
-            headers: {
-              Authorization:'Bearer ' + (account ? account.access_token : '')
-,
-            },
-          },
-        });
-        console.log(res);
+        // const res: CustomSession = await api.post({
+        //   url,
+        //   options: {
+        //     headers: {
+        //       Authorization: "Bearer " + (account ? account.access_token : ""),
+        //     },
+        //   },
+        // });
+        // console.log(res);
 
-        token.server = res;
+        // token.server = res;
         return token;
       }
       return token;

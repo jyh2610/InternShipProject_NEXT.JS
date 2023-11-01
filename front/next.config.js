@@ -67,11 +67,11 @@ module.exports = async (phase) => {
       ignoreDuringBuilds: true,
     },
     swcMinify: false,
-    compiler: {
-      removeConsole: {
-        exclude: ["error"],
-        experimentalDecorators: true,
-      },
-    },
+    // compiler: {
+    //   removeConsole: {
+    //     exclude: ["error"],
+    //     experimentalDecorators: true,
+    //   },
+    // },
   };
 };
