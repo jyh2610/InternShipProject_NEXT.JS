@@ -29,6 +29,9 @@ const authOption = {
       if (account) {
         token.token = account?.access_token;
         const url = `/sign/${account?.provider}login`;
+        console.log(url);
+
+        console.log(account);
 
         const res: CustomSession = await api.post({
           url,
@@ -46,6 +49,8 @@ const authOption = {
     },
     async session({ session, token }: any) {
       session.server = token.server;
+      console.log(session);
+
       return session;
     },
   },
