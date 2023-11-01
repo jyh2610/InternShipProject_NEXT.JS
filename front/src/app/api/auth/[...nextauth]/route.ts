@@ -41,6 +41,7 @@ const authOption = {
             },
           },
         });
+        console.log(res);
 
         token.server = res;
         return token;
