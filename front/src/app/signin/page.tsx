@@ -10,7 +10,7 @@ const SignIn = () => {
   return (
     <>
       <div className="relativ overflow-hidden">
-        <div className="login absolute left-[50%] top-[50%]">
+        <div style={{ zIndex: 11 }} className="login absolute left-[50%] top-[50%]">
           <SigninTitle />
           <SigninForm />
         </div>

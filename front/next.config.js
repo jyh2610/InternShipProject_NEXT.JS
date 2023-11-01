@@ -32,6 +32,14 @@ const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 module.exports = async (phase) => {
   if (phase === PHASE_DEVELOPMENT_SERVER) {
     return {
+      images: {
+        remotePatterns: [
+          {
+            protocol: "https",
+            hostname: "user-images.githubusercontent.com",
+          },
+        ],
+      },
       eslint: {
         ignoreDuringBuilds: true,
       },
@@ -43,6 +51,14 @@ module.exports = async (phase) => {
   }
 
   return {
+    images: {
+      remotePatterns: [
+        {
+          protocol: "https",
+          hostname: "user-images.githubusercontent.com",
+        },
+      ],
+    },
     server: {
       host: "0.0.0.0",
       port: 8080,

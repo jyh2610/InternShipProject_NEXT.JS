@@ -5,6 +5,7 @@ import { Form } from "antd";
 import { usePathname, useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
 
+import Image from "next/image";
 import { getCookie, setCookie } from "@/API/cookie";
 import { loginObj } from "@/constants/constants";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -57,14 +58,16 @@ const SocialLoginButton = () => {
       <SocialTitle />
       <div className="flex justify-center gap-[2rem]">
         {loginObj.map((data) => (
-          <img
-            className="sns-icon"
+          <Image
+            className="cursor-pointer"
             key={data.name}
+            src={data.icon}
+            alt={data.name}
+            width={42}
+            height={42}
             onClick={() => {
               sociallogin(data.social);
             }}
-            src={data.icon}
-            alt={data.name}
           />
         ))}
       </div>
