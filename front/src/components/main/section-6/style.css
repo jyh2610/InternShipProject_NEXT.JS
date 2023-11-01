@@ -3,6 +3,7 @@
     overflow: hidden;
     height: 0;
     padding-top: 56.25%;
+    box-shadow: 0 0px 28px rgba(0, 0, 0, 0.35), 0 3px 13px rgba(0, 0, 0, 0.25)
 }
 
 .video-layout #video {
@@ -11,6 +12,7 @@
     height: 100%;
     left: 0;
     top: 0;
+    background-color: #000;
 }
 
 

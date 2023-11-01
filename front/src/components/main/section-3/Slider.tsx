@@ -8,6 +8,8 @@ import { thirdSlideData } from "@/constants/constants";
 
 import type { SwiperOptions } from "swiper/types";
 
+import "./style.css";
+
 function Slider() {
   const swiperObj: SwiperOptions = {
     loop: true,
@@ -16,19 +18,19 @@ function Slider() {
   };
 
   return (
-    <Swiper navigation={true} {...swiperObj} className="mySwiper max-w-top">
+    <Swiper navigation={true} {...swiperObj} className="mySwiper mainwidth ">
       {thirdSlideData.map((item, idx) => {
         const { img, title, contentstext } = item;
         return (
-          <SwiperSlide key={idx} className="max-w-top">
+          <SwiperSlide key={idx}>
             <div
               key={idx}
-              className=" w-full h-[680px]"
+              className=" w-full h-[580px]"
               style={{ backgroundImage: `url(${img})`, backgroundRepeat: "no-repeat", backgroundPosition: "center center", backgroundSize: "cover" }}
             >
               <div className="three-slide-text">
-                <p dangerouslySetInnerHTML={{ __html: title }}></p>
-                <p dangerouslySetInnerHTML={{ __html: contentstext }}></p>
+                <p className="three-slide-tit" dangerouslySetInnerHTML={{ __html: title }}></p>
+                <p className="three-slide-contant" dangerouslySetInnerHTML={{ __html: contentstext }}></p>
               </div>
             </div>
           </SwiperSlide>

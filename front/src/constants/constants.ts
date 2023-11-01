@@ -195,26 +195,27 @@ export const domainData = [
 export const thirdSlideData = [
   {
     id: 0,
-    img: "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCerM_gk2t1D_njWinDkgxA4mXVHGaZC9HXfNM4tII29v1n6X8O8AykbTtolRhZ2PZZQSX4_q1vcBnV_I5qkHGEUm_aIA=w3718-h2160",
-    title: "아키플 스튜디오 2.0<br />네 번째 영역 타이틀",
-    contentstext: "첫 번째 진행되는 순서에 대한 설명이 들어 갈 영역입니다",
+    img: "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaDNrphI5FlDnI4wEguv1CLRdZ-EE6GrOJL1ukX6Vcxqo5jFjdJT6ws4waBIhV8_cujxBpk4DvqI9u_zTFx0pR99WqOk=w1920-h888",
+    title: "다양한 디자인 옵션",
+    contentstext: "다양한 재질, 가구, 컬러 팔레트 등을 제공하여 사용자가 다양한 디자인 옵션을 시도해 볼 수 있도록 합니다.",
   },
   {
     id: 1,
-    img: "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCerM_gk2t1D_njWinDkgxA4mXVHGaZC9HXfNM4tII29v1n6X8O8AykbTtolRhZ2PZZQSX4_q1vcBnV_I5qkHGEUm_aIA=w3718-h2160",
-    title: "아키플 스튜디오 2.0<br />네 번째 영역 타이틀",
-    contentstext: "두 번째 진행되는 순서에 대한 설명이 들어 갈 영역입니다",
+    img: "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCgCX6O2WdYnGfg1subp4mLi2amDghnJl3Xki-UtVIgfMpy14rw4C-SvaY8G2siQUDMrOLuVN6dtqI-y3ezjvUNaqB2=w1920-h888",
+    title: "현실적 시각화",
+    contentstext:
+      "언리얼 엔진을 활용하여 인테리어 3D 툴을 개발하면 현실적인 시각화를 제공할 수 있습니다. 고객들은 거주 공간을 미리 확인하고 디자인 아이디어를 더 쉽게 이해할 수 있습니다.",
   },
   {
     id: 2,
-    img: "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCerM_gk2t1D_njWinDkgxA4mXVHGaZC9HXfNM4tII29v1n6X8O8AykbTtolRhZ2PZZQSX4_q1vcBnV_I5qkHGEUm_aIA=w3718-h2160",
-    title: "아키플 스튜디오 2.0<br/>네 번째 영역 타이틀",
-    contentstext: "세 번째 진행되는 순서에 대한 설명이 들어 갈 영역입니다",
+    img: "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCjvcMnzujjos2S4NOSrIXPLkm1kAxrRevo7SxuhPv4nStnFK2ZOqZADZRMdYx-JzsQH_0LGYvx5zjPVm-_-d4SSTt8Ww=w1920-h888",
+    title: "가상 투어 및 VR 지원",
+    contentstext: "고객들은 제작한 디자인을 3D 가상 투어 또는 가상현실(VR) 환경에서 체험할 수 있어, 진정한 몰입감을 느낄 수 있습니다.",
   },
   {
     id: 3,
-    img: "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCerM_gk2t1D_njWinDkgxA4mXVHGaZC9HXfNM4tII29v1n6X8O8AykbTtolRhZ2PZZQSX4_q1vcBnV_I5qkHGEUm_aIA=w3718-h2160",
-    title: "아키플 스튜디오 2.0<br />네 번째 영역 타이틀",
-    contentstext: "네 번째 진행되는 순서에 대한 설명이 들어 갈 영역입니다",
+    img: "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaDIedv4gRbNyPcg7VO4A2gHG1SJExzfL9_4iqAROacMG2hsHPgarzeoez14kb0o4ROKDKOCcMIzFfEvl22TUV6kq6P6kQ=w1920-h888",
+    title: "비용 절감",
+    contentstext: "디자인 변경과 실험을 통해 공사 현장에서의 비용을 절감하고, 고객의 만족도를 높일 수 있습니다.",
   },
 ];
