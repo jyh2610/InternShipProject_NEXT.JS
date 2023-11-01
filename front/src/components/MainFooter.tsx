@@ -1,10 +1,9 @@
 "use client";
-import { Layout } from "antd";
+
 function MainFooter() {
-  const { Footer } = Layout;
 
   return (
-    <Footer
+    <footer
       style={{
         background: "#2C2C2C",
         color: "#fff",
@@ -71,7 +70,7 @@ function MainFooter() {
           <p>Copyright © {new Date().getFullYear()} UABLE. All Right Reserve</p>
         </div>
       </div>
-    </Footer>
+    </footer>
   );
 }
 

@@ -26,7 +26,6 @@ a,
 a:hover {
   text-decoration: none;
 }
-
 body::-webkit-scrollbar {
   display: none;
 }
@@ -223,4 +222,9 @@ p {
 
 .sign-checkbox {
   padding: 0.5rem 0 !important;
+}
+
+.footer-nav-list > a:hover{
+  pointer-events: none;
+  color: none !important;
 }
