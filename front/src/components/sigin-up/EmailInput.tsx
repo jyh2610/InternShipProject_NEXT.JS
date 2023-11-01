@@ -77,7 +77,7 @@ function EmailInput({ emailValue, setEmailValue, email }: { emailValue: any; set
             },
           },
         ]}
-        name={["email", "domain"]}
+        name={["email"]}
         label="이메일"
       >
         <div className="flex flex-col text-center ">

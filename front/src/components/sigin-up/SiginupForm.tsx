@@ -38,8 +38,9 @@ const onFinish = (values: any) => {
 };
 
 const SiginupForm = () => {
-  const dispatch = useAppDispatch();
   const [emailValue, setEmailValue] = useState<emailType>({ id: "", domain: "", code: "" }); // 이메일 입력값을 상태로 관리
+
+  const dispatch = useAppDispatch();
   const api = new baseApi();
   const [form] = Form.useForm<formType>();
 
