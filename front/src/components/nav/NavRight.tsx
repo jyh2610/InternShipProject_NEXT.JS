@@ -3,7 +3,6 @@ import React, { useCallback, useEffect, useMemo } from "react";
 
 import { Button } from "antd";
 import { usePathname, useRouter } from "next/navigation";
-import { signOut } from "next-auth/react";
 
 import { getCookie, removeCookie } from "@/API/cookie";
 import { logOutHandler, refreshTokenHandler } from "@/lib/signinApi";
@@ -34,7 +33,6 @@ function NavRight({ scrollY }: NavColorProps) {
   );
 
   const logout = useCallback(async () => {
-    await signOut({ redirect: true });
     accesstoken && (await logOutHandler(accesstoken));
     removeCookie("refresh_token");
     dispatch(setAccessToken(null));
