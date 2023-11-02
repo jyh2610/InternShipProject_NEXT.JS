@@ -26,26 +26,26 @@ const authOption = {
     },
     async jwt({ token, account }: any) {
       token.token = account?.access_token;
-      console.log(token, "---------");
-      console.log(111);
-      console.log(account, "--------------");
       if (account) {
         token.token = account?.access_token;
         const url = "/sign/" + account.provider + "login";
 
         console.log(url, 2);
-
+        console.log(account.access_token);
         console.log(account, 3);
+        api.reSettingURL("https://archiple.com");
 
         const res: CustomSession = await api.post({
-          url,
+          url: url, // 실제 API 엔드포인트
           options: {
             headers: {
-              Authorization: "Bearer " + (account ? account.access_token : ""),
+              Authorization: `Bearer ${account.access_token}`,
             },
           },
         });
-        console.log(res);
+
+        // baseURL를 원래대로 리셋
+        api.reSettingURL(process.env.NEXT_PUBLIC_BASE_URL!);
 
         token.server = res;
         return token;
