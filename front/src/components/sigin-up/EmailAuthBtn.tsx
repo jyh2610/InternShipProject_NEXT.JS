@@ -28,15 +28,16 @@ const EmailAuthBtn = ({
         email: emailformValue,
       },
     });
-    console.log(res, "______");
-    console.log(res, "이메일 응답");
+
     if (res?.success) {
-      setIsActive(true);
       setConfirmbtn(true);
       setEmailbtn(true);
       setTimeout(() => {
         setEmailbtn(false);
       }, 6000);
+      setTimeout(() => {
+        setConfirmbtn(false);
+      }, 180000);
     }
   };
   return (

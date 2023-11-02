@@ -43,9 +43,9 @@ function EmailCode({ email, setIsActive, isActive }: { isActive: boolean; email:
       }, 1000);
     } else {
       clearTimeout(timerInterval);
-      setTimestart(false); // 타이머 종료 상태로 설정
+      setTimestart(false);
+      setIsActive(false);
     }
-
     // 컴포넌트가 언마운트될 때 타이머 정리
     return () => {
       clearTimeout(timerInterval);

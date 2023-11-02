@@ -38,6 +38,7 @@ const onFinish = (values: any) => {
 
 const SiginupForm = () => {
   const [emailbtn, setEmailbtn] = useState(false);
+  const [confirmbtn, setConfirmbtn] = useState(false);
 
   const checked = useAppSelector((state) => state.auth.checkedthird);
   //
@@ -123,7 +124,7 @@ const SiginupForm = () => {
             <Nickname nicknameValue={nicknameValue} />
             <UserID user={user_nameValue} />
             {/* <EmailInput emailValue={emailValue} setEmailValue={setEmailValue} email={email} /> */}
-            <EmailNew emailformValue={fullEmail} emailbtn={emailbtn} setEmailbtn={setEmailbtn} />
+            <EmailNew emailformValue={fullEmail} confirmbtn={confirmbtn} setConfirmbtn={setConfirmbtn} emailbtn={emailbtn} setEmailbtn={setEmailbtn} />
             <TestPassword />
             <Birth validateSelect={validateSelect} ko_KR={""} />
             <Sex validateSelect={validateSelect} ko_KR={""} />
