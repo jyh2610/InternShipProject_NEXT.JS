@@ -13,7 +13,7 @@ export class baseApi {
   reSettingURL(url: string) {
     this.axiosInstance.defaults.baseURL = url;
   }
-    getURL() {
+  getURL() {
     return this.axiosInstance.defaults.baseURL;
   }
   addHeaders(header: {}) {

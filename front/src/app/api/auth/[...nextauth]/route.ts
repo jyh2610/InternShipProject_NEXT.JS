@@ -26,13 +26,11 @@ const authOption = {
     },
     async jwt({ token, account }: any) {
       token.token = account?.access_token;
-            console.log(api.getURL());
       if (account) {
         token.token = account?.access_token;
         const url = "/sign/" + account.provider + "login";
-	console.log(url)
         api.reSettingURL("https://archiple.com/back");
-      console.log(api.getURL());
+        console.log(api.getURL());
         const res: CustomSession = await api.post({
           url: url, // 실제 API 엔드포인트
           options: {
@@ -41,19 +39,17 @@ const authOption = {
             },
           },
         });
-	console.log(res)
         // baseURL를 원래대로 리셋
         api.reSettingURL(process.env.NEXT_PUBLIC_BASE_URL!);
-      console.log(api.getURL());
         token.server = res;
+        console.log(token, "1111111");
         return token;
       }
+      console.log(token, 222222222222);
       return token;
     },
     async session({ session, token }: any) {
       session.server = token.server;
-      console.log(session);
-
       return session;
     },
   },
