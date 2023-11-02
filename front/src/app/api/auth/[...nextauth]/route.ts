@@ -2,8 +2,8 @@ import NextAuth from "next-auth";
 import GoggleProvider from "next-auth/providers/google";
 import KakaoProvider from "next-auth/providers/kakao";
 import NaverProvider from "next-auth/providers/naver";
-import { setCookie } from "cookies-next";
 import { baseApi } from "@/API/api";
+import { cookies } from "next/headers";
 
 const api = new baseApi();
 const authOption = {
@@ -40,12 +40,12 @@ const authOption = {
             },
           },
         });
-        setCookie("refresh_token", res.refreshToken);
         api.reSettingURL(process.env.NEXT_PUBLIC_BASE_URL!);
+        cookies().set("refresh_token", res.refreshToken, { secure: true });
+
         token.server = res;
         return token;
       }
-      this.session(token);
       return token;
     },
   },

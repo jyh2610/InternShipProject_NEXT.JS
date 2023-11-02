@@ -50,7 +50,6 @@ const SocialLoginButton = () => {
 
   if (data) {
     const serverData = data as unknown as CustomSession;
-    setCookie("refresh_token", serverData.server?.refreshToken);
     dispatch(setAccessToken(serverData.server?.accessToken));
   }
   return (
