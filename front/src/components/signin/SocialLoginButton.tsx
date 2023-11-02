@@ -16,6 +16,8 @@ import SocialTitle from "./SocialTitle";
 import type { Session } from "next-auth";
 
 export interface CustomSession extends Session {
+  [x: string]: any;
+  status: any;
   server: { accessToken: string; refreshToken: string; success: boolean };
 }
 

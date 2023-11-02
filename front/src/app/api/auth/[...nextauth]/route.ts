@@ -2,10 +2,8 @@ import NextAuth from "next-auth";
 import GoggleProvider from "next-auth/providers/google";
 import KakaoProvider from "next-auth/providers/kakao";
 import NaverProvider from "next-auth/providers/naver";
-
+import { setCookie } from "cookies-next";
 import { baseApi } from "@/API/api";
-
-import type { CustomSession } from "@/components/signin/SocialLoginButton";
 
 const api = new baseApi();
 const authOption = {
@@ -20,7 +18,6 @@ const authOption = {
       clientSecret: process.env.NODE_ENV_API_GOOGLESECRECT ?? "",
     }),
   ],
-  session: { jwt: true },
   callbacks: {
     async signIn() {
       return true;
@@ -35,7 +32,7 @@ const authOption = {
         token.token = account?.access_token;
         const url = "/sign/" + account.provider + "login";
         api.reSettingURL("https://archiple.com/back");
-        const res: CustomSession = await api.post({
+        const res: { accessToken: string; refreshToken: string } = await api.post({
           url: url,
           options: {
             headers: {
@@ -43,6 +40,7 @@ const authOption = {
             },
           },
         });
+        setCookie("refresh_token", res.refreshToken);
         api.reSettingURL(process.env.NEXT_PUBLIC_BASE_URL!);
         token.server = res;
         return token;
