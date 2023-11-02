@@ -1,0 +1,21 @@
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 0.3rem;
+  gap: 1rem;
+  padding: 1.4rem 2rem;
+}
+
+.modal > img {
+  width: 100%;
+}

@@ -75,3 +75,16 @@ module.exports = async (phase) => {
     // },
   };
 };
+
+// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+
+// module.exports = {
+//   // ... 다른 웹팩 설정
+
+//   plugins: [
+//     // ... 다른 플러그인
+
+//     // 웹팩 번들 분석 플러그인 추가
+//     new BundleAnalyzerPlugin(),
+//   ],
+// };

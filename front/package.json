@@ -65,6 +65,7 @@
     "next-compose-plugins": "^2.2.1",
     "react-icons": "^4.11.0",
     "ts-node": "^10.9.1",
-    "tslib": "^2.6.2"
+    "tslib": "^2.6.2",
+    "webpack-bundle-analyzer": "^4.9.1"
   }
 }
