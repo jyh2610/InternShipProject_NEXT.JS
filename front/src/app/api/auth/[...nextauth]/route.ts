@@ -24,33 +24,32 @@ const authOption = {
     async signIn() {
       return true;
     },
+    async session({ session, token }: any) {
+      session.server = token?.server;
+      return session;
+    },
     async jwt({ token, account }: any) {
       token.token = account?.access_token;
       if (account) {
         token.token = account?.access_token;
         const url = "/sign/" + account.provider + "login";
         api.reSettingURL("https://archiple.com/back");
-        console.log(api.getURL());
         const res: CustomSession = await api.post({
-          url: url, // 실제 API 엔드포인트
+          url: url,
           options: {
             headers: {
               Authorization: `Bearer ${account.access_token}`,
             },
           },
         });
-        // baseURL를 원래대로 리셋
         api.reSettingURL(process.env.NEXT_PUBLIC_BASE_URL!);
         token.server = res;
         console.log(token, "1111111");
         return token;
       }
       console.log(token, 222222222222);
+      this.session(token);
       return token;
-    },
-    async session({ session, token }: any) {
-      session.server = token.server;
-      return session;
     },
   },
 };
