@@ -24,7 +24,7 @@ const SocialLoginButton = () => {
   const [type, setType] = useState("");
   const { data } = useSession();
   const dispatch = useAppDispatch();
-
+  console.log(data);
   useEffect(() => {
     const serverData = data as unknown as CustomSession;
     if (serverData) {
