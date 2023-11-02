@@ -1,5 +1,9 @@
 "use client";
+
+import { useRouter } from "next/navigation";
+
 function NoticeButton() {
+  const router = useRouter();
   return (
     <div className="mt-[1.875rem]">
       <button
@@ -12,6 +16,9 @@ function NoticeButton() {
           fontSize: "1rem",
           padding: "1rem 3rem",
         }}
+        onClick={() => {
+          router.push("/download");
+        }}
       >
         <span
           className="text-base"
@@ -19,7 +26,7 @@ function NoticeButton() {
             fontWeight: "500",
           }}
         >
-          아키플 스튜디오 살펴보기
+          아키플 스튜디오 다운로드
         </span>
       </button>
     </div>

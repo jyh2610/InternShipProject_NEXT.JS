@@ -1,4 +1,46 @@
-.swiper-slide {
+.three-wrap {
+  position: relative;
+}
+
+.three-wrap::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 15%;
+  background-color: #B2B2B2;
+  position: absolute;
+  left: 40%;
+}
+
+
+.mySwiper {
   width: 100%;
   height: 100%;
+  box-shadow: 0 0px 28px rgba(0, 0, 0, 0.20), 0 3px 13px rgba(0, 0, 0, 0.15)
+}
+
+.three-slide-text {
+  position: absolute;
+  left: 10%;
+  bottom: 5%;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(20px);
+  padding: 2.5rem 2rem;
+  border-radius: 0.3rem;
+}
+
+.three-slide-tit {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.three-slide-contant {
+  font-size: 1em;
+  margin-top: 1.45rem;
+  display: block;
+  width: 100%;
+  max-width: 430px;
+  line-height: 1.5rem;
+  font-weight: 400;
 }

@@ -57,7 +57,7 @@
 
 .down-btn:hover {
     background-color: rgba(42, 168, 107, 0.65);
-    backdrop-filter: blur(0rem);
+    transition: all 0.5s;
 }
 
 .down-btn>span {

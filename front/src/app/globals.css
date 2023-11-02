@@ -10,7 +10,7 @@
 }
 
 * {
-  font-family: "NanumSquareAc", sans-serif;
+  font-family: "NanumSquareAc", "Noto Sans KR", 'Apple SD Gothic Neo', 'Malgun Gothic', arial, sans-serif;
   margin: 0;
   padding: 0;
   word-break: keep-all;
@@ -46,11 +46,22 @@ button {
   padding: 0 2rem;
 }
 
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  transform: skew(-0.1deg);
+}
+
 p {
   margin: 0;
 }
 
-.footer-nav-list > a {
+.footer-nav-list>a {
   display: block;
   font-size: 0.875rem;
   color: #9f9f9f;
@@ -64,6 +75,7 @@ p {
 
 /* 나눔스퀘어 폰트 추가 23.10.17_수정자 김택용*/
 @import url("https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css");
+@import url("http://fonts.googleapis.com/earlyaccess/notosanskr.css");
 
 @font-face {
   font-family: "Roboto";
@@ -75,10 +87,10 @@ p {
 
 .swiper-button-prev {
   /* display: none !important; */
-  content: url("../../public/assets/arrow.png");
-  width: 20px !important;
+  content: url("../../public/assets/arrow_prev.png");
+  width: 24px !important;
   /* 네비게이션 버튼의 너비를 조정할 수 있습니다. */
-  height: 20px !important;
+  height: 24px !important;
   /* 네비게이션 버튼의 높이를 조정할 수 있습니다. */
   border-radius: 70%;
   padding: 14px;
@@ -88,18 +100,17 @@ p {
   top: 50%;
   transform: translateY(-50%);
   box-sizing: content-box;
-  transform: rotate(180deg);
 }
 
-.testp > p {
+.testp>p {
   font-weight: 700;
 }
 
 .swiper-button-next {
-  content: url("../../public/assets/arrow.png");
-  width: 20px !important;
+  content: url("../../public/assets/arrow_next.png");
+  width: 24px !important;
   /* 네비게이션 버튼의 너비를 조정할 수 있습니다. */
-  height: 20px !important;
+  height: 24px !important;
   /* 네비게이션 버튼의 높이를 조정할 수 있습니다. */
   border-radius: 70%;
   padding: 14px;
@@ -189,7 +200,7 @@ p {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.testp > h4 {
+.testp>h4 {
   font-weight: 700;
   font-size: 1.125rem;
 }
@@ -218,4 +229,13 @@ p {
   .pc {
     display: none;
   }
+}
+
+.sign-checkbox {
+  padding: 0.5rem 0 !important;
+}
+
+.footer-nav-list>a:hover {
+  pointer-events: none;
+  color: none !important;
 }

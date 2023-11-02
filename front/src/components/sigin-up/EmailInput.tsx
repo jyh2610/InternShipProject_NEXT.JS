@@ -15,7 +15,6 @@ interface emailres {
 }
 function EmailInput({ emailValue, setEmailValue, email }: { emailValue: any; setEmailValue: any; email: string }) {
   const api = new baseApi();
-
   const [isActive, setIsActive] = useState(false);
 
   const [confirmbtn, setConfirmbtn] = useState(false);
@@ -54,6 +53,7 @@ function EmailInput({ emailValue, setEmailValue, email }: { emailValue: any; set
   useEffect(() => {
     const isValidEmail = emailRegexFront.test(email);
     setIsValid(isValidEmail);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [emailValue]);
   return (
     <div>

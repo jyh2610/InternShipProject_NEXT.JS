@@ -1,6 +1,9 @@
 import React from "react";
 
+import { useRouter } from "next/navigation";
+
 function MainText() {
+  const router = useRouter();
   return (
     <div className="w-full h-screen">
       <div
@@ -33,8 +36,11 @@ function MainText() {
             color: "white",
             fontSize: "0.75rem",
           }}
+          onClick={() => {
+            router.push("/download");
+          }}
         >
-          <span style={{ fontSize: "0.875rem", fontWeight: "500" }}>아키플 스튜디오 살펴보기</span>
+          <span style={{ fontSize: "0.875rem", fontWeight: "500" }}>아키플 스튜디오 다운로드</span>
         </button>
       </div>
     </div>
