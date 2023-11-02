@@ -20,6 +20,7 @@ const authOption = {
       clientSecret: process.env.NODE_ENV_API_GOOGLESECRECT ?? "",
     }),
   ],
+  session: { jwt: true },
   callbacks: {
     async signIn() {
       return true;
@@ -44,10 +45,8 @@ const authOption = {
         });
         api.reSettingURL(process.env.NEXT_PUBLIC_BASE_URL!);
         token.server = res;
-        console.log(token, "1111111");
         return token;
       }
-      console.log(token, 222222222222);
       this.session(token);
       return token;
     },
