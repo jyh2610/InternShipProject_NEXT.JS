@@ -11,10 +11,13 @@ function UserID({ user }: { user: string }) {
     try {
       const response = await duplicateTest("hasid", user);
 
-      if (response) {
-        setIsUserIdValid(response.success);
-      } else {
-        console.error("Response is empty or missing 'success' property.");
+      if (response?.success) {
+        setIsUserIdValid(response?.success);
+      }
+      if (response?.success === false) {
+        alert("중복된 아이디 입니다.");
+        setIsUserIdValid(false);
+        console.error("중복된 아이디 입니다.");
       }
     } catch (error) {
       console.error("Error in onClick:", error);
