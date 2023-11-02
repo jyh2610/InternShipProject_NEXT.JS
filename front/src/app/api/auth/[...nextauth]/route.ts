@@ -41,7 +41,7 @@ const authOption = {
           },
         });
         api.reSettingURL(process.env.NEXT_PUBLIC_BASE_URL!);
-        cookies().set("refresh_token", res.refreshToken, { secure: true });
+        !cookies().has("refreshToken") && cookies().set("refreshToken", res.refreshToken);
 
         token.server = res;
         return token;

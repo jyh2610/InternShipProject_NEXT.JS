@@ -16,8 +16,6 @@ import SocialTitle from "./SocialTitle";
 import type { Session } from "next-auth";
 
 export interface CustomSession extends Session {
-  [x: string]: any;
-  status: any;
   server: { accessToken: string; refreshToken: string; success: boolean };
 }
 
@@ -30,14 +28,14 @@ const SocialLoginButton = () => {
   useEffect(() => {
     const serverData = data as unknown as CustomSession;
     if (serverData) {
-      setCookie("refresh_token", serverData.server?.refreshToken);
+      setCookie("refreshToken", serverData.server?.refreshToken);
       dispatch(setAccessToken(serverData.server?.accessToken));
     }
   }, [data, type, path]);
 
   const router = useRouter();
   const accesstoken = useAppSelector((state) => state.auth.accessToken);
-  const refreshToken: string | null = getCookie("refresh_token");
+  const refreshToken: string | null = getCookie("refreshToken");
 
   useEffect(() => {
     (accesstoken || refreshToken) && router.push("/");
@@ -49,8 +47,7 @@ const SocialLoginButton = () => {
   };
 
   if (data) {
-    const serverData = data as unknown as CustomSession;
-    dispatch(setAccessToken(serverData.server?.accessToken));
+    dispatch(setAccessToken(null));
   }
   return (
     <Form.Item>
