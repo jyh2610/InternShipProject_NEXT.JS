@@ -18,7 +18,7 @@ import { formatDate } from "@/lib/FormatData";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setUserName } from "@/redux/slicer/authSlice";
 import EmailNew from "./EmailNew";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const validateMessages = {
   required: "${label} is required!",
@@ -37,6 +37,8 @@ const onFinish = (values: any) => {
 };
 
 const SiginupForm = () => {
+  const [emailbtn, setEmailbtn] = useState(false);
+
   const checked = useAppSelector((state) => state.auth.checkedthird);
   //
   const dispatch = useAppDispatch();
@@ -54,22 +56,24 @@ const SiginupForm = () => {
   const route = useRouter();
   // const email = `${emailValue.id}@${emailValue.domain}`;
   const validateForm = async () => {
-    try {
-      const { birthday, name, user_name, nickname, password, nation, sex } = await form.validateFields();
-      console.log("asdasd");
-      // console.log(email, "_______sd");
-      const sendingData = { birthday: formatDate(birthday), name, user_name, nickname, password, nation, sex, email: fullEmail };
-      // console.log(email, "ghyyydee");
-      const res = await api.post({
-        url: "/sign/signup",
-        body: sendingData,
-      });
-      if (res.success) {
-        dispatch(setUserName(name));
-        route.push("/signup/sign-complete");
+    if (emailbtn) {
+      try {
+        const { birthday, name, user_name, nickname, password, nation, sex } = await form.validateFields();
+        console.log("asdasd");
+        // console.log(email, "_______sd");
+        const sendingData = { birthday: formatDate(birthday), name, user_name, nickname, password, nation, sex, email: fullEmail };
+        // console.log(email, "ghyyydee");
+        const res = await api.post({
+          url: "/sign/signup",
+          body: sendingData,
+        });
+        if (res.success) {
+          dispatch(setUserName(name));
+          route.push("/signup/sign-complete");
+        }
+      } catch (errorInfo) {
+        console.log("Validation failed:", errorInfo);
       }
-    } catch (errorInfo) {
-      console.log("Validation failed:", errorInfo);
     }
   };
 
@@ -119,7 +123,7 @@ const SiginupForm = () => {
             <Nickname nicknameValue={nicknameValue} />
             <UserID user={user_nameValue} />
             {/* <EmailInput emailValue={emailValue} setEmailValue={setEmailValue} email={email} /> */}
-            <EmailNew emailformValue={fullEmail} />
+            <EmailNew emailformValue={fullEmail} emailbtn={emailbtn} setEmailbtn={setEmailbtn} />
             <TestPassword />
             <Birth validateSelect={validateSelect} ko_KR={""} />
             <Sex validateSelect={validateSelect} ko_KR={""} />

@@ -41,7 +41,6 @@ const EmailAuthBtn = ({
   };
   return (
     <div>
-      {" "}
       <Button style={{ height: "auto", padding: "0.5rem 0.8rem" }} disabled={emailbtn} onClick={sendingCode}>
         이메일 인증
       </Button>

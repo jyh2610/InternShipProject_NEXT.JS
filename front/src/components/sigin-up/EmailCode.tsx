@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Button, Input } from "antd";
+import { Button, Form, Input } from "antd";
 
 import { baseApi } from "@/API/api";
 
@@ -38,17 +38,17 @@ function EmailCode({ email, setIsActive, isActive }: { isActive: boolean; email:
     let timerInterval: any;
 
     if (seconds > 0) {
-      timerInterval = setInterval(() => {
+      timerInterval = setTimeout(() => {
         setSeconds((prevSeconds) => prevSeconds - 1);
       }, 1000);
     } else {
-      clearInterval(timerInterval);
+      clearTimeout(timerInterval);
       setTimestart(false); // 타이머 종료 상태로 설정
     }
 
     // 컴포넌트가 언마운트될 때 타이머 정리
     return () => {
-      clearInterval(timerInterval);
+      clearTimeout(timerInterval);
     };
   }, [seconds]);
   return (
@@ -58,8 +58,8 @@ function EmailCode({ email, setIsActive, isActive }: { isActive: boolean; email:
           <p className="text-[#26AF66] font-bold">인증이 완료되었습니다.</p>
         </>
       ) : (
-        <>
-          <p className="text-[#26AF66] text-xs font-bold">인증번호가 발송되었습니다.</p>
+        <Form.Item name="emailcodeinput" rules={[{ required: true, message: "이메일 코드를 입력해주세요" }]}>
+          <p className="tex-[26AF66] text-xs font-bold">인증번호가 발송되었습니다.</p>
           <div className="flex gap-[0.3rem]">
             <Input
               style={{ width: "300px", padding: "0.5rem 0.8rem" }}
@@ -72,7 +72,7 @@ function EmailCode({ email, setIsActive, isActive }: { isActive: boolean; email:
               인증하기
             </Button>
           </div>
-        </>
+        </Form.Item>
       )}
     </>
   );
