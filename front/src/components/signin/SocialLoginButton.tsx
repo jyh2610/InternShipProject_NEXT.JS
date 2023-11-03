@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
 
 import Image from "next/image";
-import { getCookie, setCookie } from "@/API/cookie";
+import { getCookie } from "@/API/cookie";
 import { loginObj } from "@/constants/constants";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setAccessToken } from "@/redux/slicer/authSlice";
@@ -28,8 +28,8 @@ const SocialLoginButton = () => {
   useEffect(() => {
     const serverData = data as unknown as CustomSession;
     if (serverData) {
-getCookie("refreshToken_local");    
-  dispatch(setAccessToken(serverData.server?.accessToken));
+      getCookie("refreshToken_local");
+      dispatch(setAccessToken(serverData.server?.accessToken));
     }
   }, [data, type, path]);
 
