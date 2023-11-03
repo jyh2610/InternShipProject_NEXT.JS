@@ -10,7 +10,7 @@
 }
 
 * {
-  font-family: "NanumSquareAc", "Noto Sans KR", 'Apple SD Gothic Neo', 'Malgun Gothic', arial, sans-serif;
+  font-family: "NanumSquareAc", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", arial, sans-serif;
   margin: 0;
   padding: 0;
   word-break: keep-all;
@@ -61,7 +61,7 @@ p {
   margin: 0;
 }
 
-.footer-nav-list>a {
+.footer-nav-list > a {
   display: block;
   font-size: 0.875rem;
   color: #9f9f9f;
@@ -102,10 +102,12 @@ p {
   box-sizing: content-box;
 }
 
-.testp>p {
+.testp > p {
   font-weight: 700;
 }
-
+.ant-picker-content > thread {
+  opacity: 0;
+}
 .swiper-button-next {
   content: url("../../public/assets/arrow_next.png");
   width: 24px !important;
@@ -200,7 +202,7 @@ p {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.testp>h4 {
+.testp > h4 {
   font-weight: 700;
   font-size: 1.125rem;
 }
@@ -235,7 +237,7 @@ p {
   padding: 0.5rem 0 !important;
 }
 
-.footer-nav-list>a:hover {
+.footer-nav-list > a:hover {
   pointer-events: none;
   color: none !important;
 }
