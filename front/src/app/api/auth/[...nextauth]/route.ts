@@ -14,10 +14,11 @@ const authOption = {
     }),
     KakaoProvider({ clientId: process.env.NODE_ENV_API_KAKAOID ?? "", clientSecret: process.env.NODE_ENV_API_KAKAOSECRECT || "" }),
     GoogleProvider({
-      clientId: process.env.NODE_ENV_API_GOOGLEEID!,
-      clientSecret: process.env.NODE_ENV_API_GOOGLESECRECT!,
+      clientId: process.env.NODE_ENV_API_GOOGLEID ?? "" ,
+      clientSecret:process.env.NODE_ENV_API_GOOGLESECRECT ?? "",
     }),
   ],
+  secret : process.env.SECRET_KEY,
   callbacks: {
     async signIn() {
       return true;

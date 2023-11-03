@@ -1,0 +1,36 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <jenkins.plugins.nodejs.NodeJSCommandInterpreter plugin="nodejs@1.6.1">
+      <command></command>
+      <configuredLocalRules/>
+      <nodeJSInstallationName>18.17.1-LTS</nodeJSInstallationName>
+      <cacheLocationStrategy class="jenkins.plugins.nodejs.cache.DefaultCacheLocationLocator"/>
+    </jenkins.plugins.nodejs.NodeJSCommandInterpreter>
+    <hudson.tasks.Shell>
+      <command>cd ~/archiple_WEB/front/
+sudo npm install
+sudo npm run build:linux
+sudo pm2 kill
+sudo pm2 start npm --name &quot;front&quot; -- run start
+
+cd ~/archiple_WEB/back/
+sudo npm install
+sudo pm2 start npm --name &quot;back&quot; -- start</command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>
