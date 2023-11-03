@@ -4,7 +4,7 @@ import authSlice from "./slicer/authSlice";
 import scrollStopperReducer from "./slicer/scrollStopper";
 
 const middleware: any[] = [];
-
+//배포환경
 if (process.env.NODE_ENV === "development") {
   const logger = require("redux-logger");
   middleware.push(logger.createLogger());
