@@ -16,7 +16,7 @@ export const data: MenuProps = {
       style: { padding: "1.5rem", color: "#fff" },
       key: "1",
       label: (
-        <Link href={"/product/design"} style={{ fontWeight: "700", fontSize: "1rem" }}>
+        <Link href={"/preparation"} style={{ fontWeight: "700", fontSize: "1rem" }}>
           디자인 & 랜더
           <span className="block" style={{ fontWeight: "400", fontSize: "0.875rem" }}>
             디자인 & 랜더 카테고리에 작성 될 간단한 텍스트영역
@@ -28,7 +28,7 @@ export const data: MenuProps = {
       style: { padding: "0 1.5rem", color: "#fff" },
       key: "2",
       label: (
-        <Link href={"/product/animation"} style={{ fontWeight: "700", fontSize: "1rem" }}>
+        <Link href={"/preparation"} style={{ fontWeight: "700", fontSize: "1rem" }}>
           애니메이션
           <span className="block" style={{ fontWeight: "400", fontSize: "0.875rem" }}>
             애니메이션 카테고리에 작성 될 간단한 텍스트영역
@@ -40,7 +40,7 @@ export const data: MenuProps = {
       style: { padding: "1.5rem", color: "#fff" },
       key: "3",
       label: (
-        <Link href={"/product/brandgallery"} style={{ fontWeight: "700", fontSize: "1rem" }}>
+        <Link href={"/preparation"} style={{ fontWeight: "700", fontSize: "1rem" }}>
           브랜드갤러리
           <span className="block" style={{ fontWeight: "400", fontSize: "0.875rem" }}>
             브랜드갤러리 카테고리에 작성 될 간단한 텍스트영역
@@ -67,9 +67,11 @@ function NavItem({ scrollY, path }: NavColorProps) {
 
   return (
     <div className="pc flex gap-2">
-      <Button style={font} className="px-5 mr-1" type="text">
-        홈
-      </Button>
+      <Link href={"/"}>
+        <Button style={font} className="px-5 mr-1" type="text">
+          홈
+        </Button>
+      </Link>
       <NavDropDown title={"제품"} items={data} scrollY={scrollY} />
       <Button style={font} className="px-5 mr-1" type="text">
         솔루션
