@@ -13,17 +13,20 @@ function EmailCode({
   seconds,
   setSeconds,
   setConfirmbtn,
+  resSuccess,
+  setResSuccess,
 }: {
   seconds: number;
   isActive: boolean;
   email: string;
   setSeconds: any;
   setConfirmbtn: any;
+  setResSuccess: any;
+  resSuccess: boolean;
   setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const [code, setCode] = useState("");
 
-  const [resSuccess, setResSuccess] = useState("");
   const [timestart, setTimestart] = useState(false);
   const api = new baseApi();
   const startTimer = () => {
@@ -55,7 +58,7 @@ function EmailCode({
 
     if (seconds > 0) {
       timerInterval = setTimeout(() => {
-        setSeconds((prevSeconds) => prevSeconds - 1);
+        setSeconds((prevSeconds: number) => prevSeconds - 1);
       }, 1000);
     } else {
       clearTimeout(timerInterval);

@@ -5,6 +5,8 @@ import EmailCode from "./EmailCode";
 import { domainData } from "@/constants/constants";
 
 const EmailNew = ({
+  setResSuccess,
+  resSuccess,
   emailformValue,
   confirmbtn,
   emailbtn,
@@ -16,6 +18,8 @@ const EmailNew = ({
   emailformValue: string;
   emailbtn: boolean;
   setEmailbtn: any;
+  setResSuccess: any;
+  resSuccess: any;
 }) => {
   const [isActive, setIsActive] = useState(false);
   const [seconds, setSeconds] = useState(180);
@@ -94,6 +98,8 @@ const EmailNew = ({
             setSeconds={setSeconds}
             isActive={isActive}
             email={emailformValue}
+            setResSuccess={setResSuccess}
+            resSuccess={resSuccess}
           />
         )}
       </div>{" "}

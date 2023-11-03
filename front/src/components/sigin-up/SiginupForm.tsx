@@ -39,6 +39,7 @@ const onFinish = (values: any) => {
 const SiginupForm = () => {
   const [emailbtn, setEmailbtn] = useState(false);
   const [confirmbtn, setConfirmbtn] = useState(false);
+  const [resSuccess, setResSuccess] = useState("");
 
   const checked = useAppSelector((state) => state.auth.checkedthird);
   //
@@ -57,7 +58,7 @@ const SiginupForm = () => {
   const route = useRouter();
   // const email = `${emailValue.id}@${emailValue.domain}`;
   const validateForm = async () => {
-    if (emailbtn) {
+    if (resSuccess) {
       try {
         const { birthday, name, user_name, nickname, password, nation, sex } = await form.validateFields();
         console.log("asdasd");
@@ -76,6 +77,7 @@ const SiginupForm = () => {
         console.log("Validation failed:", errorInfo);
       }
     }
+    resSuccess === "false" && alert("중복확인 및 인증을 확인해주세요.");
   };
 
   const validateSelect = (_: unknown, value: string | number) => {
@@ -124,7 +126,15 @@ const SiginupForm = () => {
             <Nickname nicknameValue={nicknameValue} />
             <UserID user={user_nameValue} />
             {/* <EmailInput emailValue={emailValue} setEmailValue={setEmailValue} email={email} /> */}
-            <EmailNew emailformValue={fullEmail} confirmbtn={confirmbtn} setConfirmbtn={setConfirmbtn} emailbtn={emailbtn} setEmailbtn={setEmailbtn} />
+            <EmailNew
+              setResSuccess={setResSuccess}
+              resSuccess={resSuccess}
+              emailformValue={fullEmail}
+              confirmbtn={confirmbtn}
+              setConfirmbtn={setConfirmbtn}
+              emailbtn={emailbtn}
+              setEmailbtn={setEmailbtn}
+            />
             <TestPassword />
             <Birth validateSelect={validateSelect} ko_KR={""} />
             <Sex validateSelect={validateSelect} ko_KR={""} />
