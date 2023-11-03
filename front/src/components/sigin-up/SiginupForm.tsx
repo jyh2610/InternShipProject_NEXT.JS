@@ -75,8 +75,9 @@ const SiginupForm = () => {
       } catch (errorInfo) {
         console.log("Validation failed:", errorInfo);
       }
+    } else {
+      alert(" 인증 및 중복확인을 완료해야 합니다.");
     }
-    resSuccess === "false" && alert("중복확인 및 인증을 확인해주세요.");
   };
 
   const validateSelect = (_: unknown, value: string | number) => {
