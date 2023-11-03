@@ -1,5 +1,5 @@
 import NextAuth from "next-auth";
-import GoggleProvider from "next-auth/providers/google";
+import GoogleProvider from "next-auth/providers/google";
 import KakaoProvider from "next-auth/providers/kakao";
 import NaverProvider from "next-auth/providers/naver";
 import { baseApi } from "@/API/api";
@@ -13,11 +13,12 @@ const authOption = {
       clientSecret: process.env.NODE_ENV_API_NAVERSECRECT ?? "",
     }),
     KakaoProvider({ clientId: process.env.NODE_ENV_API_KAKAOID ?? "", clientSecret: process.env.NODE_ENV_API_KAKAOSECRECT || "" }),
-    GoggleProvider({
-      clientId: process.env.NODE_ENV_API_GOOGLEEID ?? "",
-      clientSecret: process.env.NODE_ENV_API_GOOGLESECRECT ?? "",
+    GoogleProvider({
+      clientId: process.env.NODE_ENV_API_GOOGLEID ?? "" ,
+      clientSecret:process.env.NODE_ENV_API_GOOGLESECRECT ?? "",
     }),
   ],
+  secret : process.env.SECRET_KEY,
   callbacks: {
     async signIn() {
       return true;
@@ -29,7 +30,6 @@ const authOption = {
     async jwt({ token, account }: any) {
       token.token = account?.access_token;
       if (account) {
-        token.token = account?.access_token;
         const url = "/sign/" + account.provider + "login";
         api.reSettingURL("https://archiple.com/back");
         const res: { accessToken: string; refreshToken: string } = await api.post({
