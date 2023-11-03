@@ -46,7 +46,7 @@ function CompleteForm() {
                 <p>가입일시 : {signTime}</p>
               </div>
             </div>
-            <Link href={"./"}>
+            <Link href={"/"}>
               <button className="complert-btn">아키플 스튜디오 살펴보기</button>
             </Link>
           </div>
