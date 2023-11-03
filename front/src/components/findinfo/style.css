@@ -1,0 +1,108 @@
+/* input 기본 스타일 초기화 */
+input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    background-color: #F7F7F7;
+}
+
+input:focus {
+    outline: none;
+    border: none;
+}
+
+/* IE10 이상에서 input box 에 추가된 지우기 버튼 제거 */
+input::-ms-clear {
+    display: none;
+}
+
+/* input type number 에서 화살표 제거 */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.findinfo-wrap {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: #F5F5F5;
+    overflow-y: hidden;
+}
+
+.find-contant {
+    width: 100%;
+    max-width: 520px;
+    padding: 4rem 2rem;
+    height: 500px;
+    background-color: #fdfdfd;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -55%);
+    border-radius: 0.3rem;
+}
+
+
+.findinput {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.findinput>label {
+    width: 15%;
+    font-weight: 500;
+}
+
+.findinput>input {
+    width: 100%;
+    height: 40px;
+    padding: 0 1rem;
+}
+
+.emall-select {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.emall-select>input {
+    height: 40px;
+    width: 50%;
+    padding: 0 1rem;
+}
+
+.ant-tabs-nav-list {
+    width: 100%;
+}
+
+.ant-space-item {
+    width: 100%;
+}
+
+.ant-tabs-tab {
+    width: 50%;
+    justify-content: center;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active {
+    background-color: #26AF66 !important;
+    font-weight: 0;
+}
+
+.ant-tabs-tab .tabs-btn {
+    font-size: 0.875rem;
+}
+
+.ant-tabs-top>.ant-tabs-nav::before,
+.ant-tabs-bottom>.ant-tabs-nav::before,
+.ant-tabs-top>div>.ant-tabs-nav::before,
+.ant-tabs-bottom>div>.ant-tabs-nav::before {
+    border: 1px solid #26AF66 !important;
+}
