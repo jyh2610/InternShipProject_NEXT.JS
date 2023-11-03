@@ -62,9 +62,7 @@ const SiginupForm = () => {
       try {
         const { birthday, name, user_name, nickname, password, nation, sex } = await form.validateFields();
         console.log("asdasd");
-        // console.log(email, "_______sd");
         const sendingData = { birthday: formatDate(birthday), name, user_name, nickname, password, nation, sex, email: fullEmail };
-        // console.log(email, "ghyyydee");
         const res = await api.post({
           url: "/sign/signup",
           body: sendingData,

@@ -13,11 +13,9 @@ function UserID({ user }: { user: string }) {
 
       if (response?.success) {
         setIsUserIdValid(response.success);
-        console.log(response.success);
       } else if (response?.success === false) {
         setIsUserIdValid(response.success);
         alert("중복된 아이디 입니다.");
-        console.error("중복된 아이디 입니다.");
       }
     } catch (error) {
       console.error("Error in onClick:", error);

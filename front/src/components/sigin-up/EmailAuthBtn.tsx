@@ -24,7 +24,6 @@ const EmailAuthBtn = ({
   Seconds: number;
 }) => {
   const api = new baseApi();
-  //console.log(emailformValue);
   const sendingCode = async () => {
     const res: emailres = await api.post({
       url: "validate/sendemail",
@@ -32,7 +31,6 @@ const EmailAuthBtn = ({
         email: emailformValue,
       },
     });
-    console.log(res, "이메일 응답코드");
     if (res?.success) {
       setConfirmbtn(true);
       setSeconds(180);

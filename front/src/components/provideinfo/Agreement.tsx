@@ -28,7 +28,6 @@ const Agreement = ({ type, check, setCheck }: AgreementProps) => {
     }
   };
   dispatch(setCheckedThird(check.three));
-  console.log(check.three, "_____________세번째동의");
   return (
     <>
       <Checkbox
