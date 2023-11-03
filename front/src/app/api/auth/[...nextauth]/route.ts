@@ -19,7 +19,7 @@ const authOption = {
       authorization: {
         params: {
           prompt: "consent",
-          access_type: "offline",
+          access_type: "online",
           response_type: "code",
         },
       },
@@ -28,7 +28,7 @@ const authOption = {
   callbacks: {
     async signIn({ account, profile }: any) {
       if (account.provider === "google") {
-        return profile.email_verified && profile.email.endsWith("@example.com");
+        return profile.email_verified && profile.email.endsWith("@google.com");
       }
       return true;
     },
