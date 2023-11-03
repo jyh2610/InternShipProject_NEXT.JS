@@ -1,9 +1,0 @@
-Started by user [8mha:////4BSxBuf9vKZs2GWtK51Pv4rJBp5ESwOTolN3Q3Ap5xFlAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyOEgZu/dLi1CL9xJTczDwAg9OS0cAAAAA=[0marchiple
-Running as SYSTEM
-Building in workspace /var/jenkins_home/workspace/builder
-[builder] $ /var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/18.17.1-LTS/bin/node /tmp/jenkins1972037010807995385.js
-[builder] $ /bin/sh -xe /tmp/jenkins13510712368051593747.sh
-+ cd /root/archiple_WEB/front/
-/tmp/jenkins13510712368051593747.sh: 2: cd: can't cd to /root/archiple_WEB/front/
-Build step 'Execute shell' marked build as failure
-Finished: FAILURE
