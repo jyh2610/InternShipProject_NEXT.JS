@@ -73,9 +73,11 @@ function NavItem({ scrollY, path }: NavColorProps) {
         </Button>
       </Link>
       <NavDropDown title={"제품"} items={data} scrollY={scrollY} />
-      <Button style={font} className="px-5 mr-1" type="text">
-        솔루션
-      </Button>
+      <Link href={"/"}>
+        <Button style={font} className="px-5 mr-1" type="text">
+          솔루션
+        </Button>
+      </Link>
       <Button
         onClick={() => {
           router.push("/download");
