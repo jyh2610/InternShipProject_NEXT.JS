@@ -35,7 +35,7 @@ function Nickname({ nicknameValue }: { nicknameValue: string }) {
           rules={[
             {
               required: true,
-              message: "12자 이하로 입력해 주세요.",
+              message: "닉네임을 입력해 주세요.",
             },
             {
               validator: (_, value: string) => {
@@ -52,7 +52,7 @@ function Nickname({ nicknameValue }: { nicknameValue: string }) {
           wrapperCol={{ span: 7 }}
         >
           <div className="flex gap-[0.5rem]">
-            <Input style={{ padding: "0.5rem 0.8rem" }} />
+            <Input placeholder="12자 이하로 입력해 주세요." style={{ padding: "0.5rem 0.8rem" }} />
             <Button style={{ height: "100%", padding: "0.5rem 1.2rem" }} onClick={response}>
               중복확인
             </Button>

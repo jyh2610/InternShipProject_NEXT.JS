@@ -13,7 +13,7 @@ function Password() {
         rules={[
           {
             required: true,
-            message: "비밀번호를 입력해 주세요.",
+            message: "영문대/소문자, 숫자, 특수문자 중 2가지 이상 조합하세요",
           },
           {
             validator: (_, value: string) => {
