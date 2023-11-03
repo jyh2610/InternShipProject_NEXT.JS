@@ -39,11 +39,10 @@ function CompleteForm() {
                 </svg>
               </span>
               <div className="complert-txt">
-                <p className="uesr-name">{username} 님 환영합니다!</p> {/* 가입 된 회원의 이름이 나타나게 처리 */}
+                <p className="uesr-name">{username} 님 환영합니다!</p>
                 <p className="uesr-complert font-bold">회원가입 완료 되었습니다.</p>
               </div>
               <div className="complert-day">
-                {/* <p>가입일시 : 2023년 9월 21일 PM 05:26</p> 가입 된 일자, 시간 나타나게 처리 */}
                 <p>가입일시 : {signTime}</p>
               </div>
             </div>
