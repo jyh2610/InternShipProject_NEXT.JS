@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Button, Form, Input } from "antd";
 
@@ -6,6 +6,10 @@ import { duplicateTest } from "@/lib/signupApi";
 
 function UserID({ user }: { user: string }) {
   const [isUserIdValid, setIsUserIdValid] = useState(false);
+
+  useEffect(() => {
+    setIsUserIdValid(false);
+  }, [isUserIdValid]);
 
   const response = async () => {
     try {

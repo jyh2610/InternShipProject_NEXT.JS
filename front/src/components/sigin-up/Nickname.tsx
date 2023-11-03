@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Button, Form, Input } from "antd";
 
@@ -6,6 +6,11 @@ import { duplicateTest } from "@/lib/signupApi";
 
 function Nickname({ nicknameValue }: { nicknameValue: string }) {
   const [isNicknameValid, setIsNicknameValid] = useState(false);
+
+  useEffect(() => {
+    setIsNicknameValid(false);
+  }, [nicknameValue]);
+
   const response = async () => {
     try {
       const response = await duplicateTest("hasnickname", nicknameValue);
