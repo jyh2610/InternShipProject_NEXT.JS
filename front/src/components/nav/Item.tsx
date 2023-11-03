@@ -54,7 +54,6 @@ function NavItem({ scrollY, path }: NavColorProps) {
   const router = useRouter();
 
   // const accesstoken = useAppSelector((state) => state.auth.accessToken);
-
   // const refreshToken = getCookie("refresh_token");
 
   const isTop = path !== "/" ? "black" : scrollY === 0 ? "white" : "black";
@@ -74,7 +73,7 @@ function NavItem({ scrollY, path }: NavColorProps) {
         </Button>
       </Link>
       <NavDropDown title={"제품"} items={data} scrollY={scrollY} />
-      <Link href={"/preparation"}>
+      <Link href={"/"}>
         <Button style={font} className="px-5 mr-1" type="text">
           솔루션
         </Button>

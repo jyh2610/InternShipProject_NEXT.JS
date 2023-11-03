@@ -1,6 +1,9 @@
+.wrap {
+  background-color: #e2e2e2;
+}
+
 .modal {
   display: flex;
-  justify-content: center;
   align-items: center;
   position: absolute;
   left: 50%;
@@ -8,14 +11,33 @@
   transform: translate(-50%, -50%);
   flex-direction: column;
   width: 100%;
-  max-width: 500px;
-  height: 500px;
+  max-width: 600px;
+  height: 680px;
   background-color: #fff;
   border-radius: 0.3rem;
   gap: 1rem;
-  padding: 1.4rem 2rem;
+  padding: 2rem;
 }
 
-.modal > img {
+.modal>img {
   width: 100%;
+  border-radius: 0.3rem;
 }
+
+.home-btn {
+  width: 200px;
+  height: 44px;
+  background: #26AF66;
+  border-radius: 0.3rem;
+  padding: 1rem;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 1.4rem;
+}
+
+.home-btn:hover {}
