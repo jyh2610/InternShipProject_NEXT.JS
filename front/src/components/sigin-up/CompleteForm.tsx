@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 import Link from "next/link";
 
@@ -12,13 +12,14 @@ function CompleteForm() {
   const username = useAppSelector((state) => state.auth.username);
   const signTime = getDateTime();
   const route = useRouter();
-
+  const alertShown = useRef(false);
   useEffect(() => {
-    if (!username) {
+    if (!username && !alertShown.current) {
+      alertShown.current = true;
       alert("필수 동의 항목을 체크해주세요");
       route.push("/signup/provideinfo");
     }
-  });
+  }, []);
   return (
     <>
       <div className="completr-wrap">

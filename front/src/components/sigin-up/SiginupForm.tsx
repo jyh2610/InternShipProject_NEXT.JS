@@ -18,7 +18,7 @@ import { formatDate } from "@/lib/FormatData";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setUserName } from "@/redux/slicer/authSlice";
 import EmailNew from "./EmailNew";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const validateMessages = {
   required: "${label} is required!",
@@ -40,7 +40,6 @@ const SiginupForm = () => {
   const [emailbtn, setEmailbtn] = useState(false);
   const [confirmbtn, setConfirmbtn] = useState(false);
   const [resSuccess, setResSuccess] = useState("");
-
   const checked = useAppSelector((state) => state.auth.checkedthird);
   //
   const dispatch = useAppDispatch();
@@ -89,12 +88,14 @@ const SiginupForm = () => {
       }
     });
   };
+  const alertShown = useRef(false);
   useEffect(() => {
-    if (!checked) {
+    if (!checked && !alertShown.current) {
+      alertShown.current = true; // Set the ref to true to prevent further alerts
       alert("필수 동의 항목을 체크해주세요");
       route.push("/signup/provideinfo");
     }
-  }, []);
+  }, [checked]);
   return (
     <div className="">
       <div className="">
