@@ -28,14 +28,14 @@ const SocialLoginButton = () => {
   useEffect(() => {
     const serverData = data as unknown as CustomSession;
     if (serverData) {
-      setCookie("refreshToken", serverData.server?.refreshToken);
-      dispatch(setAccessToken(serverData.server?.accessToken));
+getCookie("refreshToken_local");    
+  dispatch(setAccessToken(serverData.server?.accessToken));
     }
   }, [data, type, path]);
 
   const router = useRouter();
   const accesstoken = useAppSelector((state) => state.auth.accessToken);
-  const refreshToken: string | null = getCookie("refreshToken");
+  const refreshToken: string | null = getCookie("refreshToken_local");
 
   useEffect(() => {
     (accesstoken || refreshToken) && router.push("/");
