@@ -7,8 +7,8 @@ function Timer({ isActive, seconds, setSeconds, setIsActive }: { setSeconds: Fun
 
   useEffect(() => {
     if (isActive && seconds > 0) {
-      const timer = setTimeout(decrementSeconds, 1000);
-      return () => clearTimeout(timer);
+      const timer = setInterval(decrementSeconds, 1000);
+      return () => clearInterval(timer);
     }
     if (seconds === 0) {
       setIsActive(false);

@@ -2,10 +2,8 @@ import NextAuth from "next-auth";
 import GoggleProvider from "next-auth/providers/google";
 import KakaoProvider from "next-auth/providers/kakao";
 import NaverProvider from "next-auth/providers/naver";
-
 import { baseApi } from "@/API/api";
-
-import type { CustomSession } from "@/components/signin/SocialLoginButton";
+import { cookies } from "next/headers";
 
 const api = new baseApi();
 const authOption = {
@@ -24,34 +22,31 @@ const authOption = {
     async signIn() {
       return true;
     },
+    async session({ session, token }: any) {
+      session.server = token?.server;
+      return session;
+    },
     async jwt({ token, account }: any) {
       token.token = account?.access_token;
       if (account) {
         token.token = account?.access_token;
-        const url = `/sign/${account?.provider}login`;
-        console.log(url);
-
-        console.log(account);
-
-        const res: CustomSession = await api.post({
-          url,
+        const url = "/sign/" + account.provider + "login";
+        api.reSettingURL("https://archiple.com/back");
+        const res: { accessToken: string; refreshToken: string } = await api.post({
+          url: url,
           options: {
             headers: {
-              Authorization: `Bearer ${account?.access_token}`,
+              Authorization: `Bearer ${account.access_token}`,
             },
           },
         });
+        api.reSettingURL(process.env.NEXT_PUBLIC_BASE_URL!);
+        !cookies().has("refreshToken_local") && cookies().set("refreshToken_local", res.refreshToken);
 
         token.server = res;
         return token;
       }
       return token;
-    },
-    async session({ session, token }: any) {
-      session.server = token.server;
-      console.log(session);
-
-      return session;
     },
   },
 };
