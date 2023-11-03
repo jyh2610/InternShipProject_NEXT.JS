@@ -19,7 +19,6 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setUserName } from "@/redux/slicer/authSlice";
 import EmailNew from "./EmailNew";
 import { useEffect, useRef, useState } from "react";
-import NewBirth from "./NewBirth";
 
 const validateMessages = {
   required: "${label} is required!",
@@ -138,7 +137,6 @@ const SiginupForm = () => {
             />
             <TestPassword />
             <Birth validateSelect={validateSelect} ko_KR={""} />
-            {/* <NewBirth /> */}
             <Sex validateSelect={validateSelect} ko_KR={""} />
             <SiginupBtn validateForm={validateForm} />
           </Form>
