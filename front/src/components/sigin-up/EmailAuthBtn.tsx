@@ -1,6 +1,6 @@
 import { baseApi } from "@/API/api";
 import { Button } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 interface emailres {
   success: boolean;
 }
@@ -11,15 +11,17 @@ const EmailAuthBtn = ({
   setConfirmbtn,
   setIsActive,
   setSeconds,
+  Seconds,
 }: {
   emailformValue: string;
   emailbtn: boolean;
-  setEmailbtn: any;
-  setConfirmbtn: any;
+  setEmailbtn: React.Dispatch<React.SetStateAction<boolean>>;
+  setConfirmbtn: React.Dispatch<React.SetStateAction<boolean>>;
   confirmbtn: boolean;
-  setIsActive: any;
+  setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
   isActive: boolean;
-  setSeconds: any;
+  setSeconds: React.Dispatch<React.SetStateAction<number>>;
+  Seconds: number;
 }) => {
   const api = new baseApi();
   //console.log(emailformValue);
@@ -38,12 +40,14 @@ const EmailAuthBtn = ({
       setTimeout(() => {
         setEmailbtn(false);
       }, 6000);
-      setTimeout(() => {
-        setConfirmbtn(false);
-        alert("이메일 인증시간이 만료되었습니다.");
-      }, 183000);
     }
   };
+  useEffect(() => {
+    if (Seconds === 0) {
+      alert("이메일 인증시간이 만료되었습니다.");
+      setConfirmbtn(false);
+    }
+  }, [Seconds]);
   return (
     <div>
       <Button style={{ height: "auto", padding: "0.5rem 0.8rem" }} disabled={emailbtn} onClick={sendingCode}>

@@ -30,14 +30,14 @@ function Nickname({ nicknameValue }: { nicknameValue: string }) {
           rules={[
             {
               required: true,
-              message: "닉네임을 입력하세요!",
+              message: "12자 이하로 입력해 주세요.",
             },
             {
               validator: (_, value: string) => {
                 if (value?.length <= 12) {
-                  return Promise.resolve();
+                  return Promise.resolve("");
                 }
-                return Promise.reject(new Error("유효하지 않은 닉네임입니다."));
+                return Promise.reject(new Error("유효하지 않은 닉네임입니다. "));
               },
             },
           ]}

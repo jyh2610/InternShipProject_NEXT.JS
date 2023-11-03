@@ -87,6 +87,7 @@ const EmailNew = ({
           confirmbtn={confirmbtn}
           emailformValue={emailformValue}
           setSeconds={setSeconds}
+          Seconds={seconds}
         />
       </div>
       <div style={{ marginLeft: "4rem", marginBottom: "2rem", padding: "0.2rem 0.8rem" }}>
