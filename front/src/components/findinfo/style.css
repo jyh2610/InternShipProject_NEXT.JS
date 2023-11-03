@@ -36,7 +36,7 @@ input[type='number']::-webkit-outer-spin-button {
 .find-contant {
     width: 100%;
     max-width: 520px;
-    padding: 4rem 2rem;
+    padding: 3rem;
     height: 500px;
     background-color: #fdfdfd;
     position: absolute;
@@ -46,17 +46,29 @@ input[type='number']::-webkit-outer-spin-button {
     border-radius: 0.3rem;
 }
 
-
+.find-text-box{
+    padding: 1rem 0 0.5rem 0;
+}
+.find-tit{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.find-text{
+    font-size: 0.95rem;
+}
+.find-from-wrap{
+    padding: 0.5rem 0;
+}
 .findinput {
     display: flex;
-    align-items: center;
     width: 100%;
-    margin: 1rem 0;
+    margin: 0.875rem 0;
 }
 
 .findinput>label {
     width: 15%;
     font-weight: 500;
+    font-size: 0.85rem;
 }
 
 .findinput>input {
@@ -69,13 +81,47 @@ input[type='number']::-webkit-outer-spin-button {
     display: flex;
     align-items: center;
     width: 100%;
-    gap: 0.5rem;
+    gap: 0.3rem;
 }
 
 .emall-select>input {
     height: 40px;
     width: 50%;
     padding: 0 1rem;
+}
+.ce-code{
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+
+}
+.ce-code>input{
+    height: 40px;
+    width: 90%;
+    padding: 0 1rem;
+}
+
+.code-cp-btn{
+    background: #26AF66;
+    border: none;
+    padding: 0 1rem;
+    color: #fff;
+    font-size: 0.75rem;
+}
+.alert-text{
+    font-size: 0.8rem;
+}
+.completion.alert-text{
+    display: none;
+}
+.completion-btn{
+    width: 100%;
+    background:#26AF66;
+    border: none;
+    padding: 1rem 0;
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 700;
 }
 
 .ant-tabs-nav-list {
