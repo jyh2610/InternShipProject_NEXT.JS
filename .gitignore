@@ -8,6 +8,7 @@
 
 # 공통 부분
 **jenkins/
+docker-compose.yml
 **.env
 **.env.local
 **.DS_Store
