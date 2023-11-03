@@ -7,26 +7,26 @@ import { duplicateTest } from "@/lib/signupApi";
 function UserID({ user }: { user: string }) {
   const [isUserIdValid, setIsUserIdValid] = useState(false);
 
-  useEffect(() => {
-    setIsUserIdValid(false);
-  }, [isUserIdValid]);
-
   const response = async () => {
     try {
       const response = await duplicateTest("hasid", user);
 
       if (response?.success) {
-        setIsUserIdValid(response?.success);
-      }
-      if (response?.success === false) {
+        setIsUserIdValid(response.success);
+        console.log(response.success);
+      } else if (response?.success === false) {
+        setIsUserIdValid(response.success);
         alert("중복된 아이디 입니다.");
-        setIsUserIdValid(false);
         console.error("중복된 아이디 입니다.");
       }
     } catch (error) {
       console.error("Error in onClick:", error);
     }
   };
+
+  useEffect(() => {
+    setIsUserIdValid(false);
+  }, [user]);
 
   return (
     <div>
@@ -35,11 +35,11 @@ function UserID({ user }: { user: string }) {
         rules={[
           {
             required: true,
-            message: "아이디를 입력하세요!",
+            message: "아이디는 영문소문자 또는 숫자 4~16자로 입력해 주세요. (영문소문자/숫자, 4~16자)",
           },
           {
             validator: (_, value: string) => {
-              if (value?.length <= 12 && typeof value === "string") {
+              if (value?.length <= 12) {
                 return Promise.resolve();
               }
               return Promise.reject(new Error("아이디는 영문소문자 또는 숫자 4~16자로 입력해 주세요. (영문소문자/숫자, 4~16자)"));
