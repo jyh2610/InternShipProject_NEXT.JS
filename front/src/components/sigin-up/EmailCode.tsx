@@ -45,6 +45,9 @@ function EmailCode({
           setSeconds(-2);
           setIsActive(false);
         }
+        if (res.success === false) {
+          alert("유효하지 않은 코드입니다.");
+        }
       })
       .catch((err) => {
         console.error(err);
