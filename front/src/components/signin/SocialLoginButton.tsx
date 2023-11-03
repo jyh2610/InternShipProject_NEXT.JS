@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
 
 import Image from "next/image";
-import { getCookie, setCookie } from "@/API/cookie";
+import { getCookie } from "@/API/cookie";
 import { loginObj } from "@/constants/constants";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setAccessToken } from "@/redux/slicer/authSlice";
@@ -24,18 +24,18 @@ const SocialLoginButton = () => {
   const [type, setType] = useState("");
   const { data } = useSession();
   const dispatch = useAppDispatch();
-
+  console.log(data);
   useEffect(() => {
     const serverData = data as unknown as CustomSession;
     if (serverData) {
-      setCookie("refresh_token", serverData.server?.refreshToken);
+      getCookie("refreshToken_local");
       dispatch(setAccessToken(serverData.server?.accessToken));
     }
   }, [data, type, path]);
 
   const router = useRouter();
   const accesstoken = useAppSelector((state) => state.auth.accessToken);
-  const refreshToken: string | null = getCookie("refresh_token");
+  const refreshToken: string | null = getCookie("refreshToken_local");
 
   useEffect(() => {
     (accesstoken || refreshToken) && router.push("/");
@@ -47,9 +47,7 @@ const SocialLoginButton = () => {
   };
 
   if (data) {
-    const serverData = data as unknown as CustomSession;
-    setCookie("refresh_token", serverData.server?.refreshToken);
-    dispatch(setAccessToken(serverData.server?.accessToken));
+    dispatch(setAccessToken(null));
   }
   return (
     <Form.Item>

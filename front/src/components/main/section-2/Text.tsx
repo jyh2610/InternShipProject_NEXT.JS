@@ -7,7 +7,7 @@ import "./layout.css";
 
 function Text() {
   const router = useRouter();
-  const refreshToken = getCookie("refresh_token");
+  const refreshToken = getCookie("refreshToken_local");
   const accessToken = useAppSelector((state) => state.auth.accessToken);
   const onClick = () => {
     refreshToken !== null || accessToken !== null ? router.push("/download") : router.push("/signin");
