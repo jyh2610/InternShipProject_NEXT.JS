@@ -10,10 +10,12 @@ function Nickname({ nicknameValue }: { nicknameValue: string }) {
     try {
       const response = await duplicateTest("hasnickname", nicknameValue);
 
-      if (response.success) {
+      if (response?.success) {
         setIsNicknameValid(response.success);
-      } else {
-        console.error("Response is empty or missing 'success' property.");
+      } else if (response?.success === false) {
+        setIsNicknameValid(response.success);
+        alert("중복된 닉네임 입니다.");
+        console.error("중복된 닉네임 입니다.");
       }
     } catch (error) {
       console.error("Error in onClick:", error);
@@ -32,7 +34,7 @@ function Nickname({ nicknameValue }: { nicknameValue: string }) {
             },
             {
               validator: (_, value: string) => {
-                if (value?.length <= 12 && typeof value === "string") {
+                if (value?.length <= 12) {
                   return Promise.resolve();
                 }
                 return Promise.reject(new Error("유효하지 않은 닉네임입니다."));

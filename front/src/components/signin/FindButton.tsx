@@ -9,11 +9,11 @@ const FindButton = () => {
   const data = [
     {
       title: "아이디 찾기",
-      link: "/",
+      link: "/preparation",
     },
     {
       title: "비밀번호 찾기",
-      link: "/",
+      link: "/preparation",
     },
     {
       title: "회원가입",

@@ -4,11 +4,21 @@ import EmailAuthBtn from "./EmailAuthBtn";
 import EmailCode from "./EmailCode";
 import { domainData } from "@/constants/constants";
 
-const EmailNew = ({ emailformValue }: { emailformValue: string }) => {
-  const [emailbtn, setEmailbtn] = useState(false);
-  const [confirmbtn, setConfirmbtn] = useState(false);
+const EmailNew = ({
+  emailformValue,
+  confirmbtn,
+  emailbtn,
+  setEmailbtn,
+  setConfirmbtn,
+}: {
+  confirmbtn: boolean;
+  setConfirmbtn: any;
+  emailformValue: string;
+  emailbtn: boolean;
+  setEmailbtn: any;
+}) => {
   const [isActive, setIsActive] = useState(false);
-
+  const [seconds, setSeconds] = useState(180);
   const selectHandler = () => {
     emailformValue;
   };
@@ -72,10 +82,20 @@ const EmailNew = ({ emailformValue }: { emailformValue: string }) => {
           setConfirmbtn={setConfirmbtn}
           confirmbtn={confirmbtn}
           emailformValue={emailformValue}
+          setSeconds={setSeconds}
         />
       </div>
       <div style={{ marginLeft: "4rem", marginBottom: "2rem", padding: "0.2rem 0.8rem" }}>
-        {confirmbtn && <EmailCode setIsActive={setIsActive} isActive={isActive} email={emailformValue} />}
+        {confirmbtn && (
+          <EmailCode
+            setConfirmbtn={setConfirmbtn}
+            setIsActive={setIsActive}
+            seconds={seconds}
+            setSeconds={setSeconds}
+            isActive={isActive}
+            email={emailformValue}
+          />
+        )}
       </div>{" "}
     </div>
   );

@@ -10,6 +10,7 @@ const EmailAuthBtn = ({
   setEmailbtn,
   setConfirmbtn,
   setIsActive,
+  setSeconds,
 }: {
   emailformValue: string;
   emailbtn: boolean;
@@ -18,9 +19,10 @@ const EmailAuthBtn = ({
   confirmbtn: boolean;
   setIsActive: any;
   isActive: boolean;
+  setSeconds: any;
 }) => {
   const api = new baseApi();
-  console.log(emailformValue);
+  //console.log(emailformValue);
   const sendingCode = async () => {
     const res: emailres = await api.post({
       url: "validate/sendemail",
@@ -28,20 +30,22 @@ const EmailAuthBtn = ({
         email: emailformValue,
       },
     });
-    console.log(res, "______");
-    console.log(res, "이메일 응답");
+    console.log(res, "이메일 응답코드");
     if (res?.success) {
-      setIsActive(true);
       setConfirmbtn(true);
+      setSeconds(180);
       setEmailbtn(true);
       setTimeout(() => {
         setEmailbtn(false);
       }, 6000);
+      setTimeout(() => {
+        setConfirmbtn(false);
+        alert("이메일 인증시간이 만료되었습니다.");
+      }, 183000);
     }
   };
   return (
     <div>
-      {" "}
       <Button style={{ height: "auto", padding: "0.5rem 0.8rem" }} disabled={emailbtn} onClick={sendingCode}>
         이메일 인증
       </Button>

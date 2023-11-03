@@ -11,7 +11,8 @@ function SiginupBtn({ validateForm }: { validateForm: () => void }) {
   //   route.push("/signup/sign-complete");
   // }, []);
   const clickBack = useCallback(async () => {
-    route.push("/");
+    //route.push("/");
+    window.history.back();
   }, []);
   const route = useRouter();
   return (
