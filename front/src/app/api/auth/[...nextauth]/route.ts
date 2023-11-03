@@ -16,10 +16,20 @@ const authOption = {
     GoggleProvider({
       clientId: process.env.NODE_ENV_API_GOOGLEEID ?? "",
       clientSecret: process.env.NODE_ENV_API_GOOGLESECRECT ?? "",
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code",
+        },
+      },
     }),
   ],
   callbacks: {
-    async signIn() {
+    async signIn({ account, profile }: any) {
+      if (account.provider === "google") {
+        return profile.email_verified && profile.email.endsWith("@example.com");
+      }
       return true;
     },
     async session({ session, token }: any) {
