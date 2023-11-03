@@ -20,7 +20,7 @@ function NavRight({ scrollY }: NavColorProps) {
   const route = useRouter();
   const path = usePathname();
   const accesstoken = useAppSelector((state) => state.auth.accessToken);
-  const refreshToken: string | null = getCookie("refreshToken");
+  const refreshToken: string | null = getCookie("refreshToken_local");
   const isTop = path !== "/" ? "black" : scrollY === 0 ? "white" : "black";
   const isLogin = accesstoken === "" && refreshToken === undefined;
 
@@ -36,7 +36,7 @@ function NavRight({ scrollY }: NavColorProps) {
   const logout = useCallback(async () => {
     await signOut();
     accesstoken && (await logOutHandler(accesstoken));
-    removeCookie("refreshToken");
+    removeCookie("refreshToken_local");
     dispatch(setAccessToken(null));
     alert("로그아웃되었습니다.");
   }, [accesstoken, dispatch]);
