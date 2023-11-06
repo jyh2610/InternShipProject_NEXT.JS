@@ -20,10 +20,13 @@ const localSignUp = async (nickname, name, user_name, email, password, birthday,
   if (user_name.length > 21) detectError("USER_NAME_TOO_LONG_ERROR", 400); 
 
   const existingName = await member.getMember(user_name);
-    if (existingName) detectError("EXISITING_USER_NAME", 400); //아이디 중복이면 에러
+  if (existingName) detectError("EXISITING_USER_NAME", 400); //아이디 중복이면 에러
   
   const existingNickname = await member.getProfileByNickname(nickname);
-    if (existingNickname) detectError("EXISITING_NICKNAME", 400); // 닉네임 중복이면 에러 
+  if (existingNickname) detectError("EXISITING_NICKNAME", 400); // 닉네임 중복이면 에러 
+
+  const existingEmail = await member.getUserNoByEmail(email);
+  if(existingEmail)detectError("ALREADY_SIGNED_UP_EMAIL", 400); // 이메일 중복이면 에러
 
   const salt = await bcrypt.genSalt(Number(process.env.SALT_ROUND));
   const hashedPassword = await bcrypt.hash(password, salt);

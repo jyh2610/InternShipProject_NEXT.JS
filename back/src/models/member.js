@@ -84,6 +84,19 @@ const getProfileByNickname = async(nickname) => {
     nickname))[0][0];
 };
 
+const UserNoListGetByName = async(name) => {
+    return (await member.pool.query(
+    `
+    SELECT
+        user_no
+    FROM
+        profile
+    WHERE
+        name = ?
+    `,
+    name))[0];
+};
+
 // profile 생성
 const registerProfile = async(user_no, nickname, name, image_url=null, introduction=null) => {
     return await member.pool.query(
