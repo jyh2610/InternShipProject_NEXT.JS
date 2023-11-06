@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
 import { getDateTime } from "@/lib/dateFormat";
 import { useAppSelector } from "@/redux/hooks";

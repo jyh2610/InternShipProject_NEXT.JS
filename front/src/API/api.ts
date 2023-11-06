@@ -9,6 +9,9 @@ type IAxiosParams = {
 };
 
 export class baseApi {
+  sendEmail(emailformValue: string): emailres | PromiseLike<emailres> {
+    throw new Error("Method not implemented.");
+  }
   private axiosInstance = axiosInstance;
   reSettingURL(url: string) {
     this.axiosInstance.defaults.baseURL = url;
