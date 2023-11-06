@@ -1,10 +1,11 @@
 "use client";
 
 import React from "react";
+import dynamic from "next/dynamic";
 import { ConfigProvider, Tabs } from "antd";
 import type { TabsProps, ThemeConfig } from "antd";
 
-import FindPw from "./FindPw";
+const FindPw = dynamic(() => import("./FindPw"));
 
 import "./style.css";
 
