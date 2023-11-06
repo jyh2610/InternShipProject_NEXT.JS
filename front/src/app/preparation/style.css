@@ -12,11 +12,13 @@
   flex-direction: column;
   width: 100%;
   max-width: 600px;
-  height: 680px;
+  height: 520px;
   background-color: #fff;
   border-radius: 0.3rem;
   gap: 1rem;
   padding: 2rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal>img {
@@ -25,19 +27,22 @@
 }
 
 .home-btn {
-  width: 200px;
-  height: 44px;
+  width: 180px;
+  height: 54px;
   background: #26AF66;
   border-radius: 0.3rem;
-  padding: 1rem;
+  padding: 1.25rem;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 500;
   margin-top: 1.4rem;
 }
 
-.home-btn:hover {}
+.anticon svg{
+  font-size: 5.2rem;
+  color: #26AF66;
+}
