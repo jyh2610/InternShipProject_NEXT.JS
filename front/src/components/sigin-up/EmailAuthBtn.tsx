@@ -1,6 +1,7 @@
 import { baseApi } from "@/API/api";
 import { Button } from "antd";
 import React, { useEffect } from "react";
+
 interface emailres {
   success: boolean;
 }
@@ -24,13 +25,9 @@ const EmailAuthBtn = ({
   Seconds: number;
 }) => {
   const api = new baseApi();
+
   const sendingCode = async () => {
-    const res: emailres = await api.post({
-      url: "validate/sendemail",
-      body: {
-        email: emailformValue,
-      },
-    });
+    const res: emailres = await api.sendEmail(emailformValue);
     if (res?.success) {
       setConfirmbtn(true);
       setSeconds(180);

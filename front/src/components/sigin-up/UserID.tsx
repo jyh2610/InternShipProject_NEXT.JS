@@ -6,7 +6,6 @@ import { duplicateTest } from "@/lib/signupApi";
 
 function UserID({ user }: { user: string }) {
   const [isUserIdValid, setIsUserIdValid] = useState(false);
-
   const response = async () => {
     try {
       const response = await duplicateTest("hasid", user);
@@ -34,13 +33,15 @@ function UserID({ user }: { user: string }) {
           {
             required: true,
             message: "아이디를 입력하세요",
+            pattern: /^[A-Za-z0-9]+$/,
           },
+
           {
             validator: (_, value: string) => {
-              if (value?.length <= 12) {
+              if (value?.length < 20) {
                 return Promise.resolve();
               }
-              return Promise.reject(new Error("아이디는 영문소문자 또는 숫자 4~16자로 입력해 주세요. (영문소문자/숫자, 4~16자)"));
+              return Promise.reject(new Error("아이디는 영문소문자 또는 숫자 4~19자로 입력해 주세요. (영문소문자/숫자, 4~19자)"));
             },
           },
         ]}
@@ -50,7 +51,7 @@ function UserID({ user }: { user: string }) {
         wrapperCol={{ span: 7 }}
       >
         <div className="flex gap-[0.5rem]">
-          <Input placeholder="아이디는 영문소문자 또는 숫자 4~16자로 입력해 주세요." style={{ padding: "0.5rem 0.8rem" }} />
+          <Input placeholder="아이디는 영문소문자 또는 숫자 4~19자로 입력해 주세요." style={{ padding: "0.5rem 0.8rem" }} />
           <Button style={{ height: "100%", padding: "0.5rem 1.2rem" }} onClick={response}>
             중복확인
           </Button>

@@ -7,19 +7,14 @@ import dynamic from "next/dynamic";
 
 import type { formType } from "@/type/signUp";
 
-import { baseApi } from "@/API/api";
-import { formatDate } from "@/lib/FormatData";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { setUserName } from "@/redux/slicer/authSlice";
+import { useAppSelector } from "@/redux/hooks";
 import { useEffect, useRef, useState } from "react";
+import SignUpValidation from "./SignupValidation";
+import SelectValidationAndPassword from "./SelectValidationAndPassword";
 
-const Birth = dynamic(() => import("./Birth"));
 const Name = dynamic(() => import("./Name"));
 const Nickname = dynamic(() => import("./Nickname"));
-const SiginupBtn = dynamic(() => import("./SiginupBtn"));
-const TestPassword = dynamic(() => import("./TestPassword"));
 const UserID = dynamic(() => import("./UserID"));
-const Sex = dynamic(() => import("./Sex"));
 const EmailNew = dynamic(() => import("./EmailNew"));
 
 const validateMessages = {
@@ -43,9 +38,7 @@ const SiginupForm = () => {
   const [confirmbtn, setConfirmbtn] = useState(false);
   const [resSuccess, setResSuccess] = useState("");
   const checked = useAppSelector((state) => state.auth.checkedthird);
-  //
-  const dispatch = useAppDispatch();
-  const api = new baseApi();
+
   const [form] = Form.useForm<formType>();
 
   const nicknameValue = Form.useWatch("nickname", form);
@@ -57,99 +50,58 @@ const SiginupForm = () => {
   const fullEmail = `${emailId}@${emailDomain}`; //
   console.log(emailId, "사인업폼 ");
   const route = useRouter();
-  // const email = `${emailValue.id}@${emailValue.domain}`;
-  const validateForm = async () => {
-    if (resSuccess) {
-      try {
-        const { birthday, name, user_name, nickname, password, nation, sex } = await form.validateFields();
-        console.log("asdasd");
-        const sendingData = { birthday: formatDate(birthday), name, user_name, nickname, password, nation, sex, email: fullEmail };
-        const res = await api.post({
-          url: "/sign/signup",
-          body: sendingData,
-        });
-        if (res.success) {
-          dispatch(setUserName(name));
-          route.push("/signup/sign-complete");
-        }
-      } catch (errorInfo) {
-        console.log("Validation failed:", errorInfo);
-      }
-    } else {
-      alert(" 인증 및 중복확인을 완료해야 합니다.");
-    }
-  };
-
-  const validateSelect = (_: unknown, value: string | number) => {
-    return new Promise<void>((resolve, reject) => {
-      if (value === undefined) {
-        reject("선택해야 합니다.");
-      } else {
-        resolve();
-      }
-    });
-  };
   const alertShown = useRef(false);
+
   useEffect(() => {
     if (!checked && !alertShown.current) {
-      alertShown.current = true; // Set the ref to true to prevent further alerts
+      alertShown.current = true;
       alert("필수 동의 항목을 체크해주세요");
       route.push("/signup/provideinfo");
     }
   }, [checked]);
+
   return (
-    <div className="">
-      <div className="">
-        <ConfigProvider
-          theme={{
-            token: {
-              colorPrimary: "#26AF66",
-              colorLink: "#000",
-              borderRadius: 2,
-              colorBgContainer: "#F7F7F7",
-              colorBorder: "transparent",
-              colorPrimaryActive: "none",
-              colorPrimaryBorderHover: "none",
-              colorPrimaryHover: "none",
-            },
-            components: {
-              Input: {
-                colorBgContainer: "#F7F7F7",
-                activeBorderColor: "none", // Input 체크 되었을 때 보더색상 변경
-                hoverBorderColor: "none", // 마우스 올렸을 때 보더색상 변경
-                colorBorder: "transparent",
-                activeShadow: "none", // Input 체크 박스 그림자 변경
-              },
-            },
-          }}
-        >
-          <Form form={form} colon={false} labelAlign="left" className="my-auto " name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
-            <Name />
-            <Nickname nicknameValue={nicknameValue} />
-            <UserID user={user_nameValue} />
-            {/* <EmailInput emailValue={emailValue} setEmailValue={setEmailValue} email={email} /> */}
-            <EmailNew
-              setResSuccess={setResSuccess}
-              resSuccess={resSuccess}
-              emailformValue={fullEmail}
-              confirmbtn={confirmbtn}
-              setConfirmbtn={setConfirmbtn}
-              emailbtn={emailbtn}
-              setEmailbtn={setEmailbtn}
-            />
-            <TestPassword />
-            <Birth validateSelect={validateSelect} ko_KR={""} />
-            <Sex validateSelect={validateSelect} ko_KR={""} />
-            <SiginupBtn validateForm={validateForm} />
-          </Form>
-        </ConfigProvider>
-      </div>
-    </div>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: "#26AF66",
+          colorLink: "#000",
+          borderRadius: 2,
+          colorBgContainer: "#F7F7F7",
+          colorBorder: "transparent",
+          colorPrimaryActive: "none",
+          colorPrimaryBorderHover: "none",
+          colorPrimaryHover: "none",
+        },
+        components: {
+          Input: {
+            colorBgContainer: "#F7F7F7",
+            activeBorderColor: "none", // Input 체크 되었을 때 보더색상 변경
+            hoverBorderColor: "none", // 마우스 올렸을 때 보더색상 변경
+            colorBorder: "transparent",
+            activeShadow: "none", // Input 체크 박스 그림자 변경
+          },
+        },
+      }}
+    >
+      <Form form={form} colon={false} labelAlign="left" className="my-auto " name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+        <Name />
+        <Nickname nicknameValue={nicknameValue} />
+        <UserID user={user_nameValue} />
+        <EmailNew
+          setResSuccess={setResSuccess}
+          resSuccess={resSuccess}
+          emailformValue={fullEmail}
+          confirmbtn={confirmbtn}
+          setConfirmbtn={setConfirmbtn}
+          emailbtn={emailbtn}
+          setEmailbtn={setEmailbtn}
+        />
+        <SelectValidationAndPassword />
+        <SignUpValidation resSuccess={resSuccess} form={form} />
+      </Form>
+    </ConfigProvider>
   );
-  // } else {
-  //   alert("필수 동의 항목을 체크해주세요");
-  //   return route.push("/signup/provideinfo");
-  // }
 };
 
 export default SiginupForm;
