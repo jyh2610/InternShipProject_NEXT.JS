@@ -4,11 +4,11 @@ const findService = require("../services/findService");
 const {catchAsync, detectError} = require("../utils/detectError");
 
 
-const idList =  catchAsync(async(req, res) => {
+const idFind =  catchAsync(async(req, res) => {
     const {name, email} = req.body;
     if(!name || !email) detectError("KEY_ERROR", 400);
 
-    const result = (await findService.idList(name, email));
+    const result = (await findService.idFind(name, email));
     return res.status(200).json(result);
 });
 
@@ -23,6 +23,6 @@ const resetPassword = catchAsync(async(req, res) => {
 });
 
 module.exports ={
-    idList,
+    idFind,
     resetPassword
 };

@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 const { detectError } = require("../utils/detectError");
 
 // email에 해당하는 id 마스킹하여 반환
-const idList = async (name, email) => {
+const idFind = async (name, email) => {
     const emailValidation = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$");
     if (!emailValidation.test(email)) detectError("EMAIL-ERROR", 400); // 이메일 형식에 안 맞으면 에러
     
@@ -70,6 +70,6 @@ function transformId(id) {
 }
 
 module.exports = {
-    idList,
+    idFind,
     resetPassword
 };
