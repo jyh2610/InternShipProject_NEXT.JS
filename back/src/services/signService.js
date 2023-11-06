@@ -17,7 +17,7 @@ const localSignUp = async (nickname, name, user_name, email, password, birthday,
   const pwValidation = new RegExp("^(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,20}$");
   if (!pwValidation.test(password)) detectError("PASSWORD-ERROR", 400);
 
-  if (user_name.length > 20) detectError("USER_NAME_TOO_LONG_ERROR", 400); 
+  if (user_name.length > 21) detectError("USER_NAME_TOO_LONG_ERROR", 400); 
 
   const existingName = await member.getMember(user_name);
     if (existingName) detectError("EXISITING_USER_NAME", 400); //아이디 중복이면 에러
