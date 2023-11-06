@@ -12,7 +12,7 @@ const idList = async (email) => {
     if (!emailValidation.test(email)) detectError("EMAIL-ERROR", 400); // 이메일 형식에 안 맞으면 에러
     
     const user = await member.getUserNoByEmail(email);
-    if (!user) detectError("NOT_A_MEMBER_NAME", 400);
+    if (!user) detectError("NOT_A_MEMBER_EMAIL", 400);
 
     const user_name = (await member.getUserName(user.user_no)).user_name;
 

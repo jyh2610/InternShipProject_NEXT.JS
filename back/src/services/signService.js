@@ -55,8 +55,8 @@ const localSignIn = async (user_name, password) => {
 
   const usersalt = auth_password.salt; //user의 salt값
   const hashedInputPassword = await bcrypt.hash(password, usersalt); // 입력한 password 암호화
-
-  if(hashedInputPassword !== hashedPassword) detectError("PASSWORD_DOSE_NOT_MATCH", 400);
+  
+  if(hashedInputPassword !== hashedPassword) detectError("PASSWORD_DOES_NOT_MATCH", 400);
   return await generateTokens(user_no);
 };
 
