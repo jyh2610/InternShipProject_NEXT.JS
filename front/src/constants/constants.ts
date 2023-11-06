@@ -114,49 +114,29 @@ export const dummyImgData = [
 export const slideData = [
   {
     id: 0,
-<<<<<<< HEAD
-    img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
-    title: "아키플2.0<br />첫 번째 영역 타이틀 1",
-=======
     img: "./assets/hover_01.png",
     title: "아키플2.0<br />첫 번째 영역 타이틀",
->>>>>>> feature/taekyong
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
   {
     id: 1,
-<<<<<<< HEAD
-    img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
-    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀 2",
-=======
     img: "./assets/hover_02.png",
     title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀",
->>>>>>> feature/taekyong
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
   {
     id: 2,
-<<<<<<< HEAD
-    img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
-    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀 3",
-=======
     img: "./assets/hover_03.png",
     title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀",
->>>>>>> feature/taekyong
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
   {
     id: 3,
-<<<<<<< HEAD
-    img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
-    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀 4",
-=======
     img: "./assets/hover_04.png",
     title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀",
->>>>>>> feature/taekyong
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
