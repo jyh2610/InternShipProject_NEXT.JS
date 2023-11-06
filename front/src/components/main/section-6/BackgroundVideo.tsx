@@ -8,7 +8,7 @@ import "./style.css";
 function BackgroundVideo() {
   return (
     <div className="relative">
-      <div className="w-full md:w-[1600px] mx-auto">
+      <div className="w-full mainwidth mx-auto">
         <div style={{ border: "0.875rem solid black", borderRadius: "1.2rem" }} className="video-layout">
           <video
             id="video"
@@ -18,7 +18,7 @@ function BackgroundVideo() {
             draggable="false"
             playsInline
           >
-            <source src="https://user-images.githubusercontent.com/118269595/277870569-a95c9023-c7b8-41ad-bcd0-b05954349771.mp4" type="video/mp4" />
+            <source src="assets/video/3DPlayMode.mp4" type="video/mp4" />
           </video>
         </div>
         <div
@@ -26,8 +26,8 @@ function BackgroundVideo() {
           style={{
             transform: "translateX(-50%)",
             width: "200px",
-            height: "38px",
-            backgroundColor: "rgb(37 37 37)",
+            height: "34px",
+            backgroundColor: "rgb(28 28 28)",
             borderRadius: "0 0 0.5rem 0.5rem",
           }}
         ></div>

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 function MainText() {
   const router = useRouter();
   return (
-    <div className="w-full h-screen">
+    <div className="">
       <div
         className="tit_wrap w-full"
         style={{

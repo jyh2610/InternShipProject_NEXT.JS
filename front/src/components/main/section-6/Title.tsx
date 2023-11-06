@@ -7,7 +7,7 @@ function Title() {
           <div
             className="text-3xl md:text-4xl"
             style={{
-              lineHeight: "2.6rem",
+              lineHeight: "3rem",
               color: "#9D9D9D",
               fontWeight: "300",
             }}

@@ -15,6 +15,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import "./layout.css";
+import { slideData } from "@/constants/constants";
 
 function TwoCarousel() {
   const [imgIdx, setImgIdx] = useState(0);
@@ -36,9 +37,9 @@ function TwoCarousel() {
             modules={[Navigation, A11y]}
             onSlideChange={handleSlideChange}
           >
-            {dummyData.map((_, idx) => (
+            {slideData.map((item, idx) => (
               <SwiperSlide key={idx}>
-                <div className="relative bg-dummyImg bg-center bg-no-repeat bg-cover h-[30rem] lg:h-[40rem] object-cover">
+                <div style={{ backgroundImage: `url(${item.img})` }} className="relative bg-center bg-no-repeat bg-cover h-[30rem] lg:h-[40rem] object-cover">
                   <SliderText />
                   <div className="Dimmed"></div>
                 </div>
