@@ -1,14 +1,15 @@
 import React from "react";
 
-import { ConfigProvider, Select, Space } from "antd";
+import { Select, Space } from "antd";
 
 import { domainData } from "@/constants/constants";
+import FindInput from "./FindInput";
 
 const handleChange = (value: string) => {
   console.log(`selected ${value}`);
 };
 
-function FindPW() {
+function FindPW({ type }: { type: string }) {
   return (
     <Space className="w-full">
       <div>
@@ -17,43 +18,26 @@ function FindPW() {
           <p className="find-text">가입 시 입력한 이메일을 통해 인증 후 비밀번호를 재설정해주세요. </p>
         </div>
         <div className="find-from-wrap">
-        <form className="id findinput">
-            <label htmlFor="아이디">아이디</label>
-            <input type="text" id="id" name="아이디" />
-          </form>
+          {type === "pw" && (
+            <form className="id findinput">
+              <FindInput name={"아이디"} />
+            </form>
+          )}
           <form className="name findinput">
-            <label htmlFor="이름">이름</label>
-            <input type="text" id="Name" name="이름" />
+            <FindInput name={"이름"} />
           </form>
           <form className="emall findinput">
             <label htmlFor="이메일">이메일</label>
             <div className="emall-select">
               <input type="emall" id="emall" name="이메일" />
               <p className="font-bold text-[1rem] text-[#bfbfbf]">@</p>
-              <ConfigProvider
-                theme={{
-                  components: {
-                    Select: {
-                      selectorBg: "#F7F7F7",
-                      colorBorder: "none",
-                    },
-                  },
-                  token: {
-                    borderRadius: 0,
-                    controlHeight: 40,
-                    colorPrimaryHover: "transparent",
-                    controlOutline: "transparent",
-                  },
-                }}
-              >
-                <Select
-                  className="ant-select-custom"
-                  style={{ width: "50%", outline: "none" }}
-                  defaultValue="직접입력"
-                  onChange={handleChange}
-                  options={domainData}
-                />
-              </ConfigProvider>
+              <Select
+                className="ant-select-custom"
+                style={{ width: "50%", outline: "none" }}
+                defaultValue="직접입력"
+                onChange={handleChange}
+                options={domainData}
+              />
             </div>
           </form>
           <form className="certified findinput">

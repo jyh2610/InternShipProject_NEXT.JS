@@ -1,154 +1,153 @@
 /* input 기본 스타일 초기화 */
 input {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: none;
-    background-color: #F7F7F7;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  background-color: #f7f7f7;
 }
 
 input:focus {
-    outline: none;
-    border: none;
+  outline: none;
+  border: none;
 }
 
 /* IE10 이상에서 input box 에 추가된 지우기 버튼 제거 */
 input::-ms-clear {
-    display: none;
+  display: none;
 }
 
 /* input type number 에서 화살표 제거 */
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .findinfo-wrap {
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    background-color: #F5F5F5;
-    overflow-y: hidden;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: #f5f5f5;
+  overflow-y: hidden;
 }
 
 .find-contant {
-    width: 100%;
-    max-width: 520px;
-    padding: 3rem;
-    height: 540px;
-    background-color: #fdfdfd;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -55%);
-    border-radius: 0.3rem;
+  width: 100%;
+  max-width: 520px;
+  padding: 3rem;
+  height: 540px;
+  background-color: #fdfdfd;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -55%);
+  border-radius: 0.3rem;
 }
 
-.find-text-box{
-    padding: 1rem 0 0.5rem 0;
+.find-text-box {
+  padding: 1rem 0 0.5rem 0;
 }
-.find-tit{
-    font-size: 1.2rem;
-    font-weight: 500;
+.find-tit {
+  font-size: 1.2rem;
+  font-weight: 500;
 }
-.find-text{
-    font-size: 0.95rem;
+.find-text {
+  font-size: 0.95rem;
 }
-.find-from-wrap{
-    padding: 0.5rem 0;
+.find-from-wrap {
+  padding: 0.5rem 0;
 }
 .findinput {
-    display: flex;
-    width: 100%;
-    margin: 0.875rem 0;
+  display: flex;
+  width: 100%;
+  margin: 0.875rem 0;
 }
 
-.findinput>label {
-    width: 15%;
-    font-weight: 500;
-    font-size: 0.85rem;
+.findinput > label {
+  width: 15%;
+  font-weight: 500;
+  font-size: 0.85rem;
 }
 
-.findinput>input {
-    width: 100%;
-    height: 40px;
-    padding: 0 1rem;
+.findinput > input {
+  width: 100%;
+  height: 40px;
+  padding: 0 1rem;
 }
 
 .emall-select {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    gap: 0.3rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.3rem;
 }
 
-.emall-select>input {
-    height: 40px;
-    width: 50%;
-    padding: 0 1rem;
+.emall-select > input {
+  height: 40px;
+  width: 50%;
+  padding: 0 1rem;
 }
-.ce-code{
-    width: 100%;
-    display: flex;
-    gap: 0.5rem;
+.ce-code {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+}
+.ce-code > input {
+  height: 40px;
+  width: 90%;
+  padding: 0 1rem;
+}
 
+.code-cp-btn {
+  background: #26af66;
+  border: none;
+  padding: 0 1rem;
+  color: #fff;
+  font-size: 0.75rem;
 }
-.ce-code>input{
-    height: 40px;
-    width: 90%;
-    padding: 0 1rem;
+.alert-text {
+  font-size: 0.8rem;
 }
-
-.code-cp-btn{
-    background: #26AF66;
-    border: none;
-    padding: 0 1rem;
-    color: #fff;
-    font-size: 0.75rem;
+.completion.alert-text {
+  display: none;
 }
-.alert-text{
-    font-size: 0.8rem;
-}
-.completion.alert-text{
-    display: none;
-}
-.completion-btn{
-    width: 100%;
-    background:#26AF66;
-    border: none;
-    padding: 1rem 0;
-    color: #fff;
-    font-size: 0.875rem;
-    font-weight: 700;
+.completion-btn {
+  width: 100%;
+  background: #26af66;
+  border: none;
+  padding: 1rem 0;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
 }
 
 .ant-tabs-nav-list {
-    width: 100%;
+  width: 100%;
 }
 
 .ant-space-item {
-    width: 100%;
+  width: 100%;
 }
 
 .ant-tabs-tab {
-    width: 50%;
-    justify-content: center;
+  width: 50%;
+  justify-content: center;
 }
 
 .ant-tabs-tab.ant-tabs-tab-active {
-    background-color: #26AF66 !important;
-    font-weight: 0;
+  background-color: #26af66 !important;
+  font-weight: 0;
 }
 
 .ant-tabs-tab .tabs-btn {
-    font-size: 0.875rem;
+  font-size: 0.875rem;
 }
 
-.ant-tabs-top>.ant-tabs-nav::before,
-.ant-tabs-bottom>.ant-tabs-nav::before,
-.ant-tabs-top>div>.ant-tabs-nav::before,
-.ant-tabs-bottom>div>.ant-tabs-nav::before {
-    border: 1px solid #26AF66 !important;
+.ant-tabs-top > .ant-tabs-nav::before,
+.ant-tabs-bottom > .ant-tabs-nav::before,
+.ant-tabs-top > div > .ant-tabs-nav::before,
+.ant-tabs-bottom > div > .ant-tabs-nav::before {
+  border: 1px solid #26af66 !important;
 }
