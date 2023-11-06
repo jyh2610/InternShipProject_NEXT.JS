@@ -20,7 +20,7 @@ const TabImage = () => {
         items={slideData.map((item, i) => {
           const id = String(i + 1);
           return {
-            label: <p>{item.id}</p>,
+            label: <p style={{ color: "#000" }}>{item.id}</p>,
             key: id,
             children: (
               <div key={id} className="flex justify-center">
