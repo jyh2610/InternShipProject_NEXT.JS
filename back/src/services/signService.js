@@ -17,18 +17,21 @@ const localSignUp = async (nickname, name, user_name, email, password, birthday,
   const pwValidation = new RegExp("^(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,20}$");
   if (!pwValidation.test(password)) detectError("PASSWORD-ERROR", 400);
 
-  if (user_name.length > 20) detectError("USER_NAME_TOO_LONG_ERROR", 400); 
+  if (user_name.length > 21) detectError("USER_NAME_TOO_LONG_ERROR", 400); 
 
   const existingName = await member.getMember(user_name);
-    if (existingName) detectError("EXISITING_USER_NAME", 400); //아이디 중복이면 에러
+  if (existingName) detectError("EXISITING_USER_NAME", 400); //아이디 중복이면 에러
   
   const existingNickname = await member.getProfileByNickname(nickname);
-    if (existingNickname) detectError("EXISITING_NICKNAME", 400); // 닉네임 중복이면 에러 
+  if (existingNickname) detectError("EXISITING_NICKNAME", 400); // 닉네임 중복이면 에러 
+
+  const existingEmail = await member.getUserNoByEmail(email);
+  if(existingEmail)detectError("ALREADY_SIGNED_UP_EMAIL", 400); // 이메일 중복이면 에러
 
   const salt = await bcrypt.genSalt(Number(process.env.SALT_ROUND));
   const hashedPassword = await bcrypt.hash(password, salt);
-  const hashedEmail = await bcrypt.hash(email, salt);
-  const hashedbirthday = await bcrypt.hash(birthday.toString(), salt);
+  // const hashedEmail = await bcrypt.hash(email, salt);
+  // const hashedbirthday = await bcrypt.hash(birthday.toString(), salt);
 
   await member.registerMember(user_name, 0);
 
@@ -37,7 +40,7 @@ const localSignUp = async (nickname, name, user_name, email, password, birthday,
   await Promise.all([
     auth.registerPassword(user_no, salt, hashedPassword),
     member.registerProfile(user_no, nickname, name),
-    member.registerAuthentication(user_no, 1, null, hashedEmail, hashedbirthday, nation, sex),
+    member.registerAuthentication(user_no, 1, null, email, birthday.toString(), nation, sex),
   ]);
 
   return {message: "User Created success", success: true };
@@ -56,7 +59,7 @@ const localSignIn = async (user_name, password) => {
   const usersalt = auth_password.salt; //user의 salt값
   const hashedInputPassword = await bcrypt.hash(password, usersalt); // 입력한 password 암호화
 
-  if(hashedInputPassword !== hashedPassword) detectError("PASSWORD_DOSE_NOT_MATCH", 400);
+  if(hashedInputPassword !== hashedPassword) detectError("PASSWORD_DOES_NOT_MATCH", 400);
   return await generateTokens(user_no);
 };
 
