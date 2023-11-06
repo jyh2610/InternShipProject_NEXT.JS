@@ -4,7 +4,6 @@ const member = require("../models/member");
 const auth = require("../models/auth");
 
 const bcrypt = require("bcrypt");
-const axios = require("axios");
 const { detectError } = require("../utils/detectError");
 
 // email에 해당하는 id 마스킹하여 반환
@@ -20,11 +19,21 @@ const idList = async (email) => {
     return {success: true, user_name: transformId(user_name)};
 };
 
-const resetPassword = async (user_name, password) => {
-    // user_name(id) 에 해당하는 user_no
-    // user_no의 password 업데이트
+const resetPassword = async (user_name, email, password) => {
+    const userGetByUserName = await member.getMember(user_name);
+    if(!userGetByUserName) detectError("NOT_A_MEMBER_ID", 400);
 
-    // 성공 리턴
+    const userGetByEmail = await member.getUserNoByEmail(email);
+    if(!userGetByEmail) detectError("NOT_A_MEMBER_EMAIL", 400);
+
+    if(userGetByUserName.user_no !== userGetByEmail.user_no) detectError("ID_AND_EMAIL_DOES_NOT_MATCH", 400);
+
+    const salt = await bcrypt.genSalt(Number(process.env.SALT_ROUND));
+    const hashedPassword = await bcrypt.hash(password, salt);
+    // 비밀번호 변경후 로그인시 비밀번호 검증이 안됨
+    await auth.updatePassword(userGetByEmail.user_no, salt, hashedPassword);
+
+    return {success: true, message: "Password reset!"}
 };
 
 // 절반 '*' 처리하는 함수(마지막 1글자는 원문)

@@ -147,7 +147,7 @@ const getAuthentication = async(user_no) => {
     user_no))[0][0];
 };
 // Authentication 조회
-const getUserNoByEmail = async(email) => { 
+const getUserNoByEmail = async(email) => {
     return (await member.pool.query(
     `
     SELECT

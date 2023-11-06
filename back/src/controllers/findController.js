@@ -14,13 +14,12 @@ const idList =  catchAsync(async(req, res) => {
 
 
 const resetPassword = catchAsync(async(req, res) => {
-    // const {user_name, password} = req.body;
+    const {user_name, email, password} = req.body;
+    if(!user_name || !email || !password) detectError("KEY_ERROR", 400);
 
-    // if (!user_name || !password) detectError("KEY_ERROR", 400);
+    const result = await findService.resetPassword(user_name, email, password);
 
-    // const result = await signService.localSignIn(user_name, password);
-
-    // return res.status(200).json(result);
+    return res.status(200).json(result);
 });
 
 module.exports ={
