@@ -5,7 +5,7 @@ const fs = require("fs");
 
 const htmlContent = fs.readFileSync(__dirname + "/emailVerifyForm.html", "utf8");
 
-const sendEmail = async (to, code) => {
+const sendEmail = async (to, subject, code) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {

@@ -16,6 +16,19 @@ const getMember = async(user_name) => {
     user_name
     ))[0][0];
 };
+const getUserName = async(user_no) => {
+    return (await member.pool.query(
+    `
+    SELECT 
+        user_name
+    FROM 
+        user
+    WHERE 
+        user_no = ?
+    `,
+    user_no
+    ))[0][0];
+};
 // member 등록
 const registerMember = async(user_name, login_type) => {
     return await member.pool.query(
@@ -133,6 +146,19 @@ const getAuthentication = async(user_no) => {
     `,
     user_no))[0][0];
 };
+// Authentication 조회
+const getUserNoByEmail = async(email) => { 
+    return (await member.pool.query(
+    `
+    SELECT
+        user_no
+    FROM
+        authentication
+    WHERE
+        email = ?
+    `,
+    email))[0][0];
+};
 
 // Authentication 등록
 const registerAuthentication = async(user_no, gether_agree, cell_phone, email, birthday, sex, nation) => {
@@ -232,6 +258,7 @@ const deleteRefreshToken = async(user_no) => {
 
 module.exports = {
     getMember,
+    getUserName,
     registerMember,
     deleteMember,
 
@@ -242,6 +269,7 @@ module.exports = {
     deleteProfile,
 
     getAuthentication,
+    getUserNoByEmail,
     registerAuthentication,
     updateAuthentication,
     deleteAuthentication,

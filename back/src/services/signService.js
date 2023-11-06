@@ -27,8 +27,8 @@ const localSignUp = async (nickname, name, user_name, email, password, birthday,
 
   const salt = await bcrypt.genSalt(Number(process.env.SALT_ROUND));
   const hashedPassword = await bcrypt.hash(password, salt);
-  const hashedEmail = await bcrypt.hash(email, salt);
-  const hashedbirthday = await bcrypt.hash(birthday.toString(), salt);
+  // const hashedEmail = await bcrypt.hash(email, salt);
+  // const hashedbirthday = await bcrypt.hash(birthday.toString(), salt);
 
   await member.registerMember(user_name, 0);
 
@@ -37,7 +37,7 @@ const localSignUp = async (nickname, name, user_name, email, password, birthday,
   await Promise.all([
     auth.registerPassword(user_no, salt, hashedPassword),
     member.registerProfile(user_no, nickname, name),
-    member.registerAuthentication(user_no, 1, null, hashedEmail, hashedbirthday, nation, sex),
+    member.registerAuthentication(user_no, 1, null, email, birthday.toString(), nation, sex),
   ]);
 
   return {message: "User Created success", success: true };
