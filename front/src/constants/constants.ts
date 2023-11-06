@@ -114,29 +114,29 @@ export const dummyImgData = [
 export const slideData = [
   {
     id: 0,
-    img: "./assets/hover_01.png",
-    title: "아키플2.0<br />첫 번째 영역 타이틀",
+    img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
+    title: "아키플2.0<br />첫 번째 영역 타이틀 1",
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
   {
     id: 1,
-    img: "./assets/hover_02.png",
-    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀",
+    img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
+    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀 2",
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
   {
     id: 2,
-    img: "./assets/hover_03.png",
-    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀",
+    img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
+    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀 3",
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
   {
     id: 3,
-    img: "./assets/hover_04.png",
-    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀",
+    img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
+    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀 4",
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
@@ -195,13 +195,13 @@ export const domainData = [
 export const thirdSlideData = [
   {
     id: 0,
-    img: "assets/design_option.png",
+    img: "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaDNrphI5FlDnI4wEguv1CLRdZ-EE6GrOJL1ukX6Vcxqo5jFjdJT6ws4waBIhV8_cujxBpk4DvqI9u_zTFx0pR99WqOk=w1920-h888",
     title: "다양한 디자인 옵션",
     contentstext: "다양한 재질, 가구, 컬러 팔레트 등을 제공하여 사용자가 다양한 디자인 옵션을 시도해 볼 수 있도록 합니다.",
   },
   {
     id: 1,
-    img: "assets/visualization.png",
+    img: "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCgCX6O2WdYnGfg1subp4mLi2amDghnJl3Xki-UtVIgfMpy14rw4C-SvaY8G2siQUDMrOLuVN6dtqI-y3ezjvUNaqB2=w1920-h888",
     title: "현실적 시각화",
     contentstext:
       "언리얼 엔진을 활용하여 인테리어 3D 툴을 개발하면 현실적인 시각화를 제공할 수 있습니다. 고객들은 거주 공간을 미리 확인하고 디자인 아이디어를 더 쉽게 이해할 수 있습니다.",

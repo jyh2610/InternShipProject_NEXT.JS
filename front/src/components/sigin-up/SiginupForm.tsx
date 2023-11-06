@@ -44,10 +44,10 @@ const SiginupForm = () => {
   const nicknameValue = Form.useWatch("nickname", form);
   const user_nameValue = Form.useWatch("user_name", form);
 
-  const emailId = Form.useWatch("emailId", form); // 이메일 아이디 부분 값
-  const emailDomain = Form.useWatch("emailDomain", form); // 도메인 부분 값
+  const emailId = Form.useWatch("emailId", form);
+  const emailDomain = Form.useWatch("emailDomain", form);
 
-  const fullEmail = `${emailId}@${emailDomain}`; //
+  const fullEmail = `${emailId}@${emailDomain}`;
   console.log(emailId, "사인업폼 ");
   const route = useRouter();
   const alertShown = useRef(false);
@@ -76,10 +76,10 @@ const SiginupForm = () => {
         components: {
           Input: {
             colorBgContainer: "#F7F7F7",
-            activeBorderColor: "none", // Input 체크 되었을 때 보더색상 변경
-            hoverBorderColor: "none", // 마우스 올렸을 때 보더색상 변경
+            activeBorderColor: "none",
+            hoverBorderColor: "none",
             colorBorder: "transparent",
-            activeShadow: "none", // Input 체크 박스 그림자 변경
+            activeShadow: "none",
           },
         },
       }}
