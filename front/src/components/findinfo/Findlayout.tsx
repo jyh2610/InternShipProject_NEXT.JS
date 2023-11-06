@@ -2,7 +2,7 @@
 
 import React from "react";
 import { ConfigProvider, Tabs } from "antd";
-import type { TabsProps } from "antd";
+import type { TabsProps, ThemeConfig } from "antd";
 
 import FindPw from "./FindPw";
 
@@ -22,30 +22,30 @@ const items: TabsProps["items"] = [
 ];
 
 const Findlayout = () => {
+  const thmeConfig: ThemeConfig = {
+    components: {
+      Select: {
+        selectorBg: "#F7F7F7",
+        colorBorder: "none",
+      },
+      Tabs: {
+        inkBarColor: "#26AF66",
+        itemHoverColor: "none",
+        itemSelectedColor: "#fff",
+      },
+    },
+    token: {
+      borderRadius: 0,
+      controlHeight: 40,
+      colorPrimaryHover: "transparent",
+      controlOutline: "transparent",
+    },
+  };
+
   return (
     <div className="findinfo-wrap">
       <div className="find-contant">
-        <ConfigProvider
-          theme={{
-            components: {
-              Select: {
-                selectorBg: "#F7F7F7",
-                colorBorder: "none",
-              },
-              Tabs: {
-                inkBarColor: "#26AF66",
-                itemHoverColor: "none",
-                itemSelectedColor: "#fff",
-              },
-            },
-            token: {
-              borderRadius: 0,
-              controlHeight: 40,
-              colorPrimaryHover: "transparent",
-              controlOutline: "transparent",
-            },
-          }}
-        >
+        <ConfigProvider theme={thmeConfig}>
           <Tabs tabBarStyle={{ width: "100%" }} tabBarGutter={0} defaultActiveKey="1" items={items} centered />
         </ConfigProvider>
       </div>

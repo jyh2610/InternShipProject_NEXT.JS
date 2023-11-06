@@ -1,11 +1,9 @@
-import React from "react";
-
-function FindInput({ name }: { name: string }) {
+function FindInput({ name, classData }: { name: string; classData: string }) {
   return (
-    <>
+    <form className={`${classData} findinput`}>
       <label htmlFor={name}>{name}</label>
       <input type="text" id="Name" name={name} />
-    </>
+    </form>
   );
 }
 
