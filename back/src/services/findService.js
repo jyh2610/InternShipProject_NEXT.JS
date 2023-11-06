@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 const { detectError } = require("../utils/detectError");
 
 // email에 해당하는 id 마스킹하여 반환
-const idList = async (email) => {
+const idList = async (name, email) => {
     const emailValidation = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$");
     if (!emailValidation.test(email)) detectError("EMAIL-ERROR", 400); // 이메일 형식에 안 맞으면 에러
     
@@ -20,6 +20,13 @@ const idList = async (email) => {
 };
 
 const resetPassword = async (user_name, email, password) => {
+    const emailValidation = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$");
+    if (!emailValidation.test(email)) detectError("EMAIL-ERROR", 400); // 이메일 형식에 안 맞으면 에러
+    
+    // 비밀번호는 최소 하나의 대문자, 숫자, 특수문자(@$!%*?&)를 포함하고, 길이는 8에서 20자
+    const pwValidation = new RegExp("^(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,20}$");
+    if (!pwValidation.test(password)) detectError("PASSWORD-ERROR", 400);
+
     const userGetByUserName = await member.getMember(user_name);
     if(!userGetByUserName) detectError("NOT_A_MEMBER_ID", 400);
 
@@ -27,10 +34,12 @@ const resetPassword = async (user_name, email, password) => {
     if(!userGetByEmail) detectError("NOT_A_MEMBER_EMAIL", 400);
 
     if(userGetByUserName.user_no !== userGetByEmail.user_no) detectError("ID_AND_EMAIL_DOES_NOT_MATCH", 400);
+    
+    
 
     const salt = await bcrypt.genSalt(Number(process.env.SALT_ROUND));
     const hashedPassword = await bcrypt.hash(password, salt);
-    // 비밀번호 변경후 로그인시 비밀번호 검증이 안됨
+    
     await auth.updatePassword(userGetByEmail.user_no, salt, hashedPassword);
 
     return {success: true, message: "Password reset!"}
