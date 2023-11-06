@@ -35,7 +35,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .find-contant {
   width: 100%;
-  max-width: 520px;
+  max-width: 620px;
   padding: 3rem;
   height: 540px;
   background-color: #fdfdfd;
@@ -86,7 +86,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .emall-select > input {
   height: 40px;
-  width: 50%;
+  width: 40%;
   padding: 0 1rem;
 }
 .ce-code {
@@ -121,8 +121,15 @@ input[type="number"]::-webkit-outer-spin-button {
   color: #fff;
   font-size: 0.875rem;
   font-weight: 700;
+  text: center;
 }
-
+.email-btn {
+  width: 100%;
+  background: #26af66;
+  border: none;
+  padding: 1rem 0;
+  color: #fff;
+}
 .ant-tabs-nav-list {
   width: 100%;
 }
