@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import { Button, Form, Input } from "antd";
 
-import { baseApi } from "@/API/api";
-
 import Timer from "./Timer";
-
+import { verifyCode } from "../../lib/EmailApi";
 function EmailCode({
   email,
   setIsActive,
@@ -28,16 +26,8 @@ function EmailCode({
   const [code, setCode] = useState("");
 
   const [timestart, setTimestart] = useState(false);
-  const api = new baseApi();
   const startTimer = () => {
-    api
-      .post({
-        url: "/validate/verifycode",
-        body: {
-          email: email,
-          code: code,
-        },
-      })
+    verifyCode(email, code)
       .then((res) => {
         if (res.success === true) {
           setResSuccess(res.success);

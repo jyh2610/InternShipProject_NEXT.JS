@@ -3,6 +3,7 @@ import React from "react";
 import "../../components/main/section-5/style.css";
 import HoverImage from "./section-5/HoverImage";
 import MobileSlice from "./section-5/MobileSlice";
+import TabImage from "./section-5/TabImage";
 
 function SectionFive() {
   return (
@@ -12,7 +13,8 @@ function SectionFive() {
         <MobileSlice />
       </div>
       <div className="lg:block hidden">
-        <HoverImage />
+        {/* <HoverImage /> */}
+        <TabImage />
       </div>
     </div>
   );

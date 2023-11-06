@@ -23,11 +23,7 @@ function Slider() {
         const { img, title, contentstext } = item;
         return (
           <SwiperSlide key={idx}>
-            <div
-              key={idx}
-              className=" w-full h-[580px]"
-              style={{ backgroundImage: `url(${img})`, backgroundRepeat: "no-repeat", backgroundPosition: "center center", backgroundSize: "cover" }}
-            >
+            <div key={idx} className=" w-full h-[720px]" style={{ backgroundImage: `url(${img})`, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
               <div className="three-slide-text">
                 <p className="three-slide-tit" dangerouslySetInnerHTML={{ __html: title }}></p>
                 <p className="three-slide-contant" dangerouslySetInnerHTML={{ __html: contentstext }}></p>

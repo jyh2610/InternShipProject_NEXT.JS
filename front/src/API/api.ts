@@ -2,6 +2,9 @@ import axiosInstance from "./baseApi";
 
 import type { AxiosRequestConfig } from "axios";
 
+interface emailres {
+  success: boolean;
+}
 type IAxiosParams = {
   url?: string;
   options?: AxiosRequestConfig;

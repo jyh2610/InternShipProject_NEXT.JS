@@ -107,7 +107,7 @@ function Download() {
                           <i className="down-icon">
                             <CloudDownloadOutlined />
                           </i>
-                          다운로드
+                          Widow 다운로드
                         </span>
                       </button>
                     </Link>

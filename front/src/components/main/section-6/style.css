@@ -13,8 +13,20 @@
     left: 0;
     top: 0;
     background-color: #000;
+    animation: playSpeed 1s linear infinite alternate;
 }
 
+.video-layout:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+
+}
 
 @media (max-width: 768px) {
     .video-layout {
@@ -23,5 +35,15 @@
 
     .video-layout #video {
         object-fit: cover;
+    }
+}
+
+@keyframes playSpeed {
+    from {
+        animation-timing-function: steps(1, start);
+    }
+
+    to {
+        animation-timing-function: steps(1, end);
     }
 }
