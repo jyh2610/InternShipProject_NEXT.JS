@@ -277,6 +277,7 @@ module.exports = {
 
     getProfile,
     getProfileByNickname,
+    UserNoListGetByName,
     registerProfile,
     updateProfile,
     deleteProfile,

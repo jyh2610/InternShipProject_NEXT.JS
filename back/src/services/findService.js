@@ -14,11 +14,23 @@ const idList = async (name, email) => {
     const user = await member.getUserNoByEmail(email);
     if (!user) detectError("NOT_A_MEMBER_EMAIL", 400);
 
+    const userNameList = await member.UserNoListGetByName(name);
+
+    let isValuePresent = true;
+    for (const userName of userNameList) {
+        if (userName.user_no === user.user_no) {
+            isValuePresent = false;
+            break;
+        }
+    }
+    if(isValuePresent) detectError("NAME_AND_EMAIL_DOES_NOT_MATCH", 400);
+
     const user_name = (await member.getUserName(user.user_no)).user_name;
 
     return {success: true, user_name: transformId(user_name)};
 };
 
+// 패스워드 재설정
 const resetPassword = async (user_name, email, password) => {
     const emailValidation = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$");
     if (!emailValidation.test(email)) detectError("EMAIL-ERROR", 400); // 이메일 형식에 안 맞으면 에러

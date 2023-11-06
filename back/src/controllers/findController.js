@@ -5,10 +5,10 @@ const {catchAsync, detectError} = require("../utils/detectError");
 
 
 const idList =  catchAsync(async(req, res) => {
-    const {email} = req.body;
-    if(!email) detectError("KEY_ERROR", 400);
+    const {name, email} = req.body;
+    if(!name || !email) detectError("KEY_ERROR", 400);
 
-    const result = (await findService.idList(email));
+    const result = (await findService.idList(name, email));
     return res.status(200).json(result);
 });
 
