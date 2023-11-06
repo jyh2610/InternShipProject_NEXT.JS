@@ -4,9 +4,8 @@ import { baseApi } from "@/API/api";
 interface emailres {
   success: boolean;
 }
-
-const verifyCode = async (email: string, code: string) => {
-  const api = new baseApi();
+const api = new baseApi();
+export const verifyCode = async (email: string, code: string) => {
   try {
     const response = await api.post({
       url: "/validate/verifycode",
@@ -22,8 +21,7 @@ const verifyCode = async (email: string, code: string) => {
     throw error;
   }
 };
-const sendEmail = async (emailformValue: string) => {
-  const api = new baseApi();
+export const sendEmail = async (emailformValue: string) => {
   const res: emailres = await api.post({
     url: "validate/sendemail",
     body: {
@@ -32,5 +30,3 @@ const sendEmail = async (emailformValue: string) => {
   });
   return res;
 };
-
-export default { sendEmail, verifyCode };
