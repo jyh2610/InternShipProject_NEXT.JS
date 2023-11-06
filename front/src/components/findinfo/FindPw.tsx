@@ -17,7 +17,7 @@ function FindPW() {
           <p className="find-text">가입 시 입력한 이메일을 통해 인증 후 비밀번호를 재설정해주세요. </p>
         </div>
         <div className="find-from-wrap">
-        <form className="id findinput">
+          <form className="id findinput">
             <label htmlFor="아이디">아이디</label>
             <input type="text" id="id" name="아이디" />
           </form>
