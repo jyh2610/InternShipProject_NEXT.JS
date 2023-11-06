@@ -1,8 +1,10 @@
 import { Form, Input, Select } from "antd";
+import dynamic from "next/dynamic";
 import React, { useState } from "react";
-import EmailAuthBtn from "./EmailAuthBtn";
-import EmailCode from "./EmailCode";
 import { domainData } from "@/constants/constants";
+
+const EmailCode = dynamic(() => import("./EmailCode"), { ssr: false });
+const EmailAuthBtn = dynamic(() => import("./EmailAuthBtn"));
 
 const EmailNew = ({
   setResSuccess,

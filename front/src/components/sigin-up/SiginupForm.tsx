@@ -3,13 +3,7 @@
 import { ConfigProvider, Form } from "antd";
 import { useRouter } from "next/navigation";
 
-import Birth from "./Birth";
-import Name from "./Name";
-import Nickname from "./Nickname";
-import Sex from "./Sex";
-import SiginupBtn from "./SiginupBtn";
-import TestPassword from "./TestPassword";
-import UserID from "./UserID";
+import dynamic from "next/dynamic";
 
 import type { formType } from "@/type/signUp";
 
@@ -17,8 +11,16 @@ import { baseApi } from "@/API/api";
 import { formatDate } from "@/lib/FormatData";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setUserName } from "@/redux/slicer/authSlice";
-import EmailNew from "./EmailNew";
 import { useEffect, useRef, useState } from "react";
+
+const Birth = dynamic(() => import("./Birth"));
+const Name = dynamic(() => import("./Name"));
+const Nickname = dynamic(() => import("./Nickname"));
+const SiginupBtn = dynamic(() => import("./SiginupBtn"));
+const TestPassword = dynamic(() => import("./TestPassword"));
+const UserID = dynamic(() => import("./UserID"));
+const Sex = dynamic(() => import("./Sex"));
+const EmailNew = dynamic(() => import("./EmailNew"));
 
 const validateMessages = {
   required: "${label} is required!",
