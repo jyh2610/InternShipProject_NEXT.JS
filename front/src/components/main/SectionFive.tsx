@@ -13,7 +13,7 @@ function SectionFive() {
         <MobileSlice />
       </div>
       <div className="lg:block hidden">
-        <HoverImage />
+        {/* <HoverImage /> */}
         <TabImage />
       </div>
     </div>

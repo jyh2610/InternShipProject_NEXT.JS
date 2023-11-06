@@ -121,7 +121,7 @@ export const slideData = [
   },
   {
     id: 1,
-    img: "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaDNrphI5FlDnI4wEguv1CLRdZ-EE6GrOJL1ukX6Vcxqo5jFjdJT6ws4waBIhV8_cujxBpk4DvqI9u_zTFx0pR99WqOk=w1920-h888",
+    img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
     title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀 2",
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
@@ -135,7 +135,7 @@ export const slideData = [
   },
   {
     id: 3,
-    img: "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaDNrphI5FlDnI4wEguv1CLRdZ-EE6GrOJL1ukX6Vcxqo5jFjdJT6ws4waBIhV8_cujxBpk4DvqI9u_zTFx0pR99WqOk=w1920-h888",
+    img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
     title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀 4",
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
