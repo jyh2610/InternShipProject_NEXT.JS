@@ -4,7 +4,7 @@ import React from "react";
 import { ConfigProvider, Tabs } from "antd";
 import type { TabsProps } from "antd";
 
-import FindPw from "./FindPw";
+import FindPw from "./FindPW";
 import FindId from "./FindId";
 
 import "./style.css";

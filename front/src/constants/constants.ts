@@ -114,49 +114,29 @@ export const dummyImgData = [
 export const slideData = [
   {
     id: 0,
-<<<<<<< HEAD
     img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
     title: "아키플2.0<br />첫 번째 영역 타이틀 1",
-=======
-    img: "./assets/hover_01.png",
-    title: "아키플2.0<br />첫 번째 영역 타이틀",
->>>>>>> feature/taekyong
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
   {
     id: 1,
-<<<<<<< HEAD
     img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
     title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀 2",
-=======
-    img: "./assets/hover_02.png",
-    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀",
->>>>>>> feature/taekyong
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
   {
     id: 2,
-<<<<<<< HEAD
     img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
     title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀 3",
-=======
-    img: "./assets/hover_03.png",
-    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀",
->>>>>>> feature/taekyong
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
   {
     id: 3,
-<<<<<<< HEAD
     img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
     title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀 4",
-=======
-    img: "./assets/hover_04.png",
-    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀",
->>>>>>> feature/taekyong
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
@@ -187,7 +167,32 @@ export const M_slideData = [
     contentstext: "네 번째 진행되는 순서에 대한 설명이 들어 갈 영역입니다",
   },
 ];
-
+export const tab_img = [
+  {
+    id: 0,
+    img: "/assets/hover_01.png",
+    title: "평면도 그리기",
+    contentstext: "도면에 맞춰 벽선을 그려줍니다.",
+  },
+  {
+    id: 1,
+    img: "/assets/hover_02.png",
+    title: "3D로 구조만들기",
+    contentstext: "AI가 자동으로 3D 실내구조 생성",
+  },
+  {
+    id: 2,
+    img: "/assets/hover_03.png",
+    title: "바닥과 벽 질감 및 색상",
+    contentstext: "각종질감을 drag&drop하여 내부 색상 등 교체",
+  },
+  {
+    id: 3,
+    img: "/assets/hover_04.png",
+    title: "인테리어 소품 배치 및 결과확인",
+    contentstext: "실내에 들어갈 다양한 가구와 가전을 배치하고 투어하기.",
+  },
+];
 export const animationtext1 = [
   { id: 0, text: "공간은 이야기를 품고 있습니다. 우리는 그 이야기를 아름답게 만듭니다." },
   { id: 1, text: "공간은 이야기를 품고 있습니다. 우리는 그 이야기를 아름답게 만듭니다." },

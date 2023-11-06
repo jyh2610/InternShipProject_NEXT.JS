@@ -22,3 +22,30 @@
     left: 50%;
     transform: translateX(-50%);
 }
+
+
+.tab_contant {
+    padding: 2.4rem 0;
+}
+
+.tab_img {
+    width: 80%;
+}
+
+
+.ant-tabs-nav-list {
+    width: 10%;
+}
+
+.ant-tabs-tab {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+}
+
+.ant-tabs-top>.ant-tabs-nav::before,
+.ant-tabs-bottom>.ant-tabs-nav::before,
+.ant-tabs-top>div>.ant-tabs-nav::before,
+.ant-tabs-bottom>div>.ant-tabs-nav::before {
+    border: transparent !important;
+}
