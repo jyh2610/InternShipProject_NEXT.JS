@@ -20,7 +20,7 @@ const hasNickname = catchAsync(async(req, res) => {
     return res.status(200).json(await validateService.isDuplicateNickname(nickname));
 });
 
-// 이메일 중복체크
+// 이메일 중복체크 && 형식 검사
 const validateEmail = catchAsync(async(req, res, next) => {
     const {email} = req.body;
     if (!email) detectError("KEY_ERROR", 400);

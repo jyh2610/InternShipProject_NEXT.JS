@@ -49,6 +49,7 @@ const emailValidation = async (email) => {
 
   return await sendEmail(email, code);
 };
+
 // 이메일 인증 코드 검사
 const verifyCode = async (email, code) => {
     const row = await verification.getVerifying(email);
