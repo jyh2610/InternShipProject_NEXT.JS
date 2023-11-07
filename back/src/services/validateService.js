@@ -18,6 +18,11 @@ const isDuplicateNickname = async (nickname) => {
   if (await member.getProfileByNickname(nickname)) return { message: "DUPLICATE_NICKNAME", success: false };
   return { message: "POSSIBLE_NICKNAME", success: true };
 };
+// 이메일 중복체크
+const isDuplicateEmail = async (email) => {
+  if (await member.getUserNoByEmail(email)) return { message: "DUPLICATE_EMAIL", success: false };
+  return { message: "POSSIBLE_EMAIL", success: true };
+};
 
 // //local signUpCheck
 // const signUpCheck = async (nickname) =>{
@@ -58,7 +63,7 @@ const verifyCode = async (email, code) => {
 module.exports = {
   isDuplicateUsername,
   isDuplicateNickname,
-
+  isDuplicateEmail,
   // signUpCheck,
 
   emailValidation,
