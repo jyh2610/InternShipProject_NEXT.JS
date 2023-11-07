@@ -10,7 +10,6 @@ function EmailCode({
   isActive,
   seconds,
   setSeconds,
-  setConfirmbtn,
   resSuccess,
   setResSuccess,
 }: {
@@ -18,20 +17,17 @@ function EmailCode({
   isActive: boolean;
   email: string;
   setSeconds: any;
-  setConfirmbtn: any;
   setResSuccess: any;
   resSuccess: boolean;
   setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const [code, setCode] = useState("");
 
-  const [timestart, setTimestart] = useState(false);
   const startTimer = () => {
     verifyCode(email, code)
       .then((res) => {
         if (res.success === true) {
           setResSuccess(res.success);
-          setTimestart(false);
           setSeconds(-2);
           setIsActive(false);
         }
@@ -55,7 +51,6 @@ function EmailCode({
       }, 1000);
     } else {
       clearTimeout(timerInterval);
-      setTimestart(false);
       setIsActive(false);
     }
     // 컴포넌트가 언마운트될 때 타이머 정리

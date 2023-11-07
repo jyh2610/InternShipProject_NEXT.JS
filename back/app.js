@@ -4,6 +4,9 @@ const express = require('express');
 const routes = require('./src/routes'); // index.js 생략 가능
 const cors = require('cors');
 const morgan = require('morgan');
+const dotenv = require('dotenv'); // dotenv 추가
+
+dotenv.config(); // .env 파일을 로드
 
 const app = express();
 

@@ -41,7 +41,7 @@ function Text() {
         >
           <div className="font-light text-font-gray leading-[1.8rem] md:leading-[2.2rem]">
             <p>
-              아키플 스튜디오 2.0을 통해 고객들은 실제로 거주 공간을 경험하는 것과 유사한 현실감 있는 가상 체험을 할 수 있습니다.
+              아키플 스튜디오를 통해 고객들은 실제로 거주 공간을 경험하는 것과 유사한 현실감 있는 가상 체험을 할 수 있습니다.
               <span className="md:px-[0.2rem] font-bold text-font-darkBlack">
                 아키플은 거주 공간의 디자인과 느낌을 미리 확인할 수 있어, 고객들이 더 확신을 가지고 결정을
               </span>
@@ -65,7 +65,7 @@ function Text() {
                 gap: "1rem",
               }}
             >
-              아키플 스튜디오 2.0 다운로드
+              아키플 스튜디오 다운로드
               <i className="D-icon flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 27.591 16.682">
                   <g id="그룹_10467" data-name="그룹 10467" transform="translate(5.303 -2.004)">

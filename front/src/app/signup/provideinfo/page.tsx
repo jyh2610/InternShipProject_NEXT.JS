@@ -9,10 +9,11 @@ import "./style.css";
 import { provideText } from "@/constants/constants";
 import { PrivacyText } from "@/constants/constants";
 import { informationText } from "@/constants/constants";
+import Agreement from "@/components/provideinfo/Agreement";
 
 import type { CollapseProps } from "antd";
 
-const Agreement = dynamic(() => import("@/components/provideinfo/Agreement"));
+//const Agreement = dynamic(() => import("@/components/provideinfo/Agreement"));
 const AgreementBtn = dynamic(() => import("@/components/provideinfo/AgreementBtn"));
 const Content = dynamic(() => import("@/components/provideinfo/Content"));
 

@@ -32,7 +32,7 @@ function UserID({ user }: { user: string }) {
         rules={[
           {
             required: true,
-            message: "아이디를 입력하세요",
+            message: "아이디는 영문소문자 또는 숫자 4~19자로 입력해 주세요. (영문소문자/숫자, 4~19자)",
             pattern: /^[A-Za-z0-9]+$/,
           },
 
