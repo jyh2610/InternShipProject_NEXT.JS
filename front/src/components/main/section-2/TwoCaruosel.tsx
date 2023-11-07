@@ -15,11 +15,10 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import "./layout.css";
-import { slideData } from "@/constants/constants";
+import { Caruoseldata } from "@/constants/constants";
 
 function TwoCarousel() {
   const [imgIdx, setImgIdx] = useState(0);
-  const dummyData = [1, 2, 3, 4];
 
   const handleSlideChange = (swiper: { realIndex: SetStateAction<number> }) => {
     setImgIdx(swiper.realIndex);
@@ -37,10 +36,10 @@ function TwoCarousel() {
             modules={[Navigation, A11y]}
             onSlideChange={handleSlideChange}
           >
-            {slideData.map((item, idx) => (
+            {Caruoseldata.map((item, idx) => (
               <SwiperSlide key={idx}>
                 <div style={{ backgroundImage: `url(${item.img})` }} className="relative bg-center bg-no-repeat bg-cover h-[30rem] lg:h-[40rem] object-cover">
-                  <SliderText />
+                  <SliderText title={item.title} text={item.contentstext} />
                   <div className="Dimmed"></div>
                 </div>
               </SwiperSlide>
@@ -59,7 +58,7 @@ function TwoCarousel() {
               </svg>
             </div>
             <div className="count_num" style={{ fontSize: "1.2rem", fontWeight: "300", lineHeight: "0" }}>
-              {sumZero(dummyData.length)}
+              {sumZero(Caruoseldata.length)}
             </div>
           </div>
         </div>
