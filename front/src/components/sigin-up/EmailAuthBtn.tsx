@@ -19,8 +19,6 @@ const EmailAuthBtn = ({
   setEmailbtn: React.Dispatch<React.SetStateAction<boolean>>;
   setConfirmbtn: React.Dispatch<React.SetStateAction<boolean>>;
   confirmbtn: boolean;
-  setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
-  isActive: boolean;
   setSeconds: React.Dispatch<React.SetStateAction<number>>;
   Seconds: number;
 }) => {

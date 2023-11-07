@@ -3,9 +3,9 @@ import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/redux/hooks";
 import { setUserName } from "@/redux/slicer/authSlice";
 import { baseApi } from "@/API/api";
-import { formatDate } from "@/lib/FormatData";
 
 import SiginupBtn from "./SiginupBtn";
+import { formatDate } from "@/lib/FormatData";
 
 const SignUpValidation = ({ form, resSuccess }: { form: FormInstance; resSuccess: string }) => {
   const dispatch = useAppDispatch();
@@ -20,6 +20,7 @@ const SignUpValidation = ({ form, resSuccess }: { form: FormInstance; resSuccess
     if (resSuccess) {
       try {
         const { birthday, name, user_name, nickname, password, nation, sex } = await form.validateFields();
+        console.log(formatDate(birthday));
         const sendingData = { birthday: formatDate(birthday), name, user_name, nickname, password, nation, sex, email: fullEmail };
         const res = await api.post({
           url: "/sign/signup",

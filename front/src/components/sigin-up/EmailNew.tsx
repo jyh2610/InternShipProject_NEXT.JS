@@ -15,16 +15,19 @@ const EmailNew = ({
   emailbtn,
   setEmailbtn,
   setConfirmbtn,
+  isActive,
+  setIsActive,
 }: {
   confirmbtn: boolean;
-  setConfirmbtn: any;
+  setConfirmbtn: React.Dispatch<React.SetStateAction<boolean>>;
   emailformValue: string;
   emailbtn: boolean;
   setEmailbtn: any;
   setResSuccess: any;
   resSuccess: any;
+  isActive: boolean;
+  setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const [isActive, setIsActive] = useState(false);
   const [seconds, setSeconds] = useState(180);
   const selectHandler = () => {
     emailformValue;
@@ -39,8 +42,6 @@ const EmailNew = ({
         <EmailAuthBtn
           emailbtn={emailbtn}
           setEmailbtn={setEmailbtn}
-          setIsActive={setIsActive}
-          isActive={isActive}
           setConfirmbtn={setConfirmbtn}
           confirmbtn={confirmbtn}
           emailformValue={emailformValue}
@@ -51,7 +52,6 @@ const EmailNew = ({
       <div style={{ marginLeft: "4rem", marginBottom: "2rem", padding: "0.2rem 0.8rem" }}>
         {confirmbtn && (
           <EmailCode
-            setConfirmbtn={setConfirmbtn}
             setIsActive={setIsActive}
             seconds={seconds}
             setSeconds={setSeconds}

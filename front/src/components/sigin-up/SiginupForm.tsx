@@ -35,6 +35,8 @@ const onFinish = (values: any) => {
 };
 
 const SiginupForm = () => {
+  const [isActive, setIsActive] = useState(false);
+
   const [emailbtn, setEmailbtn] = useState(false);
   const [confirmbtn, setConfirmbtn] = useState(false);
   const [resSuccess, setResSuccess] = useState("");
@@ -97,6 +99,8 @@ const SiginupForm = () => {
           setConfirmbtn={setConfirmbtn}
           emailbtn={emailbtn}
           setEmailbtn={setEmailbtn}
+          isActive={isActive}
+          setIsActive={setIsActive}
         />
         <SelectValidationAndPassword />
         <SignUpValidation resSuccess={resSuccess} form={form} />
