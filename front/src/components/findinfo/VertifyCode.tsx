@@ -1,20 +1,23 @@
 import { verifyCode } from "@/lib/EmailApi";
 import React, { useState } from "react";
+import type { Email } from "./Findlayout";
 
-function VertifyCode({ email }: { email: string }) {
+function VertifyCode({ email, setCheckID }: { email: Email; setCheckID: Function }) {
   const [code, setCode] = useState("");
   const btnHandler = (e: { target: { value: React.SetStateAction<string> } }) => {
     setCode(e.target.value);
   };
-  const sendingCode = () => {
-    verifyCode(email, code);
+  const sendingCode = async () => {
+    const formattedEmail = `${email.id}@${email.domain}`;
+    const res = await verifyCode(formattedEmail, code);
+    res.success === true ? setCheckID(true) : setCheckID(false);
   };
   return (
     <form className="certified findinput">
       <label htmlFor="인증번호">인증번호</label>
       <div className="w-full">
         <div className="ce-code">
-          <input onChange={btnHandler} type="number" id="num" name="인증번호" />
+          <input onChange={btnHandler} id="code" name="인증번호" />
           <button className="code-cp-btn" onClick={sendingCode}>
             인증하기
           </button>

@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { domainData } from "@/constants/constants";
 import { Select } from "antd";
-import { sendEmail } from "@/lib/EmailApi";
+import { sendEmailToFind } from "@/lib/EmailApi";
+import type { Email } from "./Findlayout";
 
-function EmailForm({ email, setEmail }: { email: string; setEmail: Function }) {
+function EmailForm({ email, setEmail }: { email: Email; setEmail: Function }) {
   const inputHandler = (e: { target: { name: string; value: string } }) => {
-    setEmail((prev) => {
+    setEmail((prev: any) => {
       return {
         ...prev,
         [e.target.name]: e.target.value,
@@ -15,8 +16,7 @@ function EmailForm({ email, setEmail }: { email: string; setEmail: Function }) {
     });
   };
   const handleChange = (value: string) => {
-    console.log(`selected ${value}`);
-    setEmail((prev) => {
+    setEmail((prev: any) => {
       return {
         ...prev,
         domain: value,
@@ -24,9 +24,13 @@ function EmailForm({ email, setEmail }: { email: string; setEmail: Function }) {
     });
   };
   const formattedEmail = `${email.id}@${email.domain}`;
+  const checkID = () => {
+    sendEmailToFind(formattedEmail);
+  };
+
   return (
     <div className="flex">
-      <form className="emall findinput">
+      <div className="emall findinput">
         <label htmlFor="이메일">이메일</label>
         <div className="w-10/12 flex items-center  gap-[0.3rem]">
           <input
@@ -45,9 +49,9 @@ function EmailForm({ email, setEmail }: { email: string; setEmail: Function }) {
             options={domainData}
           />
         </div>
-      </form>
+      </div>
       <div className="w-2/12 my-auto">
-        <button onClick={() => sendEmail(formattedEmail)} className="flex items-center justify-center text-xs email-btn w-full h-10">
+        <button onClick={checkID} className="flex items-center justify-center text-xs email-btn w-full h-10">
           확인
         </button>
       </div>
