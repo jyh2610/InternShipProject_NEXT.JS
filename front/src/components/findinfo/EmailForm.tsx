@@ -5,16 +5,7 @@ import { domainData } from "@/constants/constants";
 import { Select } from "antd";
 import { sendEmail } from "@/lib/EmailApi";
 
-interface Email {
-  id: string;
-  domain: string;
-}
-
-function EmailForm() {
-  const [email, setEmail] = useState<Email>({
-    id: "",
-    domain: "",
-  });
+function EmailForm({ email, setEmail }: { email: string; setEmail: Function }) {
   const inputHandler = (e: { target: { name: string; value: string } }) => {
     setEmail((prev) => {
       return {

@@ -1,13 +1,21 @@
-import React from "react";
+import { verifyCode } from "@/lib/EmailApi";
+import React, { useState } from "react";
 
-function VertifyCode() {
+function VertifyCode({ email }: { email: string }) {
+  const [code, setCode] = useState("");
+  const btnHandler = (e: { target: { value: React.SetStateAction<string> } }) => {
+    setCode(e.target.value);
+  };
+  const sendingCode = () => {
+    verifyCode(email, code);
+  };
   return (
     <form className="certified findinput">
       <label htmlFor="인증번호">인증번호</label>
       <div className="w-full">
         <div className="ce-code">
-          <input type="number" id="num" name="인증번호" />
-          <button className="code-cp-btn" type="submit">
+          <input onChange={btnHandler} type="number" id="num" name="인증번호" />
+          <button className="code-cp-btn" onClick={sendingCode}>
             인증하기
           </button>
         </div>

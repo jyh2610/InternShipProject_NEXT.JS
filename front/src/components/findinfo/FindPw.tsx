@@ -4,8 +4,7 @@ import { Space } from "antd";
 import FindInput from "./FindInput";
 import EmailForm from "./EmailForm";
 import VertifyCode from "./VertifyCode";
-
-function FindPW({ type }: { type: string }) {
+function FindPW({ type, email, setEmail }: { type: string; email: string; setEmail: Function }) {
   const formSubmitHandler = () => {};
   return (
     <Space className="w-full">
@@ -15,10 +14,9 @@ function FindPW({ type }: { type: string }) {
           <p className="find-text">가입 시 입력한 이메일을 통해 인증 후 비밀번호를 재설정해주세요. </p>
         </div>
         <div className="find-from-wrap">
-          <FindInput name={"이름"} classData={"name"} />
           {type === "pw" && <FindInput name={"아이디"} classData={"id"} />}
-          <EmailForm />
-          <VertifyCode />
+          <EmailForm email={email} setEmail={setEmail} />
+          <VertifyCode email={email} />
         </div>
         <button className="completion-btn" onClick={formSubmitHandler}>
           확인

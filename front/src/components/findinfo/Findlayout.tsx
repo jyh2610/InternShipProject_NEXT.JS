@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import { ConfigProvider, Tabs } from "antd";
 import type { TabsProps, ThemeConfig } from "antd";
@@ -9,18 +9,10 @@ const FindPw = dynamic(() => import("./FindPw"));
 
 import "./style.css";
 
-const items: TabsProps["items"] = [
-  {
-    key: "1",
-    label: <div className="tabs-btn">아이디 찾기</div>,
-    children: <FindPw type="id" />,
-  },
-  {
-    key: "2",
-    label: <div className="tabs-btn">비밀번호 찾기</div>,
-    children: <FindPw type="pw" />,
-  },
-];
+interface Email {
+  id: string;
+  domain: string;
+}
 
 const Findlayout = () => {
   const thmeConfig: ThemeConfig = {
@@ -42,7 +34,22 @@ const Findlayout = () => {
       controlOutline: "transparent",
     },
   };
-
+  const [email, setEmail] = useState<Email>({
+    id: "",
+    domain: "",
+  });
+  const items: TabsProps["items"] = [
+    {
+      key: "1",
+      label: <div className="tabs-btn">아이디 찾기</div>,
+      children: <FindPw email={email} setEmail={setEmail} type="id" />,
+    },
+    {
+      key: "2",
+      label: <div className="tabs-btn">비밀번호 찾기</div>,
+      children: <FindPw email={email} setEmail={setEmail} type="pw" />,
+    },
+  ];
   return (
     <div className="findinfo-wrap">
       <div className="find-contant">
