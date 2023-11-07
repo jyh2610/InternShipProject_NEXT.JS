@@ -9,13 +9,14 @@ import type { formType } from "@/type/signUp";
 
 import { useAppSelector } from "@/redux/hooks";
 import { useEffect, useRef, useState } from "react";
-import SignUpValidation from "./SignupValidation";
-import SelectValidationAndPassword from "./SelectValidationAndPassword";
 
-const Name = dynamic(() => import("./Name"));
-const Nickname = dynamic(() => import("./Nickname"));
+import Name from "./Name";
+import Nickname from "./Nickname";
+
 const UserID = dynamic(() => import("./UserID"));
 const EmailNew = dynamic(() => import("./EmailNew"));
+const SignUpValidation = dynamic(() => import("./SignupValidation"));
+const SelectValidationAndPassword = dynamic(() => import("./SelectValidationAndPassword"));
 
 const validateMessages = {
   required: "${label} is required!",

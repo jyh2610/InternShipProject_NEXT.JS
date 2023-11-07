@@ -2,6 +2,7 @@
 import { baseApi } from "@/API/api";
 
 interface emailres {
+  message: string;
   success: boolean;
 }
 const api = new baseApi();

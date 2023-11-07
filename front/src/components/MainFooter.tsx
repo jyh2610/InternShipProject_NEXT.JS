@@ -1,7 +1,6 @@
 "use client";
 
 function MainFooter() {
-
   return (
     <footer
       style={{
