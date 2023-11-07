@@ -7,7 +7,7 @@ function Title() {
           <div
             className="text-3xl md:text-4xl"
             style={{
-              lineHeight: "2.6rem",
+              lineHeight: "3rem",
               color: "#9D9D9D",
               fontWeight: "300",
             }}
@@ -33,7 +33,7 @@ function Title() {
           >
             쉽고 빠르게 누구나 할 수 있는 3D 인테리어 솔루션<br></br>
             <span className="px-1 md:px-[0]" style={{ color: "#434343", fontWeight: "700" }}>
-              아키플 2.0은 차별화 된 성능을 경험을 하고, 사용자 공간을 미적 감각으로
+              아키플 스튜디오는 차별화 된 성능을 경험을 하고, 사용자 공간을 미적 감각으로
             </span>
             채워드립니다.
           </p>

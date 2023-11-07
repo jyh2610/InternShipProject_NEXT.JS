@@ -1,15 +1,16 @@
-import { baseApi } from "@/API/api";
 import { Button } from "antd";
 import React, { useEffect } from "react";
+import { sendEmail } from "./EmailApi";
+
 interface emailres {
   success: boolean;
+  message: string;
 }
 const EmailAuthBtn = ({
   emailformValue,
   emailbtn,
   setEmailbtn,
   setConfirmbtn,
-  setIsActive,
   setSeconds,
   Seconds,
 }: {
@@ -18,27 +19,23 @@ const EmailAuthBtn = ({
   setEmailbtn: React.Dispatch<React.SetStateAction<boolean>>;
   setConfirmbtn: React.Dispatch<React.SetStateAction<boolean>>;
   confirmbtn: boolean;
-  setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
-  isActive: boolean;
   setSeconds: React.Dispatch<React.SetStateAction<number>>;
   Seconds: number;
 }) => {
-  const api = new baseApi();
   const sendingCode = async () => {
-    const res: emailres = await api.post({
-      url: "validate/sendemail",
-      body: {
-        email: emailformValue,
-      },
+    sendEmail(emailformValue).then((res: emailres) => {
+      if (res.success) {
+        setConfirmbtn(true);
+        setSeconds(180);
+        setEmailbtn(true);
+        setTimeout(() => {
+          setEmailbtn(false);
+        }, 6000);
+      }
+      if (res.message === "DUPLICATE_EMAIL") {
+        alert("이미 가입된 이메일 입니다.");
+      }
     });
-    if (res?.success) {
-      setConfirmbtn(true);
-      setSeconds(180);
-      setEmailbtn(true);
-      setTimeout(() => {
-        setEmailbtn(false);
-      }, 6000);
-    }
   };
   useEffect(() => {
     if (Seconds === 0) {

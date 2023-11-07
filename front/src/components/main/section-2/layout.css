@@ -1,5 +1,18 @@
 .slide_layout {
     width: 85vw;
+    border: 5px solid black;
+    border-top-right-radius: 1.2rem;
+    border-bottom-right-radius: 1.2rem;
+    overflow: hidden;
+}
+
+.Dimmed {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-top-right-radius: 1.2rem;
+    border-bottom-right-radius: 1.2rem;
 }
 
 /*slide line design*/

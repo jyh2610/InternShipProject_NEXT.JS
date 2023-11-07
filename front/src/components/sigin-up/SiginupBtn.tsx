@@ -4,7 +4,6 @@
 import React, { useCallback } from "react";
 
 import { Button, Form } from "antd";
-import { useRouter } from "next/navigation";
 
 function SiginupBtn({ validateForm }: { validateForm: () => void }) {
   // const clickSignup = useCallback(async () => {
@@ -14,7 +13,6 @@ function SiginupBtn({ validateForm }: { validateForm: () => void }) {
     //route.push("/");
     window.history.back();
   }, []);
-  const route = useRouter();
   return (
     <div style={{ borderTop: "1px solid #E2E2E2" }}>
       <Form.Item className="flex justify-center">

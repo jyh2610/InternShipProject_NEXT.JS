@@ -1,18 +1,21 @@
 "use client";
 import React, { useCallback, useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 
 import { Collapse } from "antd";
 
 import "./style.css";
 
-import Agreement from "@/components/provideinfo/Agreement";
-import AgreementBtn from "@/components/provideinfo/AgreementBtn";
-import Content from "@/components/provideinfo/Content";
 import { provideText } from "@/constants/constants";
 import { PrivacyText } from "@/constants/constants";
 import { informationText } from "@/constants/constants";
+import Agreement from "@/components/provideinfo/Agreement";
 
 import type { CollapseProps } from "antd";
+
+//const Agreement = dynamic(() => import("@/components/provideinfo/Agreement"));
+const AgreementBtn = dynamic(() => import("@/components/provideinfo/AgreementBtn"));
+const Content = dynamic(() => import("@/components/provideinfo/Content"));
 
 function ProvideInfo() {
   const [check, setCheck] = useState({
@@ -68,10 +71,10 @@ function ProvideInfo() {
   );
   useEffect(() => keyonChange(activeKey), [keyonChange, activeKey]);
   return (
-    <div>
+    <>
       <Collapse style={{ borderRadius: "0" }} items={items} activeKey={activeKey.slice(-1)} onChange={keyonChange} />
       <AgreementBtn check={check} />
-    </div>
+    </>
   );
 }
 

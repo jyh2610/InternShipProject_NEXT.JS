@@ -1,8 +1,9 @@
 import React from "react";
+import dynamic from "next/dynamic";
 
 import "./style.css";
-import CompleteForm from "@/components/sigin-up/CompleteForm";
 
+const CompleteForm = dynamic(() => import("@/components/sigin-up/CompleteForm"));
 function Complete() {
   return <CompleteForm />;
 }
