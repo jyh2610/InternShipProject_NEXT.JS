@@ -18,9 +18,12 @@ const isDuplicateNickname = async (nickname) => {
   if (await member.getProfileByNickname(nickname)) return { message: "DUPLICATE_NICKNAME", success: false };
   return { message: "POSSIBLE_NICKNAME", success: true };
 };
-// 이메일 중복체크
-const isDuplicateEmail = async (email) => {
+// 이메일 중복체크 && 이메일 정규식 검사
+const validateEmail = async (email) => {
   if (await member.getUserNoByEmail(email)) return { message: "DUPLICATE_EMAIL", success: false };
+  const emailValidation = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
+  if (!emailValidation.test(email)) return { message: "EMAIL_FORMAT_ERROR", success: false }; // 이메일 형식에 안 맞으면 에러
+
   return { message: "POSSIBLE_EMAIL", success: true };
 };
 
@@ -63,7 +66,7 @@ const verifyCode = async (email, code) => {
 module.exports = {
   isDuplicateUsername,
   isDuplicateNickname,
-  isDuplicateEmail,
+  validateEmail,
   // signUpCheck,
 
   emailValidation,

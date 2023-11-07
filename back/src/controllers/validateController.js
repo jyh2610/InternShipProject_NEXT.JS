@@ -21,11 +21,11 @@ const hasNickname = catchAsync(async(req, res) => {
 });
 
 // 이메일 중복체크
-const hasEmail = catchAsync(async(req, res, next) => {
+const validateEmail = catchAsync(async(req, res, next) => {
     const {email} = req.body;
     if (!email) detectError("KEY_ERROR", 400);
 
-    const result = await validateService.isDuplicateEmail(email);
+    const result = await validateService.validateEmail(email);
 
     if (!result.success) return res.status(200).json(result);
 
@@ -65,7 +65,7 @@ const reissuanceAeccessToken = catchAsync(async(req, res) => {
 module.exports ={
     hasId,
     hasNickname,
-    hasEmail,
+    validateEmail,
     // signUpCheck,
 
     sendEmail,
