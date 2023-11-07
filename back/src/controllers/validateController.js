@@ -20,6 +20,18 @@ const hasNickname = catchAsync(async(req, res) => {
     return res.status(200).json(await validateService.isDuplicateNickname(nickname));
 });
 
+// 이메일 중복체크
+const hasEmail = catchAsync(async(req, res, next) => {
+    const {email} = req.body;
+    if (!email) detectError("KEY_ERROR", 400);
+
+    const result = await validateService.isDuplicateEmail(email);
+
+    if (!result.success) return res.status(200).json(result);
+
+    next();
+});
+
 // //회원가입 완료한 유저의 이름, 가입시간
 // const signUpCheck = catchAsync(async(req, res) => {
 //     const {nickname} = req.body;
@@ -53,7 +65,7 @@ const reissuanceAeccessToken = catchAsync(async(req, res) => {
 module.exports ={
     hasId,
     hasNickname,
-
+    hasEmail,
     // signUpCheck,
 
     sendEmail,
