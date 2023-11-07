@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 
 import { ConfigProvider, DatePicker, Form } from "antd";
 import moment from "moment";
@@ -20,11 +20,13 @@ export interface ValidProps {
   validateSelect: (_: unknown, value: string | number) => Promise<void>;
   ko_KR: string;
 }
+console.log();
 
 function Birth({ validateSelect }: ValidProps) {
   // 영어 로케일 비활성화
 
   moment.locale("ko");
+  const customFormat = "YYYY-MM-DD";
   return (
     <ConfigProvider locale={locale}>
       <Form.Item
@@ -40,7 +42,7 @@ function Birth({ validateSelect }: ValidProps) {
         name="birthday"
         label="생년월일"
       >
-        <DatePicker placeholder="생년월일" style={{ cursor: "pointer", width: "15%", padding: "0.5rem 0.8rem" }} />
+        <DatePicker placeholder="생년월일" style={{ cursor: "pointer", width: "15%", padding: "0.5rem 0.8rem" }} format={customFormat} />
       </Form.Item>
     </ConfigProvider>
   );

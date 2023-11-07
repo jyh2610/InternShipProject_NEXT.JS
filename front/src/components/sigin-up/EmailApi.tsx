@@ -22,15 +22,11 @@ export const verifyCode = async (email: string, code: string) => {
   }
 };
 export const sendEmail = async (emailformValue: string) => {
-  try {
-    const res: emailres = await api.post({
-      url: "validate/sendemail",
-      body: {
-        email: emailformValue,
-      },
-    });
-    return res;
-  } catch (error) {
-    console.log(error);
-  }
+  const res: emailres = await api.post({
+    url: "validate/sendemail",
+    body: {
+      email: emailformValue,
+    },
+  });
+  return res;
 };

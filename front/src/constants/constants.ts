@@ -114,29 +114,29 @@ export const dummyImgData = [
 export const slideData = [
   {
     id: 0,
-    img: "./assets/hover_01.png",
-    title: "아키플2.0<br />첫 번째 영역 타이틀",
+    img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
+    title: "아키플2.0<br />첫 번째 영역 타이틀 1",
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
   {
     id: 1,
-    img: "./assets/hover_02.png",
-    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀",
+    img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
+    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀 2",
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
   {
     id: 2,
-    img: "./assets/hover_03.png",
-    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀",
+    img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
+    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀 3",
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
   {
     id: 3,
-    img: "./assets/hover_04.png",
-    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀",
+    img: "https://user-images.githubusercontent.com/144188723/274160742-6dde30b2-7897-4953-9757-dd3fe071504a.png",
+    title: "아키플 스튜디오 2.0<br />첫 번째 영역 타이틀 4",
     contentstext:
       "1111진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다<br />진행되는 순서에 대한 설명이 들어 갈 영역입니다.",
   },
@@ -167,7 +167,34 @@ export const M_slideData = [
     contentstext: "네 번째 진행되는 순서에 대한 설명이 들어 갈 영역입니다",
   },
 ];
-
+export const tab_img = [
+  {
+    id: 0,
+    img: "/assets/hover_01.png",
+    title: "평면도 그리기",
+    contentstext: "도면에 맞춰 벽선을 그려, 고객의 요구에 맞게 2D 평면도를 제공합니다.",
+  },
+  {
+    id: 1,
+    img: "/assets/hover_02.png",
+    title: "3D로 구조만들기",
+    contentstext: "AI가 자동으로 3D 실내구조를 생성하며, 고객의 요구와 디자인 목표를 반영하여 현실적이고 아름다운 실내환경을 제작합니다. ",
+  },
+  {
+    id: 2,
+    img: "/assets/hover_03.png",
+    title: "바닥과 벽 질감 및 색상",
+    contentstext:
+      "다양한 질감을 손쉽게 적용하고 내부 색상 등을 교체하려면 단순한 드래그 앤 드롭 만으로 가능합니다. 원하는 디자인 스타일을 쉽게 시뮬레이션하고 자유롭게 조정할 수 있습니다",
+  },
+  {
+    id: 3,
+    img: "/assets/hover_04.png",
+    title: "인테리어 소품 배치 및 결과확인",
+    contentstext:
+      "다양한 가구와 가전제품을 실내에 배치하고, 공간을 실시간으로 탐색하는 투어를 경험해보세요. 원하는 배치 및 디자인을 직접 시뮬레이션하여 최상의 공간을 창조해보실 수 있습니다.",
+  },
+];
 export const animationtext1 = [
   { id: 0, text: "공간은 이야기를 품고 있습니다. 우리는 그 이야기를 아름답게 만듭니다." },
   { id: 1, text: "공간은 이야기를 품고 있습니다. 우리는 그 이야기를 아름답게 만듭니다." },
@@ -195,13 +222,13 @@ export const domainData = [
 export const thirdSlideData = [
   {
     id: 0,
-    img: "assets/design_option.png",
+    img: "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaDNrphI5FlDnI4wEguv1CLRdZ-EE6GrOJL1ukX6Vcxqo5jFjdJT6ws4waBIhV8_cujxBpk4DvqI9u_zTFx0pR99WqOk=w1920-h888",
     title: "다양한 디자인 옵션",
     contentstext: "다양한 재질, 가구, 컬러 팔레트 등을 제공하여 사용자가 다양한 디자인 옵션을 시도해 볼 수 있도록 합니다.",
   },
   {
     id: 1,
-    img: "assets/visualization.png",
+    img: "https://lh3.googleusercontent.com/u/0/drive-viewer/AK7aPaCgCX6O2WdYnGfg1subp4mLi2amDghnJl3Xki-UtVIgfMpy14rw4C-SvaY8G2siQUDMrOLuVN6dtqI-y3ezjvUNaqB2=w1920-h888",
     title: "현실적 시각화",
     contentstext:
       "언리얼 엔진을 활용하여 인테리어 3D 툴을 개발하면 현실적인 시각화를 제공할 수 있습니다. 고객들은 거주 공간을 미리 확인하고 디자인 아이디어를 더 쉽게 이해할 수 있습니다.",
