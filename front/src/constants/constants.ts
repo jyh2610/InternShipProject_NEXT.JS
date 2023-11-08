@@ -175,7 +175,7 @@ export const M_slideData = [
 export const tab_img = [
   {
     id: 0,
-    img: "/assets/hover_01.png",
+    img: "/assets/domian.png",
     title: "평면도 그리기",
     contentstext: "도면에 맞춰 벽선을 그려, 고객의 요구에 맞게 2D 평면도를 제공합니다.",
   },
