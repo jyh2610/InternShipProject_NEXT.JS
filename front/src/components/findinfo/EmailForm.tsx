@@ -23,8 +23,9 @@ function EmailForm({ email, setEmail }: { email: Email; setEmail: Function }) {
       };
     });
   };
-  const formattedEmail = `${email.id}@${email.domain}`;
+
   const checkID = () => {
+    const formattedEmail = `${email.id}@${email.domain}`;
     sendEmailToFind(formattedEmail);
   };
 

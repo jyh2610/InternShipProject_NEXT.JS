@@ -1,8 +1,12 @@
-function FindInput({ name, classData }: { name: string; classData: string }) {
+function FindInput({ name, classData, setName, stateName }: { name: string; classData: string; setName: Function; stateName: string }) {
+  const inputHandler = (e: { target: { value: string } }) => {
+    setName(e.target.value);
+  };
+
   return (
     <form className={`${classData} findinput`}>
       <label htmlFor={name}>{name}</label>
-      <input type="text" id="Name" name={name} />
+      <input onChange={inputHandler} type="text" id="Name" name={stateName} />
     </form>
   );
 }

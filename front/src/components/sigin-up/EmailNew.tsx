@@ -49,8 +49,8 @@ const EmailNew = ({
           Seconds={seconds}
         />
       </div>
-      <div style={{ marginLeft: "4rem", marginBottom: "2rem", padding: "0.2rem 0.8rem" }}>
-        {confirmbtn && (
+      {confirmbtn && (
+        <div style={{ marginLeft: "4rem", marginBottom: "1rem", padding: "0.2rem 0.8rem" }}>
           <EmailCode
             setIsActive={setIsActive}
             seconds={seconds}
@@ -60,8 +60,8 @@ const EmailNew = ({
             setResSuccess={setResSuccess}
             resSuccess={resSuccess}
           />
-        )}
-      </div>
+        </div>
+      )}
     </>
   );
 };

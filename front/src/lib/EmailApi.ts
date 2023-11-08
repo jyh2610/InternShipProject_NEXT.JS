@@ -71,3 +71,15 @@ export const sendEmailToFind = async (emailformValue: string) => {
     console.log(error);
   }
 };
+
+export const idfind = async (name: string, email: string, code: string) => {
+  const res = await api.post({
+    url: "/find/id",
+    body: {
+      name,
+      email,
+      code,
+    },
+  });
+  return res;
+};

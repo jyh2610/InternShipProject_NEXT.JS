@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Space } from "antd";
 import FindInput from "./FindInput";
@@ -6,6 +6,7 @@ import EmailForm from "./EmailForm";
 import VertifyCode from "./VertifyCode";
 
 import type { Email } from "./Findlayout";
+import { idfind, resetPw } from "@/lib/EmailApi";
 
 interface FindInfoType {
   type: string;
@@ -15,10 +16,26 @@ interface FindInfoType {
   checkID: boolean;
 }
 
-function FindPW({ type, email, setEmail, setCheckID, checkID }: FindInfoType) {
-  const formSubmitHandler = () => {
-    checkID && email && setCheckID(true);
+function FindPW({ type, email, setEmail }: FindInfoType) {
+  const [name, setName] = useState("");
+  const [code, setCode] = useState("");
+  const [Pw, setResetPw] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const returnType = type === "pw" ? "pw" : "id";
+
+  const formSubmitHandler = async () => {
+    const newEmail = `${email.id}@${email.domain}`;
+    const res = type === "pw" ? await resetPw(name, newEmail, Pw) : await idfind(name, newEmail, code);
+    console.log(res.sueccess);
+
+    res.sueccess === true && setIsOpen(true);
   };
+  console.log(isOpen);
+
+  const inputHanlder = (e: { target: { value: React.SetStateAction<string> } }) => {
+    setResetPw(e.target.value);
+  };
+
   return (
     <Space className="w-full">
       <div>
@@ -27,13 +44,22 @@ function FindPW({ type, email, setEmail, setCheckID, checkID }: FindInfoType) {
           <p className="find-text">가입 시 입력한 이메일을 통해 인증 후 비밀번호를 재설정해주세요. </p>
         </div>
         <div className="find-from-wrap">
-          {type === "pw" ? <FindInput name={"아이디"} classData={"id"} /> : <FindInput name={"이름"} classData={"name"} />}
+          {type === "pw" ? (
+            <FindInput setName={setName} stateName={name} name={"아이디"} classData={"id"} />
+          ) : (
+            <FindInput setName={setName} stateName={name} name={"이름"} classData={"name"} />
+          )}
           <EmailForm email={email} setEmail={setEmail} />
-          <VertifyCode setCheckID={setCheckID} email={email} />
+          <VertifyCode setCheckID={setIsOpen} code={code} email={email} setCode={setCode} type={returnType} />
         </div>
-        <button className="completion-btn" onClick={formSubmitHandler}>
-          확인
-        </button>
+        {isOpen && (
+          <>
+            <input onChange={inputHanlder} value={Pw} />
+            <button className="completion-btn" onClick={formSubmitHandler}>
+              확인
+            </button>
+          </>
+        )}
       </div>
     </Space>
   );
