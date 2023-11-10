@@ -7,7 +7,7 @@ const page = () => {
   return (
     <div className="wrap relative h-screen w-full">
       <div className="modal shadow-1xl ">
-        <WarningOutlined />
+        <WarningOutlined className="modal-icon" />
         <p className="font-bold text-center text-[2rem]">현재 페이지는 준비중 입니다.</p>
         <p className="text-center text-[1.25rem]">
           보다 나은 서비스 제공을 위하여 페이지 준비중에 있습니다.

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import { ConfigProvider, Tabs } from "antd";
 import type { TabsProps, ThemeConfig } from "antd";
@@ -8,40 +8,56 @@ import type { TabsProps, ThemeConfig } from "antd";
 const FindPw = dynamic(() => import("./FindPw"));
 
 import "./style.css";
+import CheckID from "./CheckID";
 
-const items: TabsProps["items"] = [
-  {
-    key: "1",
-    label: <div className="tabs-btn">아이디 찾기</div>,
-    children: <FindPw type="id" />,
+export interface Email {
+  id: string;
+  domain: string;
+}
+
+const thmeConfig: ThemeConfig = {
+  components: {
+    Select: {
+      selectorBg: "#F7F7F7",
+      colorBorder: "none",
+    },
+    Tabs: {
+      inkBarColor: "#26AF66",
+      itemHoverColor: "none",
+      itemSelectedColor: "#fff",
+    },
   },
-  {
-    key: "2",
-    label: <div className="tabs-btn">비밀번호 찾기</div>,
-    children: <FindPw type="pw" />,
+  token: {
+    borderRadius: 0,
+    controlHeight: 40,
+    colorPrimaryHover: "transparent",
+    controlOutline: "transparent",
   },
-];
+};
 
 const Findlayout = () => {
-  const thmeConfig: ThemeConfig = {
-    components: {
-      Select: {
-        selectorBg: "#F7F7F7",
-        colorBorder: "none",
-      },
-      Tabs: {
-        inkBarColor: "#26AF66",
-        itemHoverColor: "none",
-        itemSelectedColor: "#fff",
-      },
-    },
-    token: {
-      borderRadius: 0,
-      controlHeight: 40,
-      colorPrimaryHover: "transparent",
-      controlOutline: "transparent",
-    },
+  const [email, setEmail] = useState<Email>({
+    id: "",
+    domain: "",
+  });
+  const [checkID, setCheckID] = useState(false);
+
+  const rederCheck = (type: string) => {
+    return !checkID ? <FindPw checkID={checkID} setCheckID={setCheckID} email={email} setEmail={setEmail} type={type} /> : <CheckID />;
   };
+
+  const items: TabsProps["items"] = [
+    {
+      key: "1",
+      label: <div className="tabs-btn">아이디 찾기</div>,
+      children: rederCheck("id"),
+    },
+    {
+      key: "2",
+      label: <div className="tabs-btn">비밀번호 찾기</div>,
+      children: rederCheck("pw"),
+    },
+  ];
 
   return (
     <div className="findinfo-wrap">

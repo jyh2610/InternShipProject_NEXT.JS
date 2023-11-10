@@ -1,6 +1,7 @@
 "use strict";
 
 const findService = require("../services/findService");
+const validateService = require("../services/validateService");
 const {catchAsync, detectError} = require("../utils/detectError");
 
 
@@ -22,7 +23,21 @@ const resetPassword = catchAsync(async(req, res) => {
     return res.status(200).json(result);
 });
 
+const verifyCode = catchAsync(async(req, res, next) => {
+    const {email, code} = req.body;
+    if (!email || !code) detectError("KEY_ERROR", 400);
+    
+    const result = await validateService.verifyCode(email, code);
+
+    if (!result.success) return res.status(200).json(result);
+
+    next();
+});
+
+
+
 module.exports ={
     idFind,
-    resetPassword
+    resetPassword,
+    verifyCode
 };
