@@ -1,4 +1,5 @@
 import React from "react";
+
 import { verifyCode } from "@/lib/EmailApi";
 import type { Email } from "./Findlayout";
 
@@ -10,7 +11,6 @@ function VertifyCode({ email, setCheckID, setCode, code, type }: { email: Email;
   const sendingCode = async () => {
     const formattedEmail = `${email.id}@${email.domain}`;
     const res = await verifyCode(formattedEmail, code);
-    console.log(res);
     res.success === true ? setCheckID(false) : setCheckID(false);
   };
 

@@ -8,13 +8,10 @@ const FindButton = () => {
   const route = useRouter();
   const data = [
     {
-      title: "아이디 찾기",
-      link: "/preparation",
+      title: "아이디 찾기 / 비밀번호 찾기",
+      link: "/find",
     },
-    {
-      title: "비밀번호 찾기",
-      link: "/preparation",
-    },
+
     {
       title: "회원가입",
       link: "/signup/provideinfo",
