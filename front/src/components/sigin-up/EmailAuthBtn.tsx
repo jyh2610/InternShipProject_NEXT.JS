@@ -35,6 +35,9 @@ const EmailAuthBtn = ({
       if (res.message === "DUPLICATE_EMAIL") {
         alert("이미 가입된 이메일 입니다.");
       }
+      if (res.message === "EMAIL_FORMAT_ERROR") {
+        alert("이메일 형식이 맞지 않습니다.");
+      }
     });
   };
   useEffect(() => {

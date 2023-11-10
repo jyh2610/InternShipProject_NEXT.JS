@@ -4,7 +4,6 @@ import React from "react";
 const EmailDomain = () => {
   return (
     <div>
-      {" "}
       <Form.Item
         name="emailDomain" // 두 번째 Form.Item
         label=""
