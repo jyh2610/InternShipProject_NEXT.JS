@@ -6,9 +6,9 @@ import { ConfigProvider, Tabs } from "antd";
 import type { TabsProps, ThemeConfig } from "antd";
 
 const FindPw = dynamic(() => import("./FindPw"));
+const CheckID = dynamic(() => import("./CheckID"));
 
 import "./style.css";
-import CheckID from "./CheckID";
 
 export interface Email {
   id: string;

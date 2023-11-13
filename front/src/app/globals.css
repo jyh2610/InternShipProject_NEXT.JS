@@ -20,7 +20,7 @@
 body {
   letter-spacing: -0.5px;
   overflow-x: hidden;
-
+  user-select: none;
 }
 
 ::-moz-selection {
@@ -70,7 +70,7 @@ p {
   margin: 0;
 }
 
-.footer-nav-list>a {
+.footer-nav-list > a {
   display: block;
   font-size: 0.875rem;
   color: #9f9f9f;
@@ -111,11 +111,11 @@ p {
   box-sizing: content-box;
 }
 
-.testp>p {
+.testp > p {
   font-weight: 700;
 }
 
-.ant-picker-content>thread {
+.ant-picker-content > thread {
   opacity: 0;
 }
 
@@ -206,7 +206,7 @@ p {
   /* 텍스트 컬러 변경 */
 }
 
-.testp>h4 {
+.testp > h4 {
   font-weight: 700;
   font-size: 1.125rem;
 }
@@ -241,7 +241,7 @@ p {
   padding: 0.5rem 0 !important;
 }
 
-.footer-nav-list>a:hover {
+.footer-nav-list > a:hover {
   pointer-events: none;
   color: none !important;
 }

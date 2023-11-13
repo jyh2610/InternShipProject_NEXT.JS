@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import { memo, useState } from "react";
 
 import { Space } from "antd";
+import { idfind, resetPw } from "@/lib/EmailApi";
+
 import FindInput from "./FindInput";
 import EmailForm from "./EmailForm";
 import VertifyCode from "./VertifyCode";
 
 import type { Email } from "./Findlayout";
-import { idfind, resetPw } from "@/lib/EmailApi";
+import type { SetStateAction } from "react";
 
 interface FindInfoType {
   type: string;
@@ -16,23 +18,22 @@ interface FindInfoType {
   checkID: boolean;
 }
 
-function FindPW({ type, email, setEmail }: FindInfoType) {
+function FindPW({ type, email, setEmail, setCheckID }: FindInfoType) {
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
   const [Pw, setResetPw] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const returnType = type === "pw" ? "pw" : "id";
-
   const formSubmitHandler = async () => {
     const newEmail = `${email.id}@${email.domain}`;
     const res = type === "pw" ? await resetPw(name, newEmail, Pw) : await idfind(name, newEmail, code);
-    console.log(res.sueccess);
-
-    res.sueccess === true && setIsOpen(true);
+    if (res?.sueccess === true) {
+      setIsOpen(true);
+      setCheckID(true);
+    }
   };
-  console.log(isOpen);
 
-  const inputHanlder = (e: { target: { value: React.SetStateAction<string> } }) => {
+  const inputHanlder = (e: { target: { value: SetStateAction<string> } }) => {
     setResetPw(e.target.value);
   };
 
@@ -65,4 +66,4 @@ function FindPW({ type, email, setEmail }: FindInfoType) {
   );
 }
 
-export default React.memo(FindPW);
+export default memo(FindPW);
